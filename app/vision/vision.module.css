@@ -1,0 +1,146 @@
+.page {
+  --maxw: 760px;
+  line-height: 1.7;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(246, 241, 232, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topbarInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+}
+.dot {
+  color: var(--switch);
+}
+.back {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--switch);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: gap 0.15s;
+}
+.back:hover {
+  gap: 11px;
+}
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.hero {
+  padding: 64px 0 12px;
+}
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--switch);
+}
+.hero h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  margin: 12px 0 0;
+  max-width: 16ch;
+}
+.lead {
+  font-size: 20px;
+  color: var(--ink-soft);
+  margin: 22px 0 0;
+}
+.article {
+  padding: 34px 0 10px;
+  font-size: 17.5px;
+}
+.article h2 {
+  font-size: clamp(23px, 3vw, 30px);
+  margin: 42px 0 12px;
+}
+.article p {
+  margin: 0 0 18px;
+  color: #332d25;
+}
+.pull {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.4vw, 32px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  border-left: 3px solid var(--switch);
+  padding: 6px 0 6px 22px;
+  margin: 34px 0;
+}
+.pull .anchor {
+  color: var(--switch);
+}
+.sectors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 8px;
+}
+.sectors span {
+  background: var(--switch-soft);
+  color: var(--switch);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+.ctaBand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  margin: 46px 0;
+}
+.ctaBand h2 {
+  font-size: 24px;
+  max-width: 22ch;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: var(--switch);
+  color: #fff;
+  transition: transform 0.12s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px -10px var(--switch);
+}
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-align: center;
+}
