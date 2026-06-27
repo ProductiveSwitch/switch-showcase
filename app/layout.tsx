@@ -18,11 +18,11 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Productive Switch — omscholing en werving voor HR-leiders",
+  title: "Productive Switch, omscholing en werving voor HR-leiders",
   description:
     "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Hire werft senior HR-rollen. Eén netwerk, beide kanten van de cyclus.",
   openGraph: {
-    title: "Productive Switch — omscholing en werving voor HR-leiders",
+    title: "Productive Switch, omscholing en werving voor HR-leiders",
     description:
       "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Hire werft senior HR-rollen.",
     type: "website",

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./vision.module.css";
 
 export const metadata: Metadata = {
-  title: "Onze visie — Productive Switch",
+  title: "Onze visie, Productive Switch",
   description:
     "Waarom Productive Switch bestaat: werk geeft mensen richting, en functies blijven veranderen. Korte, erkende omscholing bouwt de brug naar werk met blijvende vraag.",
 };

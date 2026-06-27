@@ -1,5 +1,5 @@
 // Placeholder data for Productive Switch + Productive Hire.
-// Bilingual fields hold [nl, en]. Swap freely — the structure stays.
+// Bilingual fields hold [nl, en]. Swap freely; the structure stays.
 
 export type Lang = "nl" | "en";
 export type Bi = { nl: string; en: string };
@@ -91,6 +91,109 @@ export const partners: Partner[] = [
   { initials: "NYE", color: "#2B4C8C", name: "Nyenrode" },
   { initials: "DTI", color: "#1B4F5E", name: "Delft Topinstituut" },
   { initials: "VSS", color: "#9E4B2E", name: "Vakschool Schoonhoven" },
+];
+
+// ----- How it works (Switch) -----
+export interface Step {
+  num: string;
+  title: Bi;
+  body: Bi;
+}
+
+export const howItWorks: Step[] = [
+  {
+    num: "01",
+    title: bi("Intake en advies", "Intake and guidance"),
+    body: bi(
+      "We starten met een gesprek, bij voorkeur met een erkende loopbaancoach. Samen bepalen we welke richting bij je medewerker past en wat haalbaar is.",
+      "We start with a conversation, ideally with a certified career coach. Together we map which direction fits your employee and what's realistic."
+    ),
+  },
+  {
+    num: "02",
+    title: bi("Omscholing bij erkende opleiders", "Re-training with accredited providers"),
+    body: bi(
+      "De intake stuurt direct naar een kort, erkend traject bij universiteiten, hogescholen, ROC's of erkende private opleiders. Gericht op het nieuwe vak, niet op een algemeen programma.",
+      "The intake routes straight to a short, accredited path at universities, colleges, vocational schools or recognised private providers. Aimed at the new trade, not a generic programme."
+    ),
+  },
+  {
+    num: "03",
+    title: bi("Directe lijn naar werkgevers", "A direct line to employers"),
+    body: bi(
+      "We verbinden de omscholing aan werkgevers in sectoren die mensen tekortkomen. In zorg en techniek kijken werkgevers soms al tijdens het traject mee.",
+      "We connect the re-training to employers in sectors that are short of people. In care and the trades, employers sometimes already look on during the path."
+    ),
+  },
+  {
+    num: "04",
+    title: bi("Begeleiding tot de landing", "Guidance until they land"),
+    body: bi(
+      "We blijven naast je medewerker staan tot het nieuwe werk er echt is. Die begeleiding is het verschil met een kaal lijstje cursussen.",
+      "We stay alongside your employee until the new work is genuinely there. That guidance is the difference from a bare list of courses."
+    ),
+  },
+];
+
+// ----- Financing sources (Voor HR) -----
+export interface FinanceSource {
+  title: Bi;
+  body: Bi;
+  tag: Bi;
+}
+
+export const financeSources: FinanceSource[] = [
+  {
+    title: bi("Transitiebudget", "Transition budget"),
+    tag: bi("Fiscaal gunstig", "Tax-friendly"),
+    body: bi(
+      "Besteed je de transitievergoeding aan omscholing naar een ander vakgebied, dan is dat fiscaal gunstiger dan uitkeren als cash. Het voelt als herbesteed geld, niet als nieuwe kosten.",
+      "Spend the transition payment on re-training toward a different field and it's more tax-friendly than paying it out as cash. It feels like money redirected, not a new expense."
+    ),
+  },
+  {
+    title: bi("Cao- en O&O-budgetten", "Collective and sector funds"),
+    tag: bi("Vaak al beschikbaar", "Often already there"),
+    body: bi(
+      "Veel cao's en O&O-fondsen kennen reguliere, fiscaal voordelige trainingsbudgetten. Die zetten we in waar ze er zijn.",
+      "Many collective agreements and sector funds hold regular, tax-advantaged training budgets. We put those to work where they exist."
+    ),
+  },
+  {
+    title: bi("SLIM-scholingssubsidie", "SLIM training subsidy"),
+    tag: bi("We regelen de aanvraag", "We handle the application"),
+    body: bi(
+      "Voor cruciale sectoren (techniek, zorg en welzijn, onderwijs, ICT, bouw, energie) dekt SLIM een deel van de opleidingskosten. We kijken of je in aanmerking komt en regelen de aanvraag. Budget en tijdvakken zijn beperkt, dus een garantie is het niet.",
+      "For crucial sectors (trades, care and welfare, education, ICT, construction, energy) SLIM covers part of the training costs. We check whether you qualify and handle the application. Budget and windows are limited, so it isn't a guarantee."
+    ),
+  },
+];
+
+// ----- Intake flow options -----
+export const intakeDirections: { key: string; label: Bi }[] = [
+  { key: "domein", label: bi("Blijf in je eigen domein", "Stay in your own field") },
+  { key: "sociaal", label: bi("Sociaal domein (zorg, welzijn, onderwijs)", "Social sector (care, welfare, education)") },
+  { key: "techniek", label: bi("Hands-on en techniek", "Hands-on and trades") },
+  { key: "onbekend", label: bi("Weet ik nog niet", "Not sure yet") },
+];
+
+export const intakeEmployeeBands: { key: string; label: Bi }[] = [
+  { key: "1", label: bi("1 medewerker", "1 employee") },
+  { key: "2-5", label: bi("2 tot 5", "2 to 5") },
+  { key: "6-15", label: bi("6 tot 15", "6 to 15") },
+  { key: "15+", label: bi("15 of meer", "15 or more") },
+];
+
+export const intakeBudgets: { key: string; label: Bi }[] = [
+  { key: "transitie", label: bi("Transitiebudget", "Transition budget") },
+  { key: "cao", label: bi("Cao- of O&O-trainingsbudget", "Collective or sector training budget") },
+  { key: "onbekend", label: bi("Weet ik nog niet", "Not sure yet") },
+];
+
+export const intakeTimelines: { key: string; label: Bi }[] = [
+  { key: "kort", label: bi("Binnen 3 maanden", "Within 3 months") },
+  { key: "midden", label: bi("3 tot 6 maanden", "3 to 6 months") },
+  { key: "later", label: bi("Later, nog aan het oriënteren", "Later, still orienting") },
 ];
 
 export type VacancyCategory = "leadership" | "transition" | "advies";

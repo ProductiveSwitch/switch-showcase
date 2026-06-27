@@ -7,16 +7,20 @@ import {
   partners,
   vacancies,
   vacancyFilters,
+  howItWorks,
+  financeSources,
   type Bi,
   type Lang,
   type VacancyCategory,
 } from "@/lib/data";
+import { Modal, IntakeForm, KoffieForm, OpleiderForm, type ModalKind } from "./Forms";
 
 export function Site() {
   const [lang, setLang] = useState<Lang>("nl");
   const [brand, setBrand] = useState<"switch" | "hire">("switch");
   const [activeDest, setActiveDest] = useState<string | null>(null);
   const [vacFilter, setVacFilter] = useState<"all" | VacancyCategory>("all");
+  const [modal, setModal] = useState<ModalKind>(null);
 
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
 
@@ -103,7 +107,7 @@ export function Site() {
         <div className="wrap">
           <section className="hero">
             <div className="hero-text">
-              <div className="eyebrow">{t({ nl: "Omscholing", en: "Re-training" })}</div>
+              <div className="eyebrow">{t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}</div>
               <h1>
                 {t({
                   nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen.",
@@ -112,14 +116,19 @@ export function Site() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "Productive Switch helpt je mensen aan een tweede carrière, met korte en gerichte omscholing naar werk waar ze zichzelf in zien en waar de arbeidsmarkt om zit te springen.",
-                  en: "Productive Switch helps your people into a second career, with short, focused re-training toward work they recognise themselves in and that the labour market is waiting for.",
+                  nl: "Productive Switch begeleidt je mensen naar een nieuw vak, met korte en erkende omscholing en een directe lijn naar werkgevers die ze willen aannemen. Geen algemeen outplacementtraject, maar een concrete stap naar werk met blijvende vraag.",
+                  en: "Productive Switch guides your people into a new trade, with short, accredited re-training and a direct line to employers who want to hire them. Not a generic outplacement track, but a concrete step toward work with lasting demand.",
                 })}
               </p>
               <div className="hero-cta">
-                <a href="/vision" className="lees-meer">
-                  {t({ nl: "Lees meer →", en: "Read more →" })}
-                </a>
+                <div className="cta-actions">
+                  <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
+                    {t({ nl: "Plan een intake", en: "Plan an intake" })}
+                  </button>
+                  <a href="/vision" className="lees-meer">
+                    {t({ nl: "Lees onze visie →", en: "Read our vision →" })}
+                  </a>
+                </div>
               </div>
             </div>
             <div className="hero-media">
@@ -143,6 +152,12 @@ export function Site() {
               {t({
                 nl: "Kies een richting. Je ziet meteen het erkende aanbod en de open makersmarkt die erbij past.",
                 en: "Pick a direction. You'll see the accredited supply and the matching open makers' market right away.",
+              })}
+            </p>
+            <p className="dest-intro">
+              {t({
+                nl: "De sterkste lijn naar werkgevers zit in zorg en techniek, want daar zit de structurele vraag. Blijf in je eigen domein is de brede instap, waar werken met AI vaak juist de bijscholing is.",
+                en: "The strongest line to employers is in care and the trades, where the demand is structural. Staying in your own field is the broad entry, where working with AI is often the upskilling itself.",
               })}
             </p>
 
@@ -180,6 +195,9 @@ export function Site() {
                           {c.certified && (
                             <span className="chip">{t({ nl: "Gecertificeerd", en: "Certified" })}</span>
                           )}{" "}
+                          {(d.id === "dest-2" || d.id === "dest-3") && (
+                            <span className="chip">{t({ nl: "SLIM-subsidiabel", en: "SLIM-eligible" })}</span>
+                          )}{" "}
                           <span>{t(c.duration)}</span>
                         </div>
                       </div>
@@ -205,6 +223,56 @@ export function Site() {
                 </div>
               </div>
             ))}
+          </section>
+
+          {/* How it works */}
+          <section className="section reveal" id="how">
+            <div className="section-head">
+              <h2>{t({ nl: "Hoe het werkt", en: "How it works" })}</h2>
+              <p>
+                {t({
+                  nl: "Van eerste gesprek tot een nieuwe baan. Een kort, begeleid traject, geen los lijstje cursussen.",
+                  en: "From first conversation to a new job. A short, guided path, not a loose list of courses.",
+                })}
+              </p>
+            </div>
+            <div className="how stagger">
+              {howItWorks.map((s) => (
+                <div className="how-step" key={s.num}>
+                  <div className="num">{s.num}</div>
+                  <h3>{t(s.title)}</h3>
+                  <p>{t(s.body)}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Financing, Voor HR */}
+          <section className="section reveal" id="financiering">
+            <div className="section-head">
+              <h2>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h2>
+              <p>
+                {t({
+                  nl: "Omscholing hoeft geen nieuwe kostenpost te zijn. Drie bronnen stapelen tot een laag netto bedrag voor jou.",
+                  en: "Re-training doesn't have to be a new expense. Three sources stack into a low net amount for you.",
+                })}
+              </p>
+            </div>
+            <div className="fin stagger">
+              {financeSources.map((f, i) => (
+                <div className="fin-card" key={i}>
+                  <span className="fin-tag">{t(f.tag)}</span>
+                  <h3>{t(f.title)}</h3>
+                  <p>{t(f.body)}</p>
+                </div>
+              ))}
+            </div>
+            <div className="fin-note">
+              {t({
+                nl: "Deze drie bronnen stapelen, en in de intake rekenen we het concreet voor je uit. Transitiebudget besteed aan omscholing voelt als herbesteed geld, niet als nieuwe kosten.",
+                en: "These three sources stack, and in the intake we work it out concretely for you. Transition budget spent on re-training feels like money redirected, not a new cost.",
+              })}
+            </div>
           </section>
 
           {/* Testimonial */}
@@ -271,20 +339,41 @@ export function Site() {
             </div>
           </section>
 
-          {/* Contact */}
+          {/* Contact / CTAs */}
           <section className="cta-band reveal" id="contact">
             <div>
               <h2>{t({ nl: "Een reorganisatie op komst? Laten we praten.", en: "A restructuring ahead? Let's talk." })}</h2>
               <p>
                 {t({
-                  nl: "In een kort gesprek laten we zien hoe we je mensen goed laten landen.",
-                  en: "In a short call we'll show how we help your people land well.",
+                  nl: "Plan een intake, of drink eerst gewoon eens koffie. Geen verplichting, wel meteen concreet.",
+                  en: "Plan an intake, or just grab a coffee first. No obligation, concrete from the start.",
                 })}
               </p>
             </div>
-            <a href="mailto:info@productiveswitch.nl" className="btn btn-switch">
-              {t({ nl: "Boek een walkthrough", en: "Book a walkthrough" })}
-            </a>
+            <div className="cta-actions">
+              <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
+                {t({ nl: "Plan een intake", en: "Plan an intake" })}
+              </button>
+              <button className="btn btn-ghost" onClick={() => setModal("koffie")}>
+                {t({ nl: "Nog geen plannen? Koffie", en: "No plans yet? Coffee" })}
+              </button>
+            </div>
+          </section>
+
+          {/* Opleiders, aanbodkant, apart */}
+          <section className="reveal">
+            <div className="opleider-band">
+              <div className="ob-text">
+                <strong>{t({ nl: "Ben je een opleider?", en: "Are you a training provider?" })}</strong>{" "}
+                {t({
+                  nl: "Sluit je aan en ontvang gekwalificeerde, vaak werkgever-gefinancierde instroom. Aanmelden is gratis.",
+                  en: "Join and receive qualified, often employer-funded enrolments. Signing up is free.",
+                })}
+              </div>
+              <button className="btn btn-ghost btn-sm" onClick={() => setModal("opleider")}>
+                {t({ nl: "Aansluiten als opleider", en: "Join as a provider" })}
+              </button>
+            </div>
           </section>
         </div>
       </main>
@@ -433,6 +522,42 @@ export function Site() {
           </div>
         </div>
       </footer>
+
+      <Modal
+        open={modal === "intake"}
+        onClose={() => setModal(null)}
+        title={t({ nl: "Plan een intake", en: "Plan an intake" })}
+        intro={t({
+          nl: "Een paar korte vragen, dan weten we genoeg om je concreet terug te bellen. Geen verplichting.",
+          en: "A few short questions, then we know enough to call you back concretely. No obligation.",
+        })}
+      >
+        <IntakeForm lang={lang} onClose={() => setModal(null)} />
+      </Modal>
+
+      <Modal
+        open={modal === "koffie"}
+        onClose={() => setModal(null)}
+        title={t({ nl: "Even koffie drinken", en: "Grab a coffee" })}
+        intro={t({
+          nl: "Nog geen plannen, wel benieuwd? Laten we koffie drinken. Kennismaken, sparren, vragen stellen.",
+          en: "No plans yet, but curious? Let's grab a coffee. Meet, spar, ask anything.",
+        })}
+      >
+        <KoffieForm lang={lang} onClose={() => setModal(null)} />
+      </Modal>
+
+      <Modal
+        open={modal === "opleider"}
+        onClose={() => setModal(null)}
+        title={t({ nl: "Aansluiten als opleider", en: "Join as a provider" })}
+        intro={t({
+          nl: "Vertel kort wie je bent en wat je aanbiedt. Je ontvangt gekwalificeerde, vaak werkgever-gefinancierde instroom.",
+          en: "Tell us briefly who you are and what you offer. You'll receive qualified, often employer-funded enrolments.",
+        })}
+      >
+        <OpleiderForm lang={lang} onClose={() => setModal(null)} />
+      </Modal>
     </>
   );
 }

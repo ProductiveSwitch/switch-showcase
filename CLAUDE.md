@@ -2,9 +2,27 @@
 
 ## Project Context
 
-**Switch** is a re-training platform that helps people transition careers when they lose their jobs. This is the public showcase site — a landing page that speaks to HR buyers and prospective learners, showing three career pathways (stay in domain, into social work, into hands-on work) through a curated + open marketplace model.
+**Productive Switch** is re-training that helps people build a second career when their role ends or changes. The live site is a Next.js app (deployed on Vercel at productiveswitch.nl) with two prominent tabs: **Productive Switch** (default, re-training) and **Productive Hire** (recruitment for senior HR roles). One brand, both sides of the employment cycle.
 
-The platform will eventually include accounts, video content, scheduling, and payments, but Phase 0 is the visual foundation and pitch asset.
+The platform will eventually include accounts, video content, scheduling, and payments, but the current phase is the proposition + pitch + lead-capture asset.
+
+### Proposition (current, load-bearing)
+
+- Productive Switch is **not** an outplacement bureau and positions itself beside it. Outplacement is work-to-work; Productive Switch is **work to a new vak, with an employer at the end**. Short, targeted re-training plus a guidance layer (intake by a certified career coach) is the differentiator. The guidance layer is what makes us a transition partner instead of a course broker.
+- **Audience / payer: the employer.** All copy addresses the HR decision-maker (and works council) at a reorganisation, who wants their people to land well and must justify the choice internally. Not the learner.
+- **Three directions, with accent on 2 and 3** (structural demand + subsidy money + strongest employer link): (1) stay in your own field — the broad funnel, where working with AI is the upskilling, framed as opportunity never fear; (2) social sector (zorg, welzijn, onderwijs); (3) hands-on and technical work.
+- **Financing is a sales argument**, three stackable sources: transitiebudget (tax-friendly when spent on re-training), cao/O&O training budgets, and SLIM subsidy (we handle the application; never framed as guaranteed). Shown indicatively, never as a calculator. **Never show our own fee; no bedragen/tarieven on the site.**
+- **Employer link = proposition + concierge, not a marketplace.** No placement infra, no job guarantee, no hard SLIM promise.
+
+### Voice
+
+All copy follows the **productive-switch-voice** skill: NL-first with EN toggle (re-expression, not literal translation), informal je/jij, human-first but always concrete, hopeful never fear-based, clear over clever. Anchor "Leren om te blijven leren" used sparingly. **Hard rule: never an em dash** (use comma, period, colon, parentheses, or "en").
+
+### Architecture notes (current)
+
+- `components/Site.tsx` — the whole client app (brand tabs, lang toggle, destinations, how-it-works, financing, vacancies, testimonials, logo wall, CTA modals). `lib/data.ts` — all bilingual placeholder data + structured content. `components/Forms.tsx` — intake (multi-step), koffie, opleider modals. `app/api/contact/route.ts` — serverless mail route (Resend if `RESEND_API_KEY` + `CONTACT_FROM` set, else 503 → client mailto fallback to info@productiveswitch.nl). `app/vision/page.tsx` — vision page (CSS module). All prototype CSS lives in `app/globals.css`.
+- **CTA hierarchy:** werkgevers-intake primary, koffie warm second, opleiders-ingang a distinct third (supply side, never overshadowing the employer CTA).
+- node/npm not on default PATH: `export PATH="/opt/homebrew/bin:$PATH"`.
 
 ## Design Language
 
