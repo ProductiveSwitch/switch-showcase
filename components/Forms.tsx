@@ -30,7 +30,7 @@ async function send(subject: string, text: string): Promise<SendResult> {
   return "mailto";
 }
 
-export type ModalKind = "intake" | "koffie" | "opleider" | null;
+export type ModalKind = "intake" | "koffie" | "opleider" | "cv" | null;
 
 export function Modal({
   open,

@@ -82,15 +82,16 @@ export interface Partner {
   initials: string;
   color: string;
   name: string;
+  logo?: string; // official logo file in /public/logos; without it we render a wordmark
 }
 
 export const partners: Partner[] = [
-  { initials: "UvA", color: "#2D5A6B", name: "Universiteit van Amsterdam" },
-  { initials: "HAN", color: "#BC5B38", name: "HAN University" },
-  { initials: "ERA", color: "#3E6B47", name: "Erasmus" },
-  { initials: "NYE", color: "#2B4C8C", name: "Nyenrode" },
-  { initials: "DTI", color: "#1B4F5E", name: "Delft Topinstituut" },
-  { initials: "VSS", color: "#9E4B2E", name: "Vakschool Schoonhoven" },
+  { initials: "LOI", color: "#E2001A", name: "LOI" },
+  { initials: "UvA", color: "#1B1A17", name: "Universiteit van Amsterdam", logo: "/logos/uva.svg" },
+  { initials: "EUR", color: "#0C8066", name: "Erasmus Universiteit Rotterdam", logo: "/logos/erasmus.svg" },
+  { initials: "UL", color: "#001158", name: "Universiteit Leiden", logo: "/logos/leiden.svg" },
+  { initials: "HvA", color: "#25167A", name: "Hogeschool van Amsterdam", logo: "/logos/hva.png" },
+  { initials: "NYE", color: "#002F5F", name: "Nyenrode Business Universiteit", logo: "/logos/nyenrode.png" },
 ];
 
 // ----- How it works (Switch) -----

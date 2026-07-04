@@ -2,6 +2,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Search, GraduationCap, Handshake, Compass } from "lucide-react";
+
+// lucide-react no longer ships brand icons, so LinkedIn and Instagram are inline
+function LinkedInIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.2" />
+      <circle cx="12" cy="12" r="4.4" />
+      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 import {
   destinations,
   partners,
@@ -14,6 +34,11 @@ import {
   type VacancyCategory,
 } from "@/lib/data";
 import { Modal, IntakeForm, KoffieForm, OpleiderForm, type ModalKind } from "./Forms";
+import { RadarChart } from "./RadarChart";
+
+const stepIcons = [Search, GraduationCap, Handshake, Compass];
+const stepColors = ["var(--col-social)", "var(--col-tech-deep)", "var(--col-domain)", "var(--navy)"];
+const pillarColors = ["var(--col-domain)", "var(--col-tech)", "var(--col-social)"];
 
 export function Site() {
   const [lang, setLang] = useState<Lang>("nl");
@@ -21,12 +46,22 @@ export function Site() {
   const [activeDest, setActiveDest] = useState<string | null>(null);
   const [vacFilter, setVacFilter] = useState<"all" | VacancyCategory>("all");
   const [modal, setModal] = useState<ModalKind>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  // Scroll state for the fixed nav
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Scroll reveal
   useEffect(() => {
@@ -47,148 +82,245 @@ export function Site() {
 
   const switchBrand = (b: "switch" | "hire") => {
     setBrand(b);
+    setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const goContact = () => {
+    setMenuOpen(false);
+    const id = brand === "switch" ? "contact" : "hire-contact";
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const shownVacancies = vacancies.filter(
     (v) => vacFilter === "all" || v.category === vacFilter
   );
 
+  const navLinks = (
+    <>
+      <button
+        className={`nav-link${brand === "switch" ? " on" : ""}`}
+        onClick={() => switchBrand("switch")}
+      >
+        Productive Switch
+      </button>
+      <button
+        className={`nav-link${brand === "hire" ? " on" : ""}`}
+        onClick={() => switchBrand("hire")}
+      >
+        Productive Hire
+      </button>
+      <a className="nav-link" href="/vision" onClick={() => setMenuOpen(false)}>
+        {t({ nl: "Onze visie", en: "Our vision" })}
+      </a>
+      <div className="lang">
+        <button className={lang === "nl" ? "on" : ""} onClick={() => setLang("nl")}>
+          NL
+        </button>
+        <button className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>
+          EN
+        </button>
+      </div>
+    </>
+  );
+
+  const navActions = (
+    <>
+      <a
+        className="nav-social"
+        href="https://www.linkedin.com/company/productiveswitch"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="LinkedIn"
+      >
+        <LinkedInIcon />
+      </a>
+      <a
+        className="nav-social"
+        href="https://www.instagram.com/productiveswitch"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Instagram"
+      >
+        <InstagramIcon />
+      </a>
+      <button
+        className="btn btn-ghost btn-sm"
+        onClick={() => {
+          setMenuOpen(false);
+          setModal("cv");
+        }}
+      >
+        {t({ nl: "Upload CV", en: "Upload CV" })}
+      </button>
+      <button className="btn btn-switch btn-sm" onClick={goContact}>
+        Contact
+      </button>
+    </>
+  );
+
   return (
     <>
-      <header className="topbar">
-        <div className="wrap inner">
-          <div className="brand">
+      <header className={`nav${scrolled ? " nav--scrolled" : ""}${menuOpen ? " nav--open" : ""}`}>
+        <div className="nav-inner">
+          <a
+            className="nav-brand"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              switchBrand("switch");
+            }}
+          >
             Productive<span className="dot">·</span>Switch
-          </div>
-          <nav className="navtabs">
-            <button
-              className={`tab${brand === "switch" ? " on" : ""}`}
-              data-tab="switch"
-              onClick={() => switchBrand("switch")}
-            >
-              <span className="t-name">
-                <span className="pip" />
-                Productive Switch
-              </span>
-              <span className="t-desc">
-                {t({ nl: "Omscholing naar een tweede loopbaan", en: "Re-training for a second career" })}
-              </span>
-            </button>
-            <button
-              className={`tab${brand === "hire" ? " on" : ""}`}
-              data-tab="hire"
-              onClick={() => switchBrand("hire")}
-            >
-              <span className="t-name">
-                <span className="pip" />
-                Productive Hire
-              </span>
-              <span className="t-desc">
-                {t({ nl: "Werving voor senior HR-rollen", en: "Recruitment for senior HR roles" })}
-              </span>
-            </button>
-          </nav>
-          <div className="top-right">
-            <div className="lang">
-              <button className={lang === "nl" ? "on" : ""} onClick={() => setLang("nl")}>
-                NL
-              </button>
-              <button className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>
-                EN
-              </button>
-            </div>
-          </div>
+          </a>
+          <nav className="nav-links">{navLinks}</nav>
+          <div className="nav-actions">{navActions}</div>
+          <button
+            className="nav-burger"
+            aria-label={menuOpen ? "Menu sluiten" : "Menu openen"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+        <div className="nav-menu">
+          <div className="nav-menu-links">{navLinks}</div>
+          <div className="nav-menu-actions">{navActions}</div>
         </div>
       </header>
 
       {/* ============ SWITCH PANEL ============ */}
       <main className={`panel${brand === "switch" ? " on" : ""}`}>
+        {/* Full-viewport hero with the re-drawn radar as backdrop */}
+        <section className="s-hero">
+          <div className="s-hero-bg" aria-hidden="true">
+            <RadarChart variant="bg" />
+          </div>
+          <div className="wrap s-hero-inner">
+            <div className="eyebrow">
+              {t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}
+            </div>
+            <h1>
+              {t({
+                nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen.",
+                en: "When a role disappears, a career doesn't have to.",
+              })}
+            </h1>
+            <p className="lede">
+              {t({
+                nl: "Productive Switch begeleidt je mensen naar een nieuw vak, met korte en erkende omscholing en een directe lijn naar werkgevers die ze willen aannemen. Geen algemeen outplacementtraject, maar een concrete stap naar werk met blijvende vraag.",
+                en: "Productive Switch guides your people into a new trade, with short, accredited re-training and a direct line to employers who want to hire them. Not a generic outplacement track, but a concrete step toward work with lasting demand.",
+              })}
+            </p>
+            <div className="cta-actions s-hero-cta">
+              <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
+                {t({ nl: "Plan een intake", en: "Plan an intake" })}
+              </button>
+              <button className="btn btn-ghost" onClick={() => setModal("koffie")}>
+                {t({ nl: "Nog geen plannen? Koffie", en: "No plans yet? Coffee" })}
+              </button>
+            </div>
+          </div>
+          <a className="s-hero-scroll" href="#showcase" aria-label={t({ nl: "Scroll verder", en: "Scroll on" })}>
+            ▾
+          </a>
+        </section>
+
+        {/* Ticker with accredited institutions */}
+        <section className="ticker-block reveal">
+          <div className="ticker-cap">
+            {t({
+              nl: "Omscholing bij erkende opleiders, onder andere",
+              en: "Re-training with accredited providers, including",
+            })}
+          </div>
+          <div className="ticker-track">
+            <div className="ticker-strip">
+              {[...partners, ...partners].map((p, i) => (
+                <span className="ticker-item" key={`${p.initials}-${i}`}>
+                  {p.logo ? (
+                    <img src={p.logo} alt={p.name} loading="lazy" />
+                  ) : (
+                    <span className="ticker-wordmark" style={{ color: p.color }}>
+                      {p.name}
+                    </span>
+                  )}
+                  <span className="ticker-dot" aria-hidden="true">
+                    ·
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <div className="wrap">
-          <section className="hero">
-            <div className="hero-text">
-              <div className="eyebrow">{t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}</div>
-              <h1>
+          {/* Three directions as pillar cards */}
+          <section className="section reveal" id="showcase">
+            <div className="section-head">
+              <h2>{t({ nl: "Drie richtingen", en: "Three directions" })}</h2>
+              <p>
                 {t({
-                  nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen.",
-                  en: "When a role disappears, a career doesn't have to.",
-                })}
-              </h1>
-              <p className="lede">
-                {t({
-                  nl: "Productive Switch begeleidt je mensen naar een nieuw vak, met korte en erkende omscholing en een directe lijn naar werkgevers die ze willen aannemen. Geen algemeen outplacementtraject, maar een concrete stap naar werk met blijvende vraag.",
-                  en: "Productive Switch guides your people into a new trade, with short, accredited re-training and a direct line to employers who want to hire them. Not a generic outplacement track, but a concrete step toward work with lasting demand.",
+                  nl: "Kies een richting en je ziet meteen het erkende aanbod en de open makersmarkt die erbij past. De sterkste lijn naar werkgevers zit in techniek en het sociaal domein, want daar zit de structurele vraag.",
+                  en: "Pick a direction and you'll see the accredited supply and the matching open makers' market right away. The strongest line to employers runs through the trades and the social sector, where demand is structural.",
                 })}
               </p>
-              <div className="hero-cta">
-                <div className="cta-actions">
-                  <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
-                    {t({ nl: "Plan een intake", en: "Plan an intake" })}
-                  </button>
-                  <a href="/vision" className="lees-meer">
-                    {t({ nl: "Lees onze visie →", en: "Read our vision →" })}
-                  </a>
-                </div>
-              </div>
             </div>
-            <div className="hero-media">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
-                alt=""
-                loading="lazy"
-              />
-              <div className="hero-badge">
-                <div className="bnum">2.400+</div>
-                <div className="btxt">
-                  {t({ nl: "mensen omgeschoold naar nieuw werk", en: "people re-trained into new work" })}
-                </div>
-              </div>
-            </div>
-          </section>
 
-          {/* Destinations */}
-          <section className="section reveal" id="showcase">
-            <p className="dest-intro">
-              {t({
-                nl: "Kies een richting. Je ziet meteen het erkende aanbod en de open makersmarkt die erbij past.",
-                en: "Pick a direction. You'll see the accredited supply and the matching open makers' market right away.",
-              })}
-            </p>
-            <p className="dest-intro">
-              {t({
-                nl: "De sterkste lijn naar werkgevers zit in zorg en techniek, want daar zit de structurele vraag. Blijf in je eigen domein is de brede instap, waar werken met AI vaak juist de bijscholing is.",
-                en: "The strongest line to employers is in care and the trades, where the demand is structural. Staying in your own field is the broad entry, where working with AI is often the upskilling itself.",
-              })}
-            </p>
-
-            <div className="dest-tabs stagger">
-              {destinations.map((d) => (
+            <div className="pillars stagger">
+              {destinations.map((d, i) => (
                 <button
                   key={d.id}
-                  className={`dest-tab${activeDest === d.id ? " on" : ""}`}
+                  className={`pillar${activeDest === d.id ? " on" : ""}`}
+                  style={{ "--pc": pillarColors[i] } as React.CSSProperties}
                   onClick={() => setActiveDest(activeDest === d.id ? null : d.id)}
                 >
-                  <span className="dest-num">{d.num}</span>
-                  <span className="dest-label">
-                    {t(d.label)}
-                    <span className="dest-sub">{t(d.sub)}</span>
+                  <img className="pillar-photo" src={d.photo} alt="" loading="lazy" />
+                  <span className="pillar-shade" aria-hidden="true" />
+                  <span className="pillar-body">
+                    <span className="pillar-num">{d.num}</span>
+                    <span className="pillar-title">{t(d.label)}</span>
+                    <span className="pillar-sub">{t(d.sub)}</span>
+                    <span className="pillar-chev" aria-hidden="true">
+                      ▾
+                    </span>
                   </span>
-                  <span className="dest-chev">▾</span>
                 </button>
               ))}
             </div>
 
-            {destinations.map((d) => (
+            {destinations.map((d, i) => (
               <div key={d.id} className={`dest-panel${activeDest === d.id ? " on" : ""}`}>
                 <div className="dest-inner">
-                  <img className="dest-photo" src={d.photo} alt="" loading="lazy" />
+                  {d.id === "dest-1" ? (
+                    <figure className="radar-block">
+                      <RadarChart variant="figure" lang={lang} />
+                      <figcaption>
+                        <span className="radar-legend">
+                          <i className="radar-swatch theo" />
+                          {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
+                          <i className="radar-swatch obs" />
+                          {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
+                        </span>
+                        {t({
+                          nl: "Het gat tussen die twee lijnen is onbenutte productiviteit. Precies daar zit de bijscholing in je eigen vak. Naar de grafiek van de Anthropic Economic Index.",
+                          en: "The gap between those two lines is untapped productivity. That is exactly where upskilling in your own field lives. After the Anthropic Economic Index chart.",
+                        })}
+                      </figcaption>
+                    </figure>
+                  ) : (
+                    <img className="dest-photo" src={d.photo} alt="" loading="lazy" />
+                  )}
                   <div className="tier">
                     <span className="badge badge-cur">{t({ nl: "Gecureerd", en: "Curated" })}</span>{" "}
                     <span>{t({ nl: "erkende instituten", en: "accredited institutions" })}</span>
                   </div>
                   <div className="prog-grid">
-                    {d.curated.map((c, i) => (
-                      <div className="tile" key={i}>
+                    {d.curated.map((c, j) => (
+                      <div className="tile" key={j}>
                         <div className="org">{c.org}</div>
                         <div className="course">{c.course}</div>
                         <div className="meta">
@@ -210,8 +342,8 @@ export function Site() {
                     <span>{t({ nl: "modules van makers uit het vak", en: "modules from makers in the field" })}</span>
                   </div>
                   <div className="prog-grid">
-                    {d.makers.map((m, i) => (
-                      <div className="tile" key={i}>
+                    {d.makers.map((m, j) => (
+                      <div className="tile" key={j}>
                         <div className="org">{t(m.by)}</div>
                         <div className="course">{m.course}</div>
                         <div className="meta">
@@ -225,7 +357,44 @@ export function Site() {
             ))}
           </section>
 
-          {/* How it works */}
+          {/* Financing as a fan: three stacking sources around one centre */}
+          <section className="section reveal" id="financiering">
+            <div className="section-head centered">
+              <h2>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h2>
+              <p>
+                {t({
+                  nl: "Omscholing hoeft geen nieuwe kostenpost te zijn. Drie bronnen stapelen tot een laag netto bedrag voor jou.",
+                  en: "Re-training doesn't have to be a new expense. Three sources stack into a low net amount for you.",
+                })}
+              </p>
+            </div>
+            <div className="fan">
+              <div className="fan-center">
+                <div className="fan-center-num">3</div>
+                <div className="fan-center-txt">
+                  {t({ nl: "bronnen die stapelen", en: "sources that stack" })}
+                </div>
+              </div>
+              <div className="fan-cards stagger">
+                {financeSources.map((f, i) => (
+                  <div className={`fan-card fan-${i}`} key={i}>
+                    <span className="fan-num">0{i + 1}</span>
+                    <h3>{t(f.title)}</h3>
+                    <p>{t(f.body)}</p>
+                    <span className="fan-tag">{t(f.tag)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="fin-note">
+              {t({
+                nl: "Deze drie bronnen stapelen, en in de intake rekenen we het concreet voor je uit. Transitiebudget besteed aan omscholing voelt als herbesteed geld, niet als nieuwe kosten.",
+                en: "These three sources stack, and in the intake we work it out concretely for you. Transition budget spent on re-training feels like money redirected, not a new cost.",
+              })}
+            </div>
+          </section>
+
+          {/* How it works: four ribbon step cards */}
           <section className="section reveal" id="how">
             <div className="section-head">
               <h2>{t({ nl: "Hoe het werkt", en: "How it works" })}</h2>
@@ -236,41 +405,28 @@ export function Site() {
                 })}
               </p>
             </div>
-            <div className="how stagger">
-              {howItWorks.map((s) => (
-                <div className="how-step" key={s.num}>
-                  <div className="num">{s.num}</div>
-                  <h3>{t(s.title)}</h3>
-                  <p>{t(s.body)}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Financing, Voor HR */}
-          <section className="section reveal" id="financiering">
-            <div className="section-head">
-              <h2>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h2>
-              <p>
-                {t({
-                  nl: "Omscholing hoeft geen nieuwe kostenpost te zijn. Drie bronnen stapelen tot een laag netto bedrag voor jou.",
-                  en: "Re-training doesn't have to be a new expense. Three sources stack into a low net amount for you.",
-                })}
-              </p>
-            </div>
-            <div className="fin stagger">
-              {financeSources.map((f, i) => (
-                <div className="fin-card" key={i}>
-                  <span className="fin-tag">{t(f.tag)}</span>
-                  <h3>{t(f.title)}</h3>
-                  <p>{t(f.body)}</p>
-                </div>
-              ))}
-            </div>
-            <div className="fin-note">
-              {t({
-                nl: "Deze drie bronnen stapelen, en in de intake rekenen we het concreet voor je uit. Transitiebudget besteed aan omscholing voelt als herbesteed geld, niet als nieuwe kosten.",
-                en: "These three sources stack, and in the intake we work it out concretely for you. Transition budget spent on re-training feels like money redirected, not a new cost.",
+            <div className="steps stagger">
+              {howItWorks.map((s, i) => {
+                const Icon = stepIcons[i];
+                return (
+                  <div
+                    className="step-card"
+                    key={s.num}
+                    style={{ "--sc": stepColors[i] } as React.CSSProperties}
+                  >
+                    <span className="step-ribbon">{s.num}</span>
+                    <span className="step-corner tr" aria-hidden="true" />
+                    <span className="step-corner bl" aria-hidden="true" />
+                    <div className="step-icon">
+                      <Icon size={26} strokeWidth={1.8} />
+                    </div>
+                    <h3>{t(s.title)}</h3>
+                    <span className="step-rule" aria-hidden="true">
+                      <i />
+                    </span>
+                    <p>{t(s.body)}</p>
+                  </div>
+                );
               })}
             </div>
           </section>
@@ -295,50 +451,64 @@ export function Site() {
               </div>
             </div>
           </section>
+        </div>
 
-          {/* Vision band */}
-          <section className="vision reveal">
+        {/* Onze visie, split section */}
+        <section className="visie reveal" id="visie">
+          <div className="visie-media">
+            <img
+              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1100&q=80"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          <div className="visie-text">
+            <div className="eyebrow">{t({ nl: "Onze visie", en: "Our vision" })}</div>
+            <h2>
+              {t({
+                nl: "Werk geeft mensen richting. Dat verdedigen we.",
+                en: "Work gives people direction. We defend that.",
+              })}
+            </h2>
             <p>
               {t({
-                nl: "Je functieomschrijving kan over een half jaar anders zijn.",
-                en: "Your job description can look different in six months.",
+                nl: "De economie blijft veranderen, en tegelijk schreeuwen de zorg, het onderwijs en de techniek om mensen. De brug daartussen is kort, gericht leren, met een werkgever aan het eind. Niet iedereen hoeft opnieuw naar school. Wel kan bijna iedereen de stap zetten.",
+                en: "The economy keeps changing, while care, education and the trades are crying out for people. The bridge between the two is short, focused learning, with an employer at the end. Not everyone needs to go back to school. Almost everyone can make the step.",
               })}
             </p>
-            <h2>
-              {lang === "nl" ? (
-                <>
-                  Daarom draait alles bij ons om één ding:{" "}
-                  <span className="anchor">leren om te blijven leren.</span>
-                </>
-              ) : (
-                <>
-                  That&apos;s why everything we do comes down to one thing:{" "}
-                  <span className="anchor">learning to keep learning.</span>
-                </>
-              )}
-            </h2>
-          </section>
+            <a href="/vision" className="lees-meer light">
+              {t({ nl: "Lees onze visie →", en: "Read our vision →" })}
+            </a>
+          </div>
+        </section>
 
-          {/* Logo wall */}
-          <section className="logowall reveal">
-            <div className="cap">
-              {t({
-                nl: "Samen met erkende instituten en partners",
-                en: "Together with accredited institutions and partners",
-              })}
-            </div>
-            <div className="logos stagger">
-              {partners.map((p) => (
-                <div className="logo-item" key={p.initials}>
-                  <span className="logo-mark" style={{ background: p.color }}>
-                    {p.initials}
-                  </span>
-                  <span className="logo-name">{p.name}</span>
-                </div>
-              ))}
-            </div>
-          </section>
+        {/* Vision line + contact CTA */}
+        <section className="vision reveal">
+          <p>
+            {t({
+              nl: "Je functieomschrijving kan over een half jaar anders zijn.",
+              en: "Your job description can look different in six months.",
+            })}
+          </p>
+          <h2>
+            {lang === "nl" ? (
+              <>
+                Daarom draait alles bij ons om één ding:{" "}
+                <span className="anchor">leren om te blijven leren.</span>
+              </>
+            ) : (
+              <>
+                That&apos;s why everything we do comes down to one thing:{" "}
+                <span className="anchor">learning to keep learning.</span>
+              </>
+            )}
+          </h2>
+          <button className="btn btn-light" onClick={goContact}>
+            {t({ nl: "Kom in contact", en: "Get in touch" })}
+          </button>
+        </section>
 
+        <div className="wrap">
           {/* Contact / CTAs */}
           <section className="cta-band reveal" id="contact">
             <div>
@@ -392,9 +562,14 @@ export function Site() {
                 })}
               </p>
               <div className="hero-cta">
-                <a href="#hire-contact" className="btn btn-hire">
-                  {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
-                </a>
+                <div className="cta-actions">
+                  <a href="#hire-contact" className="btn btn-hire">
+                    {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
+                  </a>
+                  <button className="btn btn-ghost" onClick={() => setModal("cv")}>
+                    {t({ nl: "Upload CV", en: "Upload CV" })}
+                  </button>
+                </div>
               </div>
             </div>
             <div className="hero-media">
@@ -557,6 +732,35 @@ export function Site() {
         })}
       >
         <OpleiderForm lang={lang} onClose={() => setModal(null)} />
+      </Modal>
+
+      <Modal
+        open={modal === "cv"}
+        onClose={() => setModal(null)}
+        title={t({ nl: "Stuur je CV", en: "Send your CV" })}
+        intro={t({
+          nl: "Werk jij in HR of werktransitie en wil je in beeld zijn voor rollen via Productive Hire? Mail je CV als bijlage, dan nemen we contact op zodra er een rol past.",
+          en: "Do you work in HR or workforce transition and want to be on our radar for roles via Productive Hire? Email your CV as an attachment and we'll reach out when a role fits.",
+        })}
+      >
+        <div className="cv-body">
+          <a
+            className="btn btn-hire"
+            href={`mailto:info@productiveswitch.nl?subject=${encodeURIComponent("CV voor Productive Hire")}&body=${encodeURIComponent(
+              lang === "nl"
+                ? "Beste Productive Hire,\n\nHierbij mijn CV als bijlage. \n\nNaam:\nHuidige rol:\nTelefoon:\n"
+                : "Dear Productive Hire,\n\nPlease find my CV attached.\n\nName:\nCurrent role:\nPhone:\n"
+            )}`}
+          >
+            {t({ nl: "Open je mail met CV-bericht", en: "Open your mail with a CV message" })}
+          </a>
+          <p className="cv-note">
+            {t({
+              nl: "Vergeet niet je CV als bijlage toe te voegen voor je op verzenden drukt.",
+              en: "Don't forget to attach your CV before hitting send.",
+            })}
+          </p>
+        </div>
       </Modal>
     </>
   );

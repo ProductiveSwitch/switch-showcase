@@ -20,8 +20,13 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 
 ### Architecture notes (current)
 
-- `components/Site.tsx` — the whole client app (brand tabs, lang toggle, destinations, how-it-works, financing, vacancies, testimonials, logo wall, CTA modals). `lib/data.ts` — all bilingual placeholder data + structured content. `components/Forms.tsx` — intake (multi-step), koffie, opleider modals. `app/api/contact/route.ts` — serverless mail route (Resend if `RESEND_API_KEY` + `CONTACT_FROM` set, else 503 → client mailto fallback to info@productiveswitch.nl). `app/vision/page.tsx` — vision page (CSS module). All prototype CSS lives in `app/globals.css`.
+- `components/Site.tsx` — the whole client app. Homepage follows the SAMBA-inspired structure (2026-07-04, see `docs/superpowers/specs/2026-07-04-samba-structure-homepage-design.md`): fixed nav with scroll state and mobile hamburger (links Productive Switch / Productive Hire / Onze visie / NL-EN; right socials + Upload CV + Contact), full-viewport hero with radar backdrop, logo-marquee of accredited providers, three pillar photo cards (expandable to the curated/open showcase), financing fan ("Wat het de werkgever kost", three tilted source cards around a centre circle), four ribbon step cards, testimonial, Onze visie split section, dark vision band with "Kom in contact", contact CTA band, opleider band.
+- `components/RadarChart.tsx` — stylised re-drawing of the Anthropic Economic Index radar (theoretical vs observed AI usage). Variant "bg" behind the hero, variant "figure" with bilingual labels inside pathway 01's panel. Values are indicative; keep the source credit in the caption.
+- `lib/data.ts` — all bilingual placeholder data. `partners` now carries official logo files from `public/logos/` (UvA, Erasmus, Leiden, HvA, Nyenrode; LOI renders as a red wordmark because no free logo file exists). No partnership agreements exist yet; the ticker caption says "onder andere" on purpose.
+- `components/Forms.tsx` — intake (multi-step), koffie, opleider modals, plus ModalKind "cv" (mailto modal for Productive Hire CVs, rendered in Site.tsx). `app/api/contact/route.ts` — serverless mail route (Resend if `RESEND_API_KEY` + `CONTACT_FROM` set, else 503 → client mailto fallback to info@productiveswitch.nl). `app/vision/page.tsx` — vision page (CSS module). All CSS lives in `app/globals.css`.
+- Animations are CSS + IntersectionObserver only (reveal/stagger, tickerMove marquee, slowZoom, radarDrift, bounceSlow); no GSAP or framer-motion in use, and prefers-reduced-motion is respected everywhere.
 - **CTA hierarchy:** werkgevers-intake primary, koffie warm second, opleiders-ingang a distinct third (supply side, never overshadowing the employer CTA).
+- Social links in the nav are guesses (linkedin.com/company/productiveswitch, instagram.com/productiveswitch); swap in the real handles once they exist.
 - node/npm not on default PATH: `export PATH="/opt/homebrew/bin:$PATH"`.
 
 ## Design Language
@@ -33,24 +38,25 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 - **Motion**: Subtle, purposeful. Staggered page load reveals, hover lifts, smooth transitions. No gratuitous animation.
 
 ### Colour System
-Use these as CSS variables throughout:
+Warm paper/ink base with the infographic accent palette (decided 2026-07-04: accents on the editorial base, never a full palette swap). Use these as CSS variables throughout (defined in `app/globals.css`):
 
 ```
---paper: #FAF6EE       (backgrounds, neutral canvas)
---panel: #FFFFFF       (cards, surfaces)
---ink: #1B1A17         (primary text, highest contrast)
---muted: #6E675C       (secondary text, labels, metadata)
---line: #E7DFD0        (borders, dividers)
+--paper: #F6F1E8        (backgrounds, neutral canvas)
+--paper-2: #FBF8F2      (cards, surfaces)
+--ink: #211C16          (primary text)
+--ink-soft: #5A5246     (secondary text)
+--line: #E4DBCB         (borders, dividers)
 
---col-domain: #2D5A6B  (domain/skills pathway)
---col-domain-soft: #EAF0F2
+--switch: #1E8CA3       (Switch brand teal; also pathway 01)
+--hire: #2B4C8C         (Hire brand blue)
 
---col-social: #BC5B38  (social work pathway)
---col-social-soft: #F7E9E0
-
---col-physical: #3E6B47 (hands-on work pathway)
---col-physical-soft: #E7EFE8
+--col-domain: #1E8CA3   (01 own field, teal)
+--col-tech: #DB9A00     (02 trades, yellow; use --col-tech-deep #A87400 for text on light)
+--col-social: #C2452D   (03 social sector, red/orange)
+--navy: #3A4458         (dark bands, 4th step accent)
 ```
+
+Fan-section gradients: red #C22558→#E8622C, yellow #F2B200→#DB9A00, teal #2AA5BD→#15808F. On the yellow card text is ink, not white.
 
 ### Typography
 - **Display (headings)**: Fraunces (serif), weights 400–600. Generous letter-spacing, line-height 1.15 for clarity.
