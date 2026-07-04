@@ -103,7 +103,7 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
               x={x.toFixed(1)}
               y={(y + 4).toFixed(1)}
               textAnchor={anchor}
-              fontSize="13"
+              fontSize="14.5"
               fontFamily="var(--font-body)"
               fill="var(--ink-soft)"
             >

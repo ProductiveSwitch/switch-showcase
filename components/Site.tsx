@@ -194,34 +194,61 @@ export function Site() {
 
       {/* ============ SWITCH PANEL ============ */}
       <main className={`panel${brand === "switch" ? " on" : ""}`}>
-        {/* Full-viewport hero with the re-drawn radar as backdrop */}
+        {/* Full-viewport hero: text left, labeled radar right (which fields AI touches) */}
         <section className="s-hero">
-          <div className="s-hero-bg" aria-hidden="true">
-            <RadarChart variant="bg" />
-          </div>
-          <div className="wrap s-hero-inner">
-            <div className="eyebrow">
-              {t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}
+          <div className="wrap s-hero-grid">
+            <div className="s-hero-text">
+              <div className="eyebrow">
+                {t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}
+              </div>
+              <h1>
+                {t({
+                  nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen.",
+                  en: "When a role disappears, a career doesn't have to.",
+                })}
+              </h1>
+              <p className="lede">
+                {t({
+                  nl: "Productive Switch begeleidt je mensen naar een nieuw vak, met korte en erkende omscholing en een directe lijn naar werkgevers die ze willen aannemen. Geen algemeen outplacementtraject, maar een concrete stap naar werk met blijvende vraag.",
+                  en: "Productive Switch guides your people into a new trade, with short, accredited re-training and a direct line to employers who want to hire them. Not a generic outplacement track, but a concrete step toward work with lasting demand.",
+                })}
+              </p>
+              <div className="s-hero-brands">
+                <button
+                  className="hero-brandbtn hb-switch"
+                  onClick={() => document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  <span className="hb-title">Productive Switch</span>
+                  <span className="hb-sub">
+                    {t({ nl: "Omscholing naar een tweede loopbaan", en: "Re-training for a second career" })}
+                  </span>
+                </button>
+                <button className="hero-brandbtn hb-hire" onClick={() => switchBrand("hire")}>
+                  <span className="hb-title">Productive Hire</span>
+                  <span className="hb-sub">
+                    {t({ nl: "Werving voor senior HR-rollen", en: "Recruitment for senior HR roles" })}
+                  </span>
+                </button>
+              </div>
             </div>
-            <h1>
-              {t({
-                nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen.",
-                en: "When a role disappears, a career doesn't have to.",
-              })}
-            </h1>
-            <p className="lede">
-              {t({
-                nl: "Productive Switch begeleidt je mensen naar een nieuw vak, met korte en erkende omscholing en een directe lijn naar werkgevers die ze willen aannemen. Geen algemeen outplacementtraject, maar een concrete stap naar werk met blijvende vraag.",
-                en: "Productive Switch guides your people into a new trade, with short, accredited re-training and a direct line to employers who want to hire them. Not a generic outplacement track, but a concrete step toward work with lasting demand.",
-              })}
-            </p>
-            <div className="cta-actions s-hero-cta">
-              <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
-                {t({ nl: "Plan een intake", en: "Plan an intake" })}
-              </button>
-              <button className="btn btn-ghost" onClick={() => setModal("koffie")}>
-                {t({ nl: "Nog geen plannen? Koffie", en: "No plans yet? Coffee" })}
-              </button>
+            <div className="s-hero-chart">
+              <RadarChart variant="figure" lang={lang} />
+              <div className="s-hero-chart-cap">
+                <span className="radar-legend">
+                  <span className="radar-key">
+                    <i className="radar-swatch theo" />
+                    {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
+                  </span>
+                  <span className="radar-key">
+                    <i className="radar-swatch obs" />
+                    {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
+                  </span>
+                </span>
+                {t({
+                  nl: "Per beroepsgroep, naar de Anthropic Economic Index.",
+                  en: "Per occupation, after the Anthropic Economic Index.",
+                })}
+              </div>
             </div>
           </div>
           <a className="s-hero-scroll" href="#showcase" aria-label={t({ nl: "Scroll verder", en: "Scroll on" })}>
@@ -300,10 +327,14 @@ export function Site() {
                       <RadarChart variant="figure" lang={lang} />
                       <figcaption>
                         <span className="radar-legend">
-                          <i className="radar-swatch theo" />
-                          {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
-                          <i className="radar-swatch obs" />
-                          {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
+                          <span className="radar-key">
+                            <i className="radar-swatch theo" />
+                            {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
+                          </span>
+                          <span className="radar-key">
+                            <i className="radar-swatch obs" />
+                            {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
+                          </span>
                         </span>
                         {t({
                           nl: "Het gat tussen die twee lijnen is onbenutte productiviteit. Precies daar zit de bijscholing in je eigen vak. Naar de grafiek van de Anthropic Economic Index.",
