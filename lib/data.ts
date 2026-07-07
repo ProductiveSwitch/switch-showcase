@@ -22,6 +22,7 @@ export interface MakerProgramme {
 
 export interface Destination {
   id: string;
+  slug: string;
   num: string;
   label: Bi;
   sub: Bi;
@@ -33,10 +34,11 @@ export interface Destination {
 export const destinations: Destination[] = [
   {
     id: "dest-1",
+    slug: "eigen-vak",
     num: "01",
     label: bi("Word productiever in je huidige domein", "Grow more productive in your current field"),
     sub: bi("Verdiep je vakkennis en blijf voorop lopen.", "Deepen your expertise and stay ahead."),
-    photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1100&q=80",
+    photo: "/photos/richting-eigen-vak.webp",
     curated: [
       { org: "Universiteit van Amsterdam", course: "Data & AI Fundamentals", certified: true, duration: bi("12 weken", "12 weeks") },
       { org: "Delft Topinstituut", course: "Systems Engineering Basis", certified: true, duration: bi("8 weken", "8 weeks") },
@@ -48,10 +50,11 @@ export const destinations: Destination[] = [
   },
   {
     id: "dest-2",
+    slug: "techniek",
     num: "02",
     label: bi("Switch naar de techniek", "Switch to the trades"),
     sub: bi("Praktisch, ambachtelijk werk met blijvende vraag.", "Practical, hands-on work with lasting demand."),
-    photo: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1100&q=80",
+    photo: "/photos/richting-techniek.jpg",
     curated: [
       { org: "HAN University", course: "Ergonomie & Bewegingsleer", certified: true, duration: bi("10 weken", "10 weeks") },
       { org: "Vakschool Schoonhoven", course: "Precisieambacht & Craftmanship", certified: true, duration: bi("16 weken", "16 weeks") },
@@ -63,10 +66,11 @@ export const destinations: Destination[] = [
   },
   {
     id: "dest-3",
+    slug: "sociaal",
     num: "03",
     label: bi("Switch naar het sociaal domein", "Switch to the social sector"),
     sub: bi("Werk met mensen, in de zorg en daarbuiten.", "Work with people, in care and beyond."),
-    photo: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=1100&q=80",
+    photo: "/photos/richting-sociaal.jpg",
     curated: [
       { org: "Erasmus School of Social", course: "Conflicthantering & Mediation", certified: true, duration: bi("6 weken", "6 weeks") },
       { org: "Nyenrode Business", course: "Leiderschap onder druk", certified: false, duration: bi("4 weken", "4 weeks") },

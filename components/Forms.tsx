@@ -83,6 +83,41 @@ function Sent({ lang, onClose, viaMailto }: { lang: Lang; onClose: () => void; v
   );
 }
 
+/* ---------- CV (Productive Restructure, mailto) ---------- */
+export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () => void; lang: Lang }) {
+  const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={t({ nl: "Stuur je CV", en: "Send your CV" })}
+      intro={t({
+        nl: "Werk jij in HR of werktransitie en wil je in beeld zijn voor rollen via Productive Restructure? Mail je CV als bijlage, dan nemen we contact op zodra er een rol past.",
+        en: "Do you work in HR or workforce transition and want to be on our radar for roles via Productive Restructure? Email your CV as an attachment and we'll reach out when a role fits.",
+      })}
+    >
+      <div className="cv-body">
+        <a
+          className="btn btn-hire"
+          href={`mailto:${TO}?subject=${encodeURIComponent("CV voor Productive Restructure")}&body=${encodeURIComponent(
+            lang === "nl"
+              ? "Beste Productive Restructure,\n\nHierbij mijn CV als bijlage. \n\nNaam:\nHuidige rol:\nTelefoon:\n"
+              : "Dear Productive Restructure,\n\nPlease find my CV attached.\n\nName:\nCurrent role:\nPhone:\n"
+          )}`}
+        >
+          {t({ nl: "Open je mail met CV-bericht", en: "Open your mail with a CV message" })}
+        </a>
+        <p className="cv-note">
+          {t({
+            nl: "Vergeet niet je CV als bijlage toe te voegen voor je op verzenden drukt.",
+            en: "Don't forget to attach your CV before hitting send.",
+          })}
+        </p>
+      </div>
+    </Modal>
+  );
+}
+
 /* ---------- Intake (werkgever, primair) ---------- */
 export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
