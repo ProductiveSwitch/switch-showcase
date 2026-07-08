@@ -49,6 +49,8 @@ export function Nav() {
   const links = [
     { href: "/", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/" || pathname.startsWith("/richtingen") },
     { href: "/restructure", label: { nl: "Productive Restructure", en: "Productive Restructure" }, active: pathname === "/restructure" },
+    { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
+    { href: "/opleiders", label: { nl: "Voor opleiders", en: "For providers" }, active: pathname === "/opleiders" },
     { href: "/#how", label: { nl: "Hoe het werkt", en: "How it works" }, active: false },
     { href: "/subsidies", label: { nl: "Subsidies", en: "Subsidies" }, active: pathname === "/subsidies" },
     { href: "/vision", label: { nl: "Onze visie", en: "Our vision" }, active: pathname === "/vision" },

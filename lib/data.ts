@@ -33,25 +33,9 @@ export interface Destination {
 
 export const destinations: Destination[] = [
   {
-    id: "dest-1",
-    slug: "eigen-vak",
-    num: "01",
-    label: bi("Word productiever in je huidige domein", "Grow more productive in your current field"),
-    sub: bi("Verdiep je vakkennis en blijf voorop lopen.", "Deepen your expertise and stay ahead."),
-    photo: "/photos/richting-eigen-vak.webp",
-    curated: [
-      { org: "Universiteit van Amsterdam", course: "Data & AI Fundamentals", certified: true, duration: bi("12 weken", "12 weeks") },
-      { org: "Delft Topinstituut", course: "Systems Engineering Basis", certified: true, duration: bi("8 weken", "8 weeks") },
-    ],
-    makers: [
-      { by: bi("door Jelle Roodenburg", "by Jelle Roodenburg"), course: "Machine Learning van Nul", rating: "★ 4.8", reviews: "(203)" },
-      { by: bi("door Sofie Klaassen", "by Sofie Klaassen"), course: "API Design voor Beginners", rating: "★ 4.6", reviews: "(87)" },
-    ],
-  },
-  {
     id: "dest-2",
     slug: "techniek",
-    num: "02",
+    num: "01",
     label: bi("Switch naar de techniek", "Switch to the trades"),
     sub: bi("Praktisch, ambachtelijk werk met blijvende vraag.", "Practical, hands-on work with lasting demand."),
     photo: "/photos/richting-techniek.jpg",
@@ -67,7 +51,7 @@ export const destinations: Destination[] = [
   {
     id: "dest-3",
     slug: "sociaal",
-    num: "03",
+    num: "02",
     label: bi("Switch naar het sociaal domein", "Switch to the social sector"),
     sub: bi("Werk met mensen, in de zorg en daarbuiten.", "Work with people, in care and beyond."),
     photo: "/photos/richting-sociaal.jpg",
@@ -78,6 +62,22 @@ export const destinations: Destination[] = [
     makers: [
       { by: bi("door Miriam Aerts", "by Miriam Aerts"), course: "Spreken met impact", rating: "★ 4.9", reviews: "(341)" },
       { by: bi("door Thomas Huizinga", "by Thomas Huizinga"), course: "Deep Listening in Teams", rating: "★ 4.7", reviews: "(112)" },
+    ],
+  },
+  {
+    id: "dest-1",
+    slug: "eigen-vak",
+    num: "03",
+    label: bi("Word productiever in je huidige domein", "Grow more productive in your current field"),
+    sub: bi("Verdiep je vakkennis en blijf voorop lopen.", "Deepen your expertise and stay ahead."),
+    photo: "/photos/richting-eigen-vak.webp",
+    curated: [
+      { org: "Universiteit van Amsterdam", course: "Data & AI Fundamentals", certified: true, duration: bi("12 weken", "12 weeks") },
+      { org: "Delft Topinstituut", course: "Systems Engineering Basis", certified: true, duration: bi("8 weken", "8 weeks") },
+    ],
+    makers: [
+      { by: bi("door Jelle Roodenburg", "by Jelle Roodenburg"), course: "Machine Learning van Nul", rating: "★ 4.8", reviews: "(203)" },
+      { by: bi("door Sofie Klaassen", "by Sofie Klaassen"), course: "API Design voor Beginners", rating: "★ 4.6", reviews: "(87)" },
     ],
   },
 ];
@@ -108,34 +108,34 @@ export interface Step {
 export const howItWorks: Step[] = [
   {
     num: "01",
-    title: bi("Intake en advies", "Intake and guidance"),
+    title: bi("Start online", "Start online"),
     body: bi(
-      "We starten met een gesprek, bij voorkeur met een erkende loopbaancoach. Samen bepalen we welke richting bij je medewerker past en wat haalbaar is.",
-      "We start with a conversation, ideally with a certified career coach. Together we map which direction fits your employee and what's realistic."
+      "Je medewerker begint direct, zonder wachten op een afspraak: een korte vragenlijst over ervaring en wensen, plus praktische hulp bij CV en sollicitaties. Zo start de intake niet bij nul.",
+      "Your employee starts right away, without waiting for an appointment: a short questionnaire about experience and goals, plus practical help with their CV and applications. So the intake doesn't begin from scratch."
     ),
   },
   {
     num: "02",
-    title: bi("Omscholing bij erkende opleiders", "Re-training with accredited providers"),
+    title: bi("Intake en advies", "Intake and guidance"),
     body: bi(
-      "De intake stuurt direct naar een kort, erkend traject bij universiteiten, hogescholen, ROC's of erkende private opleiders. Gericht op het nieuwe vak, niet op een algemeen programma.",
-      "The intake routes straight to a short, accredited path at universities, colleges, vocational schools or recognised private providers. Aimed at the new trade, not a generic programme."
+      "Een gesprek met een loopbaancoach of arbeidsmarktdeskundige, voorbereid met de online start. Geen maanden praten zoals bij outplacement: het gesprek eindigt met een concreet advies voor een richting en een traject.",
+      "A conversation with a career coach or labour-market expert, prepared through the online start. No months of talking like in outplacement: the conversation ends with concrete advice on a direction and a path."
     ),
   },
   {
     num: "03",
-    title: bi("Directe lijn naar werkgevers", "A direct line to employers"),
+    title: bi("Omscholing bij erkende opleiders", "Re-training with accredited providers"),
     body: bi(
-      "We verbinden de omscholing aan werkgevers in sectoren die mensen tekortkomen. In zorg en techniek kijken werkgevers soms al tijdens het traject mee.",
-      "We connect the re-training to employers in sectors that are short of people. In care and the trades, employers sometimes already look on during the path."
+      "Een kort, erkend traject bij universiteiten, hogescholen, ROC's of erkende private opleiders. Gericht op het nieuwe vak, niet op een algemeen programma.",
+      "A short, accredited path at universities, colleges, vocational schools or recognised private providers. Aimed at the new trade, not a generic programme."
     ),
   },
   {
     num: "04",
-    title: bi("Begeleiding tot de landing", "Guidance until they land"),
+    title: bi("Directe lijn naar werkgevers", "A direct line to employers"),
     body: bi(
-      "We blijven naast je medewerker staan tot het nieuwe werk er echt is. Die begeleiding is het verschil met een kaal lijstje cursussen.",
-      "We stay alongside your employee until the new work is genuinely there. That guidance is the difference from a bare list of courses."
+      "We verbinden de omscholing aan werkgevers die mensen tekortkomen. In zorg en techniek kijken werkgevers vaak al tijdens het traject mee, en we blijven naast je medewerker staan tot het nieuwe werk er echt is.",
+      "We connect the re-training to employers who are short of people. In care and the trades, employers often look on during the path already, and we stay alongside your employee until the new work is genuinely there."
     ),
   },
 ];

@@ -307,6 +307,138 @@ export function KoffieForm({ lang, onClose }: { lang: Lang; onClose: () => void 
   );
 }
 
+/* ---------- Opleider-intake (volledige pagina, aanbodkant) ---------- */
+const opleiderVormen: { key: string; label: Bi }[] = [
+  { key: "klassikaal", label: { nl: "Klassikaal", en: "Classroom" } },
+  { key: "online", label: { nl: "Online", en: "Online" } },
+  { key: "blended", label: { nl: "Blended", en: "Blended" } },
+  { key: "werkplek", label: { nl: "Op de werkplek", en: "On the job" } },
+];
+
+const opleiderStart: { key: string; label: Bi }[] = [
+  { key: "ja", label: { nl: "Ja, binnen een maand", en: "Yes, within a month" } },
+  { key: "deels", label: { nl: "Deels", en: "Partly" } },
+  { key: "nee", label: { nl: "Nee, langere doorlooptijd", en: "No, longer lead time" } },
+];
+
+export function OpleiderIntake({ lang }: { lang: Lang }) {
+  const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
+  const [org, setOrg] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [site, setSite] = useState("");
+  const [dirs, setDirs] = useState<string[]>([]);
+  const [vormen, setVormen] = useState<string[]>([]);
+  const [start, setStart] = useState("");
+  const [erkenning, setErkenning] = useState("");
+  const [aanbod, setAanbod] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState<null | boolean>(null);
+
+  if (done !== null) return <Sent lang={lang} onClose={() => setDone(null)} viaMailto={done} />;
+
+  const toggle = (arr: string[], k: string, set: (v: string[]) => void) =>
+    set(arr.includes(k) ? arr.filter((x) => x !== k) : [...arr, k]);
+
+  const submit = async () => {
+    setBusy(true);
+    const dirLabels = dirs.map((k) => intakeDirections.find((o) => o.key === k)?.label.nl || k).join(", ");
+    const vormLabels = vormen.map((k) => opleiderVormen.find((o) => o.key === k)?.label.nl || k).join(", ");
+    const text = [
+      "Opleider-intake via productiveswitch.nl",
+      "",
+      `Organisatie: ${org}`,
+      `Contactpersoon: ${name}`,
+      `E-mail: ${email}`,
+      `Telefoon: ${phone || "-"}`,
+      `Website: ${site || "-"}`,
+      `Richtingen: ${dirLabels || "-"}`,
+      `Vorm: ${vormLabels || "-"}`,
+      `Start binnen 1 maand: ${opleiderStart.find((o) => o.key === start)?.label.nl || "-"}`,
+      `Erkenning: ${erkenning || "-"}`,
+      "",
+      `Aanbod: ${aanbod || "-"}`,
+    ].join("\n");
+    const res = await send("Opleider-intake, Productive Switch", text);
+    setBusy(false);
+    setDone(res === "mailto");
+  };
+
+  const ok = org && name && /.+@.+\..+/.test(email);
+
+  return (
+    <div className="opleider-intake">
+      <div className="form-step">
+        <label className="form-q">{t({ nl: "Over je organisatie", en: "About your organisation" })}</label>
+        <input className="form-input" value={org} onChange={(e) => setOrg(e.target.value)} placeholder={t({ nl: "Naam van je organisatie", en: "Your organisation's name" })} />
+        <input className="form-input" value={name} onChange={(e) => setName(e.target.value)} placeholder={t({ nl: "Contactpersoon", en: "Contact person" })} />
+        <input className="form-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t({ nl: "E-mailadres", en: "Email address" })} />
+        <input className="form-input" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t({ nl: "Telefoon (optioneel)", en: "Phone (optional)" })} />
+        <input className="form-input" value={site} onChange={(e) => setSite(e.target.value)} placeholder={t({ nl: "Website (optioneel)", en: "Website (optional)" })} />
+
+        <label className="form-q" style={{ marginTop: 20 }}>
+          {t({ nl: "In welke richting bied je aan?", en: "In which direction do you offer?" })}
+        </label>
+        <div className="choices">
+          {intakeDirections
+            .filter((o) => o.key !== "onbekend")
+            .map((o) => (
+              <button key={o.key} className={`choice${dirs.includes(o.key) ? " on" : ""}`} onClick={() => toggle(dirs, o.key, setDirs)}>
+                {t(o.label)}
+              </button>
+            ))}
+        </div>
+
+        <label className="form-q" style={{ marginTop: 20 }}>{t({ nl: "In welke vorm?", en: "In what format?" })}</label>
+        <div className="choices">
+          {opleiderVormen.map((o) => (
+            <button key={o.key} className={`choice${vormen.includes(o.key) ? " on" : ""}`} onClick={() => toggle(vormen, o.key, setVormen)}>
+              {t(o.label)}
+            </button>
+          ))}
+        </div>
+
+        <label className="form-q" style={{ marginTop: 20 }}>
+          {t({ nl: "Kan een deelnemer binnen een maand starten?", en: "Can a participant start within a month?" })}
+        </label>
+        <div className="choices">
+          {opleiderStart.map((o) => (
+            <button key={o.key} className={`choice${start === o.key ? " on" : ""}`} onClick={() => setStart(o.key)}>
+              {t(o.label)}
+            </button>
+          ))}
+        </div>
+
+        <label className="form-q" style={{ marginTop: 20 }}>
+          {t({ nl: "Welke erkenning of certificaat?", en: "Which recognition or certificate?" })}
+        </label>
+        <input
+          className="form-input"
+          value={erkenning}
+          onChange={(e) => setErkenning(e.target.value)}
+          placeholder={t({ nl: "Bijv. mbo-certificaat, branchecertificaat, praktijkverklaring", en: "E.g. vocational certificate, sector certificate, practical statement" })}
+        />
+
+        <label className="form-q" style={{ marginTop: 20 }}>{t({ nl: "Vertel kort over je aanbod", en: "Tell us briefly about your offering" })}</label>
+        <textarea
+          className="form-input"
+          rows={3}
+          value={aanbod}
+          onChange={(e) => setAanbod(e.target.value)}
+          placeholder={t({ nl: "Welke opleidingen of trajecten bied je aan, en voor wie?", en: "Which programmes or tracks do you offer, and for whom?" })}
+        />
+
+        <div className="form-nav">
+          <button className="btn btn-switch btn-lg" onClick={submit} disabled={!ok || busy}>
+            {busy ? t({ nl: "Versturen…", en: "Sending…" }) : t({ nl: "Verstuur je aanmelding", en: "Send your application" })}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- Opleider (aanbodkant, apart) ---------- */
 export function OpleiderForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);

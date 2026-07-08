@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, GraduationCap, Handshake, Compass } from "lucide-react";
+import { Search, GraduationCap, Handshake, MonitorSmartphone } from "lucide-react";
 import { destinations, partners, howItWorks } from "@/lib/data";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
@@ -11,9 +11,9 @@ import { useHashScroll } from "./useHashScroll";
 import { Modal, IntakeForm, KoffieForm, OpleiderForm, type ModalKind } from "./Forms";
 import { RadarChart } from "./RadarChart";
 
-const stepIcons = [Search, GraduationCap, Handshake, Compass];
+const stepIcons = [MonitorSmartphone, Search, GraduationCap, Handshake];
 const stepColors = ["var(--col-social)", "var(--col-tech-deep)", "var(--col-domain)", "var(--navy)"];
-const pillarColors = ["var(--col-domain)", "var(--col-tech)", "var(--col-social)"];
+const pillarColors = ["var(--col-tech)", "var(--col-social)", "var(--col-domain)"];
 
 export function HomePage() {
   const { lang, t } = useLang();
@@ -28,9 +28,6 @@ export function HomePage() {
         <section className="s-hero">
           <div className="wrap s-hero-grid">
             <div className="s-hero-text">
-              <div className="eyebrow">
-                {t({ nl: "Voor HR bij reorganisatie", en: "For HR during restructuring" })}
-              </div>
               <h1>
                 {t({
                   nl: "Omscholing & herplaatsing van personeel",
@@ -59,6 +56,11 @@ export function HomePage() {
                     {t({ nl: "Werving voor senior HR-rollen", en: "Recruitment for senior HR roles" })}
                   </span>
                 </Link>
+              </div>
+              <div className="s-hero-cta">
+                <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
+                  {t({ nl: "Kom in contact", en: "Get in touch" })}
+                </button>
               </div>
             </div>
             <div className="s-hero-chart">
@@ -159,8 +161,8 @@ export function HomePage() {
                 <h2>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h2>
                 <p>
                   {t({
-                    nl: "Omscholing hoeft geen nieuwe kostenpost te zijn. Subsidies en budgetten stapelen tot een laag netto bedrag voor jou.",
-                    en: "Re-training doesn't have to be a new expense. Subsidies and budgets stack into a low net amount for you.",
+                    nl: "Omscholing kost minder dan je denkt. Subsidies en opleidingsbudgetten dekken een flink deel van het traject, en wij rekenen vooraf uit wat er voor jou onder de streep overblijft.",
+                    en: "Re-training costs less than you'd think. Subsidies and training budgets cover a good part of the path, and we work out in advance what's left for you at the bottom line.",
                   })}
                 </p>
               </div>

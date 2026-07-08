@@ -36,6 +36,10 @@ const intros: Record<string, Bi> = {
     nl: "Kort, erkend aanbod uit onze marktverkenning. Erkend aanbod binnen vier weken zit in het sociaal domein vrijwel altijd vast aan een (leer)werkplek. Precies dat regelen wij: werkplek en certificaattraject als één pakket.",
     en: "Short, accredited offerings from our market scan. In the social sector, accredited tracks that fit within four weeks almost always require a (learning) workplace. That is exactly what we arrange: workplace and certificate track as one package.",
   },
+  "eigen-vak": {
+    nl: "Niet iedereen hoeft van vak te wisselen. Voor veel mensen is de grootste stap productiever worden in het werk dat ze al doen, met AI als gereedschap in plaats van bedreiging. Kort, praktisch aanbod uit onze marktverkenning, van gratis basiscursussen tot trainingen per vakgebied.",
+    en: "Not everyone needs to change trades. For many people the biggest step is becoming more productive in the work they already do, with AI as a tool instead of a threat. Short, practical offerings from our market scan, from free fundamentals to trainings per field.",
+  },
 };
 
 interface Filters {
@@ -61,7 +65,8 @@ export function CoursesPage({ slug }: { slug: string }) {
 
   const dest = destinations.find((d) => d.slug === slug)!;
   const accent = accents[slug];
-  const richting = (slug === "eigen-vak" ? null : slug) as CourseRichting | null;
+  const richting = (slug === "eigen-vak" ? "domein" : slug) as CourseRichting;
+  const isDomein = slug === "eigen-vak";
 
   const all = useMemo(() => courses.filter((c) => c.richting === richting), [richting]);
   const velden = useMemo(() => [...new Set(all.map((c) => c.veld))], [all]);
@@ -90,19 +95,50 @@ export function CoursesPage({ slug }: { slug: string }) {
             {t({ nl: `Richting ${dest.num}`, en: `Direction ${dest.num}` })}
           </div>
           <h1>{t(dest.label)}</h1>
-          {richting ? (
-            <p className="lede">{t(intros[slug])}</p>
-          ) : (
-            <p className="lede">
-              {t({
-                nl: "Niet iedereen hoeft van vak te wisselen. Voor veel mensen is de grootste stap productiever worden in het werk dat ze al doen, met AI als gereedschap in plaats van bedreiging.",
-                en: "Not everyone needs to change trades. For many people the biggest step is becoming more productive in the work they already do, with AI as a tool instead of a threat.",
-              })}
-            </p>
-          )}
+          <p className="lede">{t(intros[slug])}</p>
+
+          {/* Switcher: jump straight to another richting's catalogue */}
+          <nav className="richting-switch" aria-label={t({ nl: "Kies een richting", en: "Choose a direction" })}>
+            <span className="rs-label">{t({ nl: "Bekijk ook:", en: "Also see:" })}</span>
+            {destinations.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/richtingen/${d.slug}`}
+                className={`rs-pill${d.slug === slug ? " on" : ""}`}
+                style={{ "--rc": accents[d.slug] } as React.CSSProperties}
+                aria-current={d.slug === slug ? "page" : undefined}
+              >
+                {t(d.label)}
+              </Link>
+            ))}
+          </nav>
         </section>
 
-        {richting ? (
+        {isDomein && (
+          <section className="reveal domein-figure">
+            <figure className="radar-block">
+              <RadarChart variant="figure" lang={lang} />
+              <figcaption>
+                <span className="radar-legend">
+                  <span className="radar-key">
+                    <i className="radar-swatch theo" />
+                    {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
+                  </span>
+                  <span className="radar-key">
+                    <i className="radar-swatch obs" />
+                    {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
+                  </span>
+                </span>
+                {t({
+                  nl: "Bijscholen in je eigen vak: het gat tussen wat AI theoretisch kan en wat er echt wordt gebruikt is onbenutte productiviteit. Precies daar zetten deze trainingen op in. Naar de grafiek van de Anthropic Economic Index.",
+                  en: "Upskilling in your own field: the gap between what AI can do in theory and what is actually used is untapped productivity. That is exactly where these trainings aim. After the Anthropic Economic Index chart.",
+                })}
+              </figcaption>
+            </figure>
+          </section>
+        )}
+
+        {
           <section className="courses-layout">
             <aside className="course-filters" aria-label={t({ nl: "Filters", en: "Filters" })}>
               <div className="cf-head">
@@ -275,28 +311,10 @@ export function CoursesPage({ slug }: { slug: string }) {
               </p>
             </div>
           </section>
-        ) : (
-          <section className="reveal">
-            <figure className="radar-block">
-              <RadarChart variant="figure" lang={lang} />
-              <figcaption>
-                <span className="radar-legend">
-                  <span className="radar-key">
-                    <i className="radar-swatch theo" />
-                    {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
-                  </span>
-                  <span className="radar-key">
-                    <i className="radar-swatch obs" />
-                    {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
-                  </span>
-                </span>
-                {t({
-                  nl: "Het gat tussen die twee lijnen is onbenutte productiviteit. Precies daar zit de bijscholing in je eigen vak. Naar de grafiek van de Anthropic Economic Index.",
-                  en: "The gap between those two lines is untapped productivity. That is exactly where upskilling in your own field lives. After the Anthropic Economic Index chart.",
-                })}
-              </figcaption>
-            </figure>
+        }
 
+        {isDomein && (
+          <section className="reveal">
             <div className="cta-band">
               <div>
                 <h2>{t({ nl: "Dit aanbod stellen we per vak samen", en: "We build this catalogue per trade" })}</h2>
