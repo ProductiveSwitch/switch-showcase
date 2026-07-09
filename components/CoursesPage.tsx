@@ -19,7 +19,6 @@ import {
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { Modal, IntakeForm } from "./Forms";
-import { RadarChart } from "./RadarChart";
 
 const accents: Record<string, string> = {
   "eigen-vak": "var(--col-domain)",
@@ -113,30 +112,6 @@ export function CoursesPage({ slug }: { slug: string }) {
             ))}
           </nav>
         </section>
-
-        {isDomein && (
-          <section className="reveal domein-figure">
-            <figure className="radar-block">
-              <RadarChart variant="figure" lang={lang} />
-              <figcaption>
-                <span className="radar-legend">
-                  <span className="radar-key">
-                    <i className="radar-swatch theo" />
-                    {t({ nl: "Wat AI theoretisch kan", en: "What AI can do in theory" })}
-                  </span>
-                  <span className="radar-key">
-                    <i className="radar-swatch obs" />
-                    {t({ nl: "Wat er echt wordt gebruikt", en: "What is actually used" })}
-                  </span>
-                </span>
-                {t({
-                  nl: "Bijscholen in je eigen vak: het gat tussen wat AI theoretisch kan en wat er echt wordt gebruikt is onbenutte productiviteit. Precies daar zetten deze trainingen op in. Naar de grafiek van de Anthropic Economic Index.",
-                  en: "Upskilling in your own field: the gap between what AI can do in theory and what is actually used is untapped productivity. That is exactly where these trainings aim. After the Anthropic Economic Index chart.",
-                })}
-              </figcaption>
-            </figure>
-          </section>
-        )}
 
         {
           <section className="courses-layout">

@@ -2,6 +2,8 @@
 
 import { useState, type ReactNode } from "react";
 import {
+  contactWho,
+  hrGoals,
   intakeDirections,
   intakeEmployeeBands,
   intakeBudgets,
@@ -118,15 +120,19 @@ export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () =>
   );
 }
 
-/* ---------- Intake (werkgever, primair) ---------- */
+/* ---------- Intake / contact router (segmenteert op "Wie ben je?") ---------- */
 export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
   const [step, setStep] = useState(0);
+  const [who, setWho] = useState("");
+  const [hrGoal, setHrGoal] = useState("");
   const [direction, setDirection] = useState("");
   const [employees, setEmployees] = useState("");
   const [budget, setBudget] = useState("");
   const [sector, setSector] = useState("");
   const [timeline, setTimeline] = useState("");
+  const [question, setQuestion] = useState("");
+  const [situation, setSituation] = useState("");
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [email, setEmail] = useState("");
@@ -138,122 +144,226 @@ export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void 
 
   const lbl = (arr: { key: string; label: Bi }[], key: string) =>
     arr.find((o) => o.key === key)?.label[lang === "nl" ? "nl" : "en"] || key;
+  const emailOk = /.+@.+\..+/.test(email);
 
-  const steps = [
-    // 0: richting
-    <div key="s0" className="form-step">
-      <label className="form-q">{t({ nl: "Om welke richting gaat het?", en: "Which direction is this about?" })}</label>
+  // Opleider: toon meteen het volledige opleider-intakeformulier
+  if (who === "opleider") {
+    return (
+      <>
+        <div className="form-nav" style={{ justifyContent: "flex-start", marginBottom: 6 }}>
+          <button className="btn btn-ghost btn-sm" onClick={() => setWho("")}>
+            {t({ nl: "← Andere keuze", en: "← Change" })}
+          </button>
+        </div>
+        <OpleiderIntake lang={lang} />
+      </>
+    );
+  }
+
+  const directionNode = (q: Bi) => (
+    <div className="form-step">
+      <label className="form-q">{t(q)}</label>
       <div className="choices">
         {intakeDirections.map((o) => (
-          <button
-            key={o.key}
-            className={`choice${direction === o.key ? " on" : ""}`}
-            onClick={() => setDirection(o.key)}
-          >
+          <button key={o.key} className={`choice${direction === o.key ? " on" : ""}`} onClick={() => setDirection(o.key)}>
             {t(o.label)}
           </button>
         ))}
       </div>
-    </div>,
-    // 1: omvang + budget
-    <div key="s1" className="form-step">
-      <label className="form-q">{t({ nl: "Om hoeveel medewerkers gaat het?", en: "How many employees?" })}</label>
-      <div className="choices">
-        {intakeEmployeeBands.map((o) => (
-          <button key={o.key} className={`choice${employees === o.key ? " on" : ""}`} onClick={() => setEmployees(o.key)}>
-            {t(o.label)}
-          </button>
-        ))}
-      </div>
-      <label className="form-q" style={{ marginTop: 18 }}>
-        {t({ nl: "Welk budget ligt er?", en: "What budget is available?" })}
-      </label>
-      <div className="choices">
-        {intakeBudgets.map((o) => (
-          <button key={o.key} className={`choice${budget === o.key ? " on" : ""}`} onClick={() => setBudget(o.key)}>
-            {t(o.label)}
-          </button>
-        ))}
-      </div>
-    </div>,
-    // 2: context
-    <div key="s2" className="form-step">
-      <label className="form-q">{t({ nl: "In welke sector zit je organisatie?", en: "What sector is your organisation in?" })}</label>
-      <input
-        className="form-input"
-        value={sector}
-        onChange={(e) => setSector(e.target.value)}
-        placeholder={t({ nl: "Bijvoorbeeld zorg, industrie, financieel", en: "For example care, industry, finance" })}
-      />
-      <label className="form-q" style={{ marginTop: 18 }}>
-        {t({ nl: "Wat is de tijdlijn van de reorganisatie?", en: "What's the timeline of the reorganisation?" })}
-      </label>
-      <div className="choices">
-        {intakeTimelines.map((o) => (
-          <button key={o.key} className={`choice${timeline === o.key ? " on" : ""}`} onClick={() => setTimeline(o.key)}>
-            {t(o.label)}
-          </button>
-        ))}
-      </div>
-    </div>,
-    // 3: contact
-    <div key="s3" className="form-step">
+    </div>
+  );
+
+  const contactNode = (withOrg: boolean, withSituation: boolean) => (
+    <div className="form-step">
       <label className="form-q">{t({ nl: "Naar wie sturen we de terugkoppeling?", en: "Who do we send the follow-up to?" })}</label>
       <input className="form-input" value={name} onChange={(e) => setName(e.target.value)} placeholder={t({ nl: "Je naam", en: "Your name" })} />
-      <input className="form-input" value={org} onChange={(e) => setOrg(e.target.value)} placeholder={t({ nl: "Organisatie", en: "Organisation" })} />
+      {withOrg && (
+        <input className="form-input" value={org} onChange={(e) => setOrg(e.target.value)} placeholder={t({ nl: "Organisatie", en: "Organisation" })} />
+      )}
       <input className="form-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t({ nl: "E-mailadres", en: "Email address" })} />
       <input className="form-input" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t({ nl: "Telefoon (optioneel)", en: "Phone (optional)" })} />
-    </div>,
+      {withSituation && (
+        <>
+          <label className="form-q" style={{ marginTop: 18 }}>{t({ nl: "Vertel kort waar het om gaat", en: "Tell us briefly what it's about" })}</label>
+          <textarea
+            className="form-input"
+            rows={3}
+            value={situation}
+            onChange={(e) => setSituation(e.target.value)}
+            placeholder={t({ nl: "Optioneel, maar helpt ons je gericht terug te bellen", en: "Optional, but helps us call you back to the point" })}
+          />
+        </>
+      )}
+    </div>
+  );
+
+  const questionNode = (
+    <div className="form-step">
+      <label className="form-q">{t({ nl: "Stel je vraag", en: "Ask your question" })}</label>
+      <textarea
+        className="form-input"
+        rows={3}
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+        placeholder={t({ nl: "Waar kunnen we je mee helpen?", en: "How can we help you?" })}
+      />
+      <label className="form-q" style={{ marginTop: 18 }}>{t({ nl: "Naar wie sturen we het antwoord?", en: "Who do we send the answer to?" })}</label>
+      <input className="form-input" value={name} onChange={(e) => setName(e.target.value)} placeholder={t({ nl: "Je naam", en: "Your name" })} />
+      <input className="form-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t({ nl: "E-mailadres", en: "Email address" })} />
+      <input className="form-input" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={t({ nl: "Telefoon (optioneel)", en: "Phone (optional)" })} />
+    </div>
+  );
+
+  type Stp = { node: ReactNode; valid: boolean };
+  const steps: Stp[] = [
+    {
+      valid: !!who,
+      node: (
+        <div className="form-step">
+          <label className="form-q">{t({ nl: "Wie ben je?", en: "Who are you?" })}</label>
+          <div className="choices">
+            {contactWho.map((o) => (
+              <button
+                key={o.key}
+                className={`choice${who === o.key ? " on" : ""}`}
+                onClick={() => {
+                  setWho(o.key);
+                  setHrGoal("");
+                }}
+              >
+                {t(o.label)}
+              </button>
+            ))}
+          </div>
+        </div>
+      ),
+    },
   ];
 
-  const canNext =
-    (step === 0 && direction) ||
-    (step === 1 && employees && budget) ||
-    step === 2 ||
-    (step === 3 && name && /.+@.+\..+/.test(email));
+  if (who === "hr") {
+    steps.push({
+      valid: !!hrGoal,
+      node: (
+        <div className="form-step">
+          <label className="form-q">{t({ nl: "Waar kunnen we je mee helpen?", en: "How can we help you?" })}</label>
+          <div className="choices choices-stack">
+            {hrGoals.map((o) => (
+              <button key={o.key} className={`choice${hrGoal === o.key ? " on" : ""}`} onClick={() => setHrGoal(o.key)}>
+                {t(o.label)}
+              </button>
+            ))}
+          </div>
+        </div>
+      ),
+    });
+    if (hrGoal === "omscholing") {
+      steps.push({ valid: !!direction, node: directionNode({ nl: "Om welke richting gaat het?", en: "Which direction is this about?" }) });
+      steps.push({
+        valid: !!(employees && budget),
+        node: (
+          <div className="form-step">
+            <label className="form-q">{t({ nl: "Om hoeveel medewerkers gaat het?", en: "How many employees?" })}</label>
+            <div className="choices">
+              {intakeEmployeeBands.map((o) => (
+                <button key={o.key} className={`choice${employees === o.key ? " on" : ""}`} onClick={() => setEmployees(o.key)}>
+                  {t(o.label)}
+                </button>
+              ))}
+            </div>
+            <label className="form-q" style={{ marginTop: 18 }}>{t({ nl: "Welk budget ligt er?", en: "What budget is available?" })}</label>
+            <div className="choices">
+              {intakeBudgets.map((o) => (
+                <button key={o.key} className={`choice${budget === o.key ? " on" : ""}`} onClick={() => setBudget(o.key)}>
+                  {t(o.label)}
+                </button>
+              ))}
+            </div>
+          </div>
+        ),
+      });
+      steps.push({
+        valid: true,
+        node: (
+          <div className="form-step">
+            <label className="form-q">{t({ nl: "In welke sector zit je organisatie?", en: "What sector is your organisation in?" })}</label>
+            <input
+              className="form-input"
+              value={sector}
+              onChange={(e) => setSector(e.target.value)}
+              placeholder={t({ nl: "Bijvoorbeeld zorg, industrie, financieel", en: "For example care, industry, finance" })}
+            />
+            <label className="form-q" style={{ marginTop: 18 }}>{t({ nl: "Wat is de tijdlijn van de reorganisatie?", en: "What's the timeline of the reorganisation?" })}</label>
+            <div className="choices">
+              {intakeTimelines.map((o) => (
+                <button key={o.key} className={`choice${timeline === o.key ? " on" : ""}`} onClick={() => setTimeline(o.key)}>
+                  {t(o.label)}
+                </button>
+              ))}
+            </div>
+          </div>
+        ),
+      });
+      steps.push({ valid: !!(name && emailOk), node: contactNode(true, false) });
+    } else if (hrGoal === "transformatie" || hrGoal === "baan") {
+      steps.push({ valid: !!(name && emailOk), node: contactNode(hrGoal === "transformatie", true) });
+    } else if (hrGoal === "anders") {
+      steps.push({ valid: !!(question && name && emailOk), node: questionNode });
+    }
+  } else if (who === "deelnemer") {
+    steps.push({ valid: !!direction, node: directionNode({ nl: "Welke richting heeft je interesse?", en: "Which direction interests you?" }) });
+    steps.push({ valid: !!(name && emailOk), node: contactNode(false, true) });
+  } else if (who === "anders") {
+    steps.push({ valid: !!(question && name && emailOk), node: questionNode });
+  }
+
+  const safeStep = Math.min(step, steps.length - 1);
+  const current = steps[safeStep];
+  const isFinal = safeStep === steps.length - 1 && steps.length > 1;
 
   const submit = async () => {
     setBusy(true);
-    const text = [
-      "Nieuwe intake-aanvraag via productiveswitch.nl",
-      "",
-      `Richting: ${lbl(intakeDirections, direction)}`,
-      `Aantal medewerkers: ${lbl(intakeEmployeeBands, employees)}`,
-      `Budget: ${lbl(intakeBudgets, budget)}`,
-      `Sector: ${sector || "-"}`,
-      `Tijdlijn: ${lbl(intakeTimelines, timeline)}`,
-      "",
-      `Naam: ${name}`,
-      `Organisatie: ${org || "-"}`,
-      `E-mail: ${email}`,
-      `Telefoon: ${phone || "-"}`,
-    ].join("\n");
-    const res = await send("Intake aanvraag, Productive Switch", text);
+    const lines: string[] = ["Nieuw contactverzoek via productiveswitch.nl", "", `Wie: ${lbl(contactWho, who)}`];
+    if (who === "hr") lines.push(`HR-vraag: ${lbl(hrGoals, hrGoal)}`);
+    if ((who === "hr" && hrGoal === "omscholing") || who === "deelnemer") lines.push(`Richting: ${lbl(intakeDirections, direction)}`);
+    if (who === "hr" && hrGoal === "omscholing") {
+      lines.push(`Aantal medewerkers: ${lbl(intakeEmployeeBands, employees)}`);
+      lines.push(`Budget: ${lbl(intakeBudgets, budget)}`);
+      lines.push(`Sector: ${sector || "-"}`);
+      lines.push(`Tijdlijn: ${lbl(intakeTimelines, timeline)}`);
+    }
+    if (situation) lines.push(`Toelichting: ${situation}`);
+    if (question) lines.push(`Vraag: ${question}`);
+    lines.push("", `Naam: ${name}`);
+    if (who === "hr") lines.push(`Organisatie: ${org || "-"}`);
+    lines.push(`E-mail: ${email}`, `Telefoon: ${phone || "-"}`);
+    const res = await send("Contactverzoek, Productive Switch", lines.join("\n"));
     setBusy(false);
     setDone(res === "mailto");
   };
 
   return (
     <>
-      <div className="form-progress">
-        {[0, 1, 2, 3].map((i) => (
-          <span key={i} className={`dot${i <= step ? " on" : ""}`} />
-        ))}
-      </div>
-      {steps[step]}
+      {steps.length > 1 && (
+        <div className="form-progress">
+          {steps.map((_, i) => (
+            <span key={i} className={`dot${i <= safeStep ? " on" : ""}`} />
+          ))}
+        </div>
+      )}
+      {current.node}
       <div className="form-nav">
-        {step > 0 && (
-          <button className="btn btn-ghost btn-sm" onClick={() => setStep(step - 1)} disabled={busy}>
+        {safeStep > 0 && (
+          <button className="btn btn-ghost btn-sm" onClick={() => setStep(safeStep - 1)} disabled={busy}>
             {t({ nl: "Terug", en: "Back" })}
           </button>
         )}
-        {step < 3 ? (
-          <button className="btn btn-switch" onClick={() => setStep(step + 1)} disabled={!canNext}>
+        {!isFinal ? (
+          <button className="btn btn-switch" onClick={() => setStep(safeStep + 1)} disabled={!current.valid}>
             {t({ nl: "Volgende", en: "Next" })}
           </button>
         ) : (
-          <button className="btn btn-switch" onClick={submit} disabled={!canNext || busy}>
-            {busy ? t({ nl: "Versturen…", en: "Sending…" }) : t({ nl: "Verstuur intake", en: "Send intake" })}
+          <button className="btn btn-switch" onClick={submit} disabled={!current.valid || busy}>
+            {busy ? t({ nl: "Versturen…", en: "Sending…" }) : t({ nl: "Verstuur", en: "Send" })}
           </button>
         )}
       </div>
@@ -333,6 +443,7 @@ export function OpleiderIntake({ lang }: { lang: Lang }) {
   const [start, setStart] = useState("");
   const [erkenning, setErkenning] = useState("");
   const [aanbod, setAanbod] = useState("");
+  const [bedrijven, setBedrijven] = useState("");
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState<null | boolean>(null);
 
@@ -357,6 +468,7 @@ export function OpleiderIntake({ lang }: { lang: Lang }) {
       `Vorm: ${vormLabels || "-"}`,
       `Start binnen 1 maand: ${opleiderStart.find((o) => o.key === start)?.label.nl || "-"}`,
       `Erkenning: ${erkenning || "-"}`,
+      `Bedrijven in contact: ${bedrijven || "-"}`,
       "",
       `Aanbod: ${aanbod || "-"}`,
     ].join("\n");
@@ -418,6 +530,17 @@ export function OpleiderIntake({ lang }: { lang: Lang }) {
           value={erkenning}
           onChange={(e) => setErkenning(e.target.value)}
           placeholder={t({ nl: "Bijv. mbo-certificaat, branchecertificaat, praktijkverklaring", en: "E.g. vocational certificate, sector certificate, practical statement" })}
+        />
+
+        <label className="form-q" style={{ marginTop: 20 }}>
+          {t({ nl: "Met welke bedrijven sta je in contact over deze opleiding?", en: "Which companies are you in contact with about this training?" })}
+        </label>
+        <textarea
+          className="form-input"
+          rows={2}
+          value={bedrijven}
+          onChange={(e) => setBedrijven(e.target.value)}
+          placeholder={t({ nl: "Bijv. werkgevers die je afgestudeerden aannemen of leerwerkplekken bieden", en: "E.g. employers who hire your graduates or offer work-placements" })}
         />
 
         <label className="form-q" style={{ marginTop: 20 }}>{t({ nl: "Vertel kort over je aanbod", en: "Tell us briefly about your offering" })}</label>

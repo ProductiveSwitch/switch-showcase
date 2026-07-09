@@ -58,7 +58,7 @@ export function HomePage() {
                 </Link>
               </div>
               <div className="s-hero-cta">
-                <button className="btn btn-switch btn-lg" onClick={() => setModal("intake")}>
+                <button className="btn btn-ink btn-lg" onClick={() => setModal("intake")}>
                   {t({ nl: "Kom in contact", en: "Get in touch" })}
                 </button>
               </div>

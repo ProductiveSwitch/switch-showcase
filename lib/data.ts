@@ -174,6 +174,21 @@ export const financeSources: FinanceSource[] = [
   },
 ];
 
+// ----- Contact router options -----
+export const contactWho: { key: string; label: Bi }[] = [
+  { key: "hr", label: bi("HR-leider", "HR leader") },
+  { key: "deelnemer", label: bi("Deelnemer", "Participant") },
+  { key: "opleider", label: bi("Opleider", "Training provider") },
+  { key: "anders", label: bi("Anders", "Something else") },
+];
+
+export const hrGoals: { key: string; label: Bi }[] = [
+  { key: "omscholing", label: bi("Op zoek naar hulp voor omscholing of herplaatsing van personeel", "Looking for help with re-training or redeploying staff") },
+  { key: "transformatie", label: bi("Op zoek naar een HR-leider voor het leiden van een transformatie", "Looking for an HR leader to lead a transformation") },
+  { key: "baan", label: bi("Zelf op zoek naar een nieuwe baan", "Looking for a new job myself") },
+  { key: "anders", label: bi("Anders", "Something else") },
+];
+
 // ----- Intake flow options -----
 export const intakeDirections: { key: string; label: Bi }[] = [
   { key: "domein", label: bi("Blijf in je eigen domein", "Stay in your own field") },

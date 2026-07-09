@@ -68,6 +68,8 @@ section[id] { scroll-margin-top: 84px; }
 .btn-ghost:hover { background: var(--paper-2); }
 .btn-light { background: var(--paper); color: var(--ink); }
 .btn-light:hover { box-shadow: 0 8px 24px -12px rgba(0,0,0,.7); }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { box-shadow: 0 10px 26px -12px rgba(33,28,22,.85); }
 .btn-sm { padding: 9px 16px; font-size: 14px; }
 .btn-lg { padding: 14px 26px; font-size: 16px; }
 
@@ -99,9 +101,6 @@ section[id] { scroll-margin-top: 84px; }
 .rs-pill { font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-soft); transition: color .2s, border-color .2s, background .2s, transform .12s; white-space: nowrap; }
 .rs-pill:hover { color: var(--ink); border-color: var(--rc); transform: translateY(-1px); }
 .rs-pill.on { color: #fff; background: var(--rc); border-color: var(--rc); cursor: default; }
-.domein-figure { padding-top: 18px; }
-.domein-figure .radar-block { max-width: 460px; margin-bottom: 8px; }
-.domein-figure .radar-block figcaption { font-size: 12.5px; margin-top: 4px; }
 
 /* ===== Full-viewport Switch hero: text left, labeled radar right ===== */
 .s-hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: 104px 0 84px; }
@@ -113,7 +112,8 @@ section[id] { scroll-margin-top: 84px; }
 .s-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 44px; align-items: center; width: 100%; }
 .s-hero-text h1 { font-size: clamp(32px, 4.2vw, 52px); margin: 0 0 16px; max-width: 16ch; }
 .s-hero-brands { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
-.s-hero-cta { margin-top: 18px; }
+.s-hero-cta { margin-top: 34px; }
+.s-hero-cta .btn { padding: 17px 34px; font-size: 17.5px; }
 .hero-brandbtn { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; font-family: inherit; border: 0; border-radius: 16px; padding: 14px 22px; color: #fff; cursor: pointer; transition: transform .12s ease, box-shadow .2s ease; }
 .hero-brandbtn:hover { transform: translateY(-2px); }
 .hb-switch { background: var(--switch); }
@@ -374,6 +374,8 @@ section[id] { scroll-margin-top: 84px; }
 .form-input:focus { outline: none; border-color: var(--switch); }
 textarea.form-input { resize: vertical; }
 .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choices-stack { flex-direction: column; align-items: stretch; }
+.choices-stack .choice { text-align: left; }
 .choice { font-family: inherit; font-size: 14px; font-weight: 600; padding: 9px 15px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--ink-soft); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
 .choice:hover { border-color: var(--switch); }
 .choice.on { border-color: var(--switch); background: var(--switch-soft); color: var(--switch); }
