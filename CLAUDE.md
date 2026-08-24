@@ -159,3 +159,22 @@ For now: focus on the showcase as a sales asset and foundation. Every pixel coun
 3. **Logged-in state**: What should the authenticated experience look like? Saved courses? Recommendations? Progress tracking?
 
 Document these as they're decided, so future Claude Code sessions stay aligned.
+
+## Taskboard (taken.samba-mate.com)
+
+The Productive Switch to-do list lives on the shared online taskboard at https://taken.samba-mate.com/board.html. **This project's board is `productiveswitch`** (Douwe only; Rory can't see it). When the user asks to add, complete, move, or list tasks, use the helper script:
+
+```bash
+~/.claude/scripts/taskboard.sh get productiveswitch                       # read the board
+~/.claude/scripts/taskboard.sh add productiveswitch "Titel" \
+    --cat website --wie douwe [--urgent] [--section "In progress"] \
+    [--note "vrije tekst"] [--int YYYY-MM-DD] [--def YYYY-MM-DD]          # quick add
+~/.claude/scripts/taskboard.sh post productiveswitch <file>               # replace whole board
+```
+
+- Auth: bearer token in `~/.config/samba-taskboard/token`. If the script says "no token", ask the user to paste the `API_TOKEN` from Vercel (samba-taskboard project → Settings → Environment Variables) into that file.
+- The API is **whole-board read-modify-write** (TASKS.md markdown). For anything beyond a quick add: `get` into a temp file, edit the markdown, `post` it back. Never post a partial document; the script refuses posts that halve the task count unless `--force`.
+- Format: `- [ ] **Titel** {cat:…; wie:…; urgent; int:YYYY-MM-DD; def:YYYY-MM-DD; claude} :: notitie` under one of `## Upcoming`, `## To start`, `## In progress`, `## Almost finished`, `## Awaiting response`, `## History`. Sub-taken zijn ingesprongen `  - [ ] …` regels eronder. `int:` = streefdatum, `def:` = harde deadline. Tag `claude` marks tasks Claude added or can help with.
+- Completing a task = move its line (plus sub-lines) to `## History`, flip to `[x]`, and add `done:YYYY-MM-DD` inside the `{…}`.
+- Common values: `cat:` productie, boekhouding, website, marketing, investeringen, compliance, anders; `wie:` douwe, rory, allebei.
+- New and completed tasks trigger a Telegram ping (productiveswitch board → Douwe's private chat only), so don't post test noise to the live board.
