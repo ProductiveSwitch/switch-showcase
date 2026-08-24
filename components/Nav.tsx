@@ -44,11 +44,11 @@ export function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const contactHref = pathname === "/restructure" ? "/restructure#restructure-contact" : "/#contact";
+  const contactHref = pathname === "/productive-search" ? "/productive-search#search-contact" : "/#contact";
 
   const links = [
     { href: "/", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/" || pathname.startsWith("/richtingen") },
-    { href: "/restructure", label: { nl: "Productive Restructure", en: "Productive Restructure" }, active: pathname === "/restructure" },
+    { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
     { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
     { href: "/opleiders", label: { nl: "Voor opleiders", en: "For providers" }, active: pathname === "/opleiders" },
     { href: "/#how", label: { nl: "Hoe het werkt", en: "How it works" }, active: false },

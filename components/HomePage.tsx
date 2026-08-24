@@ -50,8 +50,8 @@ export function HomePage() {
                     {t({ nl: "Omscholing naar een tweede loopbaan", en: "Re-training for a second career" })}
                   </span>
                 </button>
-                <Link className="hero-brandbtn hb-hire" href="/restructure">
-                  <span className="hb-title">Productive Restructure</span>
+                <Link className="hero-brandbtn hb-hire" href="/productive-search">
+                  <span className="hb-title">Productive Search</span>
                   <span className="hb-sub">
                     {t({ nl: "Werving voor senior HR-rollen", en: "Recruitment for senior HR roles" })}
                   </span>

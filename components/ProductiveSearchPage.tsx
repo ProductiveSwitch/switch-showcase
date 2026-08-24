@@ -8,7 +8,7 @@ import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
 import { CvModal } from "./Forms";
 
-export function RestructurePage() {
+export function ProductiveSearchPage() {
   const { lang, t } = useLang();
   const [vacFilter, setVacFilter] = useState<"all" | VacancyCategory>("all");
   const [cvOpen, setCvOpen] = useState(false);
@@ -35,13 +35,13 @@ export function RestructurePage() {
             </h1>
             <p className="lede">
               {t({
-                nl: "Productive Restructure werft senior HR-rollen en functies rond werktransitie: de mensen die een reorganisatie zorgvuldig laten verlopen. Hetzelfde netwerk dat je medewerkers goed laat landen, vindt ook de leiders die dat proces dragen.",
-                en: "Productive Restructure recruits senior HR roles and workforce-transition functions: the people who carry a reorganisation with care. The same network that helps your employees land well also finds the leaders who drive that process.",
+                nl: "Productive Search werft senior HR-rollen en functies rond werktransitie: de mensen die een reorganisatie zorgvuldig laten verlopen. Hetzelfde netwerk dat je medewerkers goed laat landen, vindt ook de leiders die dat proces dragen.",
+                en: "Productive Search recruits senior HR roles and workforce-transition functions: the people who carry a reorganisation with care. The same network that helps your employees land well also finds the leaders who drive that process.",
               })}
             </p>
             <div className="hero-cta">
               <div className="cta-actions">
-                <a href="#restructure-contact" className="btn btn-hire">
+                <a href="#search-contact" className="btn btn-hire">
                   {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
                 </a>
                 <button className="btn btn-ghost" onClick={() => setCvOpen(true)}>
@@ -138,8 +138,8 @@ export function RestructurePage() {
                 <div className="name">Marleen Koster</div>
                 <div className="role">
                   {t({
-                    nl: "HR-directeur, opdrachtgever Productive Restructure",
-                    en: "HR Director, Productive Restructure client",
+                    nl: "HR-directeur, opdrachtgever Productive Search",
+                    en: "HR Director, Productive Search client",
                   })}
                 </div>
               </div>
@@ -148,7 +148,7 @@ export function RestructurePage() {
         </section>
 
         {/* Contact */}
-        <section className="cta-band reveal" id="restructure-contact">
+        <section className="cta-band reveal" id="search-contact">
           <div>
             <h2>{t({ nl: "Een rol te vervullen? We kennen de mensen.", en: "A role to fill? We know the people." })}</h2>
             <p>

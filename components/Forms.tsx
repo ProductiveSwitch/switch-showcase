@@ -85,7 +85,7 @@ function Sent({ lang, onClose, viaMailto }: { lang: Lang; onClose: () => void; v
   );
 }
 
-/* ---------- CV (Productive Restructure, mailto) ---------- */
+/* ---------- CV (Productive Search, mailto) ---------- */
 export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () => void; lang: Lang }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
   return (
@@ -94,17 +94,17 @@ export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () =>
       onClose={onClose}
       title={t({ nl: "Stuur je CV", en: "Send your CV" })}
       intro={t({
-        nl: "Werk jij in HR of werktransitie en wil je in beeld zijn voor rollen via Productive Restructure? Mail je CV als bijlage, dan nemen we contact op zodra er een rol past.",
-        en: "Do you work in HR or workforce transition and want to be on our radar for roles via Productive Restructure? Email your CV as an attachment and we'll reach out when a role fits.",
+        nl: "Werk jij in HR of werktransitie en wil je in beeld zijn voor rollen via Productive Search? Mail je CV als bijlage, dan nemen we contact op zodra er een rol past.",
+        en: "Do you work in HR or workforce transition and want to be on our radar for roles via Productive Search? Email your CV as an attachment and we'll reach out when a role fits.",
       })}
     >
       <div className="cv-body">
         <a
           className="btn btn-hire"
-          href={`mailto:${TO}?subject=${encodeURIComponent("CV voor Productive Restructure")}&body=${encodeURIComponent(
+          href={`mailto:${TO}?subject=${encodeURIComponent("CV voor Productive Search")}&body=${encodeURIComponent(
             lang === "nl"
-              ? "Beste Productive Restructure,\n\nHierbij mijn CV als bijlage. \n\nNaam:\nHuidige rol:\nTelefoon:\n"
-              : "Dear Productive Restructure,\n\nPlease find my CV attached.\n\nName:\nCurrent role:\nPhone:\n"
+              ? "Beste Productive Search,\n\nHierbij mijn CV als bijlage. \n\nNaam:\nHuidige rol:\nTelefoon:\n"
+              : "Dear Productive Search,\n\nPlease find my CV attached.\n\nName:\nCurrent role:\nPhone:\n"
           )}`}
         >
           {t({ nl: "Open je mail met CV-bericht", en: "Open your mail with a CV message" })}

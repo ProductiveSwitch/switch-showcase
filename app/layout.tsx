@@ -23,11 +23,11 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "Productive Switch, omscholing & herplaatsing van personeel",
   description:
-    "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Restructure werft senior HR-rollen en functies rond werktransitie. Eén netwerk, beide kanten van de cyclus.",
+    "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie. Eén netwerk, beide kanten van de cyclus.",
   openGraph: {
     title: "Productive Switch, omscholing & herplaatsing van personeel",
     description:
-      "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Restructure werft senior HR-rollen en functies rond werktransitie.",
+      "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie.",
     type: "website",
   },
 };

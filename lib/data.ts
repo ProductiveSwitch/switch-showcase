@@ -1,4 +1,4 @@
-// Placeholder data for Productive Switch + Productive Hire.
+// Placeholder data for Productive Switch + Productive Search.
 // Bilingual fields hold [nl, en]. Swap freely; the structure stays.
 
 export type Lang = "nl" | "en";
