@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { vacancies, vacancyFilters, hrShifts, roleTypes, advisoryItems, type VacancyCategory } from "@/lib/data";
+import { vacancies, vacancyFilters, type VacancyCategory } from "@/lib/data";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
@@ -15,134 +15,56 @@ export function ProductiveSearchPage() {
   useReveal();
   useHashScroll();
 
-  const shownVacancies = vacancies.filter((v) => vacFilter === "all" || v.category === vacFilter);
+  const shownVacancies = vacancies.filter(
+    (v) => vacFilter === "all" || v.category === vacFilter
+  );
 
   return (
-    <main className="hire">
-      {/* Full-bleed blue hero, starts directly under the nav */}
-      <section className="h-hero">
-        <div className="wrap h-hero-grid">
-          <div className="h-hero-text">
-            <div className="eyebrow">Productive Search & Advisory</div>
+    <main className="subpage hire">
+      <div className="wrap">
+        <section className="hero">
+          <div className="hero-text">
+            <div className="eyebrow">
+              {t({ nl: "Werving voor HR en werktransitie", en: "Recruitment for HR and workforce transition" })}
+            </div>
             <h1>
               {t({
-                nl: "Senior HR-leiders voor de transformatie die eraan komt.",
-                en: "Senior HR leaders for the transformation that's coming.",
+                nl: "De juiste mensen om je reorganisatie te dragen.",
+                en: "The right people to carry your restructuring.",
               })}
             </h1>
             <p className="lede">
               {t({
-                nl: "Productive Search werft senior HR-rollen met de focus op HR-transformaties: reorganisaties, organisatieontwerp, loontransparantie en AI in HR. Daarnaast adviseren we HR-leiders die zo'n verandering zelf dragen. Hetzelfde netwerk dat je medewerkers goed laat landen, kent ook de mensen die dat proces leiden.",
-                en: "Productive Search recruits senior HR roles with a focus on HR transformations: reorganisations, organisational design, pay transparency and AI in HR. We also advise HR leaders carrying such a change themselves. The same network that helps your employees land well also knows the people who lead that process.",
+                nl: "Productive Search werft senior HR-rollen en functies rond werktransitie: de mensen die een reorganisatie zorgvuldig laten verlopen. Hetzelfde netwerk dat je medewerkers goed laat landen, vindt ook de leiders die dat proces dragen.",
+                en: "Productive Search recruits senior HR roles and workforce-transition functions: the people who carry a reorganisation with care. The same network that helps your employees land well also finds the leaders who drive that process.",
               })}
             </p>
-            <div className="cta-actions">
-              <a href="#search-contact" className="btn btn-light btn-lg">
-                {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
-              </a>
-              <button className="btn btn-ghost-light btn-lg" onClick={() => setCvOpen(true)}>
-                {t({ nl: "Upload CV", en: "Upload CV" })}
-              </button>
-            </div>
-          </div>
-          <div className="h-hero-side">
-            <div className="h-side-card">
-              <div className="h-side-k">{t({ nl: "Waar we voor werven", en: "What we recruit for" })}</div>
-              <ul>
-                <li>{t({ nl: "CHRO en HR-directeur", en: "CHRO and HR Director" })}</li>
-                <li>{t({ nl: "HR Transformation Lead", en: "HR Transformation Lead" })}</li>
-                <li>{t({ nl: "Head of Employee Relations", en: "Head of Employee Relations" })}</li>
-                <li>{t({ nl: "Reward & Pay Transparency Lead", en: "Reward & Pay Transparency Lead" })}</li>
-                <li>{t({ nl: "Organisational Design en AI in HR", en: "Organisational Design and AI in HR" })}</li>
-              </ul>
-              <a href="#rollen" className="h-side-link">
-                {t({ nl: "Alle rollen", en: "All roles" })} <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="wrap">
-        {/* What is coming for HR */}
-        <section className="section reveal" id="verwachting">
-          <div className="section-head">
-            <div className="eyebrow">{t({ nl: "De komende jaren", en: "The coming years" })}</div>
-            <h2>{t({ nl: "Wat er op HR afkomt", en: "What's heading for HR" })}</h2>
-            <p>
-              {t({
-                nl: "Drie verschuivingen komen tegelijk binnen. Elk ervan vraagt om HR-leiderschap dat verder gaat dan de dagelijkse operatie.",
-                en: "Three shifts arrive at once. Each asks for HR leadership that goes beyond daily operations.",
-              })}
-            </p>
-          </div>
-          <div className="shift-grid stagger">
-            {hrShifts.map((s, i) => (
-              <div className="shift" key={i}>
-                <div className="shift-num">0{i + 1}</div>
-                <h3>{t(s.title)}</h3>
-                <p>{t(s.body)}</p>
+            <div className="hero-cta">
+              <div className="cta-actions">
+                <a href="#search-contact" className="btn btn-hire">
+                  {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
+                </a>
+                <button className="btn btn-ghost" onClick={() => setCvOpen(true)}>
+                  {t({ nl: "Upload CV", en: "Upload CV" })}
+                </button>
               </div>
-            ))}
+            </div>
+          </div>
+          <div className="hero-media">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+              alt=""
+              loading="lazy"
+            />
+            <div className="hero-badge">
+              <div className="bnum">500+</div>
+              <div className="btxt">
+                {t({ nl: "HR-professionals in ons netwerk", en: "HR professionals in our network" })}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Role types */}
-        <section className="section reveal" id="rollen">
-          <div className="section-head">
-            <div className="eyebrow">Search</div>
-            <h2>{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</h2>
-            <p>
-              {t({
-                nl: "Senior HR, altijd met een transformatie-component. Vast en interim. Geen generiek HR-bureau: we kennen de mensen omdat we ze dagelijks spreken over precies deze onderwerpen.",
-                en: "Senior HR, always with a transformation component. Permanent and interim. Not a generic HR agency: we know the people because we talk to them daily about exactly these topics.",
-              })}
-            </p>
-          </div>
-          <div className="role-grid stagger">
-            {roleTypes.map((r, i) => (
-              <div className="role" key={i}>
-                <h3>{t(r.title)}</h3>
-                <p>{t(r.body)}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      {/* Advisory, dark band */}
-      <section className="advisory reveal" id="advisory">
-        <div className="wrap">
-          <div className="advisory-grid">
-            <div className="advisory-intro">
-              <div className="eyebrow">Advisory</div>
-              <h2>{t({ nl: "Sparren voordat je beslist", en: "Sparring before you decide" })}</h2>
-              <p>
-                {t({
-                  nl: "Niet elke transformatie vraagt om een nieuwe hire. Soms heb je iemand nodig die het al eens gedaan heeft en een middag meekijkt. Op deze onderwerpen adviseren we HR-leiders, los van of er een vacature uit komt.",
-                  en: "Not every transformation calls for a new hire. Sometimes you need someone who has done it before and looks along for an afternoon. On these topics we advise HR leaders, regardless of whether a vacancy comes out of it.",
-                })}
-              </p>
-              <a href="#search-contact" className="btn btn-light">
-                {t({ nl: "Plan een gesprek", en: "Plan a conversation" })}
-              </a>
-            </div>
-            <ol className="advisory-list">
-              {advisoryItems.map((a, i) => (
-                <li key={i}>
-                  <span className="adv-num">0{i + 1}</span>
-                  <div>
-                    <h3>{t(a.title)}</h3>
-                    <p>{t(a.body)}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <div className="wrap">
         {/* Vacancies */}
         <section className="section reveal" id="vacatures">
           <div className="section-head">
@@ -201,7 +123,7 @@ export function ProductiveSearchPage() {
           )}
         </section>
 
-        {/* Testimonial (placeholder until a real client quote exists) */}
+        {/* Testimonial */}
         <section className="reveal">
           <div className="quote hire">
             <blockquote>
@@ -215,7 +137,10 @@ export function ProductiveSearchPage() {
               <div style={{ textAlign: "left" }}>
                 <div className="name">Marleen Koster</div>
                 <div className="role">
-                  {t({ nl: "HR-directeur, opdrachtgever Productive Search", en: "HR Director, Productive Search client" })}
+                  {t({
+                    nl: "HR-directeur, opdrachtgever Productive Search",
+                    en: "HR Director, Productive Search client",
+                  })}
                 </div>
               </div>
             </div>
@@ -223,17 +148,17 @@ export function ProductiveSearchPage() {
         </section>
 
         {/* Contact */}
-        <section className="cta-band cta-band--hire reveal" id="search-contact">
+        <section className="cta-band reveal" id="search-contact">
           <div>
             <h2>{t({ nl: "Een rol te vervullen? We kennen de mensen.", en: "A role to fill? We know the people." })}</h2>
             <p>
               {t({
-                nl: "Vertel ons wat je zoekt, dan komen we met een korte, gerichte shortlist. Of plan een adviesgesprek over wat er bij jou speelt.",
-                en: "Tell us what you're after, and we'll come back with a short, focused shortlist. Or plan an advisory conversation about what's going on at your end.",
+                nl: "Vertel ons wat je zoekt, dan komen we met een korte, gerichte shortlist.",
+                en: "Tell us what you're after, and we'll come back with a short, focused shortlist.",
               })}
             </p>
           </div>
-          <a href="mailto:info@productiveswitch.nl" className="btn btn-light btn-lg">
+          <a href="mailto:info@productiveswitch.nl" className="btn btn-hire">
             {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
           </a>
         </section>

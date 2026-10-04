@@ -4,26 +4,8 @@
     {
       "name": "dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "dev"
-      ],
-      "port": 3000,
-      "autoPort": true
-    },
-    {
-      "name": "samba",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "--prefix",
-        "/Users/douwesmacbook/Samba_website /Archief",
-        "run",
-        "dev",
-        "--",
-        "-p",
-        "3011"
-      ],
-      "port": 3011
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
     }
   ]
 }

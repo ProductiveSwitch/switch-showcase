@@ -18,14 +18,11 @@ The platform will eventually include accounts, video content, scheduling, and pa
 
 All copy follows the **productive-switch-voice** skill: NL-first with EN toggle (re-expression, not literal translation), informal je/jij, human-first but always concrete, hopeful never fear-based, clear over clever. Anchor "Leren om te blijven leren" used sparingly. **Hard rule: never an em dash** (use comma, period, colon, parentheses, or "en").
 
-### Architecture notes (current, herzien 2026-09-13)
+### Architecture notes (current, restructured 2026-07-07 into real routes)
 
-- Real routes with a shared fixed nav. Routes: `/` (HomePage: brand-level landing, hero H1 "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten." with the netwerk-intro lede, two service buttons, interactive radar right, then the `NetworkConnector` section, two service cards, a dark "Waarom nu" band and a contact band; the partner ticker was removed 2026-09-13 because no partnerships exist yet), `/productive-switch` (ProductiveSwitchPage: everything that used to sit on the homepage from "Drie richtingen" to "Kom in contact": pillars, subsidies teaser, `#how` steps, testimonial, visie split, vision line, `#contact` band, opleider band; nav tab "Productive Switch" and "Hoe het werkt" point here), `/productive-search` (Productive Search & Advisory: full-bleed blue hero without photo, "Wat er op HR afkomt" shifts, role types grid, dark Advisory band with the five advisory topics, vacancies, testimonial, contact; a permanent redirect from `/restructure` lives in `next.config.ts`), `/deelnemers`, `/opleiders`, `/subsidies`, `/richtingen/[slug]` (`techniek`=01, `sociaal`=02, `eigen-vak`=03), `/vision`.
-- `app/layout.tsx` wraps everything in `LangProvider` (NL/EN, persisted as `ps-lang`) + shared `Nav` + `Footer`. Nav gets `nav--ondark` (white text) on `/productive-search` until scrolled, because that hero is a solid blue band. Burger breakpoint 1240px. `html` carries `data-scroll-behavior="smooth"`; `components/useHashScroll.ts` + a nav click handler cover anchor scrolling across routes.
-- `components/NetworkConnector.tsx` — 2D "netwerkconnector" on the homepage: three hubs in the middle (Productive Search, Advisory, Switch), six nodes from `networkNodes` in `lib/data.ts` (HR-leiders, senior HR-kandidaten, coaches, opleiders, organisaties met blijvende vraag, medewerkers; each node lists its `hubs` and `links`, HR-leiders link to medewerkers); hover/click lights the links and swaps the text panel. Pure SVG + React state. Built from the brief; Douwe's own Claude Design file ("Netwerkconnector 2D", claude.ai/design share link) could not be opened from Code, so compare and align when he shares an export.
-- `components/RadarChart.tsx` — one-to-one re-drawing of figure 2 in Anthropic, "Labor market impacts of AI" (5 maart 2026): 22 categories in the original order, theoretical vs observed AI coverage. Seven values are exact from the report text, the rest read off the chart (±2 pts); source line under the legend. The `figure` variant is interactive (hover/tap a sector shows both percentages).
-- Homepage/Switch photos live in `public/photos/` (three richting photos + visie.jpg). The Unsplash placeholder on the Search page is gone.
-- `lib/data.ts` also holds `hrShifts`, `roleTypes`, `advisoryItems` (Search & Advisory content) and `networkNodes`. `partners` still exists but is no longer rendered anywhere.
+- Real routes with a shared fixed nav; the old single `Site.tsx` with a brand-toggle is gone (it had a panel-switch bug and no deep links). Routes: `/` (HomePage, hero H1 "Omscholing & herplaatsing van personeel"; the "Voor HR bij reorganisatie" eyebrow was removed 2026-07-08 and the H1 sits flush at the top; a "Kom in contact" hero button opens the intake modal), `/productive-search` (Productive Search, formerly Hire then Restructure; a permanent redirect from `/restructure` lives in `next.config.ts`), `/deelnemers` (Voor deelnemers, learner-facing overview of the 3 opleidingsvelden, added 2026-07-08), `/opleiders` (Voor opleiders, inline `OpleiderIntake` intake page with the key supply-side questions, added 2026-07-08), `/subsidies` ("Wat het de werkgever kost": financing fan + regelingen-overzicht naar rijksoverheid.nl LLO en business.gov.nl, stand juli 2026; renamed from /pricing on 2026-07-07), `/richtingen/[slug]` (course catalogue per richting: `techniek`=01, `sociaal`=02, `eigen-vak`=03; pillars renumbered/reordered 2026-07-08 so eigen-vak is last), `/vision`.
+- `app/layout.tsx` wraps everything in `LangProvider` (NL/EN in React context, persisted to localStorage as `ps-lang`) + shared `Nav` + `Footer`. Nav tabs (7, all kept in the bar per 2026-07-08 request): Productive Switch, Productive Search, Voor deelnemers, Voor opleiders, Hoe het werkt (`/#how` anchor), Subsidies, Onze visie, NL-EN toggle; right: Upload CV (CV mailto modal) + Contact. Nav font/spacing were tightened to fit 7 tabs and the burger breakpoint moved from 1150px to 1240px. Desktop socials live in the mobile menu. `html` carries `data-scroll-behavior="smooth"`; `components/useHashScroll.ts` + a nav click handler cover anchor scrolling across routes.
+- Homepage photos live in `public/photos/` (richting-eigen-vak.webp, richting-techniek.jpg, richting-sociaal.jpg for the three pillars; visie.jpg for the visie split), supplied by Douwe on 2026-07-07; the Unsplash placeholders are gone from the homepage (the productive-search hero still uses one).
 - `lib/courses.ts` — the full course catalogue transcribed from the internal marktverkenning Excel (juli 2026): ~85 courses across three `richting` values `techniek` | `sociaal` | `domein`, with normalized filter fields (veld, aanbieder, duur + duurCat, binnen-1-maand ja/deels/nee, vorm, prijs + prijsCat, erkenning, url). The `domein` set (added 2026-07-08 from the Excel's "AI-trainingen kantoor" sheet) is AI-bijscholing per vakgebied: velden ai-basis, support, marketing, communicatie, finance, hr, juridisch. Prices are third-party provider prices, always labeled indicatief/ex btw (our own fee still never appears). `components/CoursesPage.tsx` maps slug `eigen-vak`→richting `domein` and now renders the same left filter sidebar (veld, aanbieder, duur, binnen 1 maand, vorm, prijs) + card grid for all three richtingen, plus a `richting-switch` pill nav (jump between catalogues) and, for `eigen-vak` only, a compact radar intro figure ("Bijscholen in je eigen vak") above the grid. Don't put `.reveal` on the tall courses section: the 0.12 IntersectionObserver threshold can never be reached by elements much taller than the viewport.
 - `components/RadarChart.tsx` — stylised re-drawing of the Anthropic Economic Index radar (theoretical vs observed AI usage). In the hero it carries the title "Potentiële en huidige waargenomen toepassing van AI per beroepscategorie" (per 2026-07-07 request; the "naar de Anthropic Economic Index" caption was removed there, the source credit lives on in the eigen-vak figure caption).
 - `lib/data.ts` — bilingual placeholder data (destinations now carry `slug`). `partners` carries official logo files from `public/logos/` (UvA, Erasmus, Leiden, HvA, Nyenrode; LOI renders as a red wordmark because no free logo file exists). No partnership agreements exist yet; the ticker caption says "onder andere" on purpose.
@@ -37,36 +34,37 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 
 ## Design Language
 
-### Aesthetic (herzien 2026-09-13)
-- The cream-paper + Fraunces-serif + blurred gradient blobs + pastel fills look was dropped on 2026-09-13 because it read as a generic AI-generated site. Do not bring those back.
-- **Tone**: confident, flat, editorial. Neutral off-white canvas, near-black ink, solid colour blocks (blue, teal, black) for bands and cards, hard 1px lines, modest corner radius (12px cards, 20px large cards, 8px buttons). Reference: `Design inspo/` screenshot (flat colour cards, geometric sans).
-- **Restraint**: whitespace and hierarchy do the work. No blur blobs, no floating photos, no gradient backgrounds, no pastel tints as section backgrounds.
-- **Motion**: CSS-only reveals and hover lifts; the two interactive figures (radar, netwerkconnector) respond to hover/tap. prefers-reduced-motion respected.
+### Aesthetic
+- **Tone**: Editorial, human, trustworthy. Think magazine spread, not corporate SaaS.
+- **Warmth**: Paper/cream backgrounds, deep ink text, intentional colour accents per pathway.
+- **Restraint**: Generous whitespace, clear hierarchy, no clutter. Elegance > maximalism.
+- **Motion**: Subtle, purposeful. Staggered page load reveals, hover lifts, smooth transitions. No gratuitous animation.
 
 ### Colour System
-Defined as CSS variables in `app/globals.css`:
+Warm paper/ink base with the infographic accent palette (decided 2026-07-04: accents on the editorial base, never a full palette swap). Use these as CSS variables throughout (defined in `app/globals.css`):
 
 ```
---paper: #F4F4F1        (page background)
---paper-2: #FFFFFF      (cards, hero surface)
---ink: #1C1C1C          (primary text only; never as a band or button colour, Douwe: "het zwarte vloekt")
---navy: #24304A         (all dark bands, primary buttons, netwerk hubs)
---ink-soft: #55554F     (secondary text)
---line: #DCDCD5         (borders)
+--paper: #F6F1E8        (backgrounds, neutral canvas)
+--paper-2: #FBF8F2      (cards, surfaces)
+--ink: #211C16          (primary text)
+--ink-soft: #5A5246     (secondary text)
+--line: #E4DBCB         (borders, dividers)
 
---switch: #1E8CA3       (Productive Switch teal; pathway 01 domain)
---hire: #2A56A6         (Productive Search blue, solid; --hire-deep #1E3F7D for hover and the Advisory hub)
---radar-theo / --radar-obs: #2F7ED8 / #E3453A (radar only, matches the Anthropic figure)
---col-tech: #E0A100     (trades yellow; --col-tech-deep #A87400 for text on light)
---col-social: #E2532F   (social sector red/orange)
+--switch: #1E8CA3       (Switch brand teal; also pathway 01)
+--hire: #2B4C8C         (Hire brand blue)
+
+--col-domain: #1E8CA3   (01 own field, teal)
+--col-tech: #DB9A00     (02 trades, yellow; use --col-tech-deep #A87400 for text on light)
+--col-social: #C2452D   (03 social sector, red/orange)
+--navy: #3A4458         (dark bands, 4th step accent)
 ```
 
-The `-soft` pastel variables still exist for a few small badges (course month chips) but must not be used as section or card backgrounds. Fan cards on /subsidies are solid brand colours (no gradients). On the yellow card text is ink, not white.
+Fan-section gradients: red #C22558→#E8622C, yellow #F2B200→#DB9A00, teal #2AA5BD→#15808F. On the yellow card text is ink, not white.
 
 ### Typography
-- **Display (headings)**: Outfit (geometric sans), weights 400–700, letter-spacing -0.02em, line-height 1.08.
-- **Body (copy, labels)**: Archivo, weights 400–600.
-- Both via `next/font/google` in `app/layout.tsx` (variables `--font-outfit`, `--font-archivo`).
+- **Display (headings)**: Fraunces (serif), weights 400–600. Generous letter-spacing, line-height 1.15 for clarity.
+- **Body (copy, labels)**: Archivo (sans-serif), weights 400–600. Smaller, tighter line-height (1.4–1.6).
+- **All fonts** imported from Google Fonts — no local files.
 
 ### Component Patterns
 
@@ -81,9 +79,10 @@ The `-soft` pastel variables still exist for a few small badges (course month ch
 - Metadata: always right-aligned, muted colour.
 
 **Buttons**:
-- `btn-ink` (black) is the primary CTA on light surfaces; `btn-light` (white) on dark or blue bands.
-- `btn-ghost` (ink border) secondary on light; `btn-ghost-light` (white border) on dark.
-- border-radius 8px, no pills. Hover: 1px lift.
+- Primary (dark ink on paper): strong CTA.
+- Ghost (border only): secondary action.
+- Rounded (border-radius 999px).
+- Smooth hover: lift 2px, slight shadow.
 
 **Grid**:
 - 3-column on desktop, 1-column on mobile.
@@ -126,9 +125,9 @@ All course names, institutions, maker names, and review counts are placeholders.
 ### Tech Stack
 - **Framework**: Next.js 16 with App Router
 - **Styling**: Tailwind CSS + CSS variables for design tokens
-- **Animations**: CSS + IntersectionObserver only (no GSAP/framer-motion)
+- **Animations**: CSS + (optional) Framer Motion for more complex sequences
 - **Icons**: lucide-react (Compass, Heart, Wrench, Users, BadgeCheck, Star, etc.)
-- **Fonts**: Google Fonts via next/font (Outfit, Archivo)
+- **Fonts**: Google Fonts API (Fraunces, Archivo)
 
 ## Development Principles
 

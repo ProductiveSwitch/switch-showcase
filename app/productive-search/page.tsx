@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ProductiveSearchPage } from "@/components/ProductiveSearchPage";
 
 export const metadata: Metadata = {
-  title: "Productive Search & Advisory, senior HR-leiders voor transformaties",
+  title: "Productive Search, werving voor HR en werktransitie",
   description:
-    "Productive Search werft senior HR-rollen met de focus op HR-transformaties en adviseert HR-leiders op employee relations, loontransparantie, AI in HR en organisatieontwerp.",
+    "Productive Search werft senior HR-rollen en functies rond werktransitie: de mensen die een reorganisatie zorgvuldig laten verlopen.",
 };
 
 export default function ProductiveSearch() {
