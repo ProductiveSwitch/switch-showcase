@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Fraunces, Archivo } from "next/font/google";
+import { Outfit, Archivo } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/components/LangContext";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-const fraunces = Fraunces({
+// Display: Outfit (geometrisch, strak). Body: Archivo. Fraunces + cream is
+// bewust losgelaten (september 2026): dat oogde te veel als een standaard
+// AI-gegenereerde site.
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-outfit",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const archivo = Archivo({
@@ -21,13 +23,13 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Productive Switch, omscholing & herplaatsing van personeel",
+  title: "Productive Switch, werving voor senior HR-transformaties en gerichte omscholing",
   description:
-    "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie. Eén netwerk, beide kanten van de cyclus.",
+    "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk van geselecteerde coaches, opleiders en organisaties in sectoren met blijvende vraag.",
   openGraph: {
-    title: "Productive Switch, omscholing & herplaatsing van personeel",
+    title: "Productive Switch, werving voor senior HR-transformaties en gerichte omscholing",
     description:
-      "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie.",
+      "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk, beide kanten van de cyclus.",
     type: "website",
   },
 };
@@ -38,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nl" data-scroll-behavior="smooth" className={`${fraunces.variable} ${archivo.variable}`}>
+    <html lang="nl" data-scroll-behavior="smooth" className={`${outfit.variable} ${archivo.variable}`}>
       <body>
         <LangProvider>
           <Nav />
