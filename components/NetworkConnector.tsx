@@ -248,11 +248,11 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
         ) : (
           <>
             <div className="netc-panel-tag">{t({ nl: "Het netwerk", en: "The network" })}</div>
-            <h3>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h3>
+            <h3>{t({ nl: "Wie we verbinden", en: "Who we connect" })}</h3>
             <p>
               {t({
-                nl: "Beweeg over een dienst of een knoop om te zien wie het is en wat die voor je doet. Dezelfde gesprekken met HR-leiders leveren kandidaten en advies op als je een transformatie leidt, en een zachte landing voor medewerkers als functies verdwijnen.",
-                en: "Hover over a service or a node to see who it is and what they do for you. The same conversations with HR leaders yield candidates and advice when you lead a transformation, and a soft landing for employees when roles disappear.",
+                nl: "HR-leiders, senior HR-professionals, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Dezelfde gesprekken leveren kandidaten en advies op als je een transformatie leidt, en een zachte landing voor medewerkers als functies verdwijnen.",
+                en: "HR leaders, senior HR professionals, career coaches, training providers and employers with lasting demand. The same conversations yield candidates and advice when you lead a transformation, and a soft landing for employees when roles disappear.",
               })}
             </p>
           </>

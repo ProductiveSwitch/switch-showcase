@@ -34,8 +34,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders die een transformatie leiden, helpen we op twee manieren. Productive Search & Advisory vindt de senior HR-professionals die het proces dragen en adviseert op de onderwerpen die erbij horen. Productive Switch begeleidt medewerkers van wie de functie verdwijnt naar een nieuw vak, via geselecteerde coaches, erkende opleiders en werkgevers in sectoren waar automatisering minder snel impact heeft.",
-                  en: "We help HR leaders who lead a transformation in two ways. Productive Search & Advisory finds the senior HR professionals who carry the process and advises on the topics that come with it. Productive Switch guides employees whose role is ending into a new trade, through selected coaches, accredited training providers and employers in sectors where automation bites more slowly.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Op beide fronten helpen wij.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help on both fronts.",
                 })}
               </p>
               <div className="s-hero-brands">
@@ -95,11 +95,11 @@ export function HomePage() {
           <div className="wrap">
             <div className="section-head">
               <div className="eyebrow">{t({ nl: "Het netwerk", en: "The network" })}</div>
-              <h2>{t({ nl: "Wie we verbinden", en: "Who we connect" })}</h2>
+              <h2>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h2>
               <p>
                 {t({
-                  nl: "Geen marktplaats, wel een netwerk dat we zelf onderhouden. Elke lijn hieronder is een relatie die we kennen en spreken.",
-                  en: "Not a marketplace, but a network we maintain ourselves. Every line below is a relationship we know and talk to.",
+                  nl: "Beweeg over een dienst of een partij om te zien wie het is en wat die voor je doet.",
+                  en: "Hover over a service or a party to see who it is and what they do for you.",
                 })}
               </p>
             </div>
@@ -111,11 +111,11 @@ export function HomePage() {
         <section className="section reveal" id="diensten">
           <div className="wrap">
             <div className="section-head">
-              <h2>{t({ nl: "Twee diensten, één gesprek", en: "Two services, one conversation" })}</h2>
+              <h2>{t({ nl: "Hoe we helpen", en: "How we help" })}</h2>
               <p>
                 {t({
-                  nl: "Een transformatie vraagt om de juiste mensen aan de ene kant en een zorgvuldige landing voor vertrekkende medewerkers aan de andere. Beide vragen komen in hetzelfde gesprek met HR op tafel, dus beantwoorden we ze vanuit één bureau.",
-                  en: "A transformation needs the right people on one side and a careful landing for departing employees on the other. Both questions come up in the same conversation with HR, so we answer them from one firm.",
+                  nl: "Voor de organisatie van morgen zoeken we de HR-leiders en adviseurs die de verandering dragen. Voor de medewerkers van wie de functie verdwijnt, bouwen we een korte, erkende route naar een nieuw vak.",
+                  en: "For tomorrow's organisation we find the HR leaders and advisers who carry the change. For the employees whose roles disappear, we build a short, recognised route into a new trade.",
                 })}
               </p>
             </div>
