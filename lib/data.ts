@@ -289,29 +289,29 @@ export const networkNodes: NetworkNode[] = [
     label: bi("HR-leiders", "HR leaders"),
     short: bi("Klant", "Client"),
     body: bi(
-      "De HR-directeur of ondernemingsraad bij een reorganisatie of transformatie. Zij zoeken de juiste mensen om het proces te dragen, sparren over de aanpak, en willen dat hun eigen medewerkers goed landen.",
-      "The HR director or works council facing a reorganisation or transformation. They need the right people to carry the process, want to spar on the approach, and want their own employees to land well."
+      "De HR-directeur of ondernemingsraad bij een reorganisatie of transformatie. Zij zoeken de juiste mensen om het proces te dragen, sparren over de aanpak, en willen dat de medewerkers die vertrekken goed landen.",
+      "The HR director or works council facing a reorganisation or transformation. They need the right people to carry the process, want to spar on the approach, and want the employees who leave to land well."
     ),
     color: "var(--hire)",
     links: ["kandidaten", "coaches", "medewerkers"],
-    hubs: ["search", "advisory", "switch"],
+    hubs: ["search", "switch"],
   },
   {
     id: "kandidaten",
-    label: bi("Senior HR-kandidaten", "Senior HR candidates"),
-    short: bi("Search", "Search"),
+    label: bi("Senior HR-professionals", "Senior HR professionals"),
+    short: bi("Kandidaat", "Candidate"),
     body: bi(
-      "HR-leiders met ervaring in transformaties: organisatieontwerp, employee relations, beloning en transparantie, AI in HR. Wij kennen ze omdat we ze dagelijks spreken.",
-      "HR leaders with transformation experience: organisational design, employee relations, reward and transparency, AI in HR. We know them because we talk to them daily."
+      "HR-leiders en adviseurs met ervaring in transformaties: organisatieontwerp, employee relations, beloning en transparantie, AI in HR. Wij kennen ze omdat we ze dagelijks spreken.",
+      "HR leaders and advisers with transformation experience: organisational design, employee relations, reward and transparency, AI in HR. We know them because we talk to them daily."
     ),
     color: "var(--hire)",
     links: ["hr"],
-    hubs: ["search", "advisory"],
+    hubs: ["search"],
   },
   {
     id: "coaches",
-    label: bi("Geselecteerde coaches", "Selected coaches"),
-    short: bi("Intake", "Intake"),
+    label: bi("Loopbaancoaches", "Career coaches"),
+    short: bi("Coach", "Coach"),
     body: bi(
       "Erkende loopbaancoaches en arbeidsmarktdeskundigen die de intake doen. Het gesprek eindigt met een concreet advies voor een richting en een traject, niet met een map vol opties.",
       "Accredited career coaches and labour-market experts who run the intake. The conversation ends with concrete advice on a direction and a path, not a folder full of options."
@@ -322,8 +322,8 @@ export const networkNodes: NetworkNode[] = [
   },
   {
     id: "opleiders",
-    label: bi("Omscholings- en trainingspartijen", "Re-training and training partners"),
-    short: bi("Opleiding", "Training"),
+    label: bi("Opleiders", "Training providers"),
+    short: bi("Opleider", "Provider"),
     body: bi(
       "Universiteiten, hogescholen, ROC's en erkende private opleiders. Kort en gericht op het nieuwe vak, met een erkend certificaat of diploma aan het eind.",
       "Universities, colleges, vocational schools and accredited private providers. Short and aimed at the new trade, with a recognised certificate or diploma at the end."
@@ -334,11 +334,11 @@ export const networkNodes: NetworkNode[] = [
   },
   {
     id: "werkgevers",
-    label: bi("Organisaties met blijvende vraag", "Organisations with lasting demand"),
-    short: bi("Landing", "Landing"),
+    label: bi("Werkgevers met blijvende vraag", "Employers with lasting demand"),
+    short: bi("Werkgever", "Employer"),
     body: bi(
-      "Werkgevers in zorg, welzijn, onderwijs, techniek en energie: sectoren waar automatisering minder snel impact heeft en de vraag naar mensen structureel is. Zij kijken vaak al tijdens de omscholing mee.",
-      "Employers in care, welfare, education, the trades and energy: sectors where automation bites more slowly and demand for people is structural. They often look on during the re-training already."
+      "Organisaties in zorg, welzijn, onderwijs, techniek en energie: sectoren waar automatisering minder snel impact heeft en de vraag naar mensen structureel is. Zij kijken vaak al tijdens de omscholing mee.",
+      "Organisations in care, welfare, education, the trades and energy: sectors where automation bites more slowly and demand for people is structural. They often look on during the re-training already."
     ),
     color: "var(--col-social)",
     links: ["opleiders", "medewerkers"],
@@ -346,8 +346,8 @@ export const networkNodes: NetworkNode[] = [
   },
   {
     id: "medewerkers",
-    label: bi("Je medewerkers", "Your employees"),
-    short: bi("Switch", "Switch"),
+    label: bi("Medewerkers in transitie", "Employees in transition"),
+    short: bi("Deelnemer", "Participant"),
     body: bi(
       "De mensen van wie de functie verdwijnt of verandert. Capabel, niet zielig. Zij kiezen een richting, wij zorgen dat de weg ernaartoe kort, erkend en betaalbaar is.",
       "The people whose role is ending or changing. Capable, not pitiable. They choose a direction, we make sure the road there is short, accredited and affordable."

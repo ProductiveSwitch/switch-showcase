@@ -34,8 +34,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "Via een netwerk van geselecteerde coaches, omscholings- en trainingspartijen en organisaties in sectoren waar automatisering minder snel impact heeft, staan we HR-leiders aan beide kanten van de cyclus bij: de juiste mensen vinden als je een transformatie leidt, en je mensen goed laten landen als functies verdwijnen.",
-                  en: "Through a network of selected coaches, re-training and training partners, and organisations in sectors where automation bites more slowly, we stand beside HR leaders on both sides of the cycle: finding the right people when you lead a transformation, and landing your people well when roles disappear.",
+                  nl: "HR-leiders die een transformatie leiden, helpen we op twee manieren. Productive Search & Advisory vindt de senior HR-professionals die het proces dragen en adviseert op de onderwerpen die erbij horen. Productive Switch begeleidt medewerkers van wie de functie verdwijnt naar een nieuw vak, via geselecteerde coaches, erkende opleiders en werkgevers in sectoren waar automatisering minder snel impact heeft.",
+                  en: "We help HR leaders who lead a transformation in two ways. Productive Search & Advisory finds the senior HR professionals who carry the process and advises on the topics that come with it. Productive Switch guides employees whose role is ending into a new trade, through selected coaches, accredited training providers and employers in sectors where automation bites more slowly.",
                 })}
               </p>
               <div className="s-hero-brands">
@@ -81,8 +81,8 @@ export function HomePage() {
                 </span>
                 <span className="radar-source">
                   {t({
-                    nl: "Naar Anthropic, Labor market impacts of AI (maart 2026), figuur 2.",
-                    en: "After Anthropic, Labor market impacts of AI (March 2026), figure 2.",
+                    nl: "Naar Anthropic, Labor market impacts of AI (maart 2026, figuur 2) en What work can robots do? (september 2026, figuur 6).",
+                    en: "After Anthropic, Labor market impacts of AI (March 2026, figure 2) and What work can robots do? (September 2026, figure 6).",
                   })}
                 </span>
               </div>
@@ -114,8 +114,8 @@ export function HomePage() {
               <h2>{t({ nl: "Twee diensten, één gesprek", en: "Two services, one conversation" })}</h2>
               <p>
                 {t({
-                  nl: "Werving, advies en omscholing komen uit één netwerk van HR-leiders, coaches en opleiders. Je hebt één aanspreekpunt, voor beide kanten van een reorganisatie.",
-                  en: "Recruitment, advisory and re-training come from one network of HR leaders, coaches and training partners. One point of contact, for both sides of a reorganisation.",
+                  nl: "Een transformatie vraagt om de juiste mensen aan de ene kant en een zorgvuldige landing voor vertrekkende medewerkers aan de andere. Beide vragen komen in hetzelfde gesprek met HR op tafel, dus beantwoorden we ze vanuit één bureau.",
+                  en: "A transformation needs the right people on one side and a careful landing for departing employees on the other. Both questions come up in the same conversation with HR, so we answer them from one firm.",
                 })}
               </p>
             </div>

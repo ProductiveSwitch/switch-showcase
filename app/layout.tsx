@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
-import { Outfit, Archivo } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/components/LangContext";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-// Display: Outfit (geometrisch, strak). Body: Archivo. Fraunces + cream is
-// bewust losgelaten (september 2026): dat oogde te veel als een standaard
-// AI-gegenereerde site.
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--font-archivo",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
+// Lettertypen (oktober 2026, "Northline"-palet): Poppins voor koppen, Inter voor
+// lopende tekst. De paletkiezer met drie alternatieven is verwijderd.
+const poppins = Poppins({ subsets: ["latin"], variable: "--font-poppins", display: "swap", weight: ["400", "500", "600", "700"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Productive Switch, werving voor senior HR-transformaties en gerichte omscholing",
@@ -40,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nl" data-scroll-behavior="smooth" className={`${outfit.variable} ${archivo.variable}`}>
+    <html lang="nl" data-scroll-behavior="smooth" className={`${poppins.variable} ${inter.variable}`}>
       <body>
         <LangProvider>
           <Nav />

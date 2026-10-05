@@ -28,39 +28,27 @@ interface Hub {
 const HUBS: Hub[] = [
   {
     id: "search",
-    label: "Search",
-    short: { nl: "Productive Search", en: "Productive Search" },
+    label: "Search & Advisory",
+    short: { nl: "Productive Search & Advisory", en: "Productive Search & Advisory" },
     body: {
-      nl: "Werving van senior HR-leiders en adviseurs voor transformaties: CHRO's, HR-directeuren, transformatieleads, employee relations en reward.",
-      en: "Recruitment of senior HR leaders and advisers for transformations: CHROs, HR directors, transformation leads, employee relations and reward.",
+      nl: "Werving van senior HR-leiders en adviseurs voor transformaties, en adviesopdrachten op employee relations, loontransparantie, AI-implementatie in HR en organisatieontwerp.",
+      en: "Recruitment of senior HR leaders and advisers for transformations, and advisory work on employee relations, pay transparency, AI implementation in HR and organisational design.",
     },
     color: "var(--hire)",
-    x: CX + 74,
-    y: CY - 52,
-  },
-  {
-    id: "advisory",
-    label: "Advisory",
-    short: { nl: "Productive Advisory", en: "Productive Advisory" },
-    body: {
-      nl: "Adviesopdrachten en peer-to-peer sparren voor HR-leiders op employee relations, loontransparantie, AI-implementatie in HR en organisatieontwerp.",
-      en: "Advisory work and peer-to-peer sparring for HR leaders on employee relations, pay transparency, AI implementation in HR and organisational design.",
-    },
-    color: "var(--hire-deep)",
-    x: CX - 74,
-    y: CY - 52,
+    x: CX + 92,
+    y: CY,
   },
   {
     id: "switch",
     label: "Switch",
     short: { nl: "Productive Switch", en: "Productive Switch" },
     body: {
-      nl: "Gerichte omscholing van medewerkers van wie de functie verdwijnt: intake door een coach, kort en erkend leren, en een landing bij organisaties met blijvende vraag.",
-      en: "Targeted re-training for employees whose role is ending: intake by a coach, short and recognised learning, and a landing at organisations with lasting demand.",
+      nl: "Gerichte omscholing van medewerkers van wie de functie verdwijnt: intake door een coach, kort en erkend leren, en een landing bij werkgevers met blijvende vraag.",
+      en: "Targeted re-training for employees whose role is ending: intake by a coach, short and recognised learning, and a landing at employers with lasting demand.",
     },
     color: "var(--switch)",
-    x: CX,
-    y: CY + 66,
+    x: CX - 92,
+    y: CY,
   },
 ];
 
@@ -134,8 +122,8 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
         className="netc-svg"
         role="img"
         aria-label={t({
-          nl: "Netwerk: Productive Search, Advisory en Switch verbinden HR-leiders, senior HR-kandidaten, coaches, opleiders, organisaties met blijvende vraag en medewerkers.",
-          en: "Network: Productive Search, Advisory and Switch connect HR leaders, senior HR candidates, coaches, training partners, organisations with lasting demand and employees.",
+          nl: "Netwerk: Productive Search & Advisory en Productive Switch verbinden HR-leiders, senior HR-professionals, loopbaancoaches, opleiders, werkgevers met blijvende vraag en medewerkers in transitie.",
+          en: "Network: Productive Search & Advisory and Productive Switch connect HR leaders, senior HR professionals, career coaches, training providers, employers with lasting demand and employees in transition.",
         })}
         onMouseLeave={() => setActive(null)}
       >
@@ -167,8 +155,8 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
             );
           })
         )}
-        {/* hub-to-hub ring: one brand */}
-        <polygon className="netc-hubring" points={HUBS.map((h) => `${h.x},${h.y}`).join(" ")} />
+        {/* hub-to-hub link: one brand */}
+        <line className="netc-hubring" x1={HUBS[0].x} y1={HUBS[0].y} x2={HUBS[1].x} y2={HUBS[1].y} />
 
         {/* hubs */}
         {HUBS.map((h) => {
@@ -186,13 +174,24 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
               aria-pressed={on}
               aria-label={t(h.short)}
             >
-              <circle cx={h.x} cy={h.y} r={44} />
-              <text x={h.x} y={h.y - 4} textAnchor="middle" className="netc-hub-a">
+              <circle cx={h.x} cy={h.y} r={50} />
+              <text x={h.x} y={h.y - (h.label.includes("&") ? 12 : 4)} textAnchor="middle" className="netc-hub-a">
                 Productive
               </text>
-              <text x={h.x} y={h.y + 14} textAnchor="middle" className="netc-hub-b">
-                {h.label}
-              </text>
+              {h.label.includes("&") ? (
+                <>
+                  <text x={h.x} y={h.y + 6} textAnchor="middle" className="netc-hub-b">
+                    Search &
+                  </text>
+                  <text x={h.x} y={h.y + 24} textAnchor="middle" className="netc-hub-b">
+                    Advisory
+                  </text>
+                </>
+              ) : (
+                <text x={h.x} y={h.y + 14} textAnchor="middle" className="netc-hub-b">
+                  {h.label}
+                </text>
+              )}
             </g>
           );
         })}
@@ -216,13 +215,13 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
               aria-pressed={on}
               aria-label={t(n.label)}
             >
-              <circle cx={p.x} cy={p.y} r={33} className="netc-dot" />
+              <circle cx={p.x} cy={p.y} r={38} className="netc-dot" />
               <text x={p.x} y={p.y + 4} textAnchor="middle" className="netc-short">
                 {t(n.short)}
               </text>
               <text
                 x={p.x}
-                y={below ? p.y + 56 : p.y - 44 - (lines.length - 1) * 16}
+                y={below ? p.y + 62 : p.y - 50 - (lines.length - 1) * 16}
                 textAnchor="middle"
                 className="netc-label"
               >
@@ -249,11 +248,11 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
         ) : (
           <>
             <div className="netc-panel-tag">{t({ nl: "Het netwerk", en: "The network" })}</div>
-            <h3>{t({ nl: "Drie diensten, één netwerk", en: "Three services, one network" })}</h3>
+            <h3>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h3>
             <p>
               {t({
-                nl: "Beweeg over een dienst of een knoop om te zien wie het is en wat die voor je doet. Dezelfde gesprekken met HR-leiders leveren kandidaten op als je aanneemt, advies als je een transformatie leidt, en een zachte landing voor je mensen als je reorganiseert.",
-                en: "Hover over a service or a node to see who it is and what they do for you. The same conversations with HR leaders yield candidates when you hire, advice when you lead a transformation, and a soft landing for your people when you restructure.",
+                nl: "Beweeg over een dienst of een knoop om te zien wie het is en wat die voor je doet. Dezelfde gesprekken met HR-leiders leveren kandidaten en advies op als je een transformatie leidt, en een zachte landing voor medewerkers als functies verdwijnen.",
+                en: "Hover over a service or a node to see who it is and what they do for you. The same conversations with HR leaders yield candidates and advice when you lead a transformation, and a soft landing for employees when roles disappear.",
               })}
             </p>
           </>

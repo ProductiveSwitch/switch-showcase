@@ -22,8 +22,8 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 
 - Real routes with a shared fixed nav. Routes: `/` (HomePage: brand-level landing, hero H1 "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten." with the netwerk-intro lede, two service buttons, interactive radar right, then the `NetworkConnector` section, two service cards, a dark "Waarom nu" band and a contact band; the partner ticker was removed 2026-09-13 because no partnerships exist yet), `/productive-switch` (ProductiveSwitchPage: everything that used to sit on the homepage from "Drie richtingen" to "Kom in contact": pillars, subsidies teaser, `#how` steps, testimonial, visie split, vision line, `#contact` band, opleider band; nav tab "Productive Switch" and "Hoe het werkt" point here), `/productive-search` (Productive Search & Advisory: full-bleed blue hero without photo, "Wat er op HR afkomt" shifts, role types grid, dark Advisory band with the five advisory topics, vacancies, testimonial, contact; a permanent redirect from `/restructure` lives in `next.config.ts`), `/deelnemers`, `/opleiders`, `/subsidies`, `/richtingen/[slug]` (`techniek`=01, `sociaal`=02, `eigen-vak`=03), `/vision`.
 - `app/layout.tsx` wraps everything in `LangProvider` (NL/EN, persisted as `ps-lang`) + shared `Nav` + `Footer`. Nav gets `nav--ondark` (white text) on `/productive-search` until scrolled, because that hero is a solid blue band. Burger breakpoint 1240px. `html` carries `data-scroll-behavior="smooth"`; `components/useHashScroll.ts` + a nav click handler cover anchor scrolling across routes.
-- `components/NetworkConnector.tsx` — 2D "netwerkconnector" on the homepage: three hubs in the middle (Productive Search, Advisory, Switch), six nodes from `networkNodes` in `lib/data.ts` (HR-leiders, senior HR-kandidaten, coaches, opleiders, organisaties met blijvende vraag, medewerkers; each node lists its `hubs` and `links`, HR-leiders link to medewerkers); hover/click lights the links and swaps the text panel. Pure SVG + React state. Built from the brief; Douwe's own Claude Design file ("Netwerkconnector 2D", claude.ai/design share link) could not be opened from Code, so compare and align when he shares an export.
-- `components/RadarChart.tsx` — one-to-one re-drawing of figure 2 in Anthropic, "Labor market impacts of AI" (5 maart 2026): 22 categories in the original order, theoretical vs observed AI coverage. Seven values are exact from the report text, the rest read off the chart (±2 pts); source line under the legend. The `figure` variant is interactive (hover/tap a sector shows both percentages).
+- `components/NetworkConnector.tsx` — 2D "netwerkconnector" on the homepage: two hubs in the middle (Productive Search & Advisory, Productive Switch; merged from three on 2026-10-05), six nodes from `networkNodes` in `lib/data.ts` (HR-leiders, senior HR-kandidaten, coaches, opleiders, organisaties met blijvende vraag, medewerkers; each node lists its `hubs` and `links`, HR-leiders link to medewerkers); hover/click lights the links and swaps the text panel. Pure SVG + React state. Built from the brief; Douwe's own Claude Design file ("Netwerkconnector 2D", claude.ai/design share link) could not be opened from Code, so compare and align when he shares an export.
+- `components/RadarChart.tsx` — one-to-one re-drawing of figure 2 in Anthropic, "Labor market impacts of AI" (5 maart 2026): 22 categories in the original order, theoretical vs observed AI coverage. Seven values are exact from the report text, the rest read off the chart (±2 pts); source line under the legend. The `figure` variant is interactive (hover/tap a sector shows the percentages) and has a toggle that adds the orange "LLM and robot exposure" series from Anthropic, "What work can robots do?" (30 sept 2026, figure 6), read off the chart.
 - Homepage/Switch photos live in `public/photos/` (three richting photos + visie.jpg). The Unsplash placeholder on the Search page is gone.
 - `lib/data.ts` also holds `hrShifts`, `roleTypes`, `advisoryItems` (Search & Advisory content) and `networkNodes`. `partners` still exists but is no longer rendered anywhere.
 - `lib/courses.ts` — the full course catalogue transcribed from the internal marktverkenning Excel (juli 2026): ~85 courses across three `richting` values `techniek` | `sociaal` | `domein`, with normalized filter fields (veld, aanbieder, duur + duurCat, binnen-1-maand ja/deels/nee, vorm, prijs + prijsCat, erkenning, url). The `domein` set (added 2026-07-08 from the Excel's "AI-trainingen kantoor" sheet) is AI-bijscholing per vakgebied: velden ai-basis, support, marketing, communicatie, finance, hr, juridisch. Prices are third-party provider prices, always labeled indicatief/ex btw (our own fee still never appears). `components/CoursesPage.tsx` maps slug `eigen-vak`→richting `domein` and now renders the same left filter sidebar (veld, aanbieder, duur, binnen 1 maand, vorm, prijs) + card grid for all three richtingen, plus a `richting-switch` pill nav (jump between catalogues) and, for `eigen-vak` only, a compact radar intro figure ("Bijscholen in je eigen vak") above the grid. Don't put `.reveal` on the tall courses section: the 0.12 IntersectionObserver threshold can never be reached by elements much taller than the viewport.
@@ -43,30 +43,32 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 - **Restraint**: whitespace and hierarchy do the work. No blur blobs, no floating photos, no gradient backgrounds, no pastel tints as section backgrounds.
 - **Motion**: CSS-only reveals and hover lifts; the two interactive figures (radar, netwerkconnector) respond to hover/tap. prefers-reduced-motion respected.
 
-### Colour System
-Defined as CSS variables in `app/globals.css`:
+### Colour System (herzien 2026-10-04)
+Naar vier Behance-referenties die Douwe aandroeg (Northline recruitment, NexHiro SaaS, SpinePro training, Wanglow): diep bosgroen als donkere basis, mint als accent, warmgrijze neutralen, één gedempt marineblauw voor Search. Defined as CSS variables in `app/globals.css`:
 
 ```
---paper: #F4F4F1        (page background)
---paper-2: #FFFFFF      (cards, hero surface)
---ink: #1C1C1C          (primary text only; never as a band or button colour, Douwe: "het zwarte vloekt")
---navy: #24304A         (all dark bands, primary buttons, netwerk hubs)
---ink-soft: #55554F     (secondary text)
---line: #DCDCD5         (borders)
+--paper: #EEEFEA        (page background, warm grey)
+--paper-2: #F8F8F5      (cards, hero surface)
+--ink: #152523          (text only, never as a fill)
+--ink-soft: #55615D
+--line: #D6D9D2
 
---switch: #1E8CA3       (Productive Switch teal; pathway 01 domain)
---hire: #2A56A6         (Productive Search blue, solid; --hire-deep #1E3F7D for hover and the Advisory hub)
---radar-theo / --radar-obs: #2F7ED8 / #E3453A (radar only, matches the Anthropic figure)
---col-tech: #E0A100     (trades yellow; --col-tech-deep #A87400 for text on light)
---col-social: #E2532F   (social sector red/orange)
+--forest: #1E3A35       (all dark bands, primary buttons, netwerk hubs; --navy aliases to it)
+--mint: #A9D9B3         (accent on dark: eyebrows, links, btn-light)
+--mint-deep: #3E8A6A    (eyebrows on light)
+--switch: #2F7A6A       (Productive Switch jungle green)
+--hire: #24456F         (Productive Search muted navy; --hire-deep #18324F)
+--col-tech: #D9A43B     (trades ochre; --col-tech-deep for text on light)
+--col-social: #C9644A   (social sector terracotta)
+--radar-theo / --radar-obs: #2F6FB5 / #D8503F (radar only)
 ```
 
-The `-soft` pastel variables still exist for a few small badges (course month chips) but must not be used as section or card backgrounds. Fan cards on /subsidies are solid brand colours (no gradients). On the yellow card text is ink, not white.
+No pure black, no pure white surfaces, no pastel section backgrounds, no gradients.
 
 ### Typography
-- **Display (headings)**: Outfit (geometric sans), weights 400–700, letter-spacing -0.02em, line-height 1.08.
-- **Body (copy, labels)**: Archivo, weights 400–600.
-- Both via `next/font/google` in `app/layout.tsx` (variables `--font-outfit`, `--font-archivo`).
+- **Display (headings)**: Poppins (geometric, after the Northline reference), weights 400–700, letter-spacing -0.02em. Hero H1 is weight 500 so it does not shout.
+- **Body (copy, labels)**: Inter.
+- Both via `next/font/google` in `app/layout.tsx` (variables `--font-poppins`, `--font-inter`). Douwe chose this "Northline" set on 2026-10-05 from four Behance-based palette/font variants (NexHiro, SpinePro, Wanglow were the others; removed).
 
 ### Component Patterns
 
