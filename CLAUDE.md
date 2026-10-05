@@ -63,7 +63,7 @@ Naar vier Behance-referenties die Douwe aandroeg (Northline recruitment, NexHiro
 --radar-theo / --radar-obs: #2F6FB5 / #D8503F (radar only)
 ```
 
-No pure black, no pure white surfaces, no pastel section backgrounds, no gradients.
+No pure black, no pure white surfaces, no pastel section backgrounds, no gradients. Per service page the accent is consistent: everything on `/productive-switch` (`.switch-page`) is green (`--switch`, dark bands `--switch-deep`), everything on `/productive-search` (`.hire`) is blue (`--hire`, dark bands `--hire-deep`); the homepage keeps forest for its dark bands. Overrides live at the end of `globals.css`.
 
 ### Typography
 - **Display (headings)**: Poppins (geometric, after the Northline reference), weights 400–700, letter-spacing -0.02em. Hero H1 is weight 500 so it does not shout.

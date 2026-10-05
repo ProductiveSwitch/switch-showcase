@@ -20,6 +20,7 @@
   --mint-deep: #3E8A6A;    /* accent op licht */
 
   --switch: #2F7A6A;       /* Productive Switch: jungle green */
+  --switch-deep: #1F5A4E;  /* donkere banden op de Switch-pagina */
   --switch-soft: #E3EFEA;
   --hire: #24456F;         /* Productive Search: gedempt marineblauw */
   --hire-deep: #18324F;
@@ -582,3 +583,33 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
   .cta-band { padding: 28px 24px; }
   .quote { padding: 28px 24px; }
 }
+
+/* ===== Kleurconsistentie per dienstpagina (oktober 2026) =====
+   Switch-pagina: alles groen. Search-pagina: alles blauw. */
+.switch-page .eyebrow { color: var(--switch); }
+.switch-page .h-hero .eyebrow { color: rgba(255,255,255,.8); }
+.switch-page .cta-band { background: var(--switch-deep); }
+.switch-page .vision { background: var(--switch-deep); }
+.switch-page .vision .anchor { color: var(--mint); }
+.switch-page .visie-text { background: var(--switch); }
+.switch-page .quote { border-left-color: var(--switch); }
+.switch-page .btn-ink { background: var(--switch-deep); }
+.switch-page .btn-ink:hover { background: #17463C; }
+.switch-page .btn-ghost { border-color: var(--switch-deep); color: var(--switch-deep); }
+.switch-page .btn-ghost:hover { background: var(--switch-deep); color: #fff; }
+.switch-page .opleider-band { border-color: var(--switch); }
+.switch-page .lees-meer { color: var(--switch); border-color: var(--switch); }
+.switch-page .lees-meer.light { color: #fff; border-color: rgba(255,255,255,.7); }
+
+.hire .eyebrow { color: var(--hire); }
+.hire .h-hero .eyebrow { color: rgba(255,255,255,.8); }
+.hire .advisory { background: var(--hire-deep); }
+.hire .advisory .eyebrow { color: #B9CFF2; }
+.hire .adv-num { color: #B9CFF2; }
+.hire .cta-band { background: var(--hire-deep); }
+.hire .quote { border-left-color: var(--hire); }
+.hire .shift-num { color: var(--hire); }
+.hire .role:hover { border-color: var(--hire); }
+.hire .btn-ghost { border-color: var(--hire-deep); color: var(--hire-deep); }
+.hire .btn-ghost:hover { background: var(--hire-deep); color: #fff; }
+.hire .vac-filter.on { border-color: var(--hire); background: var(--hire); }
