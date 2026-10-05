@@ -710,3 +710,34 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .contact-group--search .entry--hire .entry-k { color: #B9CFF2; }
 .entry-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-bottom: 64px; }
 @media (max-width: 560px) { .entry-grid--2 { grid-template-columns: 1fr; } }
+
+/* Contact: alle tegels in de dienstkleur */
+.contact-group--switch .entry { background: var(--switch); border-color: var(--switch); color: #fff; }
+.contact-group--switch .entry .entry-k { color: var(--mint); }
+.contact-group--switch .entry .entry-s { color: rgba(255,255,255,.85); }
+.contact-group--switch .entry:hover { background: #266556; border-color: #266556; }
+.contact-group--switch .entry--primary { background: var(--switch-deep); border-color: var(--switch-deep); }
+.contact-group--switch .entry--primary:hover { background: #17463C; border-color: #17463C; }
+.contact-group--search .entry { background: var(--hire); border-color: var(--hire); color: #fff; }
+.contact-group--search .entry .entry-k { color: #B9CFF2; }
+.contact-group--search .entry .entry-s { color: rgba(255,255,255,.85); }
+.contact-group--search .entry:hover { background: #22467F; border-color: #22467F; }
+.contact-group--search .entry--hire { background: var(--hire-deep); border-color: var(--hire-deep); }
+.contact-group--search .entry--hire:hover { background: #122640; border-color: #122640; }
+
+/* Deelnemers: compactere hero zodat alles binnen één scherm valt */
+.deelnemers-page .h-hero { padding: 108px 0 48px; }
+.deelnemers-page .h-hero h1 { font-size: clamp(28px, 3.2vw, 40px); max-width: 16ch; }
+.deelnemers-page .h-hero .lede { font-size: 15.5px; line-height: 1.55; max-width: 56ch; }
+.deelnemers-page .deel-points { margin-top: 16px; gap: 6px; }
+.deelnemers-page .deel-points li { font-size: 14px; }
+.deelnemers-page .account-card { padding: 8px 8px 16px; }
+.deelnemers-page .account-tabs { margin-bottom: 12px; }
+.deelnemers-page .account-body h3 { font-size: 20px; }
+.deelnemers-page .account-sub { margin-bottom: 10px; }
+.deelnemers-page .account-body .form-input { padding: 10px 12px; margin-bottom: 8px; font-size: 14px; }
+.deelnemers-page .account-body .choices-stack { gap: 6px; }
+.deelnemers-page .account-body .choices-stack .choice { padding: 7px 11px; font-size: 13px; }
+.deelnemers-page .account-submit { margin-top: 10px; padding: 11px 20px; font-size: 15px; }
+.deelnemers-page .account-note { margin-top: 8px; }
+.deelnemers-page .h-hero-grid--account { grid-template-columns: 1fr 400px; }

@@ -83,12 +83,12 @@ export function ContactPage() {
       <section className="h-hero h-hero--forest h-hero--short">
         <div className="wrap">
           <div className="h-hero-text">
-            <div className="eyebrow">{t({ nl: "Kom in contact", en: "Get in touch" })}</div>
-            <h1>{t({ nl: "Vertel kort wie je bent en wat er speelt.", en: "Tell us briefly who you are and what's going on." })}</h1>
+            <div className="eyebrow">Productive Switch</div>
+            <h1>{t({ nl: "Kom in contact", en: "Get in touch" })}</h1>
             <p className="lede">
               {t({
-                nl: "Kies hieronder wat bij je past. Een paar korte vragen, dan nemen we binnen één werkdag contact op. Liever direct mailen? Dat kan via info@productiveswitch.nl.",
-                en: "Pick what fits you below. A few short questions, then we get in touch within one working day. Prefer email? Write to info@productiveswitch.nl.",
+                nl: "Vertel kort wie je bent en wat er speelt. Kies hieronder wat bij je past: een paar korte vragen, dan nemen we binnen één werkdag contact op. Liever direct mailen? Dat kan via info@productiveswitch.nl.",
+                en: "Tell us briefly who you are and what's going on. Pick what fits you below: a few short questions, then we get in touch within one working day. Prefer email? Write to info@productiveswitch.nl.",
               })}
             </p>
           </div>
