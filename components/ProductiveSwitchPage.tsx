@@ -31,7 +31,7 @@ export function ProductiveSwitchPage() {
               <div className="eyebrow">Productive Switch</div>
               <h1>
                 {t({
-                  nl: "Omscholing via gerichte outplacementtrajecten",
+                  nl: "Omscholing via gerichte outplacement\u00ADtrajecten",
                   en: "Re-training through targeted outplacement tracks",
                 })}
               </h1>
