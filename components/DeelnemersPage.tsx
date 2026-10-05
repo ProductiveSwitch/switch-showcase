@@ -23,8 +23,14 @@ export function DeelnemersPage() {
             <h1>{t({ nl: "Werk verandert. Mee veranderen is belangrijker dan ooit.", en: "Work is changing. Changing with it matters more than ever." })}</h1>
             <p className="lede">
               {t({
-                nl: "Het veranderen van je functie of het verdwijnen van je rol kan een enorme impact hebben. Deze onzekere tijd vraagt meer dan ooit om een flexibele mindset, het aanleren van nieuwe vaardigheden en het inzetten van je competenties op andere gebieden. Maak een account aan en begin direct online: update je CV, doe je eigen scan van de arbeidsmarkt, breng je skills, ambities en vervolgrichtingen in kaart, en zet de basis neer voor het gebruik van AI in je zoektocht.",
-                en: "A changing role, or a role that disappears, can have an enormous impact. These uncertain times call more than ever for a flexible mindset, learning new skills and applying your competences in other fields. Create an account and start online right away: update your CV, do your own scan of the labour market, map your skills, ambitions and next directions, and lay the basis for using AI in your search.",
+                nl: "Het veranderen van je functie of het verdwijnen van je rol kan een enorme impact hebben. Deze onzekere tijd vraagt meer dan ooit om een flexibele mindset, het aanleren van nieuwe vaardigheden en het inzetten van je competenties op andere gebieden. Wij kunnen je daarmee helpen.",
+                en: "A changing role, or a role that disappears, can have an enormous impact. These uncertain times call more than ever for a flexible mindset, learning new skills and applying your competences in other fields. We can help you with that.",
+              })}
+            </p>
+            <p className="lede">
+              {t({
+                nl: "Maak een account aan en begin direct online: update je CV, doe je eigen scan van de arbeidsmarkt, breng je skills, ambities en vervolgrichtingen in kaart, en zet de basis neer voor het gebruik van AI in je zoektocht.",
+                en: "Create an account and start online right away: update your CV, do your own scan of the labour market, map your skills, ambitions and next directions, and lay the basis for using AI in your search.",
               })}
             </p>
             <ul className="deel-points">
