@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { networkNodes, type Bi, type Lang } from "@/lib/data";
 
-// 2D netwerkconnector: de drie diensten (Search, Advisory, Switch) als hubs in
+// 2D netwerkconnector: de twee diensten (Search, Switch) als hubs in
 // het midden, om hen heen de zes partijen die we verbinden. Hover of tik op een
 // knoop of hub en de bijbehorende lijnen lichten op, met de toelichting ernaast.
 // Puur SVG + React-state, geen library.
@@ -28,11 +28,11 @@ interface Hub {
 const HUBS: Hub[] = [
   {
     id: "search",
-    label: "Search & Advisory",
-    short: { nl: "Productive Search & Advisory", en: "Productive Search & Advisory" },
+    label: "Search",
+    short: { nl: "Productive Search", en: "Productive Search" },
     body: {
-      nl: "Werving van senior HR-leiders en adviseurs voor transformaties, en adviesopdrachten op employee relations, loontransparantie, AI-implementatie in HR en organisatieontwerp.",
-      en: "Recruitment of senior HR leaders and advisers for transformations, and advisory work on employee relations, pay transparency, AI implementation in HR and organisational design.",
+      nl: "Werving van HR-leiders, senior professionals en interim adviseurs voor transformaties: organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR.",
+      en: "Recruitment of HR leaders, senior professionals and interim advisers for transformations: organisational design, employee relations, reorganisations and the application of AI within HR.",
     },
     color: "var(--hire)",
     x: CX + 92,
@@ -122,8 +122,8 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
         className="netc-svg"
         role="img"
         aria-label={t({
-          nl: "Netwerk: Productive Search & Advisory en Productive Switch verbinden HR-leiders, senior HR-professionals, loopbaancoaches, opleiders, werkgevers met blijvende vraag en medewerkers in transitie.",
-          en: "Network: Productive Search & Advisory and Productive Switch connect HR leaders, senior HR professionals, career coaches, training providers, employers with lasting demand and employees in transition.",
+          nl: "Netwerk: Productive Search en Productive Switch verbinden HR-leiders, senior HR-professionals, loopbaancoaches, opleiders, werkgevers met blijvende vraag en medewerkers in transitie.",
+          en: "Network: Productive Search and Productive Switch connect HR leaders, senior HR professionals, career coaches, training providers, employers with lasting demand and employees in transition.",
         })}
         onMouseLeave={() => setActive(null)}
       >
@@ -175,23 +175,12 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
               aria-label={t(h.short)}
             >
               <circle cx={h.x} cy={h.y} r={50} />
-              <text x={h.x} y={h.y - (h.label.includes("&") ? 12 : 4)} textAnchor="middle" className="netc-hub-a">
+              <text x={h.x} y={h.y - 4} textAnchor="middle" className="netc-hub-a">
                 Productive
               </text>
-              {h.label.includes("&") ? (
-                <>
-                  <text x={h.x} y={h.y + 6} textAnchor="middle" className="netc-hub-b">
-                    Search &
-                  </text>
-                  <text x={h.x} y={h.y + 24} textAnchor="middle" className="netc-hub-b">
-                    Advisory
-                  </text>
-                </>
-              ) : (
-                <text x={h.x} y={h.y + 14} textAnchor="middle" className="netc-hub-b">
-                  {h.label}
-                </text>
-              )}
+              <text x={h.x} y={h.y + 14} textAnchor="middle" className="netc-hub-b">
+                {h.label}
+              </text>
             </g>
           );
         })}
@@ -251,8 +240,8 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
             <h3>{t({ nl: "Wie we verbinden", en: "Who we connect" })}</h3>
             <p>
               {t({
-                nl: "Beweeg over een dienst of een partij en zie welke rol die in het netwerk speelt, en hoe de lijnen lopen.",
-                en: "Hover over a service or a party to see the role it plays in the network, and how the lines run.",
+                nl: "Rond onze twee diensten staan de partijen die het verschil maken. Kies er een en zie wat die bijdraagt en met wie die samenwerkt.",
+                en: "Around our two services are the parties that make the difference. Pick one to see what it contributes and who it works with.",
               })}
             </p>
           </>

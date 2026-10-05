@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { vacancies, vacancyFilters, hrShifts, roleTypes, advisoryItems, type VacancyCategory } from "@/lib/data";
+import { vacancies, vacancyFilters, hrShifts, roleTypes, type VacancyCategory } from "@/lib/data";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
@@ -24,7 +24,7 @@ export function ProductiveSearchPage() {
       <section className="h-hero">
         <div className="wrap h-hero-grid">
           <div className="h-hero-text">
-            <div className="eyebrow">Productive Search & Advisory</div>
+            <div className="eyebrow">Productive Search</div>
             <h1>
               {t({
                 nl: "Senior HR-leiders voor de transformatie die eraan komt.",
@@ -33,8 +33,8 @@ export function ProductiveSearchPage() {
             </h1>
             <p className="lede">
               {t({
-                nl: "Productive Search werft senior HR-rollen met de focus op HR-transformaties: reorganisaties, organisatieontwerp, loontransparantie en AI in HR. Daarnaast adviseren we HR-leiders die zo'n verandering zelf dragen. Hetzelfde netwerk dat je medewerkers goed laat landen, kent ook de mensen die dat proces leiden.",
-                en: "Productive Search recruits senior HR roles with a focus on HR transformations: reorganisations, organisational design, pay transparency and AI in HR. We also advise HR leaders carrying such a change themselves. The same network that helps your employees land well also knows the people who lead that process.",
+                nl: "Productive Search werft HR-leiders, senior professionals en interim adviseurs met de focus op HR-transformaties: organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR. Hetzelfde netwerk dat je medewerkers goed laat landen, kent ook de mensen die dat proces leiden.",
+                en: "Productive Search recruits HR leaders, senior professionals and interim advisers with a focus on HR transformations: organisational design, employee relations, reorganisations and the application of AI within HR. The same network that helps your employees land well also knows the people who lead that process.",
               })}
             </p>
             <div className="cta-actions">
@@ -52,7 +52,6 @@ export function ProductiveSearchPage() {
               <ul>
                 <li><a href="#verwachting">{t({ nl: "Wat er op HR afkomt", en: "What's heading for HR" })}</a></li>
                 <li><a href="#rollen">{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</a></li>
-                <li><a href="#advisory">{t({ nl: "Advisory", en: "Advisory" })}</a></li>
                 <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
                 <li><Link href="/contact?rol=vacature">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</Link></li>
               </ul>
@@ -107,38 +106,6 @@ export function ProductiveSearchPage() {
           </div>
         </section>
       </div>
-
-      {/* Advisory, dark band */}
-      <section className="advisory reveal" id="advisory">
-        <div className="wrap">
-          <div className="advisory-grid">
-            <div className="advisory-intro">
-              <div className="eyebrow">Advisory</div>
-              <h2>{t({ nl: "Sparren voordat je beslist", en: "Sparring before you decide" })}</h2>
-              <p>
-                {t({
-                  nl: "Niet elke transformatie vraagt om een nieuwe hire. Soms heb je iemand nodig die het al eens gedaan heeft en een middag meekijkt. Op deze onderwerpen adviseren we HR-leiders, los van of er een vacature uit komt.",
-                  en: "Not every transformation calls for a new hire. Sometimes you need someone who has done it before and looks along for an afternoon. On these topics we advise HR leaders, regardless of whether a vacancy comes out of it.",
-                })}
-              </p>
-              <Link href="/contact?rol=vacature" className="btn btn-light">
-                {t({ nl: "Plan een gesprek", en: "Plan a conversation" })}
-              </Link>
-            </div>
-            <ol className="advisory-list">
-              {advisoryItems.map((a, i) => (
-                <li key={i}>
-                  <span className="adv-num">0{i + 1}</span>
-                  <div>
-                    <h3>{t(a.title)}</h3>
-                    <p>{t(a.body)}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
 
       <div className="wrap">
         {/* Vacancies */}
@@ -226,8 +193,8 @@ export function ProductiveSearchPage() {
             <h2>{t({ nl: "Een rol te vervullen? We kennen de mensen.", en: "A role to fill? We know the people." })}</h2>
             <p>
               {t({
-                nl: "Vertel ons wat je zoekt, dan komen we met een korte, gerichte shortlist. Of plan een adviesgesprek over wat er bij jou speelt.",
-                en: "Tell us what you're after, and we'll come back with a short, focused shortlist. Or plan an advisory conversation about what's going on at your end.",
+                nl: "Vertel ons wat je zoekt, dan komen we met een korte, gerichte shortlist.",
+                en: "Tell us what you're after, and we'll come back with a short, focused shortlist.",
               })}
             </p>
           </div>

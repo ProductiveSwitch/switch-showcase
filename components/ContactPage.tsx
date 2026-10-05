@@ -33,7 +33,7 @@ export function ContactPage() {
       key: "vacature",
       k: { nl: "Werkgever", en: "Employer" },
       title: { nl: "Een senior HR-rol te vervullen?", en: "A senior HR role to fill?" },
-      sub: { nl: "Bespreek je vacature of adviesvraag met Productive Search & Advisory.", en: "Discuss your vacancy or advisory question with Productive Search & Advisory." },
+      sub: { nl: "Bespreek je vacature of adviesvraag met Productive Search.", en: "Discuss your vacancy or advisory question with Productive Search." },
       hire: true,
     },
     {

@@ -10,7 +10,7 @@ import { NetworkConnector } from "./NetworkConnector";
 
 // Homepage = het merk in één blik: één netwerk, twee diensten. De inhoud van
 // Productive Switch zelf (drie richtingen, hoe het werkt, visie) staat op
-// /productive-switch; Productive Search & Advisory op /productive-search.
+// /productive-switch; Productive Search op /productive-search.
 export function HomePage() {
   const { lang, t } = useLang();
   useReveal();
@@ -25,8 +25,8 @@ export function HomePage() {
             <div className="s-hero-text">
               <h1>
                 {t({
-                  nl: "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten.",
-                  en: "Recruitment for senior HR transformations, and re-training through targeted outplacement tracks.",
+                  nl: "Werving voor senior HR-professionals, en omscholing via gerichte outplacementtrajecten.",
+                  en: "Recruitment for senior HR professionals, and re-training through targeted outplacement tracks.",
                 })}
               </h1>
               <p className="lede">
@@ -37,7 +37,7 @@ export function HomePage() {
               </p>
               <div className="s-hero-brands">
                 <Link className="hero-brandbtn hb-hire" href="/productive-search">
-                  <span className="hb-title">Productive Search & Advisory</span>
+                  <span className="hb-title">Productive Search</span>
                   <span className="hb-sub">
                     {t({ nl: "Senior professionals voor je HR-transformatie", en: "Senior professionals for your HR transformation" })}
                   </span>
@@ -108,12 +108,12 @@ export function HomePage() {
             </div>
             <div className="service-grid stagger">
               <Link href="/productive-search" className="service-card sc-hire">
-                <div className="sc-eyebrow">Productive Search & Advisory</div>
+                <div className="sc-eyebrow">Productive Search</div>
                 <h3>{t({ nl: "Recruitment voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h3>
                 <p>
                   {t({
-                    nl: "Werving van HR-leiders en adviseurs, en adviesopdrachten op onderwerpen als employee relations, loontransparantie, AI-implementatie in HR en organisatieontwerp.",
-                    en: "Recruitment of HR leaders and advisers, and advisory work on topics such as employee relations, pay transparency, AI implementation in HR and organisational design.",
+                    nl: "Werving van HR-leiders, senior professionals en interim adviesopdrachten op onderwerpen als organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR.",
+                    en: "Recruitment of HR leaders, senior professionals and interim advisory assignments on topics such as organisational design, employee relations, reorganisations and the application of AI within HR.",
                   })}
                 </p>
                 <span className="sc-link">
@@ -125,8 +125,8 @@ export function HomePage() {
                 <h3>{t({ nl: "Omscholing die eindigt bij een werkgever", en: "Re-training that ends at an employer" })}</h3>
                 <p>
                   {t({
-                    nl: "Gerichte outplacementtrajecten: intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
-                    en: "Targeted outplacement tracks: intake by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
+                    nl: "Gerichte outplacementtrajecten: een productieve online start, een ondersteunende intake, begeleiding door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
+                    en: "Targeted outplacement tracks: a productive online start, a supportive intake, guidance by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
                   })}
                 </p>
                 <span className="sc-link">

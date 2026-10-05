@@ -367,7 +367,7 @@ export const networkNodes: NetworkNode[] = [
   },
 ];
 
-// ----- Productive Search & Advisory -----
+// ----- Productive Search -----
 export interface Shift {
   title: Bi;
   body: Bi;
