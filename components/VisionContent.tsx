@@ -41,22 +41,22 @@ export function VisionContent() {
     {
       title: { nl: "Reorganiseren is geen falen, wegkijken wel.", en: "Restructuring is not failure. Looking away is." },
       body: {
-        nl: "Werkgevers verdienen de ruimte om meer met minder te doen, op één voorwaarde: dat ze zich inspannen om hun mensen goed te laten landen. Die ruimte organiseren wij.",
-        en: "Employers deserve the room to do more with less, on one condition: that they make the effort to let their people land well. We organise that room.",
+        nl: "Reorganiseren is soms noodzakelijk, maar komt met verantwoordelijkheid. Om toekomstbestendig te zijn hebben werkgevers ruimte nodig om meer te doen met minder mensen. In een arbeidsmarkt die steeds onzekerder wordt, groeit tegelijk de morele verplichting om goed te zorgen voor werknemers die zich altijd hard voor de zaak hebben ingezet.",
+        en: "Restructuring is sometimes necessary, but it comes with responsibility. To stay future-proof, employers need room to do more with fewer people. In a labour market that grows ever more uncertain, the moral obligation grows with it: to take good care of employees who always gave their best for the business.",
       },
     },
     {
-      title: { nl: "Werk mag niet vastzitten aan een diploma.", en: "Work should not be locked to a diploma." },
+      title: { nl: "Werk moet loskomen van diploma's.", en: "Work has to come loose from diplomas." },
       body: {
-        nl: "Tekortsectoren moeten instappen makkelijk maken: korte, erkende leertrajecten en leren op de werkvloer. Wij bouwen die routes met opleiders en werkgevers.",
-        en: "Shortage sectors have to make entry easy: short, accredited learning tracks and learning on the job. We build those routes with training providers and employers.",
+        nl: "Tekortsectoren moeten instappen makkelijk maken: openheid voor zij-instromers met korte, erkende leertrajecten, en investeren in leren op de werkvloer. Er zit waarde in een frisse blik, en juist de nieuwe technologie maakt het makkelijker om sneller zelfstandig en productief te worden.",
+        en: "Shortage sectors have to make entry easy: openness to career switchers with short, accredited learning tracks, and investment in learning on the job. There is value in a fresh perspective, and the new technology itself makes it easier to become independent and productive faster.",
       },
     },
     {
-      title: { nl: "Mensen kiezen, wij geven richting.", en: "People choose, we give direction." },
+      title: { nl: "Effectieve herverdeling van talent wordt cruciaal.", en: "Effective redistribution of talent becomes crucial." },
       body: {
-        nl: "Geen reflectietrajecten van maanden, maar een concreet aanbod: dit zijn de routes, dit is wat ze vragen, dit is waar je over vier weken staat.",
-        en: "No months of reflection exercises, but a concrete offer: these are the routes, this is what they ask of you, this is where you'll stand in four weeks.",
+        nl: "Economisch succes hangt in belangrijke mate af van één vraag: hoe zorgen we voor een herverdeling van talent over sectoren? De snelheid van verandering vraagt niet om reflectietrajecten van zes tot twaalf maanden. Zorgvuldige maar efficiënte outplacementtrajecten zijn daarin cruciaal.",
+        en: "Economic success largely depends on one question: how do we redistribute talent across sectors? The pace of change does not allow for six to twelve months of reflection. Careful but efficient outplacement tracks are crucial here.",
       },
     },
   ];
@@ -80,11 +80,8 @@ export function VisionContent() {
               })}
             </p>
             <div className="cta-actions">
-              <Link className="btn btn-light btn-lg" href="/contact">
-                {t({ nl: "Kom in contact", en: "Get in touch" })}
-              </Link>
-              <Link className="btn btn-ghost-light btn-lg" href="/productive-switch">
-                {t({ nl: "Hoe we dit doen", en: "How we do this" })}
+              <Link className="btn btn-light btn-lg" href="/blog">
+                {t({ nl: "Blogs", en: "Blogs" })}
               </Link>
             </div>
           </div>
@@ -92,11 +89,11 @@ export function VisionContent() {
             <div className="h-side-card">
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
-                <li><a href="#verschuivingen">{t({ nl: "Drie verschuivingen", en: "Three shifts" })}</a></li>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
+                <li><a href="#verschuivingen">{t({ nl: "Drie verschuivingen", en: "Three shifts" })}</a></li>
                 <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
                 <li><a href="#terugval">{t({ nl: "Waar we op terugvallen", en: "What we fall back on" })}</a></li>
-                <li><Link href="/contact">{t({ nl: "Kom in contact", en: "Get in touch" })}</Link></li>
+                <li><Link href="/blog">{t({ nl: "Blogs", en: "Blogs" })}</Link></li>
               </ul>
             </div>
           </div>
@@ -104,22 +101,6 @@ export function VisionContent() {
       </section>
 
       <div className="wrap">
-        <section className="section reveal" id="verschuivingen">
-          <div className="section-head">
-            <div className="eyebrow">{t({ nl: "Wat er gebeurt", en: "What is happening" })}</div>
-            <h2>{t({ nl: "Drie verschuivingen. Wij maken ze elkaars oplossing.", en: "Three shifts. We make them each other's solution." })}</h2>
-          </div>
-          <div className="shift-grid stagger">
-            {shifts.map((s, i) => (
-              <div className="shift" key={i}>
-                <div className="shift-num">0{i + 1}</div>
-                <h3>{t(s.title)}</h3>
-                <p>{t(s.body)}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="section reveal" id="overtuigingen">
           <div className="section-head">
             <div className="eyebrow">{t({ nl: "Waar we in geloven", en: "What we believe" })}</div>
@@ -137,6 +118,22 @@ export function VisionContent() {
             ))}
           </ol>
         </section>
+        <section className="section reveal" id="verschuivingen">
+          <div className="section-head">
+            <div className="eyebrow">{t({ nl: "Wat er gebeurt", en: "What is happening" })}</div>
+            <h2>{t({ nl: "Drie verschuivingen. Wij maken ze elkaars oplossing.", en: "Three shifts. We make them each other's solution." })}</h2>
+          </div>
+          <div className="shift-grid stagger">
+            {shifts.map((s, i) => (
+              <div className="shift" key={i}>
+                <div className="shift-num">0{i + 1}</div>
+                <h3>{t(s.title)}</h3>
+                <p>{t(s.body)}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
       </div>
 
       <section className="vision reveal" id="anker">
