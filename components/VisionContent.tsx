@@ -67,7 +67,7 @@ export function VisionContent() {
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
-                <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
+                <li><a href="#anker">{t({ nl: "De kerncompetentie", en: "The core competence" })}</a></li>
                 <li><a href="#blogs">{t({ nl: "Blogs", en: "Blogs" })}</a></li>
               </ul>
             </div>
@@ -98,18 +98,18 @@ export function VisionContent() {
       <section className="vision reveal" id="anker">
         <p>
           {t({
-            nl: "Een functieomschrijving kan over een half jaar anders zijn. Blijvend inzetbaar zijn betekent blijven leren, met technologie in plaats van ertegen.",
-            en: "A job description can look different in six months. Staying employable means continuing to learn, with technology rather than against it.",
+            nl: "Een functieomschrijving kan over een half jaar anders zijn. Blijvend inzetbaar zijn betekent jezelf opnieuw blijven uitvinden, met gebruik van technologie.",
+            en: "A job description can look different in six months. Staying employable means reinventing yourself, again and again, with the help of technology.",
           })}
         </p>
         <h2>
           {lang === "nl" ? (
             <>
-              Het anker: <span className="anchor">leren om te blijven leren.</span>
+              De kerncompetentie: <span className="anchor">leren om te blijven leren.</span>
             </>
           ) : (
             <>
-              The anchor: <span className="anchor">learning to keep learning.</span>
+              The core competence: <span className="anchor">learning to keep learning.</span>
             </>
           )}
         </h2>

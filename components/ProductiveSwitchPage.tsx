@@ -197,20 +197,18 @@ export function ProductiveSwitchPage() {
         <section className="vision reveal">
           <p>
             {t({
-              nl: "Je functieomschrijving kan over een half jaar anders zijn.",
-              en: "Your job description can look different in six months.",
+              nl: "Een functieomschrijving kan over een half jaar anders zijn. Blijvend inzetbaar zijn betekent jezelf opnieuw blijven uitvinden, met gebruik van technologie.",
+              en: "A job description can look different in six months. Staying employable means reinventing yourself, again and again, with the help of technology.",
             })}
           </p>
           <h2>
             {lang === "nl" ? (
               <>
-                Daarom draait alles bij ons om één ding:{" "}
-                <span className="anchor">leren om te blijven leren.</span>
+                De kerncompetentie: <span className="anchor">leren om te blijven leren.</span>
               </>
             ) : (
               <>
-                That&apos;s why everything we do comes down to one thing:{" "}
-                <span className="anchor">learning to keep learning.</span>
+                The core competence: <span className="anchor">learning to keep learning.</span>
               </>
             )}
           </h2>

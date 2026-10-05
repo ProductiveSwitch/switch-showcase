@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "./LangContext";
 import { CvModal } from "./Forms";
+import { Logo } from "./Logo";
 
 // lucide-react no longer ships brand icons, so LinkedIn and Instagram are inline
 function LinkedInIcon() {
@@ -133,8 +134,8 @@ export function Nav() {
     <>
       <header className={`nav${scrolled ? " nav--scrolled" : ""}${menuOpen ? " nav--open" : ""}${onDark ? " nav--ondark" : ""}`}>
         <div className="nav-inner">
-          <Link className="nav-brand" href="/">
-            Productive<span className="dot">·</span>Switch
+          <Link className="nav-brand" href="/" aria-label="Productive Switch, home">
+            <Logo onDark={onDark} />
           </Link>
           <nav className="nav-links">{navLinks}</nav>
           <div className="nav-actions">{navActions}</div>

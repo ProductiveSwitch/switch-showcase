@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "./LangContext";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const { t } = useLang();
@@ -8,7 +9,7 @@ export function Footer() {
     <footer>
       <div className="wrap inner">
         <div className="brand">
-          Productive<span className="dot">·</span>Switch
+          <Logo size={24} />
         </div>
         <div>
           {t({

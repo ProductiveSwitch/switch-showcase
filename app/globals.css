@@ -60,7 +60,7 @@ section[id] { scroll-margin-top: 84px; }
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 90; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s, backdrop-filter .3s, color .3s; }
 .nav--scrolled, .nav--open { background: rgba(238,239,234,.94); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
 .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; gap: 12px; }
-.nav-brand { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap; }
+.nav-brand { display: inline-flex; align-items: center; white-space: nowrap; }
 .nav-brand .dot, .brand .dot { color: var(--switch); }
 .nav-links { display: flex; align-items: center; gap: 1px; }
 .nav-link { background: none; border: 0; font-family: var(--font-body); font-weight: 600; font-size: 12.5px; letter-spacing: .01em; padding: 7px 9px; border-radius: 6px; color: var(--ink-soft); cursor: pointer; transition: color .2s, background .2s; white-space: nowrap; }
@@ -766,3 +766,11 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 
 .btn-nav-contact { background: var(--forest); color: #fff; }
 .btn-nav-contact:hover { background: var(--forest-deep); }
+
+/* ===== Logo ===== */
+.logo { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+.logo--ondark { color: #fff; }
+.logo-word { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; line-height: 1; }
+footer .brand { display: inline-flex; }
+footer .logo-word { font-size: 17px; }
+.nav-menu .logo { color: var(--ink); }
