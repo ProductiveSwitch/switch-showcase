@@ -743,3 +743,10 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .deelnemers-page .h-hero-grid--account { grid-template-columns: 1fr 400px; }
 
 .deelnemers-page .h-hero .lede + .lede { margin-top: 10px; }
+
+.post h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.post .btn { margin-top: 4px; }
+.post--full { margin: 40px 0 64px; }
+.post--full p { font-size: 17px; line-height: 1.7; color: var(--ink); margin-bottom: 18px; }
+.post--full .lees-meer { margin-top: 10px; }
+.blog-page .h-hero .lede { color: rgba(255,255,255,.88); }
