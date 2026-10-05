@@ -251,8 +251,8 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
             <h3>{t({ nl: "Wie we verbinden", en: "Who we connect" })}</h3>
             <p>
               {t({
-                nl: "HR-leiders, senior HR-professionals, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Dezelfde gesprekken leveren kandidaten en advies op als je een transformatie leidt, en een zachte landing voor medewerkers als functies verdwijnen.",
-                en: "HR leaders, senior HR professionals, career coaches, training providers and employers with lasting demand. The same conversations yield candidates and advice when you lead a transformation, and a soft landing for employees when roles disappear.",
+                nl: "Beweeg over een dienst of een partij en zie welke rol die in het netwerk speelt, en hoe de lijnen lopen.",
+                en: "Hover over a service or a party to see the role it plays in the network, and how the lines run.",
               })}
             </p>
           </>

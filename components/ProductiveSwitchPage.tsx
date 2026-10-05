@@ -26,7 +26,7 @@ export function ProductiveSwitchPage() {
     <>
       <main className="switch-page">
         <section className="h-hero h-hero--switch">
-          <div className="wrap h-hero-grid">
+          <div className="wrap h-hero-single">
             <div className="h-hero-text">
               <div className="eyebrow">Productive Switch</div>
               <h1>
@@ -49,21 +49,9 @@ export function ProductiveSwitchPage() {
                   {t({ nl: "Hoe het werkt", en: "How it works" })}
                 </a>
               </div>
-            </div>
-            <div className="h-hero-side">
-              <div className="h-side-card">
-                <div className="h-side-k">{t({ nl: "Drie richtingen", en: "Three directions" })}</div>
-                <ul>
-                  {destinations.map((d) => (
-                    <li key={d.id}>
-                      <Link href={`/richtingen/${d.slug}`}>{t(d.label)}</Link>
-                    </li>
-                  ))}
-                </ul>
-                <a href="#showcase" className="h-side-link">
-                  {t({ nl: "Bekijk het aanbod", en: "See the catalogue" })} →
-                </a>
-              </div>
+              <a className="h-hero-jump" href="#showcase">
+                {t({ nl: "Bekijk de drie richtingen", en: "See the three directions" })} ↓
+              </a>
             </div>
           </div>
         </section>

@@ -325,7 +325,7 @@ export const networkNodes: NetworkNode[] = [
       "Accredited career coaches and labour-market experts who run the intake. The conversation ends with concrete advice on a direction and a path, not a folder full of options."
     ),
     color: "var(--switch)",
-    links: ["hr", "opleiders", "medewerkers"],
+    links: ["hr", "opleiders", "medewerkers", "werkgevers"],
     hubs: ["switch"],
   },
   {
@@ -349,7 +349,7 @@ export const networkNodes: NetworkNode[] = [
       "Organisations in care, welfare, education, the trades and energy: sectors where automation bites more slowly and demand for people is structural. They often look on during the re-training already."
     ),
     color: "var(--col-social)",
-    links: ["opleiders", "medewerkers"],
+    links: ["opleiders", "medewerkers", "coaches"],
     hubs: ["switch"],
   },
   {

@@ -34,8 +34,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij staan ze bij beide bij.",
-                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We support them in both.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Voor beide kunnen ze bij ons terecht.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. For both, they can turn to us.",
                 })}
               </p>
               <div className="s-hero-brands">
@@ -88,8 +88,8 @@ export function HomePage() {
               <h2>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h2>
               <p>
                 {t({
-                  nl: "Beweeg over een dienst of een partij om te zien wie het is en wat die voor je doet.",
-                  en: "Hover over a service or a party to see who it is and what they do for you.",
+                  nl: "Het opnieuw uitvinden van productief mensenwerk in een tijd van AI en robotica is een van de grootste opgaven van nu. Samenwerking is daarin cruciaal: tussen HR-leiders, senior HR-professionals, deelnemers, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Wij brengen dat netwerk samen.",
+                  en: "Reinventing productive human work in an age of AI and robotics is one of the great tasks of our time. Collaboration is crucial: between HR leaders, senior HR professionals, participants, career coaches, training providers and employers with lasting demand. We bring that network together.",
                 })}
               </p>
             </div>
