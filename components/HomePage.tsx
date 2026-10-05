@@ -28,14 +28,14 @@ export function HomePage() {
             <div className="s-hero-text">
               <h1>
                 {t({
-                  nl: "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten.",
-                  en: "Recruitment for senior HR transformations, and re-training through targeted outplacement tracks.",
+                  nl: "Werving voor Senior HR-Professionals, en omscholing via gerichte Outplacementtrajecten.",
+                  en: "Recruitment for Senior HR Professionals, and re-training through targeted Outplacement tracks.",
                 })}
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Voor beide kunnen ze bij ons terecht.",
-                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. For both, they can turn to us.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op onder andere deze twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij helpen ze op beide onderdelen.",
+                  en: "In the coming years HR leaders play a crucial role on, among others, these two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help them with both.",
                 })}
               </p>
               <div className="s-hero-brands">
