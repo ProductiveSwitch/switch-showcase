@@ -167,14 +167,14 @@ export function HomePage() {
               <h2>{t({ nl: "Een transformatie of reorganisatie op komst?", en: "A transformation or restructuring ahead?" })}</h2>
               <p>
                 {t({
-                  nl: "Vertel kort wie je bent en wat er speelt. We bellen je terug, concreet en zonder verplichting.",
-                  en: "Tell us briefly who you are and what's going on. We'll call you back, concretely and without obligation.",
+                  nl: "Vertel kort wie je bent en wat er speelt, en plan een kennismaking in.",
+                  en: "Tell us briefly who you are and what's going on, and book an introduction.",
                 })}
               </p>
             </div>
             <div className="cta-actions">
               <button className="btn btn-light btn-lg" onClick={() => setModal("intake")}>
-                {t({ nl: "Kom in contact", en: "Get in touch" })}
+                {t({ nl: "Plan een kennismaking", en: "Book an introduction" })}
               </button>
             </div>
           </section>
