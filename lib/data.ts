@@ -321,8 +321,8 @@ export const networkNodes: NetworkNode[] = [
     label: bi("Loopbaancoaches", "Career coaches"),
     short: bi("Coach", "Coach"),
     body: bi(
-      "Erkende loopbaancoaches en arbeidsmarktdeskundigen die de intake doen. Het gesprek eindigt met een concreet advies voor een richting en een traject, niet met een map vol opties.",
-      "Accredited career coaches and labour-market experts who run the intake. The conversation ends with concrete advice on a direction and a path, not a folder full of options."
+      "Door ons geselecteerde loopbaancoaches en arbeidsmarktdeskundigen. Zij pakken het gesprek op na de online start en de intake, goed voorbereid dus. Niet maanden praten, maar actiegericht werken: in de meeste gevallen eindigen deze gesprekken met een concreet advies voor een richting en een traject.",
+      "Career coaches and labour-market experts we have selected. They pick up the conversation after the online start and the intake, so well prepared. Not months of talking but action: in most cases these conversations end with concrete advice on a direction and a path."
     ),
     color: "var(--switch)",
     links: ["hr", "opleiders", "medewerkers", "werkgevers"],
@@ -357,8 +357,8 @@ export const networkNodes: NetworkNode[] = [
     label: bi("Medewerkers in transitie", "Employees in transition"),
     short: bi("Deelnemer", "Participant"),
     body: bi(
-      "De mensen van wie de functie verdwijnt of verandert. Capabel, niet zielig. Zij kiezen een richting, wij zorgen dat de weg ernaartoe kort, erkend en betaalbaar is.",
-      "The people whose role is ending or changing. Capable, not pitiable. They choose a direction, we make sure the road there is short, accredited and affordable."
+      "Medewerkers van wie de functie verdwijnt of verandert. Zij starten online, krijgen een intake en een loopbaancoach, en kiezen samen met ons een richting. Wij zorgen dat de weg ernaartoe kort, erkend en gefinancierd is, tot het nieuwe werk er echt is.",
+      "Employees whose role is ending or changing. They start online, get an intake and a career coach, and choose a direction together with us. We make sure the road there is short, recognised and funded, until the new work is really there."
     ),
     color: "var(--col-tech)",
     links: ["hr", "coaches", "opleiders", "werkgevers"],
