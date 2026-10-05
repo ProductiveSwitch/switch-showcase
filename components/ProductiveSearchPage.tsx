@@ -189,13 +189,7 @@ export function ProductiveSearchPage() {
         {/* Contact */}
         <section className="cta-band cta-band--hire reveal" id="search-contact">
           <div>
-            <h2>{t({ nl: "Een rol te vervullen? We kennen de mensen.", en: "A role to fill? We know the people." })}</h2>
-            <p>
-              {t({
-                nl: "Vertel ons wat je zoekt, dan komen we met een korte, gerichte shortlist.",
-                en: "Tell us what you're after, and we'll come back with a short, focused shortlist.",
-              })}
-            </p>
+            <h2>{t({ nl: "Een open vacature binnen de HR-organisatie? Kom in contact met ons netwerk.", en: "An open vacancy in your HR organisation? Get in touch with our network." })}</h2>
           </div>
           <Link href="/contact?rol=vacature" className="btn btn-light btn-lg">
             {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
