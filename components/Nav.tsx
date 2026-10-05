@@ -46,13 +46,13 @@ export function Nav() {
 
   const contactHref = pathname === "/productive-search" ? "/productive-search#search-contact" : pathname === "/productive-switch" ? "/productive-switch#contact" : "/#contact";
   // De Search-pagina opent met een volvlak blauwe hero, dus de nav is daar licht tot je scrolt
-  const onDark = (pathname === "/productive-search" || pathname === "/productive-switch") && !scrolled && !menuOpen;
+  const onDark = (pathname === "/productive-search" || pathname === "/productive-switch" || pathname === "/vision" || pathname === "/deelnemers") && !scrolled && !menuOpen;
 
   const links = [
     { href: "/productive-switch", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/productive-switch" || pathname.startsWith("/richtingen") },
     { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
     { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
-    { href: "/vision", label: { nl: "Onze visie", en: "Our vision" }, active: pathname === "/vision" },
+    { href: "/vision", label: { nl: "De visie", en: "The vision" }, active: pathname === "/vision" },
   ];
 
   // Scroll zelf naar een #anchor als we al op de doelpagina staan

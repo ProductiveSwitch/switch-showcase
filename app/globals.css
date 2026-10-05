@@ -627,3 +627,39 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .entry--primary:hover { border-color: var(--switch-deep); background: #17463C; }
 @media (max-width: 1000px) { .entry-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .entry-grid { grid-template-columns: 1fr; } }
+
+/* ===== De visie (bosgroen) ===== */
+.h-hero--forest { background: var(--forest); }
+.visie-page .eyebrow { color: var(--mint-deep); }
+.visie-page .h-hero .eyebrow { color: var(--mint); }
+.visie-page .shift-num { color: var(--mint-deep); }
+.visie-page .vision { background: var(--forest); }
+.visie-page .quote { border-left-color: var(--forest); }
+.visie-page .cta-band { background: var(--forest); }
+.belief-list { list-style: none; display: grid; gap: 0; max-width: 820px; }
+.belief-list li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid var(--line); }
+.belief-list li:last-child { border-bottom: 1px solid var(--line); }
+.belief-list .adv-num { color: var(--mint-deep); padding-top: 3px; }
+.belief-list h3 { font-size: 21px; margin-bottom: 6px; }
+.belief-list p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; max-width: 62ch; }
+
+/* ===== Voor deelnemers: account card ===== */
+.h-hero-grid--account { grid-template-columns: 1fr 440px; align-items: center; }
+.deel-points { list-style: none; display: grid; gap: 8px; margin-top: 22px; }
+.deel-points li { position: relative; padding-left: 22px; font-size: 15px; color: rgba(255,255,255,.9); }
+.deel-points li::before { content: ""; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--mint); }
+.account-card { background: var(--paper-2); color: var(--ink); border-radius: var(--radius-lg); padding: 10px 10px 22px; box-shadow: 0 30px 60px -36px rgba(0,0,0,.55); }
+.account-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: var(--paper); border-radius: 10px; padding: 4px; margin-bottom: 18px; }
+.account-tabs button { font-family: inherit; font-size: 13.5px; font-weight: 600; padding: 9px 10px; border: 0; border-radius: 8px; background: transparent; color: var(--ink-soft); cursor: pointer; transition: background .2s, color .2s; }
+.account-tabs button.on { background: var(--paper-2); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.account-body { padding: 0 14px; display: flex; flex-direction: column; }
+.account-body h3 { font-size: 22px; margin-bottom: 4px; }
+.account-sub { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; line-height: 1.5; }
+.account-body .form-q { margin-top: 4px; }
+.account-body .choices-stack .choice { font-size: 13.5px; padding: 8px 12px; }
+.account-submit { margin-top: 14px; justify-content: center; width: 100%; }
+.account-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 10px; text-align: center; line-height: 1.5; }
+.account-note--warn { color: var(--col-tech-deep); background: var(--col-tech-soft); border-radius: 8px; padding: 10px 12px; text-align: left; }
+.account-link { background: none; border: 0; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--switch); cursor: pointer; margin-top: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.account-card .form-sent h3 { font-size: 20px; margin-bottom: 6px; }
+@media (max-width: 900px) { .h-hero-grid--account { grid-template-columns: 1fr; } }

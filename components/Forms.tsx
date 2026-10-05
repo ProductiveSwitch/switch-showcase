@@ -16,7 +16,7 @@ const TO = "info@productiveswitch.nl";
 
 type SendResult = "sent" | "mailto";
 
-async function send(subject: string, text: string): Promise<SendResult> {
+export async function send(subject: string, text: string): Promise<SendResult> {
   try {
     const res = await fetch("/api/contact", {
       method: "POST",
