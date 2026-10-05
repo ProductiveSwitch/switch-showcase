@@ -110,32 +110,40 @@ export const howItWorks: Step[] = [
     num: "01",
     title: bi("Start online", "Start online"),
     body: bi(
-      "Je medewerker begint direct, zonder wachten op een afspraak: een korte vragenlijst over ervaring en wensen, plus praktische hulp bij CV en sollicitaties. Zo start de intake niet bij nul.",
-      "Your employee starts right away, without waiting for an appointment: a short questionnaire about experience and goals, plus practical help with their CV and applications. So the intake doesn't begin from scratch."
+      "Je medewerker begint direct, zonder te wachten op een afspraak. Praktische zaken komen aan bod, zoals het CV en het zelf scannen van de arbeidsmarkt, en skills en ambities worden globaal in kaart gebracht. Ook geven we een basis mee voor het gebruik van AI in de nieuwe zoektocht.",
+      "Your employee starts right away, without waiting for an appointment. Practical matters come first, such as the CV and scanning the labour market, and skills and ambitions are mapped in outline. We also hand over a basis for using AI in the new search."
     ),
   },
   {
     num: "02",
-    title: bi("Intake en advies", "Intake and guidance"),
+    title: bi("Intake en advies", "Intake and advice"),
     body: bi(
-      "Een gesprek met een loopbaancoach of arbeidsmarktdeskundige, voorbereid met de online start. Geen maanden praten zoals bij outplacement: het gesprek eindigt met een concreet advies voor een richting en een traject.",
-      "A conversation with a career coach or labour-market expert, prepared through the online start. No months of talking like in outplacement: the conversation ends with concrete advice on a direction and a path."
+      "In een online call of een fysieke afspraak geven we de online start een concreter vervolg. We leggen de basis voor een succesvolle zoektocht en brengen je medewerker in contact met de meest passende, door ons geselecteerde loopbaancoach.",
+      "In a video call or an in-person meeting we give the online start a more concrete follow-up. We lay the basis for a successful search and connect your employee with the best-fitting career coach we have selected."
     ),
   },
   {
     num: "03",
-    title: bi("Omscholing bij erkende opleiders", "Re-training with accredited providers"),
+    title: bi("Loopbaancoach en advies", "Career coach and advice"),
     body: bi(
-      "Een kort, erkend traject bij universiteiten, hogescholen, ROC's of erkende private opleiders. Gericht op het nieuwe vak, niet op een algemeen programma.",
-      "A short, accredited path at universities, colleges, vocational schools or recognised private providers. Aimed at the new trade, not a generic programme."
+      "Een gesprek met een loopbaancoach of arbeidsmarktdeskundige, goed voorbereid door de online start en de intake. Het doel is niet maanden praten, maar actiegericht werken. Deze gesprekken eindigen in de meeste gevallen met een concreet advies voor een richting en een traject.",
+      "A conversation with a career coach or labour-market expert, well prepared by the online start and the intake. The aim is not months of talking but action. In most cases these conversations end with concrete advice on a direction and a path."
     ),
   },
   {
     num: "04",
-    title: bi("Directe lijn naar werkgevers", "A direct line to employers"),
+    title: bi("Omscholing via erkende opleiders", "Re-training with accredited providers"),
     body: bi(
-      "We verbinden de omscholing aan werkgevers die mensen tekortkomen. In zorg en techniek kijken werkgevers vaak al tijdens het traject mee, en we blijven naast je medewerker staan tot het nieuwe werk er echt is.",
-      "We connect the re-training to employers who are short of people. In care and the trades, employers often look on during the path already, and we stay alongside your employee until the new work is genuinely there."
+      "Een kort, erkend traject bij erkende private opleiders, hogescholen of beroepsonderwijs. Gericht op het nieuwe vak, niet op een algemeen programma. Aanvullend bevelen we een concrete cursus aan om AI vanaf dag één in dat nieuwe vak toe te passen, voor een snelle start.",
+      "A short, accredited path at recognised private providers, colleges or vocational schools. Aimed at the new trade, not a generic programme. On top of that we recommend a concrete course for applying AI in that new trade from day one, for a fast start."
+    ),
+  },
+  {
+    num: "05",
+    title: bi("Lijn naar nieuwe werkgevers", "A line to new employers"),
+    body: bi(
+      "We verbinden de omscholing aan werkgevers in sectoren met blijvende vraag. In techniek en zorg betrekken we werkgevers al voor of tijdens het traject.",
+      "We connect the re-training to employers in sectors with lasting demand. In the trades and care we involve employers before or during the path already."
     ),
   },
 ];

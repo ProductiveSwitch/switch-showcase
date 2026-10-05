@@ -3,15 +3,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, GraduationCap, Handshake, MonitorSmartphone } from "lucide-react";
+import { Search, GraduationCap, Handshake, MonitorSmartphone, Compass } from "lucide-react";
 import { destinations, howItWorks } from "@/lib/data";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
 import { Modal, IntakeForm, KoffieForm, OpleiderForm, type ModalKind } from "./Forms";
 
-const stepIcons = [MonitorSmartphone, Search, GraduationCap, Handshake];
-const stepColors = ["var(--col-social)", "var(--col-tech-deep)", "var(--col-domain)", "var(--navy)"];
+const stepIcons = [MonitorSmartphone, Search, Compass, GraduationCap, Handshake];
+const stepColors = ["var(--switch)", "var(--switch)", "var(--switch)", "var(--switch)", "var(--switch)"];
 const pillarColors = ["var(--col-tech)", "var(--col-social)", "var(--col-domain)"];
 
 // De Productive Switch-dienstpagina: drie richtingen, financiering, hoe het
@@ -24,29 +24,78 @@ export function ProductiveSwitchPage() {
 
   return (
     <>
-      <main className="subpage">
+      <main className="switch-page">
+        <section className="h-hero h-hero--switch">
+          <div className="wrap h-hero-grid">
+            <div className="h-hero-text">
+              <div className="eyebrow">Productive Switch</div>
+              <h1>
+                {t({
+                  nl: "Omscholing via gerichte outplacementtrajecten",
+                  en: "Re-training through targeted outplacement tracks",
+                })}
+              </h1>
+              <p className="lede">
+                {t({
+                  nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen. We begeleiden je mensen naar een nieuw vak met een intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in sectoren met blijvende vraag.",
+                  en: "When a role ends, a career doesn't have to. We guide your people into a new trade with an intake by an accredited coach, short and recognised re-training, and a direct line to organisations in sectors with lasting demand.",
+                })}
+              </p>
+              <div className="cta-actions">
+                <button className="btn btn-light btn-lg" onClick={() => setModal("intake")}>
+                  {t({ nl: "Plan een intake", en: "Plan an intake" })}
+                </button>
+                <a className="btn btn-ghost-light btn-lg" href="#how">
+                  {t({ nl: "Hoe het werkt", en: "How it works" })}
+                </a>
+              </div>
+            </div>
+            <div className="h-hero-side">
+              <div className="h-side-card">
+                <div className="h-side-k">{t({ nl: "Drie richtingen", en: "Three directions" })}</div>
+                <ul>
+                  {destinations.map((d) => (
+                    <li key={d.id}>
+                      <Link href={`/richtingen/${d.slug}`}>{t(d.label)}</Link>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#showcase" className="h-side-link">
+                  {t({ nl: "Bekijk het aanbod", en: "See the catalogue" })} →
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="wrap">
-          <section className="page-head page-head--wide">
-            <div className="eyebrow">{t({ nl: "Productive Switch", en: "Productive Switch" })}</div>
-            <h1>
-              {t({
-                nl: "Omscholing via gerichte outplacementtrajecten",
-                en: "Re-training through targeted outplacement tracks",
+          {/* How it works: five numbered steps, above the directions */}
+          <section className="section reveal" id="how">
+            <div className="section-head">
+              <h2>{t({ nl: "Hoe het werkt", en: "How it works" })}</h2>
+              <p>
+                {t({
+                  nl: "Van eerste gesprek tot een nieuwe baan. Een kort, begeleid traject, geen los lijstje cursussen.",
+                  en: "From first conversation to a new job. A short, guided path, not a loose list of courses.",
+                })}
+              </p>
+            </div>
+            <div className="steps steps-5 stagger">
+              {howItWorks.map((s, i) => {
+                const Icon = stepIcons[i];
+                return (
+                  <div className="step-card" key={s.num} style={{ "--sc": stepColors[i] } as React.CSSProperties}>
+                    <div className="step-top">
+                      <span className="step-num">{s.num}</span>
+                      <span className="step-icon">
+                        <Icon size={22} strokeWidth={1.8} />
+                      </span>
+                    </div>
+                    <h3>{t(s.title)}</h3>
+                    <p>{t(s.body)}</p>
+                  </div>
+                );
               })}
-            </h1>
-            <p className="lede">
-              {t({
-                nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen. We begeleiden je mensen naar een nieuw vak met een intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in sectoren met blijvende vraag.",
-                en: "When a role ends, a career doesn't have to. We guide your people into a new trade with an intake by an accredited coach, short and recognised re-training, and a direct line to organisations in sectors with lasting demand.",
-              })}
-            </p>
-            <div className="cta-actions" style={{ marginTop: 22 }}>
-              <button className="btn btn-ink btn-lg" onClick={() => setModal("intake")}>
-                {t({ nl: "Plan een intake", en: "Plan an intake" })}
-              </button>
-              <a className="btn btn-ghost btn-lg" href="#how">
-                {t({ nl: "Hoe het werkt", en: "How it works" })}
-              </a>
             </div>
           </section>
 
@@ -92,44 +141,14 @@ export function ProductiveSwitchPage() {
                 <h2>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h2>
                 <p>
                   {t({
-                    nl: "Omscholing kost minder dan je denkt. Subsidies en opleidingsbudgetten dekken een flink deel van het traject, en wij rekenen vooraf uit wat er voor jou onder de streep overblijft.",
-                    en: "Re-training costs less than you'd think. Subsidies and training budgets cover a good part of the path, and we work out in advance what's left for you at the bottom line.",
+                    nl: "Omscholing is vaak voordeliger dan in eerste instantie gedacht. Subsidies en opleidingsbudgetten kunnen een groot deel van een traject vergoeden, en ook daarin spelen wij een begeleidende rol.",
+                    en: "Re-training is often more affordable than first assumed. Subsidies and training budgets can cover a large part of a path, and there too we play a guiding role.",
                   })}
                 </p>
               </div>
               <Link className="btn btn-light btn-lg" href="/subsidies">
                 {t({ nl: "Bekijk de subsidies", en: "See the subsidies" })}
               </Link>
-            </div>
-          </section>
-
-          {/* How it works: four numbered steps */}
-          <section className="section reveal" id="how">
-            <div className="section-head">
-              <h2>{t({ nl: "Hoe het werkt", en: "How it works" })}</h2>
-              <p>
-                {t({
-                  nl: "Van eerste gesprek tot een nieuwe baan. Een kort, begeleid traject, geen los lijstje cursussen.",
-                  en: "From first conversation to a new job. A short, guided path, not a loose list of courses.",
-                })}
-              </p>
-            </div>
-            <div className="steps stagger">
-              {howItWorks.map((s, i) => {
-                const Icon = stepIcons[i];
-                return (
-                  <div className="step-card" key={s.num} style={{ "--sc": stepColors[i] } as React.CSSProperties}>
-                    <div className="step-top">
-                      <span className="step-num">{s.num}</span>
-                      <span className="step-icon">
-                        <Icon size={22} strokeWidth={1.8} />
-                      </span>
-                    </div>
-                    <h3>{t(s.title)}</h3>
-                    <p>{t(s.body)}</p>
-                  </div>
-                );
-              })}
             </div>
           </section>
 
@@ -170,8 +189,8 @@ export function ProductiveSwitchPage() {
             </h2>
             <p>
               {t({
-                nl: "AI verandert wat kantoorwerk is, de energietransitie vraagt om vakmensen, en de zorg om handen en aandacht. Die verschuivingen zijn nu elkaars probleem. Wij helpen mensen van wie het werk verandert de overstap maken naar werk waar de arbeidsmarkt om zit te springen.",
-                en: "AI is changing what office work is, the energy transition needs skilled hands, and care needs people and attention. Right now those shifts are each other's problem. We help people whose work is changing step into work the labour market is crying out for.",
+                nl: "Elke functie wordt door AI en robotica geraakt, en veel kantoorbanen zullen verdwijnen. Ondertussen vraagt de energietransitie om meer vakmensen, moet er veel infrastructuur worden gebouwd en onderhouden, en heeft de zorg handen en aandacht nodig. Die verschuivingen zijn nu elkaars probleem. Wij helpen mensen van wie het werk verandert de overstap maken naar werk waar de arbeidsmarkt om zit te springen.",
+                en: "Every job will be touched by AI and robotics, and many office jobs will disappear. Meanwhile the energy transition needs more skilled hands, a great deal of infrastructure has to be built and maintained, and care needs people and attention. Right now those shifts are each other's problem. We help people whose work is changing step into work the labour market is crying out for.",
               })}
             </p>
             <Link href="/vision" className="lees-meer light">
