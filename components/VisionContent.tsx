@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
+import { posts } from "@/lib/posts";
 
 // De visie: volvlakke bosgroene hero met zijkaart, daarna de drie verschuivingen,
 // drie overtuigingen, het anker en de terugval-zin. Inhoud naar
@@ -67,7 +68,7 @@ export function VisionContent() {
               <ul>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
                 <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
-                <li><Link href="/blog">{t({ nl: "Blogs", en: "Blogs" })}</Link></li>
+                <li><a href="#blogs">{t({ nl: "Blogs", en: "Blogs" })}</a></li>
               </ul>
             </div>
           </div>
@@ -115,6 +116,27 @@ export function VisionContent() {
       </section>
 
       <div className="wrap">
+        <section className="section reveal" id="blogs">
+          <div className="section-head">
+            <div className="eyebrow">Blogs</div>
+            <h2>{t({ nl: "Bijdrages over een veranderende arbeidsmarkt", en: "Contributions on a changing labour market" })}</h2>
+          </div>
+          <div className="post-list stagger">
+            {posts.map((p) => (
+              <article className="post" key={p.slug}>
+                <div className="post-meta">{t(p.date)}</div>
+                <h3>
+                  <Link href={`/blog/${p.slug}`}>{t(p.title)}</Link>
+                </h3>
+                <p className="post-teaser">{t(p.teaser)}</p>
+                <Link href={`/blog/${p.slug}`} className="btn btn-ghost btn-sm">
+                  {t({ nl: "Lees meer", en: "Read more" })}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="cta-band reveal" id="visie-contact">
           <div>
             <h2>{t({ nl: "Benieuwd hoe dit voor jouw mensen werkt?", en: "Curious how this works for your people?" })}</h2>
