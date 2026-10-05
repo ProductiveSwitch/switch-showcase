@@ -400,43 +400,20 @@ export const hrShifts: Shift[] = [
 
 export interface RoleType {
   title: Bi;
-  body: Bi;
+  color: string;
 }
 
-// Rollen waarin Productive Search bemiddelt: senior HR, altijd met een transformatie-component.
+// Rollen en vakgebieden waarin Productive Search bemiddelt. Alleen titels,
+// elk met een eigen kleurblok (oktober 2026).
 export const roleTypes: RoleType[] = [
-  {
-    title: bi("CHRO en HR-directeur", "CHRO and HR Director"),
-    body: bi("Eindverantwoordelijk voor een reorganisatie, fusie of cultuurverandering.", "Ultimately responsible for a reorganisation, merger or culture change."),
-  },
-  {
-    title: bi("HR Transformation Lead", "HR Transformation Lead"),
-    body: bi("Programmamanager die het HR-huis opnieuw inricht: processen, systemen, organisatieontwerp.", "Programme lead who rebuilds the HR house: processes, systems, organisational design."),
-  },
-  {
-    title: bi("Head of Employee Relations", "Head of Employee Relations"),
-    body: bi("Sociaal plan, medezeggenschap, vakbonden en het menselijke verloop van een reorganisatie.", "Social plan, co-determination, unions and the human course of a reorganisation."),
-  },
-  {
-    title: bi("Reward & Pay Transparency Lead", "Reward & Pay Transparency Lead"),
-    body: bi("Functiewaardering, beloningsstructuur en de implementatie van loontransparantie.", "Job grading, pay structure and the implementation of pay transparency."),
-  },
-  {
-    title: bi("Head of Organisational Design", "Head of Organisational Design"),
-    body: bi("Functiehuizen, teamstructuren en functieomschrijvingen die meebewegen met AI.", "Job architecture, team structures and job descriptions that move along with AI."),
-  },
-  {
-    title: bi("People Analytics en AI in HR", "People Analytics and AI in HR"),
-    body: bi("Datagedreven HR en het verantwoord automatiseren van HR-processen.", "Data-driven HR and the responsible automation of HR processes."),
-  },
-  {
-    title: bi("Workforce Transition en L&D Lead", "Workforce Transition and L&D Lead"),
-    body: bi("Herplaatsing, omscholing en leren tijdens en na een reorganisatie.", "Redeployment, re-training and learning during and after a reorganisation."),
-  },
-  {
-    title: bi("Arbeidsrecht en HR Legal Counsel", "Employment Law and HR Legal Counsel"),
-    body: bi("Juridische begeleiding van reorganisaties en nieuwe wetgeving rond werk en beloning.", "Legal guidance on reorganisations and new legislation around work and pay."),
-  },
+  { title: bi("CHRO en HR-directie", "CHRO and HR leadership"), color: "#1E3F7D" },
+  { title: bi("HR-transformaties en reorganisaties", "HR transformations and reorganisations"), color: "#24456F" },
+  { title: bi("Organisational Design", "Organisational Design"), color: "#2F7A6A" },
+  { title: bi("Employee Relations", "Employee Relations"), color: "#1F5A4E" },
+  { title: bi("People Analytics en AI in HR", "People Analytics and AI in HR"), color: "#3E8A6A" },
+  { title: bi("Workforce Transition en L&D", "Workforce Transition and L&D"), color: "#C9644A" },
+  { title: bi("Arbeidsrecht", "Employment law"), color: "#4C5A63" },
+  { title: bi("Reward & Pay Transparency", "Reward & Pay Transparency"), color: "#B8975A" },
 ];
 
 export interface AdvisoryItem {

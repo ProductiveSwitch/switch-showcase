@@ -91,16 +91,15 @@ export function ProductiveSearchPage() {
             <h2>{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</h2>
             <p>
               {t({
-                nl: "Senior HR, altijd met een transformatie-component. Vast en interim. Geen generiek HR-bureau: we kennen de mensen omdat we ze dagelijks spreken over precies deze onderwerpen.",
-                en: "Senior HR, always with a transformation component. Permanent and interim. Not a generic HR agency: we know the people because we talk to them daily about exactly these topics.",
+                nl: "Productief mensenwerk opnieuw uitvinden in een tijd van AI en robotica vraagt om HR-leiders die een organisatie door verandering kunnen leiden. Wij bemiddelen in de rollen en vakgebieden waar die verandering wordt vormgegeven, vast en interim.",
+                en: "Reinventing productive human work in an age of AI and robotics calls for HR leaders who can guide an organisation through change. We place people in the roles and disciplines where that change takes shape, permanent and interim.",
               })}
             </p>
           </div>
           <div className="role-grid stagger">
             {roleTypes.map((r, i) => (
-              <div className="role" key={i}>
+              <div className="role role--block" key={i} style={{ background: r.color }}>
                 <h3>{t(r.title)}</h3>
-                <p>{t(r.body)}</p>
               </div>
             ))}
           </div>
