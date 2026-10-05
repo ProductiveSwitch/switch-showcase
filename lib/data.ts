@@ -225,7 +225,7 @@ export const intakeTimelines: { key: string; label: Bi }[] = [
   { key: "later", label: bi("Later, nog aan het oriënteren", "Later, still orienting") },
 ];
 
-export type VacancyCategory = "leadership" | "transition" | "advies";
+export type VacancyCategory = "vast" | "interim";
 
 export interface Vacancy {
   category: VacancyCategory;
@@ -236,16 +236,14 @@ export interface Vacancy {
   subject: string;
 }
 
-export const vacancyFilters: { key: "all" | VacancyCategory; label: Bi }[] = [
-  { key: "all", label: bi("Alle rollen", "All roles") },
-  { key: "leadership", label: bi("HR-leiderschap", "HR leadership") },
-  { key: "transition", label: bi("Werktransitie", "Workforce transition") },
-  { key: "advies", label: bi("Advies", "Counsel") },
+export const vacancyFilters: { key: VacancyCategory; label: Bi }[] = [
+  { key: "vast", label: bi("Vaste functies", "Permanent roles") },
+  { key: "interim", label: bi("Interim en adviesopdrachten", "Interim and advisory assignments") },
 ];
 
 export const vacancies: Vacancy[] = [
   {
-    category: "leadership",
+    category: "vast",
     role: bi("HR-directeur", "HR Director"),
     org: bi("Internationale maakindustrie · Eindhoven", "International manufacturing · Eindhoven"),
     tags: [bi("Fulltime", "Full-time"), bi("Vast", "Permanent"), bi("Hybride", "Hybrid")],
@@ -253,7 +251,7 @@ export const vacancies: Vacancy[] = [
     subject: "HR-directeur",
   },
   {
-    category: "transition",
+    category: "interim",
     role: bi("Lead Werktransitie & L&D", "Lead Workforce Transition & L&D"),
     org: bi("Financiële dienstverlener · Utrecht", "Financial services · Utrecht"),
     tags: [bi("Fulltime", "Full-time"), bi("Interim", "Interim"), bi("Op locatie", "On-site")],
@@ -261,7 +259,7 @@ export const vacancies: Vacancy[] = [
     subject: "Lead Werktransitie",
   },
   {
-    category: "leadership",
+    category: "vast",
     role: bi("HR Business Partner", "HR Business Partner"),
     org: bi("Scale-up in tech · Amsterdam", "Tech scale-up · Amsterdam"),
     tags: [bi("32–40 uur", "32–40 hrs"), bi("Vast", "Permanent"), bi("Hybride", "Hybrid")],
@@ -269,12 +267,12 @@ export const vacancies: Vacancy[] = [
     subject: "HR Business Partner",
   },
   {
-    category: "advies",
-    role: bi("Adviseur Arbeidsrecht", "Employment Law Counsel"),
-    org: bi("Advieskantoor · Rotterdam", "Advisory firm · Rotterdam"),
-    tags: [bi("Fulltime", "Full-time"), bi("Vast", "Permanent"), bi("Hybride", "Hybrid")],
-    salary: "€ 6.500 – 8.500",
-    subject: "Adviseur Arbeidsrecht",
+    category: "interim",
+    role: bi("Interim adviseur Organisational Design", "Interim Organisational Design adviser"),
+    org: bi("Zorgorganisatie · Rotterdam", "Care organisation · Rotterdam"),
+    tags: [bi("Interim", "Interim"), bi("6 maanden", "6 months"), bi("Hybride", "Hybrid")],
+    salary: "€ 110 – 140 p/u",
+    subject: "Interim adviseur Organisational Design",
   },
 ];
 
@@ -406,14 +404,14 @@ export interface RoleType {
 // Rollen en vakgebieden waarin Productive Search bemiddelt. Alleen titels,
 // elk met een eigen kleurblok (oktober 2026).
 export const roleTypes: RoleType[] = [
-  { title: bi("CHRO en HR-directie", "CHRO and HR leadership"), color: "#1E3F7D" },
-  { title: bi("HR-transformaties en reorganisaties", "HR transformations and reorganisations"), color: "#24456F" },
-  { title: bi("Organisational Design", "Organisational Design"), color: "#2F7A6A" },
-  { title: bi("Employee Relations", "Employee Relations"), color: "#1F5A4E" },
-  { title: bi("People Analytics en AI in HR", "People Analytics and AI in HR"), color: "#3E8A6A" },
-  { title: bi("Workforce Transition en L&D", "Workforce Transition and L&D"), color: "#C9644A" },
-  { title: bi("Arbeidsrecht", "Employment law"), color: "#4C5A63" },
-  { title: bi("Reward & Pay Transparency", "Reward & Pay Transparency"), color: "#B8975A" },
+  { title: bi("CHRO en HR-directie", "CHRO and HR leadership"), color: "#18324F" },
+  { title: bi("HR-transformaties en reorganisaties", "HR transformations and reorganisations"), color: "#1E3F7D" },
+  { title: bi("Organisational Design", "Organisational Design"), color: "#24456F" },
+  { title: bi("Employee Relations", "Employee Relations"), color: "#2A56A6" },
+  { title: bi("People Analytics en AI in HR", "People Analytics and AI in HR"), color: "#2F5A8E" },
+  { title: bi("Workforce Transition en L&D", "Workforce Transition and L&D"), color: "#3A6BA8" },
+  { title: bi("Arbeidsrecht", "Employment law"), color: "#4C7BB5" },
+  { title: bi("Reward & Pay Transparency", "Reward & Pay Transparency"), color: "#5E8CC2" },
 ];
 
 export interface AdvisoryItem {

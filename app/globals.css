@@ -685,3 +685,8 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .role--block { color: #fff; border: 0; min-height: 132px; display: flex; align-items: flex-end; padding: 20px 20px 18px; }
 .role--block h3 { font-size: 18px; margin: 0; line-height: 1.2; }
 .role--block:hover { transform: translateY(-2px); filter: brightness(1.06); }
+
+.vac-filters--tabs { gap: 0; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+.vac-filters--tabs .vac-filter { border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: transparent; padding: 10px 18px; font-size: 15px; margin-bottom: -1px; }
+.vac-filters--tabs .vac-filter:hover { transform: none; color: var(--ink); }
+.vac-filters--tabs .vac-filter.on { background: transparent; color: var(--hire); border-bottom-color: var(--hire); }

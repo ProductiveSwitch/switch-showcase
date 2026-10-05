@@ -11,12 +11,12 @@ import { CvModal } from "./Forms";
 
 export function ProductiveSearchPage() {
   const { lang, t } = useLang();
-  const [vacFilter, setVacFilter] = useState<"all" | VacancyCategory>("all");
+  const [vacFilter, setVacFilter] = useState<VacancyCategory>("vast");
   const [cvOpen, setCvOpen] = useState(false);
   useReveal();
   useHashScroll();
 
-  const shownVacancies = vacancies.filter((v) => vacFilter === "all" || v.category === vacFilter);
+  const shownVacancies = vacancies.filter((v) => v.category === vacFilter);
 
   return (
     <main className="hire">
@@ -119,7 +119,7 @@ export function ProductiveSearchPage() {
             </p>
           </div>
 
-          <div className="vac-filters">
+          <div className="vac-filters vac-filters--tabs">
             {vacancyFilters.map((f) => (
               <button
                 key={f.key}
