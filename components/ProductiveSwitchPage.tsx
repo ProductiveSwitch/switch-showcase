@@ -186,8 +186,8 @@ export function ProductiveSwitchPage() {
             </h2>
             <p>
               {t({
-                nl: "Elke functie wordt door AI en robotica geraakt, en veel kantoorbanen zullen verdwijnen. Ondertussen vraagt de energietransitie om meer vakmensen, moet er veel infrastructuur worden gebouwd en onderhouden, en heeft de zorg handen en aandacht nodig. Die verschuivingen zijn nu elkaars probleem. Wij helpen mensen van wie het werk verandert de overstap maken naar werk waar de arbeidsmarkt om zit te springen.",
-                en: "Every job will be touched by AI and robotics, and many office jobs will disappear. Meanwhile the energy transition needs more skilled hands, a great deal of infrastructure has to be built and maintained, and care needs people and attention. Right now those shifts are each other's problem. We help people whose work is changing step into work the labour market is crying out for.",
+                nl: "Elke functie wordt door AI en robotica geraakt, en veel kantoorbanen zullen verdwijnen. Ondertussen vraagt de energietransitie om meer vakmensen, moet er veel infrastructuur worden gebouwd en onderhouden, en heeft de zorg handen en aandacht nodig. Wij helpen mensen van wie het werk verandert de overstap maken naar werk waar de arbeidsmarkt om vraagt. Op basis van basiscompetenties, een frisse blik en het optimaal benutten van de nieuwste tools om snel productief te zijn.",
+                en: "Every job will be touched by AI and robotics, and many office jobs will disappear. Meanwhile the energy transition needs more skilled hands, a great deal of infrastructure has to be built and maintained, and care needs people and attention. We help people whose work is changing step into work the labour market is asking for. Built on core competences, a fresh perspective and making the most of the newest tools to become productive fast.",
               })}
             </p>
             <Link href="/vision" className="lees-meer light">
