@@ -67,7 +67,6 @@ export function VisionContent() {
               <ul>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
                 <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
-                <li><a href="#terugval">{t({ nl: "Waar we op terugvallen", en: "What we fall back on" })}</a></li>
                 <li><Link href="/blog">{t({ nl: "Blogs", en: "Blogs" })}</Link></li>
               </ul>
             </div>
@@ -116,20 +115,6 @@ export function VisionContent() {
       </section>
 
       <div className="wrap">
-        <section className="section reveal" id="terugval">
-          <div className="quote">
-            <blockquote>
-              {t({
-                nl: "We staan HR-leiders aan beide kanten van de cyclus bij: mensen vinden als je aanneemt, en je mensen goed laten landen als je reorganiseert.",
-                en: "We stand beside HR leaders on both sides of the cycle: finding people when you hire, and letting your people land well when you restructure.",
-              })}
-            </blockquote>
-            <div className="who">
-              <div className="role">{t({ nl: "De zin waar we altijd op terugvallen", en: "The sentence we always fall back on" })}</div>
-            </div>
-          </div>
-        </section>
-
         <section className="cta-band reveal" id="visie-contact">
           <div>
             <h2>{t({ nl: "Benieuwd hoe dit voor jouw mensen werkt?", en: "Curious how this works for your people?" })}</h2>
