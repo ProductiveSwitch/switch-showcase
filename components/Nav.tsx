@@ -123,7 +123,7 @@ export function Nav() {
       >
         {t({ nl: "Upload CV", en: "Upload CV" })}
       </button>
-      <Link className="btn btn-switch btn-sm" href={contactHref} onClick={(e) => onHashClick(e, contactHref)}>
+      <Link className="btn btn-nav-contact btn-sm" href={contactHref} onClick={(e) => onHashClick(e, contactHref)}>
         Contact
       </Link>
     </>
