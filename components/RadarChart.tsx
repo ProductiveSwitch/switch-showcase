@@ -72,6 +72,35 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
 
   return (
     <div className={figure ? "radar-wrap" : undefined}>
+      {figure && (
+        <div className="radar-controls">
+          <span className="radar-legend">
+            <span className="radar-key">
+              <i className="radar-swatch theo" />
+              {nl ? "Theoretische AI-dekking" : "Theoretical AI coverage"}
+            </span>
+            <span className="radar-key">
+              <i className="radar-swatch obs" />
+              {nl ? "Waargenomen AI-dekking" : "Observed AI coverage"}
+            </span>
+            {robots && (
+              <span className="radar-key">
+                <i className="radar-swatch robot" />
+                {nl ? "AI en robots samen" : "LLMs and robots combined"}
+              </span>
+            )}
+          </span>
+          <button
+            type="button"
+            className={`radar-toggle${robots ? " on" : ""}`}
+            aria-pressed={robots}
+            onClick={() => setRobots(!robots)}
+          >
+            <i aria-hidden="true" />
+            {nl ? "Toon ook robotica" : "Also show robotics"}
+          </button>
+        </div>
+      )}
       <svg
         viewBox={`0 0 ${size} ${size}`}
         className={figure ? "radar-figure" : "radar-bg"}
@@ -196,41 +225,28 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
           })}
       </svg>
       {figure && (
-        <>
-          <div className="radar-readout" aria-live="polite">
-            {cat ? (
-              <>
-                <strong>{nl ? cat.nl : cat.en}</strong>
-                <span>
-                  <i className="radar-swatch theo" /> {pct(cat.theo)} {nl ? "theoretisch" : "theoretical"}
-                </span>
-                <span>
-                  <i className="radar-swatch obs" /> {pct(cat.obs)} {nl ? "waargenomen" : "observed"}
-                </span>
-                {robots && (
-                  <span>
-                    <i className="radar-swatch robot" /> {pct(cat.robot)} {nl ? "incl. robots" : "incl. robots"}
-                  </span>
-                )}
-              </>
-            ) : (
-              <span className="radar-hint">
-                {nl ? "Beweeg over een beroepsgroep voor de cijfers." : "Hover over an occupation for the figures."}
+        <div className="radar-readout" aria-live="polite">
+          {cat ? (
+            <>
+              <strong>{nl ? cat.nl : cat.en}</strong>
+              <span>
+                <i className="radar-swatch theo" /> {pct(cat.theo)} {nl ? "theoretisch" : "theoretical"}
               </span>
-            )}
-          </div>
-          <div className="radar-toggle-row">
-            <button
-              type="button"
-              className={`radar-toggle${robots ? " on" : ""}`}
-              aria-pressed={robots}
-              onClick={() => setRobots(!robots)}
-            >
-              <i aria-hidden="true" />
-              {nl ? "Toon ook robotica (AI en robots samen)" : "Also show robotics (LLMs and robots combined)"}
-            </button>
-          </div>
-        </>
+              <span>
+                <i className="radar-swatch obs" /> {pct(cat.obs)} {nl ? "waargenomen" : "observed"}
+              </span>
+              {robots && (
+                <span>
+                  <i className="radar-swatch robot" /> {pct(cat.robot)} {nl ? "incl. robots" : "incl. robots"}
+                </span>
+              )}
+            </>
+          ) : (
+            <span className="radar-hint">
+              {nl ? "Beweeg over een beroepsgroep voor de cijfers." : "Hover over an occupation for the figures."}
+            </span>
+          )}
+        </div>
       )}
     </div>
   );

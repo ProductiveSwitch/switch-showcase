@@ -69,16 +69,6 @@ export function HomePage() {
               </h2>
               <RadarChart variant="figure" lang={lang} />
               <div className="s-hero-chart-cap">
-                <span className="radar-legend">
-                  <span className="radar-key">
-                    <i className="radar-swatch theo" />
-                    {t({ nl: "Theoretische AI-dekking", en: "Theoretical AI coverage" })}
-                  </span>
-                  <span className="radar-key">
-                    <i className="radar-swatch obs" />
-                    {t({ nl: "Waargenomen AI-dekking", en: "Observed AI coverage" })}
-                  </span>
-                </span>
                 <span className="radar-source">
                   {t({
                     nl: "Naar Anthropic, Labor market impacts of AI (maart 2026, figuur 2) en What work can robots do? (september 2026, figuur 6).",

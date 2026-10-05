@@ -52,9 +52,6 @@ export function Nav() {
     { href: "/productive-switch", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/productive-switch" || pathname.startsWith("/richtingen") },
     { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
     { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
-    { href: "/opleiders", label: { nl: "Voor opleiders", en: "For providers" }, active: pathname === "/opleiders" },
-    { href: "/productive-switch#how", label: { nl: "Hoe het werkt", en: "How it works" }, active: false },
-    { href: "/subsidies", label: { nl: "Subsidies", en: "Subsidies" }, active: pathname === "/subsidies" },
     { href: "/vision", label: { nl: "Onze visie", en: "Our vision" }, active: pathname === "/vision" },
   ];
 
