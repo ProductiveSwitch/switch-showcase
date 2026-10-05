@@ -80,9 +80,9 @@ export function VisionContent() {
               })}
             </p>
             <div className="cta-actions">
-              <a className="btn btn-light btn-lg" href="#visie-contact">
+              <Link className="btn btn-light btn-lg" href="/contact">
                 {t({ nl: "Kom in contact", en: "Get in touch" })}
-              </a>
+              </Link>
               <Link className="btn btn-ghost-light btn-lg" href="/productive-switch">
                 {t({ nl: "Hoe we dit doen", en: "How we do this" })}
               </Link>
@@ -96,7 +96,7 @@ export function VisionContent() {
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
                 <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
                 <li><a href="#terugval">{t({ nl: "Waar we op terugvallen", en: "What we fall back on" })}</a></li>
-                <li><a href="#visie-contact">{t({ nl: "Kom in contact", en: "Get in touch" })}</a></li>
+                <li><Link href="/contact">{t({ nl: "Kom in contact", en: "Get in touch" })}</Link></li>
               </ul>
             </div>
           </div>
@@ -184,7 +184,7 @@ export function VisionContent() {
               })}
             </p>
           </div>
-          <Link href="/productive-switch#contact" className="btn btn-light btn-lg">
+          <Link href="/contact" className="btn btn-light btn-lg">
             {t({ nl: "Plan een kennismaking", en: "Book an introduction" })}
           </Link>
         </section>

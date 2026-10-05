@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
-import { Modal, IntakeForm, type ModalKind } from "./Forms";
 import { RadarChart } from "./RadarChart";
 import { NetworkConnector } from "./NetworkConnector";
 
@@ -15,7 +13,6 @@ import { NetworkConnector } from "./NetworkConnector";
 // /productive-switch; Productive Search & Advisory op /productive-search.
 export function HomePage() {
   const { lang, t } = useLang();
-  const [modal, setModal] = useState<ModalKind>(null);
   useReveal();
   useHashScroll();
 
@@ -55,9 +52,9 @@ export function HomePage() {
                 </Link>
               </div>
               <div className="s-hero-cta">
-                <button className="btn btn-ink btn-lg" onClick={() => setModal("intake")}>
+                <Link className="btn btn-ink btn-lg" href="/contact">
                   {t({ nl: "Kom in contact", en: "Get in touch" })}
-                </button>
+                </Link>
               </div>
             </div>
             <div className="s-hero-chart">
@@ -173,25 +170,13 @@ export function HomePage() {
               </p>
             </div>
             <div className="cta-actions">
-              <button className="btn btn-light btn-lg" onClick={() => setModal("intake")}>
+              <Link className="btn btn-light btn-lg" href="/contact">
                 {t({ nl: "Plan een kennismaking", en: "Book an introduction" })}
-              </button>
+              </Link>
             </div>
           </section>
         </div>
       </main>
-
-      <Modal
-        open={modal === "intake"}
-        onClose={() => setModal(null)}
-        title={t({ nl: "Kom in contact", en: "Get in touch" })}
-        intro={t({
-          nl: "Een paar korte vragen, dan weten we genoeg om je concreet terug te bellen. Geen verplichting.",
-          en: "A few short questions, then we know enough to call you back concretely. No obligation.",
-        })}
-      >
-        <IntakeForm lang={lang} onClose={() => setModal(null)} />
-      </Modal>
 
     </>
   );

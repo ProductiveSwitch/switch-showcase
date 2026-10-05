@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { vacancies, vacancyFilters, hrShifts, roleTypes, advisoryItems, type VacancyCategory } from "@/lib/data";
 import { useLang } from "./LangContext";
@@ -37,9 +38,9 @@ export function ProductiveSearchPage() {
               })}
             </p>
             <div className="cta-actions">
-              <a href="#search-contact" className="btn btn-light btn-lg">
+              <Link href="/contact?rol=vacature" className="btn btn-light btn-lg">
                 {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
-              </a>
+              </Link>
               <button className="btn btn-ghost-light btn-lg" onClick={() => setCvOpen(true)}>
                 {t({ nl: "Upload CV", en: "Upload CV" })}
               </button>
@@ -53,7 +54,7 @@ export function ProductiveSearchPage() {
                 <li><a href="#rollen">{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</a></li>
                 <li><a href="#advisory">{t({ nl: "Advisory", en: "Advisory" })}</a></li>
                 <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
-                <li><a href="#search-contact">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</a></li>
+                <li><Link href="/contact?rol=vacature">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</Link></li>
               </ul>
             </div>
           </div>
@@ -120,9 +121,9 @@ export function ProductiveSearchPage() {
                   en: "Not every transformation calls for a new hire. Sometimes you need someone who has done it before and looks along for an afternoon. On these topics we advise HR leaders, regardless of whether a vacancy comes out of it.",
                 })}
               </p>
-              <a href="#search-contact" className="btn btn-light">
+              <Link href="/contact?rol=vacature" className="btn btn-light">
                 {t({ nl: "Plan een gesprek", en: "Plan a conversation" })}
-              </a>
+              </Link>
             </div>
             <ol className="advisory-list">
               {advisoryItems.map((a, i) => (
@@ -230,9 +231,9 @@ export function ProductiveSearchPage() {
               })}
             </p>
           </div>
-          <a href="mailto:info@productiveswitch.nl" className="btn btn-light btn-lg">
+          <Link href="/contact?rol=vacature" className="btn btn-light btn-lg">
             {t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}
-          </a>
+          </Link>
         </section>
       </div>
 

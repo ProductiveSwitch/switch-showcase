@@ -663,3 +663,20 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .account-link { background: none; border: 0; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--switch); cursor: pointer; margin-top: 12px; text-decoration: underline; text-underline-offset: 3px; }
 .account-card .form-sent h3 { font-size: 20px; margin-bottom: 6px; }
 @media (max-width: 900px) { .h-hero-grid--account { grid-template-columns: 1fr; } }
+
+/* ===== Kom in contact (losse pagina) ===== */
+.h-hero--short { min-height: 0; padding: 124px 0 56px; }
+.contact-page .eyebrow { color: var(--mint-deep); }
+.contact-page .h-hero .eyebrow { color: var(--mint); }
+.contact-page .h-hero h1 { max-width: 20ch; }
+.contact-page .h-hero .lede { color: rgba(255,255,255,.88); }
+.entry-grid--5 { grid-template-columns: repeat(5, 1fr); margin-bottom: 20px; }
+.entry--hire { background: var(--hire); border-color: var(--hire); color: #fff; }
+.entry--hire .entry-k { color: #B9CFF2; }
+.entry--hire .entry-s { color: rgba(255,255,255,.85); }
+.entry--hire:hover { border-color: var(--hire); background: var(--hire-deep); }
+.contact-page .entry--primary { background: var(--switch); border-color: var(--switch); }
+.contact-page .entry--primary:hover { background: #266556; border-color: #266556; }
+.contact-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 18px 22px; border: 1px dashed var(--ink-soft); border-radius: var(--radius); margin-bottom: 56px; font-size: 14px; color: var(--ink-soft); }
+@media (max-width: 1100px) { .entry-grid--5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .entry-grid--5 { grid-template-columns: 1fr; } }

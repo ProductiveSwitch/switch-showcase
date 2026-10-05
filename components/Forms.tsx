@@ -121,12 +121,12 @@ export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () =>
 }
 
 /* ---------- Intake / contact router (segmenteert op "Wie ben je?") ---------- */
-export function IntakeForm({ lang, onClose, initialWho = "" }: { lang: Lang; onClose: () => void; initialWho?: string }) {
+export function IntakeForm({ lang, onClose, initialWho = "", initialGoal = "" }: { lang: Lang; onClose: () => void; initialWho?: string; initialGoal?: string }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
   // Met een vooraf gekozen rol slaan we de "Wie ben je?"-stap over
-  const [step, setStep] = useState(initialWho ? 1 : 0);
+  const [step, setStep] = useState(initialWho ? (initialWho === "hr" && initialGoal ? 2 : 1) : 0);
   const [who, setWho] = useState(initialWho);
-  const [hrGoal, setHrGoal] = useState("");
+  const [hrGoal, setHrGoal] = useState(initialGoal);
   const [direction, setDirection] = useState("");
   const [employees, setEmployees] = useState("");
   const [budget, setBudget] = useState("");
