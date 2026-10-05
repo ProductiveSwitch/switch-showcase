@@ -57,7 +57,7 @@ function poly(cx: number, cy: number, R: number, key: "theo" | "obs" | "robot"):
   ).join(" ");
 }
 
-export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure"; lang?: Lang }) {
+export function RadarChart({ variant, lang = "nl", animate = false }: { variant: "bg" | "figure"; lang?: Lang; animate?: boolean }) {
   const [hover, setHover] = useState<number | null>(null);
   const [robots, setRobots] = useState(false);
   const figure = variant === "figure";
@@ -71,7 +71,7 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
   const nl = lang === "nl";
 
   return (
-    <div className={figure ? "radar-wrap" : undefined}>
+    <div className={figure ? `radar-wrap${animate ? " radar-wrap--animate" : ""}` : undefined}>
       <svg
         viewBox={`0 0 ${size} ${size}`}
         className={figure ? "radar-figure" : "radar-bg"}
@@ -117,6 +117,7 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
           })}
         {figure && robots && (
           <polygon
+            className="radar-poly radar-poly--robot"
             points={poly(cx, cy, R, "robot")}
             fill="var(--radar-robot)"
             fillOpacity={0.18}
@@ -126,6 +127,7 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
           />
         )}
         <polygon
+          className="radar-poly radar-poly--theo"
           points={poly(cx, cy, R, "theo")}
           fill="var(--radar-theo)"
           fillOpacity={figure ? 0.3 : 0.14}
@@ -134,6 +136,7 @@ export function RadarChart({ variant, lang = "nl" }: { variant: "bg" | "figure";
           strokeLinejoin="round"
         />
         <polygon
+          className="radar-poly radar-poly--obs"
           points={poly(cx, cy, R, "obs")}
           fill="var(--radar-obs)"
           fillOpacity={figure ? 0.45 : 0.18}
