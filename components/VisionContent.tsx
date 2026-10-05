@@ -13,30 +13,6 @@ export function VisionContent() {
   useReveal();
   useHashScroll();
 
-  const shifts = [
-    {
-      title: { nl: "AI en robotica raken elke functie", en: "AI and robotics touch every job" },
-      body: {
-        nl: "Veel kantoorbanen veranderen van inhoud of verdwijnen. Niet in één keer, wel gestaag: het gat tussen wat AI kan en wat er vandaag gebeurt, sluit de komende jaren.",
-        en: "Many office jobs change in content or disappear. Not all at once, but steadily: the gap between what AI can do and what happens today closes over the coming years.",
-      },
-    },
-    {
-      title: { nl: "De energietransitie vraagt om vakmensen", en: "The energy transition needs skilled hands" },
-      body: {
-        nl: "Netten, installaties, isolatie en infrastructuur moeten gebouwd en onderhouden worden. Dat werk is er, en het blijft er langer.",
-        en: "Grids, installations, insulation and infrastructure have to be built and maintained. That work exists, and it lasts longer.",
-      },
-    },
-    {
-      title: { nl: "Zorg en onderwijs vragen om handen en aandacht", en: "Care and education need people and attention" },
-      body: {
-        nl: "Tekorten die automatisering niet oplost. Werk waar mensen het verschil maken, en waar instappen makkelijker moet worden.",
-        en: "Shortages automation will not solve. Work where people make the difference, and where entry has to get easier.",
-      },
-    },
-  ];
-
   const beliefs = [
     {
       title: { nl: "Reorganiseren is geen falen, wegkijken wel.", en: "Restructuring is not failure. Looking away is." },
@@ -90,7 +66,6 @@ export function VisionContent() {
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
-                <li><a href="#verschuivingen">{t({ nl: "Drie verschuivingen", en: "Three shifts" })}</a></li>
                 <li><a href="#anker">{t({ nl: "Het anker", en: "The anchor" })}</a></li>
                 <li><a href="#terugval">{t({ nl: "Waar we op terugvallen", en: "What we fall back on" })}</a></li>
                 <li><Link href="/blog">{t({ nl: "Blogs", en: "Blogs" })}</Link></li>
@@ -118,22 +93,6 @@ export function VisionContent() {
             ))}
           </ol>
         </section>
-        <section className="section reveal" id="verschuivingen">
-          <div className="section-head">
-            <div className="eyebrow">{t({ nl: "Wat er gebeurt", en: "What is happening" })}</div>
-            <h2>{t({ nl: "Drie verschuivingen. Wij maken ze elkaars oplossing.", en: "Three shifts. We make them each other's solution." })}</h2>
-          </div>
-          <div className="shift-grid stagger">
-            {shifts.map((s, i) => (
-              <div className="shift" key={i}>
-                <div className="shift-num">0{i + 1}</div>
-                <h3>{t(s.title)}</h3>
-                <p>{t(s.body)}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
       </div>
 
       <section className="vision reveal" id="anker">
