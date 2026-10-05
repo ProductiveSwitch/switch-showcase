@@ -42,14 +42,14 @@ export function HomePage() {
                 <Link className="hero-brandbtn hb-hire" href="/productive-search">
                   <span className="hb-title">Productive Search & Advisory</span>
                   <span className="hb-sub">
-                    {t({ nl: "Senior HR-leiders voor je transformatie", en: "Senior HR leaders for your transformation" })}
+                    {t({ nl: "Senior professionals voor je HR-transformatie", en: "Senior professionals for your HR transformation" })}
                   </span>
                   <ArrowRight size={18} className="hb-arrow" />
                 </Link>
                 <Link className="hero-brandbtn hb-switch" href="/productive-switch">
                   <span className="hb-title">Productive Switch</span>
                   <span className="hb-sub">
-                    {t({ nl: "Gerichte omscholing voor je mensen", en: "Targeted re-training for your people" })}
+                    {t({ nl: "Gerichte omscholing voor werknemers van wie de functie verdwijnt", en: "Targeted re-training for employees whose role is ending" })}
                   </span>
                   <ArrowRight size={18} className="hb-arrow" />
                 </Link>
@@ -88,7 +88,7 @@ export function HomePage() {
               <h2>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h2>
               <p>
                 {t({
-                  nl: "Het opnieuw uitvinden van productief mensenwerk in een tijd van AI en robotica is een van de grootste opgaven van nu. Samenwerking is daarin cruciaal: tussen HR-leiders, senior HR-professionals, deelnemers, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Wij brengen dat netwerk samen.",
+                  nl: "Het opnieuw uitvinden van productief mensenwerk in een tijd van AI en robotica is een van de grootste opgaven van deze tijd. Samenwerking is daarin cruciaal: tussen HR-leiders, senior HR-professionals, deelnemers, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Wij brengen dat netwerk samen.",
                   en: "Reinventing productive human work in an age of AI and robotics is one of the great tasks of our time. Collaboration is crucial: between HR leaders, senior HR professionals, participants, career coaches, training providers and employers with lasting demand. We bring that network together.",
                 })}
               </p>
