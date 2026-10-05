@@ -34,8 +34,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Op beide fronten helpen wij.",
-                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help on both fronts.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij staan ze bij beide bij.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We support them in both.",
                 })}
               </p>
               <div className="s-hero-brands">
@@ -128,8 +128,8 @@ export function HomePage() {
                 <h3>{t({ nl: "Omscholing die eindigt bij een werkgever", en: "Re-training that ends at an employer" })}</h3>
                 <p>
                   {t({
-                    nl: "Gerichte outplacementtrajecten: intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in zorg, onderwijs, techniek en energie.",
-                    en: "Targeted outplacement tracks: intake by an accredited coach, short and recognised re-training, and a direct line to organisations in care, education, the trades and energy.",
+                    nl: "Gerichte outplacementtrajecten: intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
+                    en: "Targeted outplacement tracks: intake by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
                   })}
                 </p>
                 <span className="sc-link">
