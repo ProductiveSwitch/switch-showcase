@@ -376,24 +376,24 @@ export interface Shift {
 // Wat er de komende jaren op HR afkomt (context voor de rollen en advisory).
 export const hrShifts: Shift[] = [
   {
-    title: bi("Loontransparantie wordt wet", "Pay transparency becomes law"),
+    title: bi("AI verandert het werk, en dus de functies en de organisatiestructuur", "AI changes the work, and so the jobs and the organisational structure"),
     body: bi(
-      "De EU-richtlijn loontransparantie dwingt organisaties tot inzicht in beloning, functiewaardering en verantwoording naar medewerkers. Dat raakt reward, functiehuizen en de dialoog met de ondernemingsraad tegelijk.",
-      "The EU pay transparency directive forces organisations to open up pay, job grading and their accountability to employees. That touches reward, job architecture and the works-council dialogue all at once."
+      "Functieomschrijvingen die elk half jaar verschuiven, teams die opnieuw ontworpen worden. Iemand moet dat ontwerpen, uitleggen en zorgvuldig invoeren.",
+      "Job descriptions that shift every six months, teams redesigned. Someone has to design that, explain it and roll it out with care."
     ),
   },
   {
-    title: bi("AI verandert het werk, en dus de functies", "AI changes the work, and so the jobs"),
+    title: bi("HR-organisaties veranderen zelf ook", "HR organisations change themselves too"),
     body: bi(
-      "Functieomschrijvingen die elk half jaar verschuiven, teams die opnieuw ontworpen worden, HR-processen die zelf geautomatiseerd raken. Iemand moet dat ontwerpen, uitleggen en zorgvuldig invoeren.",
-      "Job descriptions that shift every six months, teams redesigned, HR processes themselves automated. Someone has to design that, explain it and roll it out with care."
+      "Veel operationele HR-processen worden geautomatiseerd. Daardoor verschuift ook binnen HR het werk naar inhoudelijke onderwerpen: organisatieontwerp en transformatie, business partnership en workforce-ontwikkeling.",
+      "Many operational HR processes are being automated. Within HR the work therefore shifts toward substantive topics: organisational design and transformation, business partnership and workforce development."
     ),
   },
   {
     title: bi("Reorganisaties vragen om employee relations", "Reorganisations call for employee relations"),
     body: bi(
-      "Sociale plannen, medezeggenschap, vakbonden en individuele trajecten lopen door elkaar. De HR-leider die dat zorgvuldig en menselijk doet, bepaalt hoe de organisatie er na de transformatie voorstaat.",
-      "Social plans, co-determination, unions and individual cases run through each other. The HR leader who handles that carefully and humanely determines where the organisation stands after the transformation."
+      "Sociale plannen, medezeggenschap, vakbonden en individuele trajecten nemen toe. Met de snelheid van verandering gaan die trajecten door elkaar lopen. Dat vraagt om sterk HR-leiderschap dat dit zorgvuldig en menselijk doet, en grip houdt op hoe de organisatie er na de transformatie voorstaat.",
+      "Social plans, co-determination, unions and individual cases increase. With the pace of change those tracks start to overlap. That calls for strong HR leadership that handles it carefully and humanely, and keeps a grip on where the organisation stands after the transformation."
     ),
   },
 ];

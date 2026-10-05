@@ -50,7 +50,7 @@ export function ProductiveSearchPage() {
             <div className="h-side-card">
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
-                <li><a href="#verwachting">{t({ nl: "Wat er op HR afkomt", en: "What's heading for HR" })}</a></li>
+                <li><a href="#verwachting">{t({ nl: "Wat er op HR-leiders afkomt", en: "What is heading for HR leaders" })}</a></li>
                 <li><a href="#rollen">{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</a></li>
                 <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
                 <li><Link href="/contact?rol=vacature">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</Link></li>
@@ -65,11 +65,11 @@ export function ProductiveSearchPage() {
         <section className="section reveal" id="verwachting">
           <div className="section-head">
             <div className="eyebrow">{t({ nl: "De komende jaren", en: "The coming years" })}</div>
-            <h2>{t({ nl: "Wat er op HR afkomt", en: "What's heading for HR" })}</h2>
+            <h2>{t({ nl: "Wat er de komende jaren op HR-leiders afkomt", en: "What is heading for HR leaders in the coming years" })}</h2>
             <p>
               {t({
-                nl: "Drie verschuivingen komen tegelijk binnen. Elk ervan vraagt om HR-leiderschap dat verder gaat dan de dagelijkse operatie.",
-                en: "Three shifts arrive at once. Each asks for HR leadership that goes beyond daily operations.",
+                nl: "De strategische rol van HR-afdelingen krijgt niet altijd de waardering die ze verdient. Juist de komende jaren is die rol weggelegd voor HR: drie verschuivingen komen tegelijk binnen, en elk ervan wordt op de HR-tafel beslist.",
+                en: "The strategic role of HR departments does not always get the recognition it deserves. In the coming years that role falls squarely to HR: three shifts arrive at once, and each is decided at the HR table.",
               })}
             </p>
           </div>
