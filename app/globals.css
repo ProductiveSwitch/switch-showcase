@@ -753,3 +753,13 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 
 .post h3 { font-size: clamp(22px, 2.6vw, 26px); margin-bottom: 10px; }
 .post h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Contact: binnen een dienst alle tegels één kleur */
+.contact-group--switch .entry,
+.contact-group--switch .entry--primary { background: var(--switch); border-color: var(--switch); }
+.contact-group--switch .entry:hover,
+.contact-group--switch .entry--primary:hover { background: #266556; border-color: #266556; }
+.contact-group--search .entry,
+.contact-group--search .entry--hire { background: var(--hire); border-color: var(--hire); }
+.contact-group--search .entry:hover,
+.contact-group--search .entry--hire:hover { background: #1E3B63; border-color: #1E3B63; }
