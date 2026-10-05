@@ -1,33 +1,23 @@
 import type { Metadata } from "next";
-import { Fraunces, Archivo } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/components/LangContext";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--font-archivo",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
+// Lettertypen (oktober 2026, "Northline"-palet): Poppins voor koppen, Inter voor
+// lopende tekst. De paletkiezer met drie alternatieven is verwijderd.
+const poppins = Poppins({ subsets: ["latin"], variable: "--font-poppins", display: "swap", weight: ["400", "500", "600", "700"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Productive Switch, omscholing & herplaatsing van personeel",
+  title: "Productive Switch, werving voor senior HR-professionals en gerichte omscholing",
   description:
-    "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie. Eén netwerk, beide kanten van de cyclus.",
+    "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk van geselecteerde coaches, opleiders en organisaties in sectoren met blijvende vraag.",
   openGraph: {
-    title: "Productive Switch, omscholing & herplaatsing van personeel",
+    title: "Productive Switch, werving voor senior HR-professionals en gerichte omscholing",
     description:
-      "Productive Switch helpt je mensen aan een tweede loopbaan met korte, erkende omscholing. Productive Search werft senior HR-rollen en functies rond werktransitie.",
+      "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk, beide kanten van de cyclus.",
     type: "website",
   },
 };
@@ -38,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nl" data-scroll-behavior="smooth" className={`${fraunces.variable} ${archivo.variable}`}>
+    <html lang="nl" data-scroll-behavior="smooth" className={`${poppins.variable} ${inter.variable}`}>
       <body>
         <LangProvider>
           <Nav />

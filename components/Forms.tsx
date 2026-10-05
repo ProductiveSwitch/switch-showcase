@@ -16,7 +16,7 @@ const TO = "info@productiveswitch.nl";
 
 type SendResult = "sent" | "mailto";
 
-async function send(subject: string, text: string): Promise<SendResult> {
+export async function send(subject: string, text: string): Promise<SendResult> {
   try {
     const res = await fetch("/api/contact", {
       method: "POST",
@@ -121,11 +121,12 @@ export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () =>
 }
 
 /* ---------- Intake / contact router (segmenteert op "Wie ben je?") ---------- */
-export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
+export function IntakeForm({ lang, onClose, initialWho = "", initialGoal = "" }: { lang: Lang; onClose: () => void; initialWho?: string; initialGoal?: string }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
-  const [step, setStep] = useState(0);
-  const [who, setWho] = useState("");
-  const [hrGoal, setHrGoal] = useState("");
+  // Met een vooraf gekozen rol slaan we de "Wie ben je?"-stap over
+  const [step, setStep] = useState(initialWho ? (initialWho === "hr" && initialGoal ? 2 : 1) : 0);
+  const [who, setWho] = useState(initialWho);
+  const [hrGoal, setHrGoal] = useState(initialGoal);
   const [direction, setDirection] = useState("");
   const [employees, setEmployees] = useState("");
   const [budget, setBudget] = useState("");
@@ -312,7 +313,7 @@ export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void 
   } else if (who === "deelnemer") {
     steps.push({ valid: !!direction, node: directionNode({ nl: "Welke richting heeft je interesse?", en: "Which direction interests you?" }) });
     steps.push({ valid: !!(name && emailOk), node: contactNode(false, true) });
-  } else if (who === "anders") {
+  } else if (who === "coach" || who === "anders") {
     steps.push({ valid: !!(question && name && emailOk), node: questionNode });
   }
 

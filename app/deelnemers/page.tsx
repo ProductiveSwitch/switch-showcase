@@ -4,7 +4,7 @@ import { DeelnemersPage } from "@/components/DeelnemersPage";
 export const metadata: Metadata = {
   title: "Voor deelnemers, Productive Switch",
   description:
-    "Verandert je vak of verdwijnt je rol? Kies uit drie opleidingsvelden: techniek, het sociaal domein of bijscholen in je eigen vak. Korte, erkende trajecten met persoonlijke begeleiding.",
+    "Werk verandert. Maak een account aan en begin direct online: CV, arbeidsmarktscan, skills en ambities in kaart, en een basis voor AI in je zoektocht. Daarna kies je uit drie richtingen.",
 };
 
 export default function Deelnemers() {

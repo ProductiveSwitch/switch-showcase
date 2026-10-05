@@ -18,11 +18,14 @@ The platform will eventually include accounts, video content, scheduling, and pa
 
 All copy follows the **productive-switch-voice** skill: NL-first with EN toggle (re-expression, not literal translation), informal je/jij, human-first but always concrete, hopeful never fear-based, clear over clever. Anchor "Leren om te blijven leren" used sparingly. **Hard rule: never an em dash** (use comma, period, colon, parentheses, or "en").
 
-### Architecture notes (current, restructured 2026-07-07 into real routes)
+### Architecture notes (current, herzien 2026-09-13)
 
-- Real routes with a shared fixed nav; the old single `Site.tsx` with a brand-toggle is gone (it had a panel-switch bug and no deep links). Routes: `/` (HomePage, hero H1 "Omscholing & herplaatsing van personeel"; the "Voor HR bij reorganisatie" eyebrow was removed 2026-07-08 and the H1 sits flush at the top; a "Kom in contact" hero button opens the intake modal), `/productive-search` (Productive Search, formerly Hire then Restructure; a permanent redirect from `/restructure` lives in `next.config.ts`), `/deelnemers` (Voor deelnemers, learner-facing overview of the 3 opleidingsvelden, added 2026-07-08), `/opleiders` (Voor opleiders, inline `OpleiderIntake` intake page with the key supply-side questions, added 2026-07-08), `/subsidies` ("Wat het de werkgever kost": financing fan + regelingen-overzicht naar rijksoverheid.nl LLO en business.gov.nl, stand juli 2026; renamed from /pricing on 2026-07-07), `/richtingen/[slug]` (course catalogue per richting: `techniek`=01, `sociaal`=02, `eigen-vak`=03; pillars renumbered/reordered 2026-07-08 so eigen-vak is last), `/vision`.
-- `app/layout.tsx` wraps everything in `LangProvider` (NL/EN in React context, persisted to localStorage as `ps-lang`) + shared `Nav` + `Footer`. Nav tabs (7, all kept in the bar per 2026-07-08 request): Productive Switch, Productive Search, Voor deelnemers, Voor opleiders, Hoe het werkt (`/#how` anchor), Subsidies, Onze visie, NL-EN toggle; right: Upload CV (CV mailto modal) + Contact. Nav font/spacing were tightened to fit 7 tabs and the burger breakpoint moved from 1150px to 1240px. Desktop socials live in the mobile menu. `html` carries `data-scroll-behavior="smooth"`; `components/useHashScroll.ts` + a nav click handler cover anchor scrolling across routes.
-- Homepage photos live in `public/photos/` (richting-eigen-vak.webp, richting-techniek.jpg, richting-sociaal.jpg for the three pillars; visie.jpg for the visie split), supplied by Douwe on 2026-07-07; the Unsplash placeholders are gone from the homepage (the productive-search hero still uses one).
+- Real routes with a shared fixed nav. Routes: `/` (HomePage: brand-level landing, hero H1 "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten." with the netwerk-intro lede, two service buttons, interactive radar right, then the `NetworkConnector` section, two service cards, a dark "Waarom nu" band and a contact band; the partner ticker was removed 2026-09-13 because no partnerships exist yet), `/productive-switch` (ProductiveSwitchPage: full-bleed teal hero like the Search page, with the three directions as a side card; then `#how` with five steps (start online, intake, loopbaancoach, omscholing, lijn naar werkgevers; copy by Douwe 2026-10-05) ABOVE the pillars, subsidies teaser, testimonial, visie split, vision line, `#contact` band, opleider band; nav tab "Productive Switch" and "Hoe het werkt" point here), `/productive-search` (Productive Search: full-bleed blue hero without photo, "Wat er op HR afkomt" shifts, role types grid, vacancies (the Advisory band was removed 2026-10-05; `advisoryItems` still exists in data but is unused), testimonial, contact; a permanent redirect from `/restructure` lives in `next.config.ts`), `/blog` (BlogPage: list with date, title, teaser and "Lees meer") and `/blog/[slug]` (BlogPost, static params from `lib/posts.ts`; first post "Omscholing is belangrijker dan ooit", added 2026-10-05; add posts to the array), `/contact` (ContactPage, added 2026-10-05: forest hero + five entry tiles (reorganisatie, vacature, deelnemer, loopbaancoach, opleider) + CV upload; each tile opens `IntakeForm` with `initialWho`/`initialGoal` preset; `?rol=hr|vacature|deelnemer|coach|opleider` opens it directly. Every "Kom in contact", "Plan een intake", "Bespreek je vacature" and the nav Contact button link here; the per-page contact bands only link, they hold no forms anymore), `/deelnemers` (green hero with an account card: "Account aanmaken" sends a sign-up mail via the contact route, "Inloggen" shows a "in voorbereiding" notice because there is no account system yet; added 2026-10-05), `/opleiders`, `/subsidies`, `/richtingen/[slug]` (`techniek`=01, `sociaal`=02, `eigen-vak`=03), `/vision` ("De visie": forest full-bleed hero with "Op deze pagina" side card and a single "Blogs" button; order: three convictions (rewritten by Douwe 2026-10-05), anchor band, blog list (same cards as /blog), contact band (the fallback-sentence block was removed 2026-10-05); the old `vision.module.css` is gone, it uses the shared classes).
+- `app/layout.tsx` wraps everything in `LangProvider` (NL/EN, persisted as `ps-lang`) + shared `Nav` + `Footer`. Nav tabs since 2026-10-05: Productive Switch, Productive Search, Voor deelnemers, De visie (Voor opleiders, Hoe het werkt and Subsidies were removed from the bar; the pages still exist and are linked from content). Nav gets `nav--ondark` (white text) on `/productive-search`, `/productive-switch`, `/vision` and `/deelnemers` until scrolled, because those heroes are solid colour bands. Burger breakpoint 1240px. `html` carries `data-scroll-behavior="smooth"`; `components/useHashScroll.ts` + a nav click handler cover anchor scrolling across routes.
+- `components/NetworkConnector.tsx` — 2D "netwerkconnector" on the homepage: two hubs in the middle (Productive Search, Productive Switch; merged from three on 2026-10-05), six nodes from `networkNodes` in `lib/data.ts` (HR-leiders, senior HR-kandidaten, coaches, opleiders, organisaties met blijvende vraag, medewerkers; each node lists its `hubs` and `links`, HR-leiders link to medewerkers); hover/click lights the links and swaps the text panel. Pure SVG + React state. Built from the brief; Douwe's own Claude Design file ("Netwerkconnector 2D", claude.ai/design share link) could not be opened from Code, so compare and align when he shares an export.
+- `components/RadarChart.tsx` — one-to-one re-drawing of figure 2 in Anthropic, "Labor market impacts of AI" (5 maart 2026): 22 categories in the original order, theoretical vs observed AI coverage. Seven values are exact from the report text, the rest read off the chart (±2 pts); source line under the legend. The `figure` variant is interactive (hover/tap a sector shows the percentages) and has a toggle that adds the orange "LLM and robot exposure" series from Anthropic, "What work can robots do?" (30 sept 2026, figure 6), read off the chart.
+- Homepage/Switch photos live in `public/photos/` (three richting photos + visie.jpg). The Unsplash placeholder on the Search page is gone.
+- `lib/data.ts` also holds `hrShifts`, `roleTypes`, `advisoryItems` (Search content) and `networkNodes`. `partners` still exists but is no longer rendered anywhere.
 - `lib/courses.ts` — the full course catalogue transcribed from the internal marktverkenning Excel (juli 2026): ~85 courses across three `richting` values `techniek` | `sociaal` | `domein`, with normalized filter fields (veld, aanbieder, duur + duurCat, binnen-1-maand ja/deels/nee, vorm, prijs + prijsCat, erkenning, url). The `domein` set (added 2026-07-08 from the Excel's "AI-trainingen kantoor" sheet) is AI-bijscholing per vakgebied: velden ai-basis, support, marketing, communicatie, finance, hr, juridisch. Prices are third-party provider prices, always labeled indicatief/ex btw (our own fee still never appears). `components/CoursesPage.tsx` maps slug `eigen-vak`→richting `domein` and now renders the same left filter sidebar (veld, aanbieder, duur, binnen 1 maand, vorm, prijs) + card grid for all three richtingen, plus a `richting-switch` pill nav (jump between catalogues) and, for `eigen-vak` only, a compact radar intro figure ("Bijscholen in je eigen vak") above the grid. Don't put `.reveal` on the tall courses section: the 0.12 IntersectionObserver threshold can never be reached by elements much taller than the viewport.
 - `components/RadarChart.tsx` — stylised re-drawing of the Anthropic Economic Index radar (theoretical vs observed AI usage). In the hero it carries the title "Potentiële en huidige waargenomen toepassing van AI per beroepscategorie" (per 2026-07-07 request; the "naar de Anthropic Economic Index" caption was removed there, the source credit lives on in the eigen-vak figure caption).
 - `lib/data.ts` — bilingual placeholder data (destinations now carry `slug`). `partners` carries official logo files from `public/logos/` (UvA, Erasmus, Leiden, HvA, Nyenrode; LOI renders as a red wordmark because no free logo file exists). No partnership agreements exist yet; the ticker caption says "onder andere" on purpose.
@@ -34,37 +37,38 @@ All copy follows the **productive-switch-voice** skill: NL-first with EN toggle 
 
 ## Design Language
 
-### Aesthetic
-- **Tone**: Editorial, human, trustworthy. Think magazine spread, not corporate SaaS.
-- **Warmth**: Paper/cream backgrounds, deep ink text, intentional colour accents per pathway.
-- **Restraint**: Generous whitespace, clear hierarchy, no clutter. Elegance > maximalism.
-- **Motion**: Subtle, purposeful. Staggered page load reveals, hover lifts, smooth transitions. No gratuitous animation.
+### Aesthetic (herzien 2026-09-13)
+- The cream-paper + Fraunces-serif + blurred gradient blobs + pastel fills look was dropped on 2026-09-13 because it read as a generic AI-generated site. Do not bring those back.
+- **Tone**: confident, flat, editorial. Neutral off-white canvas, near-black ink, solid colour blocks (blue, teal, black) for bands and cards, hard 1px lines, modest corner radius (12px cards, 20px large cards, 8px buttons). Reference: `Design inspo/` screenshot (flat colour cards, geometric sans).
+- **Restraint**: whitespace and hierarchy do the work. No blur blobs, no floating photos, no gradient backgrounds, no pastel tints as section backgrounds.
+- **Motion**: CSS-only reveals and hover lifts; the two interactive figures (radar, netwerkconnector) respond to hover/tap. prefers-reduced-motion respected.
 
-### Colour System
-Warm paper/ink base with the infographic accent palette (decided 2026-07-04: accents on the editorial base, never a full palette swap). Use these as CSS variables throughout (defined in `app/globals.css`):
+### Colour System (herzien 2026-10-04)
+Naar vier Behance-referenties die Douwe aandroeg (Northline recruitment, NexHiro SaaS, SpinePro training, Wanglow): diep bosgroen als donkere basis, mint als accent, warmgrijze neutralen, één gedempt marineblauw voor Search. Defined as CSS variables in `app/globals.css`:
 
 ```
---paper: #F6F1E8        (backgrounds, neutral canvas)
---paper-2: #FBF8F2      (cards, surfaces)
---ink: #211C16          (primary text)
---ink-soft: #5A5246     (secondary text)
---line: #E4DBCB         (borders, dividers)
+--paper: #EEEFEA        (page background, warm grey)
+--paper-2: #F8F8F5      (cards, hero surface)
+--ink: #152523          (text only, never as a fill)
+--ink-soft: #55615D
+--line: #D6D9D2
 
---switch: #1E8CA3       (Switch brand teal; also pathway 01)
---hire: #2B4C8C         (Hire brand blue)
-
---col-domain: #1E8CA3   (01 own field, teal)
---col-tech: #DB9A00     (02 trades, yellow; use --col-tech-deep #A87400 for text on light)
---col-social: #C2452D   (03 social sector, red/orange)
---navy: #3A4458         (dark bands, 4th step accent)
+--forest: #1E3A35       (all dark bands, primary buttons, netwerk hubs; --navy aliases to it)
+--mint: #A9D9B3         (accent on dark: eyebrows, links, btn-light)
+--mint-deep: #3E8A6A    (eyebrows on light)
+--switch: #2F7A6A       (Productive Switch jungle green)
+--hire: #24456F         (Productive Search muted navy; --hire-deep #18324F)
+--col-tech: #D9A43B     (trades ochre; --col-tech-deep for text on light)
+--col-social: #C9644A   (social sector terracotta)
+--radar-theo / --radar-obs: #2F6FB5 / #D8503F (radar only)
 ```
 
-Fan-section gradients: red #C22558→#E8622C, yellow #F2B200→#DB9A00, teal #2AA5BD→#15808F. On the yellow card text is ink, not white.
+No pure black, no pure white surfaces, no pastel section backgrounds, no gradients. Per service page the accent is consistent: everything on `/productive-switch` (`.switch-page`) is green (`--switch`, dark bands `--switch-deep`), everything on `/productive-search` (`.hire`) is blue (`--hire`, dark bands `--hire-deep`); the homepage keeps forest for its dark bands. Overrides live at the end of `globals.css`.
 
 ### Typography
-- **Display (headings)**: Fraunces (serif), weights 400–600. Generous letter-spacing, line-height 1.15 for clarity.
-- **Body (copy, labels)**: Archivo (sans-serif), weights 400–600. Smaller, tighter line-height (1.4–1.6).
-- **All fonts** imported from Google Fonts — no local files.
+- **Display (headings)**: Poppins (geometric, after the Northline reference), weights 400–700, letter-spacing -0.02em. Hero H1 is weight 500 so it does not shout.
+- **Body (copy, labels)**: Inter.
+- Both via `next/font/google` in `app/layout.tsx` (variables `--font-poppins`, `--font-inter`). Douwe chose this "Northline" set on 2026-10-05 from four Behance-based palette/font variants (NexHiro, SpinePro, Wanglow were the others; removed).
 
 ### Component Patterns
 
@@ -79,10 +83,9 @@ Fan-section gradients: red #C22558→#E8622C, yellow #F2B200→#DB9A00, teal #2A
 - Metadata: always right-aligned, muted colour.
 
 **Buttons**:
-- Primary (dark ink on paper): strong CTA.
-- Ghost (border only): secondary action.
-- Rounded (border-radius 999px).
-- Smooth hover: lift 2px, slight shadow.
+- `btn-ink` (black) is the primary CTA on light surfaces; `btn-light` (white) on dark or blue bands.
+- `btn-ghost` (ink border) secondary on light; `btn-ghost-light` (white border) on dark.
+- border-radius 8px, no pills. Hover: 1px lift.
 
 **Grid**:
 - 3-column on desktop, 1-column on mobile.
@@ -125,9 +128,9 @@ All course names, institutions, maker names, and review counts are placeholders.
 ### Tech Stack
 - **Framework**: Next.js 16 with App Router
 - **Styling**: Tailwind CSS + CSS variables for design tokens
-- **Animations**: CSS + (optional) Framer Motion for more complex sequences
+- **Animations**: CSS + IntersectionObserver only (no GSAP/framer-motion)
 - **Icons**: lucide-react (Compass, Heart, Wrench, Users, BadgeCheck, Star, etc.)
-- **Fonts**: Google Fonts API (Fraunces, Archivo)
+- **Fonts**: Google Fonts via next/font (Outfit, Archivo)
 
 ## Development Principles
 

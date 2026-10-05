@@ -44,16 +44,15 @@ export function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const contactHref = pathname === "/productive-search" ? "/productive-search#search-contact" : "/#contact";
+  const contactHref = "/contact";
+  // De Search-pagina opent met een volvlak blauwe hero, dus de nav is daar licht tot je scrolt
+  const onDark = (pathname === "/productive-search" || pathname === "/productive-switch" || pathname === "/vision" || pathname === "/deelnemers" || pathname === "/contact" || pathname.startsWith("/blog")) && !scrolled && !menuOpen;
 
   const links = [
-    { href: "/", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/" || pathname.startsWith("/richtingen") },
+    { href: "/productive-switch", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/productive-switch" || pathname.startsWith("/richtingen") },
     { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
     { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
-    { href: "/opleiders", label: { nl: "Voor opleiders", en: "For providers" }, active: pathname === "/opleiders" },
-    { href: "/#how", label: { nl: "Hoe het werkt", en: "How it works" }, active: false },
-    { href: "/subsidies", label: { nl: "Subsidies", en: "Subsidies" }, active: pathname === "/subsidies" },
-    { href: "/vision", label: { nl: "Onze visie", en: "Our vision" }, active: pathname === "/vision" },
+    { href: "/vision", label: { nl: "De visie", en: "The vision" }, active: pathname === "/vision" },
   ];
 
   // Scroll zelf naar een #anchor als we al op de doelpagina staan
@@ -124,7 +123,7 @@ export function Nav() {
       >
         {t({ nl: "Upload CV", en: "Upload CV" })}
       </button>
-      <Link className="btn btn-switch btn-sm" href={contactHref} onClick={(e) => onHashClick(e, contactHref)}>
+      <Link className="btn btn-nav-contact btn-sm" href={contactHref} onClick={(e) => onHashClick(e, contactHref)}>
         Contact
       </Link>
     </>
@@ -132,7 +131,7 @@ export function Nav() {
 
   return (
     <>
-      <header className={`nav${scrolled ? " nav--scrolled" : ""}${menuOpen ? " nav--open" : ""}`}>
+      <header className={`nav${scrolled ? " nav--scrolled" : ""}${menuOpen ? " nav--open" : ""}${onDark ? " nav--ondark" : ""}`}>
         <div className="nav-inner">
           <Link className="nav-brand" href="/">
             Productive<span className="dot">·</span>Switch
