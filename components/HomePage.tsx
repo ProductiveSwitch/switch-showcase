@@ -149,8 +149,8 @@ export function HomePage() {
                 <h2>{t({ nl: "Elk werk verandert, maar de vraag verschuift.", en: "All work is changing, but the demand is shifting." })}</h2>
                 <p>
                   {t({
-                    nl: "De grafiek laat goed zien wat het gat is tussen wat er gaat gebeuren en waar we nu staan. Dat gat sluit de komende jaren in kantoorwerk. Tegelijk blijft de vraag naar mensen in de zorg, het onderwijs, de techniek en de energie langer bestaan. Daar bouwen wij een brug.",
-                    en: "The chart shows the gap between what is coming and where we stand today. In office work that gap closes over the next few years. Meanwhile the demand for people in care, education, the trades and energy lasts longer. That is where we build a bridge.",
+                    nl: "De grafiek laat goed zien wat het gat is tussen wat er gaat gebeuren en waar we nu staan. Dat gat sluit de komende jaren in kantoorwerk. Tegelijk blijft de vraag naar mensen in de techniek, de energie, de zorg en het onderwijs langer bestaan. Daar bouwen wij een brug.",
+                    en: "The chart shows the gap between what is coming and where we stand today. In office work that gap closes over the next few years. Meanwhile the demand for people in the trades, energy, care and education lasts longer. That is where we build a bridge.",
                   })}
                 </p>
                 <Link href="/vision" className="lees-meer">
