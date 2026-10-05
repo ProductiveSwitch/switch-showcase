@@ -186,6 +186,7 @@ export const financeSources: FinanceSource[] = [
 export const contactWho: { key: string; label: Bi }[] = [
   { key: "hr", label: bi("HR-leider", "HR leader") },
   { key: "deelnemer", label: bi("Deelnemer", "Participant") },
+  { key: "coach", label: bi("Loopbaancoach", "Career coach") },
   { key: "opleider", label: bi("Opleider", "Training provider") },
   { key: "anders", label: bi("Anders", "Something else") },
 ];

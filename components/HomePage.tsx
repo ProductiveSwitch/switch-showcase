@@ -28,8 +28,8 @@ export function HomePage() {
             <div className="s-hero-text">
               <h1>
                 {t({
-                  nl: "Werving voor Senior HR-Professionals, en omscholing via gerichte Outplacementtrajecten.",
-                  en: "Recruitment for Senior HR Professionals, and re-training through targeted Outplacement tracks.",
+                  nl: "Werving voor senior HR-transformaties, en omscholing via gerichte outplacementtrajecten.",
+                  en: "Recruitment for senior HR transformations, and re-training through targeted outplacement tracks.",
                 })}
               </h1>
               <p className="lede">

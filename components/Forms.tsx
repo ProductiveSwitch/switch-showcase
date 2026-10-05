@@ -121,10 +121,11 @@ export function CvModal({ open, onClose, lang }: { open: boolean; onClose: () =>
 }
 
 /* ---------- Intake / contact router (segmenteert op "Wie ben je?") ---------- */
-export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
+export function IntakeForm({ lang, onClose, initialWho = "" }: { lang: Lang; onClose: () => void; initialWho?: string }) {
   const t = (b: Bi) => (lang === "nl" ? b.nl : b.en);
-  const [step, setStep] = useState(0);
-  const [who, setWho] = useState("");
+  // Met een vooraf gekozen rol slaan we de "Wie ben je?"-stap over
+  const [step, setStep] = useState(initialWho ? 1 : 0);
+  const [who, setWho] = useState(initialWho);
   const [hrGoal, setHrGoal] = useState("");
   const [direction, setDirection] = useState("");
   const [employees, setEmployees] = useState("");
@@ -312,7 +313,7 @@ export function IntakeForm({ lang, onClose }: { lang: Lang; onClose: () => void 
   } else if (who === "deelnemer") {
     steps.push({ valid: !!direction, node: directionNode({ nl: "Welke richting heeft je interesse?", en: "Which direction interests you?" }) });
     steps.push({ valid: !!(name && emailOk), node: contactNode(false, true) });
-  } else if (who === "anders") {
+  } else if (who === "coach" || who === "anders") {
     steps.push({ valid: !!(question && name && emailOk), node: questionNode });
   }
 

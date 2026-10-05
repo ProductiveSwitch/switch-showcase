@@ -8,7 +8,7 @@ import { destinations, howItWorks } from "@/lib/data";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
-import { Modal, IntakeForm, KoffieForm, OpleiderForm, type ModalKind } from "./Forms";
+import { Modal, IntakeForm } from "./Forms";
 
 const stepIcons = [MonitorSmartphone, Search, Compass, GraduationCap, Handshake];
 const stepColors = ["var(--switch)", "var(--switch)", "var(--switch)", "var(--switch)", "var(--switch)"];
@@ -18,7 +18,7 @@ const pillarColors = ["var(--col-tech)", "var(--col-social)", "var(--col-domain)
 // werkt, visie en contact. Verhuisd van de homepage (september 2026).
 export function ProductiveSwitchPage() {
   const { lang, t } = useLang();
-  const [modal, setModal] = useState<ModalKind>(null);
+  const [who, setWho] = useState<string | null>(null);
   useReveal();
   useHashScroll();
 
@@ -42,7 +42,7 @@ export function ProductiveSwitchPage() {
                 })}
               </p>
               <div className="cta-actions">
-                <button className="btn btn-light btn-lg" onClick={() => setModal("intake")}>
+                <button className="btn btn-light btn-lg" onClick={() => setWho("hr")}>
                   {t({ nl: "Plan een intake", en: "Plan an intake" })}
                 </button>
                 <a className="btn btn-ghost-light btn-lg" href="#how">
@@ -223,39 +223,37 @@ export function ProductiveSwitchPage() {
         </section>
 
         <div className="wrap">
-          {/* Contact / CTAs */}
-          <section className="cta-band reveal" id="contact">
-            <div>
-              <h2>{t({ nl: "Een reorganisatie op komst? Laten we praten.", en: "A restructuring ahead? Let's talk." })}</h2>
+          {/* Contact: four entry points, each opens the intake with the right role preset */}
+          <section className="section reveal" id="contact">
+            <div className="section-head">
+              <h2>{t({ nl: "Kom in contact", en: "Get in touch" })}</h2>
               <p>
                 {t({
-                  nl: "Plan een intake, of drink eerst gewoon eens koffie. Geen verplichting, wel meteen concreet.",
-                  en: "Plan an intake, or just grab a coffee first. No obligation, concrete from the start.",
+                  nl: "Kies wat bij je past. Een paar korte vragen, dan nemen we contact op.",
+                  en: "Pick what fits you. A few short questions, then we'll be in touch.",
                 })}
               </p>
             </div>
-            <div className="cta-actions">
-              <button className="btn btn-light btn-lg" onClick={() => setModal("intake")}>
-                {t({ nl: "Plan een intake", en: "Plan an intake" })}
+            <div className="entry-grid stagger">
+              <button className="entry entry--primary" onClick={() => setWho("hr")}>
+                <span className="entry-k">{t({ nl: "Werkgever", en: "Employer" })}</span>
+                <span className="entry-t">{t({ nl: "Een reorganisatie op komst?", en: "A restructuring ahead?" })}</span>
+                <span className="entry-s">{t({ nl: "Plan een intake, zonder verplichting.", en: "Plan an intake, no obligation." })}</span>
               </button>
-              <button className="btn btn-ghost-light" onClick={() => setModal("koffie")}>
-                {t({ nl: "Nog geen plannen? Koffie", en: "No plans yet? Coffee" })}
+              <button className="entry" onClick={() => setWho("deelnemer")}>
+                <span className="entry-k">{t({ nl: "Deelnemer", en: "Participant" })}</span>
+                <span className="entry-t">{t({ nl: "Aanmelden als deelnemer", en: "Sign up as a participant" })}</span>
+                <span className="entry-s">{t({ nl: "Verandert of verdwijnt je functie? Start hier.", en: "Is your role changing or ending? Start here." })}</span>
               </button>
-            </div>
-          </section>
-
-          {/* Opleiders, aanbodkant, apart */}
-          <section className="reveal">
-            <div className="opleider-band">
-              <div className="ob-text">
-                <strong>{t({ nl: "Ben je een opleider?", en: "Are you a training provider?" })}</strong>{" "}
-                {t({
-                  nl: "Sluit je aan en ontvang gekwalificeerde, vaak werkgever-gefinancierde instroom. Aanmelden is gratis.",
-                  en: "Join and receive qualified, often employer-funded enrolments. Signing up is free.",
-                })}
-              </div>
-              <button className="btn btn-ghost btn-sm" onClick={() => setModal("opleider")}>
-                {t({ nl: "Aansluiten als opleider", en: "Join as a provider" })}
+              <button className="entry" onClick={() => setWho("coach")}>
+                <span className="entry-k">{t({ nl: "Loopbaancoach", en: "Career coach" })}</span>
+                <span className="entry-t">{t({ nl: "Aanmelden als loopbaancoach", en: "Sign up as a career coach" })}</span>
+                <span className="entry-s">{t({ nl: "Sluit je aan bij ons netwerk van geselecteerde coaches.", en: "Join our network of selected coaches." })}</span>
+              </button>
+              <button className="entry" onClick={() => setWho("opleider")}>
+                <span className="entry-k">{t({ nl: "Opleider", en: "Training provider" })}</span>
+                <span className="entry-t">{t({ nl: "Aanmelden als opleider", en: "Sign up as a training provider" })}</span>
+                <span className="entry-s">{t({ nl: "Ontvang gekwalificeerde, vaak werkgever-gefinancierde instroom.", en: "Receive qualified, often employer-funded enrolments." })}</span>
               </button>
             </div>
           </section>
@@ -263,39 +261,23 @@ export function ProductiveSwitchPage() {
       </main>
 
       <Modal
-        open={modal === "intake"}
-        onClose={() => setModal(null)}
-        title={t({ nl: "Plan een intake", en: "Plan an intake" })}
+        open={who !== null}
+        onClose={() => setWho(null)}
+        title={
+          who === "hr"
+            ? t({ nl: "Plan een intake", en: "Plan an intake" })
+            : who === "deelnemer"
+              ? t({ nl: "Aanmelden als deelnemer", en: "Sign up as a participant" })
+              : who === "coach"
+                ? t({ nl: "Aanmelden als loopbaancoach", en: "Sign up as a career coach" })
+                : t({ nl: "Aanmelden als opleider", en: "Sign up as a training provider" })
+        }
         intro={t({
-          nl: "Een paar korte vragen, dan weten we genoeg om je concreet terug te bellen. Geen verplichting.",
-          en: "A few short questions, then we know enough to call you back concretely. No obligation.",
+          nl: "Een paar korte vragen, dan weten we genoeg om contact op te nemen. Geen verplichting.",
+          en: "A few short questions, then we know enough to get in touch. No obligation.",
         })}
       >
-        <IntakeForm lang={lang} onClose={() => setModal(null)} />
-      </Modal>
-
-      <Modal
-        open={modal === "koffie"}
-        onClose={() => setModal(null)}
-        title={t({ nl: "Even koffie drinken", en: "Grab a coffee" })}
-        intro={t({
-          nl: "Nog geen plannen, wel benieuwd? Laten we koffie drinken. Kennismaken, sparren, vragen stellen.",
-          en: "No plans yet, but curious? Let's grab a coffee. Meet, spar, ask anything.",
-        })}
-      >
-        <KoffieForm lang={lang} onClose={() => setModal(null)} />
-      </Modal>
-
-      <Modal
-        open={modal === "opleider"}
-        onClose={() => setModal(null)}
-        title={t({ nl: "Aansluiten als opleider", en: "Join as a provider" })}
-        intro={t({
-          nl: "Vertel kort wie je bent en wat je aanbiedt. Je ontvangt gekwalificeerde, vaak werkgever-gefinancierde instroom.",
-          en: "Tell us briefly who you are and what you offer. You'll receive qualified, often employer-funded enrolments.",
-        })}
-      >
-        <OpleiderForm lang={lang} onClose={() => setModal(null)} />
+        {who !== null && <IntakeForm key={who} lang={lang} initialWho={who} onClose={() => setWho(null)} />}
       </Modal>
     </>
   );
