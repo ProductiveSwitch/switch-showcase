@@ -26,7 +26,7 @@ export function ProductiveSwitchPage() {
     <>
       <main className="switch-page">
         <section className="h-hero h-hero--switch">
-          <div className="wrap h-hero-single">
+          <div className="wrap h-hero-grid">
             <div className="h-hero-text">
               <div className="eyebrow">Productive Switch</div>
               <h1>
@@ -49,9 +49,18 @@ export function ProductiveSwitchPage() {
                   {t({ nl: "Hoe het werkt", en: "How it works" })}
                 </a>
               </div>
-              <a className="h-hero-jump" href="#showcase">
-                {t({ nl: "Bekijk de drie richtingen", en: "See the three directions" })} ↓
-              </a>
+            </div>
+            <div className="h-hero-side">
+              <div className="h-side-card">
+                <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
+                <ul>
+                  <li><a href="#how">{t({ nl: "Hoe het werkt", en: "How it works" })}</a></li>
+                  <li><a href="#showcase">{t({ nl: "Drie richtingen", en: "Three directions" })}</a></li>
+                  <li><a href="#financiering">{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</a></li>
+                  <li><a href="#visie">{t({ nl: "Onze visie", en: "Our vision" })}</a></li>
+                  <li><a href="#contact">{t({ nl: "Plan een intake", en: "Plan an intake" })}</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

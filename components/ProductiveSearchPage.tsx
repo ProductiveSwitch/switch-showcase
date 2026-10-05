@@ -21,7 +21,7 @@ export function ProductiveSearchPage() {
     <main className="hire">
       {/* Full-bleed blue hero, starts directly under the nav */}
       <section className="h-hero">
-        <div className="wrap h-hero-single">
+        <div className="wrap h-hero-grid">
           <div className="h-hero-text">
             <div className="eyebrow">Productive Search & Advisory</div>
             <h1>
@@ -44,9 +44,18 @@ export function ProductiveSearchPage() {
                 {t({ nl: "Upload CV", en: "Upload CV" })}
               </button>
             </div>
-            <a className="h-hero-jump" href="#rollen">
-              {t({ nl: "Bekijk de rollen waarin we bemiddelen", en: "See the roles we place" })} ↓
-            </a>
+          </div>
+          <div className="h-hero-side">
+            <div className="h-side-card">
+              <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
+              <ul>
+                <li><a href="#verwachting">{t({ nl: "Wat er op HR afkomt", en: "What's heading for HR" })}</a></li>
+                <li><a href="#rollen">{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</a></li>
+                <li><a href="#advisory">{t({ nl: "Advisory", en: "Advisory" })}</a></li>
+                <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
+                <li><a href="#search-contact">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
