@@ -33,8 +33,8 @@ export function ProductiveSearchPage() {
             </h1>
             <p className="lede">
               {t({
-                nl: "Productive Search werft HR-leiders, senior professionals en interim adviseurs met de focus op HR-transformaties: organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR. Hetzelfde netwerk dat je medewerkers goed laat landen, kent ook de mensen die dat proces leiden.",
-                en: "Productive Search recruits HR leaders, senior professionals and interim advisers with a focus on HR transformations: organisational design, employee relations, reorganisations and the application of AI within HR. The same network that helps your employees land well also knows the people who lead that process.",
+                nl: "Productive Search werft HR-leiders, senior professionals en interim adviseurs met de focus op HR-transformaties: organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR.",
+                en: "Productive Search recruits HR leaders, senior professionals and interim advisers with a focus on HR transformations: organisational design, employee relations, reorganisations and the application of AI within HR.",
               })}
             </p>
             <div className="cta-actions">
