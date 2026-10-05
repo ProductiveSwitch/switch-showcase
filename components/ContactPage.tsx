@@ -5,7 +5,7 @@ import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { Modal, IntakeForm, CvModal } from "./Forms";
 
-type Role = "hr" | "vacature" | "deelnemer" | "coach" | "opleider";
+type Role = "hr" | "vacature" | "deelnemer" | "coach" | "opleider" | "kandidaat";
 
 // Kom in contact: één pagina voor alle ingangen. Elke tegel opent het
 // intakeformulier met de rol al ingevuld. ?rol=hr|vacature|deelnemer|coach|opleider
@@ -18,23 +18,18 @@ export function ContactPage() {
 
   useEffect(() => {
     const r = new URLSearchParams(window.location.search).get("rol");
-    if (r && ["hr", "vacature", "deelnemer", "coach", "opleider"].includes(r)) setRole(r as Role);
+    if (r === "kandidaat") setCvOpen(true);
+    else if (r && ["hr", "vacature", "deelnemer", "coach", "opleider"].includes(r)) setRole(r as Role);
   }, []);
 
-  const tiles: { key: Role; k: { nl: string; en: string }; title: { nl: string; en: string }; sub: { nl: string; en: string }; primary?: boolean; hire?: boolean }[] = [
+  type Tile = { key: Role; k: { nl: string; en: string }; title: { nl: string; en: string }; sub: { nl: string; en: string }; primary?: boolean };
+  const switchTiles: Tile[] = [
     {
       key: "hr",
       k: { nl: "Werkgever", en: "Employer" },
       title: { nl: "Een reorganisatie op komst?", en: "A restructuring ahead?" },
       sub: { nl: "Plan een intake voor omscholing en herplaatsing. Zonder verplichting.", en: "Plan an intake for re-training and redeployment. No obligation." },
       primary: true,
-    },
-    {
-      key: "vacature",
-      k: { nl: "Werkgever", en: "Employer" },
-      title: { nl: "Een senior HR-rol te vervullen?", en: "A senior HR role to fill?" },
-      sub: { nl: "Bespreek je vacature of adviesvraag met Productive Search.", en: "Discuss your vacancy or advisory question with Productive Search." },
-      hire: true,
     },
     {
       key: "deelnemer",
@@ -55,6 +50,22 @@ export function ContactPage() {
       sub: { nl: "Ontvang gekwalificeerde, vaak werkgever-gefinancierde instroom.", en: "Receive qualified, often employer-funded enrolments." },
     },
   ];
+  const searchTiles: Tile[] = [
+    {
+      key: "vacature",
+      k: { nl: "HR-leider", en: "HR leader" },
+      title: { nl: "Een senior HR-rol te vervullen?", en: "A senior HR role to fill?" },
+      sub: { nl: "Bespreek je vacature of interim adviesopdracht.", en: "Discuss your vacancy or interim advisory assignment." },
+      primary: true,
+    },
+    {
+      key: "kandidaat",
+      k: { nl: "HR-professional", en: "HR professional" },
+      title: { nl: "Open voor een volgende stap?", en: "Open to a next step?" },
+      sub: { nl: "Deel je CV, dan nemen we contact op zodra er een passende rol is.", en: "Share your CV and we'll be in touch when a fitting role comes up." },
+    },
+  ];
+  const open = (r: Role) => (r === "kandidaat" ? setCvOpen(true) : setRole(r));
 
   const titleFor = (r: Role) =>
     r === "hr"
@@ -85,25 +96,35 @@ export function ContactPage() {
       </section>
 
       <div className="wrap">
-        <section className="section reveal">
-          <div className="entry-grid entry-grid--5 stagger">
-            {tiles.map((x) => (
-              <button
-                key={x.key}
-                className={`entry${x.primary ? " entry--primary" : ""}${x.hire ? " entry--hire" : ""}`}
-                onClick={() => setRole(x.key)}
-              >
+        <section className="section reveal contact-group contact-group--switch">
+          <div className="section-head">
+            <div className="eyebrow">Productive Switch</div>
+            <h2>{t({ nl: "Omscholing en herplaatsing", en: "Re-training and redeployment" })}</h2>
+          </div>
+          <div className="entry-grid stagger">
+            {switchTiles.map((x) => (
+              <button key={x.key} className={`entry${x.primary ? " entry--primary" : ""}`} onClick={() => open(x.key)}>
                 <span className="entry-k">{t(x.k)}</span>
                 <span className="entry-t">{t(x.title)}</span>
                 <span className="entry-s">{t(x.sub)}</span>
               </button>
             ))}
           </div>
-          <div className="contact-foot">
-            <span>{t({ nl: "Kandidaat voor een HR-rol?", en: "Candidate for an HR role?" })}</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => setCvOpen(true)}>
-              {t({ nl: "Upload je CV", en: "Upload your CV" })}
-            </button>
+        </section>
+
+        <section className="section reveal contact-group contact-group--search">
+          <div className="section-head">
+            <div className="eyebrow">Productive Search</div>
+            <h2>{t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h2>
+          </div>
+          <div className="entry-grid entry-grid--2 stagger">
+            {searchTiles.map((x) => (
+              <button key={x.key} className={`entry entry--search${x.primary ? " entry--hire" : ""}`} onClick={() => open(x.key)}>
+                <span className="entry-k">{t(x.k)}</span>
+                <span className="entry-t">{t(x.title)}</span>
+                <span className="entry-s">{t(x.sub)}</span>
+              </button>
+            ))}
           </div>
         </section>
       </div>
@@ -118,7 +139,7 @@ export function ContactPage() {
         })}
       >
         {role !== null && (
-          <IntakeForm key={role} lang={lang} initialWho={role === "vacature" ? "hr" : role} initialGoal={role === "vacature" ? "transformatie" : role === "hr" ? "omscholing" : ""} onClose={() => setRole(null)} />
+          <IntakeForm key={role} lang={lang} initialWho={role === "vacature" || role === "kandidaat" ? "hr" : role} initialGoal={role === "vacature" ? "transformatie" : role === "hr" ? "omscholing" : ""} onClose={() => setRole(null)} />
         )}
       </Modal>
       <CvModal open={cvOpen} onClose={() => setCvOpen(false)} lang={lang} />

@@ -699,3 +699,14 @@ footer .brand { font-family: var(--font-display); font-weight: 700; font-size: 1
 .post-teaser { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 14px; line-height: 1.4; }
 .post p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 12px; }
 @media (max-width: 640px) { .post { padding: 22px 18px; } }
+
+.contact-group { padding-top: 40px; padding-bottom: 10px; }
+.contact-group .section-head { margin-bottom: 18px; }
+.contact-group .section-head h2 { font-size: clamp(22px, 2.6vw, 28px); }
+.contact-group--switch .eyebrow { color: var(--switch); }
+.contact-group--search .eyebrow { color: var(--hire); }
+.contact-group--search .entry:hover { border-color: var(--hire); }
+.contact-group--search .entry-k { color: var(--hire); }
+.contact-group--search .entry--hire .entry-k { color: #B9CFF2; }
+.entry-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-bottom: 64px; }
+@media (max-width: 560px) { .entry-grid--2 { grid-template-columns: 1fr; } }
