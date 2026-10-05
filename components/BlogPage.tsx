@@ -15,13 +15,8 @@ export function BlogPage() {
         <div className="wrap">
           <div className="h-hero-text">
             <div className="eyebrow">Blogs</div>
-            <h1>{t({ nl: "Korte stukken over werk dat verandert.", en: "Short pieces on work that is changing." })}</h1>
-            <p className="lede">
-              {t({
-                nl: "Over omscholing, HR-transformatie en productief mensenwerk in een tijd van AI en robotica.",
-                en: "On re-training, HR transformation and productive human work in an age of AI and robotics.",
-              })}
-            </p>
+            <h1>{t({ nl: "Bijdrages over een veranderende arbeidsmarkt.", en: "Contributions on a changing labour market." })}</h1>
+
           </div>
         </div>
       </section>
