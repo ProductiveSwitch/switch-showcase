@@ -27,8 +27,8 @@ export function ProductiveSearchPage() {
             <div className="eyebrow">Productive Search</div>
             <h1>
               {t({
-                nl: "Senior HR-leiders voor de transformatie die eraan komt.",
-                en: "Senior HR leaders for the transformation that's coming.",
+                nl: "Senior HR-professionals voor de transformatie die eraan komt.",
+                en: "Senior HR professionals for the transformation that's coming.",
               })}
             </h1>
             <p className="lede">
