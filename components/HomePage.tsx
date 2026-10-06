@@ -89,8 +89,8 @@ export function HomePage() {
               <h2>{t({ nl: "Hoe we helpen", en: "How we help" })}</h2>
               <p>
                 {t({
-                  nl: "Voor de organisatie van morgen zoeken we de HR-leiders en adviseurs die de verandering dragen. Voor de medewerkers van wie de functie verdwijnt, bouwen we een korte, erkende route naar een nieuw vak.",
-                  en: "For tomorrow's organisation we find the HR leaders and advisers who carry the change. For the employees whose roles disappear, we build a short, recognised route into a new trade.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op onder andere deze twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij helpen ze op beide onderdelen.",
+                  en: "In the coming years HR leaders play a crucial role on, among others, these two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help them with both.",
                 })}
               </p>
             </div>
