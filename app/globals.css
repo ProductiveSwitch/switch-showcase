@@ -782,7 +782,7 @@ footer .logo-word { font-size: 17px; }
 .s-hero-head .lede { max-width: 58ch; margin: 0 auto; }
 .s-hero-head .s-hero-cta { justify-content: center; margin-top: 22px; }
 .s-hero-stage { margin-top: 0; max-width: 960px; }
-.s-hero-stage .radar-figure { max-height: calc(100svh - 272px); min-height: 340px; width: auto; max-width: 100%; margin: 6px auto 0; }
+.s-hero-stage .radar-figure { max-height: calc(100svh - 290px); min-height: 330px; width: auto; max-width: 100%; margin: 6px auto 0; }
 .s-hero-stage .radar-controls { margin: -10px 0 2px; }
 .s-hero-stage .radar-readout { margin-top: -2px; height: 22px; }
 .s-hero-stage .s-hero-chart-cap { margin-top: 0; }
