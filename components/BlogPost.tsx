@@ -22,9 +22,13 @@ export function BlogPost({ post }: { post: Post }) {
         <article className="post post--full">
           {t(post.body)
             .split("\n\n")
-            .map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
+            .map((para, i) =>
+              para.startsWith("## ") ? <h3 key={i}>{para.slice(3)}</h3> : <p key={i}>{para}</p>
+            )}
+          {post.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="post-photo" src={post.image} alt={post.imageAlt ? t(post.imageAlt) : ""} loading="lazy" />
+          )}
           <Link href="/blog" className="lees-meer">
             ← {t({ nl: "Alle blogs", en: "All blogs" })}
           </Link>
