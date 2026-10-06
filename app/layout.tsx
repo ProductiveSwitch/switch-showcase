@@ -11,6 +11,7 @@ const poppins = Poppins({ subsets: ["latin"], variable: "--font-poppins", displa
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.productiveswitch.nl"),
   title: "Productive Switch, werving voor senior HR-professionals en omscholing via gerichte outplacementtrajecten",
   description:
     "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk van geselecteerde coaches, opleiders en organisaties in sectoren met blijvende vraag.",
