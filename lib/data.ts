@@ -456,3 +456,13 @@ export const advisoryItems: AdvisoryItem[] = [
     ),
   },
 ];
+
+// ----- Bedrijfsgegevens (footer + privacyverklaring) -----
+// Vul kvk en adres in zodra ze bekend zijn; lege velden worden niet getoond.
+export const company = {
+  name: "Productive Switch",
+  email: "info@productiveswitch.nl",
+  linkedin: "https://www.linkedin.com/company/productive-switch",
+  kvk: "",
+  address: "",
+};

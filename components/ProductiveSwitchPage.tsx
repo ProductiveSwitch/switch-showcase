@@ -146,26 +146,6 @@ export function ProductiveSwitchPage() {
             </div>
           </section>
 
-          {/* Testimonial (placeholder until the first real trajectory) */}
-          <section className="reveal">
-            <div className="quote">
-              <blockquote>
-                {t({
-                  nl: "“Ik dacht dat mijn vak verdween. Een half jaar later sta ik in de techniek, met meer werkplezier dan ooit.”",
-                  en: "“I thought my profession was disappearing. Six months later I'm in the trades, with more joy in my work than ever.”",
-                })}
-              </blockquote>
-              <div className="who">
-                <div className="avatar">DV</div>
-                <div style={{ textAlign: "left" }}>
-                  <div className="name">Daan Verhoeven</div>
-                  <div className="role">
-                    {t({ nl: "Omgeschoold via Productive Switch", en: "Re-trained via Productive Switch" })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
 
         {/* Onze visie, split section */}
