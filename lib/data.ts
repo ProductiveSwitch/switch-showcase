@@ -376,15 +376,15 @@ export const hrShifts: Shift[] = [
   {
     title: bi("AI verandert het werk, en dus de functies en de organisatiestructuur", "AI changes the work, and so the jobs and the organisational structure"),
     body: bi(
-      "Functieomschrijvingen die elk half jaar verschuiven, teams die opnieuw ontworpen worden. Iemand moet dat ontwerpen, uitleggen en zorgvuldig invoeren.",
-      "Job descriptions that shift every six months, teams redesigned. Someone has to design that, explain it and roll it out with care."
+      "In een tijd van exponentiële verandering ontwikkelen ook functieomschrijvingen zich snel. Dat vraagt om een HR-afdeling die dicht op de business zit, om team- en organisatiestructuren te waarborgen die passen bij de nieuwe situatie.",
+      "In a time of exponential change, job descriptions evolve fast as well. That calls for an HR department close to the business, to safeguard team and organisational structures that fit the new situation."
     ),
   },
   {
     title: bi("HR-organisaties veranderen zelf ook", "HR organisations change themselves too"),
     body: bi(
-      "Veel operationele HR-processen worden geautomatiseerd. Daardoor verschuift ook binnen HR het werk naar inhoudelijke onderwerpen: organisatieontwerp en transformatie, business partnership en workforce-ontwikkeling.",
-      "Many operational HR processes are being automated. Within HR the work therefore shifts toward substantive topics: organisational design and transformation, business partnership and workforce development."
+      "Veel operationele HR-processen worden geautomatiseerd. Dat vergt aandacht in de implementatie, maar geeft ook kansen voor een verschuiving naar inhoudelijke en strategische onderwerpen: organisatieontwerp en transformatie, business partnership en de ontwikkeling van het personeelsbestand.",
+      "Many operational HR processes are being automated. That takes care in the implementation, but also opens the way to a shift toward substantive and strategic topics: organisational design and transformation, business partnership and the development of the workforce."
     ),
   },
   {

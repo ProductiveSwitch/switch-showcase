@@ -5,47 +5,66 @@ import { ArrowRight } from "lucide-react";
 import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
-import { RadarChart } from "./RadarChart";
 import { NetworkConnector } from "./NetworkConnector";
 
-// Homepage = het merk in één blik: één netwerk, twee diensten. De inhoud van
-// Productive Switch zelf (drie richtingen, hoe het werkt, visie) staat op
-// /productive-switch; Productive Search op /productive-search.
+// Homepage (optie 1, oktober 2026): titel, één zin en twee deuren (Search,
+// Switch), daarna het netwerk, "Waarom nu" en contact. De radar staat op /vision.
 export function HomePage() {
   const { lang, t } = useLang();
   useReveal();
   useHashScroll();
 
+  const doors = (
+    <div className="doors">
+      <Link href="/productive-search" className="door door--search">
+        <span className="door-k">Productive Search</span>
+        <span className="door-t">{t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</span>
+        <span className="door-s">
+          {t({
+            nl: "HR-leiders, senior professionals en interim adviseurs voor de transformatie die eraan komt.",
+            en: "HR leaders, senior professionals and interim advisers for the transformation that is coming.",
+          })}
+        </span>
+        <span className="door-cta">
+          {t({ nl: "Bekijk Productive Search", en: "See Productive Search" })} <ArrowRight size={16} />
+        </span>
+      </Link>
+      <Link href="/productive-switch" className="door door--switch">
+        <span className="door-k">Productive Switch</span>
+        <span className="door-t">{t({ nl: "Omscholing via gerichte outplacementtrajecten", en: "Re-training through targeted outplacement" })}</span>
+        <span className="door-s">
+          {t({
+            nl: "Voor medewerkers van wie de functie verdwijnt: kort, erkend, en met een werkgever aan het eind.",
+            en: "For employees whose role is ending: short, recognised, and with an employer at the end.",
+          })}
+        </span>
+        <span className="door-cta">
+          {t({ nl: "Bekijk Productive Switch", en: "See Productive Switch" })} <ArrowRight size={16} />
+        </span>
+      </Link>
+    </div>
+  );
+
   return (
     <>
       <main>
-        {/* Hero: the radar as centrepiece */}
-        <section className="s-hero s-hero--centre">
-          <div className="wrap s-hero-head">
-            <h1>
-              {t({
-                nl: "Omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals.",
-                en: "Re-training through targeted outplacement and recruitment for senior HR professionals.",
-              })}
-            </h1>
-          </div>
-          <div className="wrap s-hero-stage">
-            <RadarChart variant="figure" lang={lang} animate />
-            <div className="s-hero-chart-cap">
-              <span className="radar-source">
-                {t({ nl: "Bron: ", en: "Source: " })}
-                <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noreferrer">
-                  Anthropic, Labor market impacts of AI
-                </a>{" "}
-                {t({ nl: "(maart 2026, figuur 2) en ", en: "(March 2026, figure 2) and " })}
-                <a href="https://www.anthropic.com/research/what-work-can-robots-do" target="_blank" rel="noreferrer">
-                  What work can robots do?
-                </a>{" "}
-                {t({ nl: "(september 2026, figuur 6).", en: "(September 2026, figure 6)." })}
-              </span>
+          <section className="s-hero s-hero--doors">
+            <div className="wrap s-hero-head">
+              <h1>
+                {t({
+                  nl: "Werving voor senior HR-professionals en omscholing via gerichte outplacementtrajecten.",
+                  en: "Recruitment for senior HR professionals and re-training through targeted outplacement.",
+                })}
+              </h1>
+              <p className="lede">
+                {t({
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: de organisatie door de transformatie leiden, en medewerkers van wie de functie verdwijnt naar nieuw werk begeleiden. Op beide fronten helpen wij.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: leading the organisation through the transformation, and guiding employees whose roles disappear into new work. On both fronts, we help.",
+                })}
+              </p>
             </div>
-          </div>
-        </section>
+            <div className="wrap">{doors}</div>
+          </section>
 
         {/* Netwerkconnector */}
         <section className="netc-section reveal" id="netwerk">
@@ -60,68 +79,7 @@ export function HomePage() {
                 })}
               </p>
             </div>
-            <div className="netc-brands">
-            <div className="s-hero-brands">
-              <Link className="hero-brandbtn hb-hire" href="/productive-search">
-                <span className="hb-title">Productive Search</span>
-                <span className="hb-sub">
-                  {t({ nl: "Senior professionals voor je HR-transformatie", en: "Senior professionals for your HR transformation" })}
-                </span>
-                <ArrowRight size={18} className="hb-arrow" />
-              </Link>
-              <Link className="hero-brandbtn hb-switch" href="/productive-switch">
-                <span className="hb-title">Productive Switch</span>
-                <span className="hb-sub">
-                  {t({ nl: "Gerichte omscholing voor werknemers van wie de functie verdwijnt", en: "Targeted re-training for employees whose role is ending" })}
-                </span>
-                <ArrowRight size={18} className="hb-arrow" />
-              </Link>
-            </div>
-            </div>
             <NetworkConnector lang={lang} />
-          </div>
-        </section>
-
-        {/* Two services */}
-        <section className="section reveal" id="diensten">
-          <div className="wrap">
-            <div className="section-head">
-              <h2>{t({ nl: "Hoe we helpen", en: "How we help" })}</h2>
-              <p>
-                {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op onder andere deze twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij helpen ze op beide onderdelen.",
-                  en: "In the coming years HR leaders play a crucial role on, among others, these two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help them with both.",
-                })}
-              </p>
-            </div>
-            <div className="service-grid stagger">
-              <Link href="/productive-search" className="service-card sc-hire">
-                <div className="sc-eyebrow">Productive Search</div>
-                <h3>{t({ nl: "Recruitment voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h3>
-                <p>
-                  {t({
-                    nl: "Werving van HR-leiders, senior professionals en interim adviesopdrachten op onderwerpen als organisatieontwerp, employee relations, reorganisaties en de toepassing van AI binnen HR.",
-                    en: "Recruitment of HR leaders, senior professionals and interim advisory assignments on topics such as organisational design, employee relations, reorganisations and the application of AI within HR.",
-                  })}
-                </p>
-                <span className="sc-link">
-                  {t({ nl: "Naar Productive Search", en: "To Productive Search" })} <ArrowRight size={16} />
-                </span>
-              </Link>
-              <Link href="/productive-switch" className="service-card sc-switch">
-                <div className="sc-eyebrow">Productive Switch</div>
-                <h3>{t({ nl: "Omscholing die eindigt bij een werkgever", en: "Re-training that ends at an employer" })}</h3>
-                <p>
-                  {t({
-                    nl: "Gerichte outplacementtrajecten: een productieve online start, een ondersteunende intake, begeleiding door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
-                    en: "Targeted outplacement tracks: a productive online start, a supportive intake, guidance by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
-                  })}
-                </p>
-                <span className="sc-link">
-                  {t({ nl: "Naar Productive Switch", en: "To Productive Switch" })} <ArrowRight size={16} />
-                </span>
-              </Link>
-            </div>
           </div>
         </section>
 
