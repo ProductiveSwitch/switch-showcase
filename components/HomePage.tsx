@@ -51,15 +51,14 @@ export function HomePage() {
           <section className="s-hero s-hero--doors">
             <div className="wrap s-hero-head">
               <h1>
-                {t({
-                  nl: "Werving voor senior HR-professionals en omscholing via gerichte outplacement\u00ADtrajecten.",
-                  en: "Recruitment for senior HR professionals and re-training through targeted outplacement.",
-                })}
+                {t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}
+                <br className="h1-break" />{" "}
+                {t({ nl: "en omscholing via gerichte outplacementtrajecten.", en: "and re-training through targeted outplacement." })}
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: de organisatie door de transformatie leiden, en medewerkers van wie de functie verdwijnt naar nieuw werk begeleiden. Op beide fronten helpen wij.",
-                  en: "In the coming years HR leaders play a crucial role on two fronts: leading the organisation through the transformation, and guiding employees whose roles disappear into new work. On both fronts, we help.",
+                  nl: "De komende jaren vraagt HR om twee dingen tegelijk: een organisatie die klaar is voor de verandering, en een goede landing voor medewerkers van wie de functie verdwijnt. Wij helpen HR-leiders met allebei.",
+                  en: "In the coming years HR has to deliver two things at once: an organisation ready for the change ahead, and a good landing for employees whose roles disappear. We help HR leaders with both.",
                 })}
               </p>
             </div>
