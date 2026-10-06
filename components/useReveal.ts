@@ -14,9 +14,16 @@ export function useReveal() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" }
     );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const els = document.querySelectorAll(".reveal");
+    els.forEach((el) => io.observe(el));
+    // Vangnet: wat na anderhalve seconde nog niet zichtbaar is, tonen we alsnog
+    // (voorkomt lege secties bij client-side navigatie of te hoge blokken).
+    const fallback = window.setTimeout(() => els.forEach((el) => el.classList.add("in")), 1500);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 }

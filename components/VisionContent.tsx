@@ -5,6 +5,7 @@ import { useLang } from "./LangContext";
 import { useReveal } from "./useReveal";
 import { useHashScroll } from "./useHashScroll";
 import { posts } from "@/lib/posts";
+import { RadarChart } from "./RadarChart";
 
 // De visie: volvlakke bosgroene hero met zijkaart, daarna de drie verschuivingen,
 // drie overtuigingen, het anker en de terugval-zin. Inhoud naar
@@ -66,11 +67,43 @@ export function VisionContent() {
             <div className="h-side-card">
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
+                <li><a href="#waarom-nu">{t({ nl: "Waarom nu", en: "Why now" })}</a></li>
                 <li><a href="#overtuigingen">{t({ nl: "Drie overtuigingen", en: "Three convictions" })}</a></li>
                 <li><a href="#anker">{t({ nl: "De kerncompetentie", en: "The core competence" })}</a></li>
                 <li><a href="#blogs">{t({ nl: "Blogs", en: "Blogs" })}</a></li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section radar-section" id="waarom-nu">
+        <div className="wrap">
+          <div className="section-head centered">
+            <div className="eyebrow">{t({ nl: "Waarom nu", en: "Why now" })}</div>
+            <h2>{t({ nl: "Elk werk verandert, maar de vraag verschuift.", en: "All work is changing, but the demand is shifting." })}</h2>
+            <p>
+              {t({
+                nl: "Het gat tussen wat AI kan en wat vandaag gebeurt, sluit het snelst in kantoorwerk. Zet robotica erbij en ook fysiek werk schuift mee. Tegelijk blijft de vraag naar mensen in techniek, energie, zorg en onderwijs langer bestaan.",
+                en: "The gap between what AI can do and what happens today closes fastest in office work. Add robotics and physical work shifts too. Meanwhile demand for people in the trades, energy, care and education lasts longer.",
+              })}
+            </p>
+          </div>
+        </div>
+        <div className="wrap s-hero-stage s-hero-stage--section">
+          <RadarChart variant="figure" lang={lang} animate />
+          <div className="s-hero-chart-cap">
+            <span className="radar-source">
+              {t({ nl: "Bron: ", en: "Source: " })}
+              <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noreferrer">
+                Anthropic, Labor market impacts of AI
+              </a>{" "}
+              {t({ nl: "(maart 2026, figuur 2) en ", en: "(March 2026, figure 2) and " })}
+              <a href="https://www.anthropic.com/research/what-work-can-robots-do" target="_blank" rel="noreferrer">
+                What work can robots do?
+              </a>{" "}
+              {t({ nl: "(september 2026, figuur 6).", en: "(September 2026, figure 6)." })}
+            </span>
           </div>
         </div>
       </section>
