@@ -50,8 +50,8 @@ export function Nav() {
   const onDark = (pathname === "/productive-search" || pathname === "/productive-switch" || pathname === "/vision" || pathname === "/deelnemers" || pathname === "/contact" || pathname.startsWith("/blog")) && !scrolled && !menuOpen;
 
   const links = [
-    { href: "/productive-switch", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/productive-switch" || pathname.startsWith("/richtingen") },
     { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
+    { href: "/productive-switch", label: { nl: "Productive Switch", en: "Productive Switch" }, active: pathname === "/productive-switch" || pathname.startsWith("/richtingen") },
     { href: "/deelnemers", label: { nl: "Voor deelnemers", en: "For participants" }, active: pathname === "/deelnemers" },
     { href: "/vision", label: { nl: "De visie", en: "The vision" }, active: pathname === "/vision" },
   ];

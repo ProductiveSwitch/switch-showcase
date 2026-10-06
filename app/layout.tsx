@@ -11,11 +11,11 @@ const poppins = Poppins({ subsets: ["latin"], variable: "--font-poppins", displa
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Productive Switch, werving voor senior HR-professionals en gerichte omscholing",
+  title: "Productive Switch, omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals",
   description:
     "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk van geselecteerde coaches, opleiders en organisaties in sectoren met blijvende vraag.",
   openGraph: {
-    title: "Productive Switch, werving voor senior HR-professionals en gerichte omscholing",
+    title: "Productive Switch, omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals",
     description:
       "Werving voor senior HR-transformaties en omscholing via gerichte outplacementtrajecten. Eén netwerk, beide kanten van de cyclus.",
     type: "website",

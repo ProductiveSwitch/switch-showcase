@@ -83,7 +83,7 @@ export function ContactPage() {
       <section className="h-hero h-hero--forest h-hero--short">
         <div className="wrap">
           <div className="h-hero-text">
-            <div className="eyebrow">Productive Switch</div>
+            <div className="eyebrow">Contact</div>
             <h1>{t({ nl: "Kom in contact", en: "Get in touch" })}</h1>
             <p className="lede">
               {t({
@@ -96,6 +96,21 @@ export function ContactPage() {
       </section>
 
       <div className="wrap">
+        <section className="section reveal contact-group contact-group--search">
+          <div className="section-head">
+            <div className="eyebrow">Productive Search</div>
+            <h2>{t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h2>
+          </div>
+          <div className="entry-grid entry-grid--2 stagger">
+            {searchTiles.map((x) => (
+              <button key={x.key} className={`entry entry--search${x.primary ? " entry--hire" : ""}`} onClick={() => open(x.key)}>
+                <span className="entry-k">{t(x.k)}</span>
+                <span className="entry-t">{t(x.title)}</span>
+                <span className="entry-s">{t(x.sub)}</span>
+              </button>
+            ))}
+          </div>
+        </section>
         <section className="section reveal contact-group contact-group--switch">
           <div className="section-head">
             <div className="eyebrow">Productive Switch</div>
@@ -112,21 +127,6 @@ export function ContactPage() {
           </div>
         </section>
 
-        <section className="section reveal contact-group contact-group--search">
-          <div className="section-head">
-            <div className="eyebrow">Productive Search</div>
-            <h2>{t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h2>
-          </div>
-          <div className="entry-grid entry-grid--2 stagger">
-            {searchTiles.map((x) => (
-              <button key={x.key} className={`entry entry--search${x.primary ? " entry--hire" : ""}`} onClick={() => open(x.key)}>
-                <span className="entry-k">{t(x.k)}</span>
-                <span className="entry-t">{t(x.title)}</span>
-                <span className="entry-s">{t(x.sub)}</span>
-              </button>
-            ))}
-          </div>
-        </section>
       </div>
 
       <Modal

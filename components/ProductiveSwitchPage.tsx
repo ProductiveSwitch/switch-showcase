@@ -29,7 +29,7 @@ export function ProductiveSwitchPage() {
               <h1>
                 {t({
                   nl: "Omscholing via gerichte outplacement\u00ADtrajecten",
-                  en: "Re-training through targeted outplacement tracks",
+                  en: "Re-training through targeted outplacement",
                 })}
               </h1>
               <p className="lede">
