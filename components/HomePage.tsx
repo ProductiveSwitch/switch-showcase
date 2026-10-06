@@ -57,8 +57,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "De komende jaren vraagt HR om twee dingen tegelijk: een organisatie die klaar is voor de verandering, en een goede landing voor medewerkers van wie de functie verdwijnt. Wij helpen HR-leiders met allebei.",
-                  en: "In the coming years HR has to deliver two things at once: an organisation ready for the change ahead, and a good landing for employees whose roles disappear. We help HR leaders with both.",
+                  nl: "HR staat de komende jaren voor een dubbele taak: een organisatie neerzetten die klaar is voor ingrijpende verandering, en de mensen die daardoor geraakt worden een goed vervolg geven. Wij helpen HR-leiders met allebei.",
+                  en: "In the coming years HR faces a dual task: building an organisation ready for far-reaching change, and giving the people affected by it a good next step. We help HR leaders with both.",
                 })}
               </p>
             </div>
