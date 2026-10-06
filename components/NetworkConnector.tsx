@@ -174,8 +174,9 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
               aria-label={t(h.short)}
             >
               <circle cx={h.x} cy={h.y} r={50} />
-              <text x={h.x + (left ? -30 : 30)} y={h.y + 70} textAnchor="middle" className="netc-hub-label">
-                Productive {h.label}
+              <text x={h.x + (left ? -34 : 34)} y={h.y + 68} textAnchor="middle" className="netc-hub-label">
+                <tspan x={h.x + (left ? -34 : 34)}>Productive</tspan>
+                <tspan x={h.x + (left ? -34 : 34)} dy="15">{h.label}</tspan>
               </text>
             </g>
           );
