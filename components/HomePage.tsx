@@ -24,8 +24,8 @@ export function HomePage() {
           <div className="wrap s-hero-head">
             <h1>
               {t({
-                nl: "Werving voor senior HR-professionals, en omscholing via gerichte outplacementtrajecten.",
-                en: "Recruitment for senior HR professionals, and re-training through targeted outplacement.",
+                nl: "Omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals.",
+                en: "Re-training through targeted outplacement and recruitment for senior HR professionals.",
               })}
             </h1>
           </div>
@@ -42,17 +42,20 @@ export function HomePage() {
           </div>
         </section>
 
-        {/* Two fronts: the former intro, now its own section */}
-        <section className="section reveal" id="fronten">
+        {/* Netwerkconnector */}
+        <section className="netc-section reveal" id="netwerk">
           <div className="wrap">
             <div className="section-head">
-              <p className="lede">
+              <div className="eyebrow">{t({ nl: "Het netwerk", en: "The network" })}</div>
+              <h2>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h2>
+              <p>
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op onder andere deze twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij helpen ze op beide onderdelen.",
-                  en: "In the coming years HR leaders play a crucial role on, among others, these two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help them with both.",
+                  nl: "Het opnieuw uitvinden van productief mensenwerk in een tijd van AI en robotica is een van de grootste opgaven van deze tijd. Samenwerking is daarin cruciaal: tussen HR-leiders, senior HR-professionals, deelnemers, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Wij brengen dat netwerk samen.",
+                  en: "Reinventing productive human work in an age of AI and robotics is one of the great tasks of our time. Collaboration is crucial: between HR leaders, senior HR professionals, participants, career coaches, training providers and employers with lasting demand. We bring that network together.",
                 })}
               </p>
             </div>
+            <div className="netc-brands">
             <div className="s-hero-brands">
               <Link className="hero-brandbtn hb-switch" href="/productive-switch">
                 <span className="hb-title">Productive Switch</span>
@@ -69,21 +72,6 @@ export function HomePage() {
                 <ArrowRight size={18} className="hb-arrow" />
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Netwerkconnector */}
-        <section className="netc-section reveal" id="netwerk">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">{t({ nl: "Het netwerk", en: "The network" })}</div>
-              <h2>{t({ nl: "Twee diensten, één netwerk", en: "Two services, one network" })}</h2>
-              <p>
-                {t({
-                  nl: "Het opnieuw uitvinden van productief mensenwerk in een tijd van AI en robotica is een van de grootste opgaven van deze tijd. Samenwerking is daarin cruciaal: tussen HR-leiders, senior HR-professionals, deelnemers, loopbaancoaches, opleiders en werkgevers met blijvende vraag. Wij brengen dat netwerk samen.",
-                  en: "Reinventing productive human work in an age of AI and robotics is one of the great tasks of our time. Collaboration is crucial: between HR leaders, senior HR professionals, participants, career coaches, training providers and employers with lasting demand. We bring that network together.",
-                })}
-              </p>
             </div>
             <NetworkConnector lang={lang} />
           </div>
