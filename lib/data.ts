@@ -252,22 +252,6 @@ export const vacancies: Vacancy[] = [
   },
   {
     category: "interim",
-    role: bi("Lead Werktransitie & L&D", "Lead Workforce Transition & L&D"),
-    org: bi("Financiële dienstverlener · Utrecht", "Financial services · Utrecht"),
-    tags: [bi("Fulltime", "Full-time"), bi("Interim", "Interim"), bi("Op locatie", "On-site")],
-    salary: "€ 7.500 – 9.500",
-    subject: "Lead Werktransitie",
-  },
-  {
-    category: "vast",
-    role: bi("HR Business Partner", "HR Business Partner"),
-    org: bi("Scale-up in tech · Amsterdam", "Tech scale-up · Amsterdam"),
-    tags: [bi("32–40 uur", "32–40 hrs"), bi("Vast", "Permanent"), bi("Hybride", "Hybrid")],
-    salary: "€ 5.500 – 7.000",
-    subject: "HR Business Partner",
-  },
-  {
-    category: "interim",
     role: bi("Interim adviseur Organisational Design", "Interim Organisational Design adviser"),
     org: bi("Zorgorganisatie · Rotterdam", "Care organisation · Rotterdam"),
     tags: [bi("Interim", "Interim"), bi("6 maanden", "6 months"), bi("Hybride", "Hybrid")],
