@@ -52,8 +52,8 @@ export function HomePage() {
             <div className="wrap s-hero-head">
               <h1>
                 {t({
-                  nl: "Omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals.",
-                  en: "Re-training through targeted outplacement and recruitment for senior HR professionals.",
+                  nl: "Werving voor senior HR-professionals en omscholing via gerichte outplacementtrajecten.",
+                  en: "Recruitment for senior HR professionals and re-training through targeted outplacement.",
                 })}
               </h1>
               <p className="lede">
