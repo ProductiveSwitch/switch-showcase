@@ -19,8 +19,8 @@ export function VisionContent() {
     {
       title: { nl: "Reorganiseren is geen falen, wegkijken wel.", en: "Restructuring is not failure. Looking away is." },
       body: {
-        nl: "Reorganiseren is soms noodzakelijk, maar komt met verantwoordelijkheid. Om toekomstbestendig te zijn hebben werkgevers ruimte nodig om meer te doen met minder mensen. In een arbeidsmarkt die steeds onzekerder wordt, groeit tegelijk de morele verplichting om goed te zorgen voor werknemers die zich altijd hard voor de zaak hebben ingezet.",
-        en: "Restructuring is sometimes necessary, but it comes with responsibility. To stay future-proof, employers need room to do more with fewer people. In a labour market that grows ever more uncertain, the moral obligation grows with it: to take good care of employees who always gave their best for the business.",
+        nl: "Reorganiseren zal voor veel organisaties noodzakelijk zijn, maar komt met verantwoordelijkheid. Om toekomstbestendig te zijn hebben werkgevers ruimte nodig om meer te doen met minder mensen. In een arbeidsmarkt die steeds onzekerder wordt, groeit tegelijk de morele verplichting om goed te zorgen voor werknemers die zich altijd hard voor de zaak hebben ingezet.",
+        en: "For many organisations, restructuring will be necessary, but it comes with responsibility. To stay future-proof, employers need room to do more with fewer people. In a labour market that grows ever more uncertain, the moral obligation grows with it: to take good care of employees who always gave their best for the business.",
       },
     },
     {
