@@ -16,15 +16,6 @@ function LinkedInIcon() {
   );
 }
 
-function InstagramIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5.2" />
-      <circle cx="12" cy="12" r="4.4" />
-      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
 
 export function Nav() {
   const { lang, setLang, t } = useLang();
@@ -100,15 +91,6 @@ export function Nav() {
         aria-label="LinkedIn"
       >
         <LinkedInIcon />
-      </a>
-      <a
-        className="nav-social"
-        href="https://www.instagram.com/productiveswitch"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Instagram"
-      >
-        <InstagramIcon />
       </a>
     </>
   );
