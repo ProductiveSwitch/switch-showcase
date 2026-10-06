@@ -211,10 +211,14 @@ section[id] { scroll-margin-top: 84px; }
 .netc-hub { cursor: pointer; outline: none; transition: opacity .25s; }
 .netc-hub.dim { opacity: .35; }
 .netc-hub circle { fill: var(--hc); stroke: var(--paper-2); stroke-width: 4; transition: r .2s; }
-.netc-hub.on circle, .netc-hub:hover circle, .netc-hub:focus-visible circle { r: 54; }
+.netc-hub circle { stroke: var(--paper-2); stroke-width: 3; }
 .netc-hub text { fill: #fff; font-family: var(--font-display); pointer-events: none; }
+.netc-hub-label { fill: var(--ink) !important; font-family: var(--font-body) !important; font-weight: 700; font-size: 13px; }
 .netc-hub-a { font-size: 11px; font-weight: 500; letter-spacing: .02em; opacity: .9; }
-.netc-hub-b { font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }
+.netc-hub-b { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
+.netc-hub-a { font-size: 9.5px; }
+.netc-lens { fill: var(--mint); pointer-events: none; transition: opacity .25s; }
+.netc-lens.dim { opacity: .35; }
 .netc-node { cursor: pointer; outline: none; transition: opacity .25s; }
 .netc-node.dim { opacity: .3; }
 .netc-dot { fill: var(--nc); stroke: var(--paper-2); stroke-width: 4; transition: r .2s; }

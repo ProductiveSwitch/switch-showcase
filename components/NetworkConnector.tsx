@@ -35,7 +35,7 @@ const HUBS: Hub[] = [
       en: "Recruitment of HR leaders, senior professionals and interim advisers for transformations: organisational design, employee relations, reorganisations and the application of AI within HR.",
     },
     color: "var(--hire)",
-    x: CX - 92,
+    x: CX + 28.5,
     y: CY,
   },
   {
@@ -47,7 +47,7 @@ const HUBS: Hub[] = [
       en: "Targeted re-training for employees whose role is ending: intake by a coach, short and recognised learning, and a landing at employers with lasting demand.",
     },
     color: "var(--switch)",
-    x: CX + 92,
+    x: CX - 28.5,
     y: CY,
   },
 ];
@@ -155,12 +155,11 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
             );
           })
         )}
-        {/* hub-to-hub link: one brand */}
-        <line className="netc-hubring" x1={HUBS[0].x} y1={HUBS[0].y} x2={HUBS[1].x} y2={HUBS[1].y} />
 
-        {/* hubs */}
-        {HUBS.map((h) => {
+        {/* hubs: two overlapping circles with the shared mint lens, like the logo */}
+        {[...HUBS].sort((a) => (a.id === "switch" ? -1 : 1)).map((h) => {
           const on = active === h.id;
+          const left = h.id === "switch";
           return (
             <g
               key={h.id}
@@ -175,15 +174,16 @@ export function NetworkConnector({ lang }: { lang: Lang }) {
               aria-label={t(h.short)}
             >
               <circle cx={h.x} cy={h.y} r={50} />
-              <text x={h.x} y={h.y - 4} textAnchor="middle" className="netc-hub-a">
-                Productive
-              </text>
-              <text x={h.x} y={h.y + 14} textAnchor="middle" className="netc-hub-b">
-                {h.label}
+              <text x={h.x + (left ? -30 : 30)} y={h.y + 70} textAnchor="middle" className="netc-hub-label">
+                Productive {h.label}
               </text>
             </g>
           );
         })}
+        <path
+          className={`netc-lens${active && hubDim("switch") && hubDim("search") ? " dim" : ""}`}
+          d={`M${CX},${CY - 41.1} A50,50 0 0 1 ${CX},${CY + 41.1} A50,50 0 0 1 ${CX},${CY - 41.1} Z`}
+        />
 
         {/* nodes */}
         {networkNodes.map((n) => {
