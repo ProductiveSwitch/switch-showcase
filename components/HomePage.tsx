@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useLang } from "./LangContext";
@@ -11,14 +12,83 @@ import { NetworkConnector } from "./NetworkConnector";
 // Homepage = het merk in één blik: één netwerk, twee diensten. De inhoud van
 // Productive Switch zelf (drie richtingen, hoe het werkt, visie) staat op
 // /productive-switch; Productive Search op /productive-search.
+type Variant = "0" | "1" | "4";
+
 export function HomePage() {
   const { lang, t } = useLang();
+  // Lokaal testhulpmiddel (oktober 2026): drie varianten van het eerste scherm.
+  // "0" = huidig (radar als middelpunt), "1" = één zin en twee deuren,
+  // "4" = twee deuren en daarna de radar als "waarom nu". ?variant= of de
+  // kiezer rechtsonder; onthouden in localStorage (ps-home-variant).
+  const [variant, setVariant] = useState<Variant>("0");
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("variant");
+    const st = window.localStorage.getItem("ps-home-variant");
+    const v = (["0", "1", "4"].includes(q || "") ? q : ["0", "1", "4"].includes(st || "") ? st : "0") as Variant;
+    setVariant(v);
+  }, []);
+  const pick = (v: Variant) => {
+    setVariant(v);
+    window.localStorage.setItem("ps-home-variant", v);
+  };
   useReveal();
   useHashScroll();
+
+  const doors = (
+    <div className="doors">
+      <Link href="/productive-search" className="door door--search">
+        <span className="door-k">Productive Search</span>
+        <span className="door-t">{t({ nl: "Werving voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</span>
+        <span className="door-s">
+          {t({
+            nl: "HR-leiders, senior professionals en interim adviseurs voor de transformatie die eraan komt.",
+            en: "HR leaders, senior professionals and interim advisers for the transformation that is coming.",
+          })}
+        </span>
+        <span className="door-cta">
+          {t({ nl: "Bekijk Productive Search", en: "See Productive Search" })} <ArrowRight size={16} />
+        </span>
+      </Link>
+      <Link href="/productive-switch" className="door door--switch">
+        <span className="door-k">Productive Switch</span>
+        <span className="door-t">{t({ nl: "Omscholing via gerichte outplacementtrajecten", en: "Re-training through targeted outplacement" })}</span>
+        <span className="door-s">
+          {t({
+            nl: "Voor medewerkers van wie de functie verdwijnt: kort, erkend, en met een werkgever aan het eind.",
+            en: "For employees whose role is ending: short, recognised, and with an employer at the end.",
+          })}
+        </span>
+        <span className="door-cta">
+          {t({ nl: "Bekijk Productive Switch", en: "See Productive Switch" })} <ArrowRight size={16} />
+        </span>
+      </Link>
+    </div>
+  );
+
+  const radarBlock = (compact: boolean) => (
+    <div className={`wrap s-hero-stage${compact ? " s-hero-stage--section" : ""}`}>
+      <RadarChart variant="figure" lang={lang} animate />
+      <div className="s-hero-chart-cap">
+        <span className="radar-source">
+          {t({ nl: "Bron: ", en: "Source: " })}
+          <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noreferrer">
+            Anthropic, Labor market impacts of AI
+          </a>{" "}
+          {t({ nl: "(maart 2026, figuur 2) en ", en: "(March 2026, figure 2) and " })}
+          <a href="https://www.anthropic.com/research/what-work-can-robots-do" target="_blank" rel="noreferrer">
+            What work can robots do?
+          </a>{" "}
+          {t({ nl: "(september 2026, figuur 6).", en: "(September 2026, figure 6)." })}
+        </span>
+      </div>
+    </div>
+  );
 
   return (
     <>
       <main>
+        {variant === "0" ? (
+          <>
         {/* Hero: the radar as centrepiece */}
         <section className="s-hero s-hero--centre">
           <div className="wrap s-hero-head">
@@ -47,6 +117,45 @@ export function HomePage() {
           </div>
         </section>
 
+          </>
+        ) : (
+          <section className="s-hero s-hero--doors">
+            <div className="wrap s-hero-head">
+              <h1>
+                {t({
+                  nl: "Omscholing via gerichte outplacementtrajecten en werving voor senior HR-professionals.",
+                  en: "Re-training through targeted outplacement and recruitment for senior HR professionals.",
+                })}
+              </h1>
+              <p className="lede">
+                {t({
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: de organisatie klaarmaken voor wat komt, en medewerkers van wie de functie verdwijnt goed laten landen. Wij helpen op beide.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: readying the organisation for what is coming, and landing employees whose roles disappear well. We help with both.",
+                })}
+              </p>
+            </div>
+            <div className="wrap">{doors}</div>
+          </section>
+        )}
+
+        {variant === "4" && (
+          <section className="section reveal radar-section" id="waarom-nu">
+            <div className="wrap">
+              <div className="section-head centered">
+                <div className="eyebrow">{t({ nl: "Waarom nu", en: "Why now" })}</div>
+                <h2>{t({ nl: "Elk werk verandert, maar de vraag verschuift.", en: "All work is changing, but the demand is shifting." })}</h2>
+                <p>
+                  {t({
+                    nl: "Het gat tussen wat AI kan en wat vandaag gebeurt, sluit het snelst in kantoorwerk. Zet robotica erbij en ook fysiek werk schuift mee. Tegelijk blijft de vraag naar mensen in techniek, energie, zorg en onderwijs langer bestaan.",
+                    en: "The gap between what AI can do and what happens today closes fastest in office work. Add robotics and physical work shifts too. Meanwhile demand for people in the trades, energy, care and education lasts longer.",
+                  })}
+                </p>
+              </div>
+            </div>
+            {radarBlock(true)}
+          </section>
+        )}
+
         {/* Netwerkconnector */}
         <section className="netc-section reveal" id="netwerk">
           <div className="wrap">
@@ -60,6 +169,7 @@ export function HomePage() {
                 })}
               </p>
             </div>
+            {variant === "0" && (
             <div className="netc-brands">
             <div className="s-hero-brands">
               <Link className="hero-brandbtn hb-hire" href="/productive-search">
@@ -78,11 +188,13 @@ export function HomePage() {
               </Link>
             </div>
             </div>
+            )}
             <NetworkConnector lang={lang} />
           </div>
         </section>
 
         {/* Two services */}
+        {variant === "0" && (
         <section className="section reveal" id="diensten">
           <div className="wrap">
             <div className="section-head">
@@ -124,8 +236,10 @@ export function HomePage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Why now: three numbers, plain */}
+        {variant !== "4" && (
         <section className="why reveal" id="waarom">
           <div className="wrap">
             <div className="why-grid">
@@ -145,6 +259,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
+        )}
 
         <div className="wrap">
           <section className="cta-band reveal" id="contact">
@@ -163,6 +278,14 @@ export function HomePage() {
               </Link>
             </div>
           </section>
+        </div>
+        <div className="variant-picker" role="group" aria-label="Homepage-variant (test)">
+          <span>Voorblad</span>
+          {(["0", "1", "4"] as Variant[]).map((v) => (
+            <button key={v} className={variant === v ? "on" : ""} onClick={() => pick(v)}>
+              {v === "0" ? "Huidig" : v === "1" ? "Optie 1" : "Optie 4"}
+            </button>
+          ))}
         </div>
       </main>
 
