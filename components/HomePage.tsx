@@ -62,17 +62,17 @@ export function HomePage() {
             </div>
             <div className="netc-brands">
             <div className="s-hero-brands">
-              <Link className="hero-brandbtn hb-switch" href="/productive-switch">
-                <span className="hb-title">Productive Switch</span>
-                <span className="hb-sub">
-                  {t({ nl: "Gerichte omscholing voor werknemers van wie de functie verdwijnt", en: "Targeted re-training for employees whose role is ending" })}
-                </span>
-                <ArrowRight size={18} className="hb-arrow" />
-              </Link>
               <Link className="hero-brandbtn hb-hire" href="/productive-search">
                 <span className="hb-title">Productive Search</span>
                 <span className="hb-sub">
                   {t({ nl: "Senior professionals voor je HR-transformatie", en: "Senior professionals for your HR transformation" })}
+                </span>
+                <ArrowRight size={18} className="hb-arrow" />
+              </Link>
+              <Link className="hero-brandbtn hb-switch" href="/productive-switch">
+                <span className="hb-title">Productive Switch</span>
+                <span className="hb-sub">
+                  {t({ nl: "Gerichte omscholing voor werknemers van wie de functie verdwijnt", en: "Targeted re-training for employees whose role is ending" })}
                 </span>
                 <ArrowRight size={18} className="hb-arrow" />
               </Link>
@@ -95,19 +95,6 @@ export function HomePage() {
               </p>
             </div>
             <div className="service-grid stagger">
-              <Link href="/productive-switch" className="service-card sc-switch">
-                <div className="sc-eyebrow">Productive Switch</div>
-                <h3>{t({ nl: "Omscholing die eindigt bij een werkgever", en: "Re-training that ends at an employer" })}</h3>
-                <p>
-                  {t({
-                    nl: "Gerichte outplacementtrajecten: een productieve online start, een ondersteunende intake, begeleiding door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
-                    en: "Targeted outplacement tracks: a productive online start, a supportive intake, guidance by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
-                  })}
-                </p>
-                <span className="sc-link">
-                  {t({ nl: "Naar Productive Switch", en: "To Productive Switch" })} <ArrowRight size={16} />
-                </span>
-              </Link>
               <Link href="/productive-search" className="service-card sc-hire">
                 <div className="sc-eyebrow">Productive Search</div>
                 <h3>{t({ nl: "Recruitment voor senior HR-professionals", en: "Recruitment for senior HR professionals" })}</h3>
@@ -119,6 +106,19 @@ export function HomePage() {
                 </p>
                 <span className="sc-link">
                   {t({ nl: "Naar Productive Search", en: "To Productive Search" })} <ArrowRight size={16} />
+                </span>
+              </Link>
+              <Link href="/productive-switch" className="service-card sc-switch">
+                <div className="sc-eyebrow">Productive Switch</div>
+                <h3>{t({ nl: "Omscholing die eindigt bij een werkgever", en: "Re-training that ends at an employer" })}</h3>
+                <p>
+                  {t({
+                    nl: "Gerichte outplacementtrajecten: een productieve online start, een ondersteunende intake, begeleiding door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in techniek, energie, zorg en het onderwijs.",
+                    en: "Targeted outplacement tracks: a productive online start, a supportive intake, guidance by an accredited coach, short and recognised re-training, and a direct line to organisations in the trades, energy, care and education.",
+                  })}
+                </p>
+                <span className="sc-link">
+                  {t({ nl: "Naar Productive Switch", en: "To Productive Switch" })} <ArrowRight size={16} />
                 </span>
               </Link>
             </div>

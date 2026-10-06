@@ -35,7 +35,7 @@ const HUBS: Hub[] = [
       en: "Recruitment of HR leaders, senior professionals and interim advisers for transformations: organisational design, employee relations, reorganisations and the application of AI within HR.",
     },
     color: "var(--hire)",
-    x: CX + 92,
+    x: CX - 92,
     y: CY,
   },
   {
@@ -47,7 +47,7 @@ const HUBS: Hub[] = [
       en: "Targeted re-training for employees whose role is ending: intake by a coach, short and recognised learning, and a landing at employers with lasting demand.",
     },
     color: "var(--switch)",
-    x: CX - 92,
+    x: CX + 92,
     y: CY,
   },
 ];
