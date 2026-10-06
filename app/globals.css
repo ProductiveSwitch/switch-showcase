@@ -816,3 +816,46 @@ footer .logo-word { font-size: 17px; }
 
 .radar-source a { text-decoration: underline; text-underline-offset: 2px; }
 .radar-source a:hover { color: var(--ink); }
+
+/* ===== Mobile fixes (oktober 2026) ===== */
+@media (max-width: 900px) {
+  .h-hero--switch .h-hero-grid,
+  .h-hero-grid--account,
+  .deelnemers-page .h-hero-grid--account { grid-template-columns: 1fr; gap: 24px; }
+  .h-hero { min-height: 0; padding: 100px 0 40px; }
+  .h-hero h1, .h-hero--switch h1 { font-size: clamp(28px, 7.5vw, 36px); max-width: none; }
+  .h-hero .lede { font-size: 16px; }
+  .h-hero-side { min-width: 0; }
+  .h-side-card { padding: 20px 20px 18px; }
+  .h-side-card li { font-size: 16px; padding: 8px 0; }
+  .account-card { padding: 8px 8px 18px; }
+  .deelnemers-page .h-hero h1 { font-size: clamp(26px, 7vw, 32px); }
+  .deelnemers-page .h-hero .lede { font-size: 15px; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 18px; }
+  .h-hero .cta-actions .btn { width: 100%; justify-content: center; }
+  .h-hero-jump { margin-top: 18px; }
+  .section { padding: 40px 0 20px; }
+  .section-head h2 { font-size: clamp(24px, 7vw, 30px); }
+  .steps-5 .step-card { padding: 18px 18px 20px; }
+  .steps-5 .step-card p { font-size: 14px; }
+  .pillar { height: 260px; }
+  .cta-band { padding: 24px 20px; }
+  .cta-band h2 { font-size: 22px; }
+  .cta-band .btn { width: 100%; justify-content: center; }
+  .entry-grid, .entry-grid--2 { grid-template-columns: 1fr; }
+  .netc { padding: 12px; }
+  .netc-label { font-size: 16px; }
+  .s-hero-stage .radar-figure { max-height: none; min-height: 0; width: 100%; }
+  .s-hero-head h1 { font-size: clamp(24px, 6.5vw, 30px); }
+  .radar-controls { gap: 6px 12px; }
+  .radar-figure text { font-size: 18px; }
+  .visie-text { padding: 28px 20px; }
+  .vision { padding: 56px 18px; }
+  .quote { padding: 24px 18px; }
+  .quote blockquote { font-size: 20px; }
+  .role-grid, .shift-grid { grid-template-columns: 1fr; }
+  .vac-filters--tabs .vac-filter { padding: 10px 12px; font-size: 14px; }
+  footer .inner { flex-direction: column; align-items: flex-start; }
+}
