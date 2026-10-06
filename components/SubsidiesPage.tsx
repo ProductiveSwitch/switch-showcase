@@ -96,7 +96,7 @@ export function SubsidiesPage() {
             <div className="fan-center">
               <div className="fan-center-num">3</div>
               <div className="fan-center-txt">
-                {t({ nl: "financieringsbronnen, te combineren", en: "sources of funding, combinable" })}
+                {t({ nl: "financieringsbronnen", en: "sources of funding" })}
               </div>
             </div>
             <div className="fan-cards stagger">
@@ -112,8 +112,8 @@ export function SubsidiesPage() {
           </div>
           <div className="fin-note">
             {t({
-              nl: "Deze drie bronnen zijn te combineren. In de intake rekenen we concreet voor wat er voor jou onder de streep overblijft. Transitiebudget besteed aan omscholing voelt als herbesteed geld, niet als nieuwe kosten.",
-              en: "These three sources can be combined. In the intake we work out concretely what is left for you at the bottom line. Transition budget spent on re-training feels like money redirected, not a new cost.",
+              nl: "Deze drie bronnen zijn te combineren. In de intake rekenen we concreet voor wat er voor jou onder de streep overblijft.",
+              en: "These three sources can be combined. In the intake we work out concretely what is left for you at the bottom line.",
             })}
           </div>
         </section>
@@ -121,12 +121,6 @@ export function SubsidiesPage() {
         <section className="section reveal" id="regelingen">
           <div className="section-head">
             <h2>{t({ nl: "De regelingen op een rij", en: "The schemes at a glance" })}</h2>
-            <p>
-              {t({
-                nl: "Het individuele STAP-budget bestaat niet meer (gestopt in 2024). Financiering van omscholing loopt tegenwoordig vrijwel volledig via de werkgever, en dit is wat er openstaat.",
-                en: "The individual STAP budget no longer exists (ended in 2024). Funding for re-training now runs almost entirely through the employer, and this is what's available.",
-              })}
-            </p>
           </div>
           <div className="reg-grid">
             {regelingen.map((r) => (
