@@ -34,8 +34,8 @@ export function ProductiveSwitchPage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen. We begeleiden je mensen naar een nieuw vak met een intake door een erkende coach, korte en erkende omscholing, en een directe lijn naar organisaties in sectoren met blijvende vraag.",
-                  en: "When a role ends, a career doesn't have to. We guide your people into a new trade with an intake by an accredited coach, short and recognised re-training, and a direct line to organisations in sectors with lasting demand.",
+                  nl: "Als een functie verdwijnt, hoeft een loopbaan dat niet te doen. We begeleiden mensen naar een nieuw vak door een sterke basis te leggen in hun zoektocht, ze in contact te brengen met de juiste loopbaancoach, korte en erkende omscholing, en een directe lijn naar organisaties in sectoren met blijvende vraag.",
+                  en: "When a role ends, a career doesn't have to. We guide people into a new trade by laying a strong basis for their search, connecting them with the right career coach, short and recognised re-training, and a direct line to organisations in sectors with lasting demand.",
                 })}
               </p>
               <div className="cta-actions">

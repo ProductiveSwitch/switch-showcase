@@ -85,8 +85,8 @@ export function SubsidiesPage() {
           <h1>{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</h1>
           <p className="lede">
             {t({
-              nl: "Omscholing hoeft geen nieuwe kostenpost te zijn. Drie bronnen stapelen tot een laag netto bedrag voor jou, en daaronder zetten we alle regelingen op een rij. In de intake rekenen we het concreet voor je uit.",
-              en: "Re-training doesn't have to be a new expense. Three sources stack into a low net amount for you, and below we line up all the schemes. In the intake we work it out concretely.",
+              nl: "Omscholing is vaak voordeliger dan in eerste instantie gedacht. Subsidies en opleidingsbudgetten kunnen een groot deel van een traject vergoeden, en ook daarin spelen wij een begeleidende rol.",
+              en: "Re-training is often more affordable than first assumed. Subsidies and training budgets can cover a large part of a path, and there too we play a guiding role.",
             })}
           </p>
         </section>
@@ -96,7 +96,7 @@ export function SubsidiesPage() {
             <div className="fan-center">
               <div className="fan-center-num">3</div>
               <div className="fan-center-txt">
-                {t({ nl: "bronnen die stapelen", en: "sources that stack" })}
+                {t({ nl: "financieringsbronnen", en: "sources of funding" })}
               </div>
             </div>
             <div className="fan-cards stagger">
@@ -112,8 +112,8 @@ export function SubsidiesPage() {
           </div>
           <div className="fin-note">
             {t({
-              nl: "Deze drie bronnen stapelen, en in de intake rekenen we het concreet voor je uit. Transitiebudget besteed aan omscholing voelt als herbesteed geld, niet als nieuwe kosten.",
-              en: "These three sources stack, and in the intake we work it out concretely for you. Transition budget spent on re-training feels like money redirected, not a new cost.",
+              nl: "Deze drie bronnen zijn te combineren. In de intake rekenen we concreet voor wat er voor jou onder de streep overblijft.",
+              en: "These three sources can be combined. In the intake we work out concretely what is left for you at the bottom line.",
             })}
           </div>
         </section>
@@ -121,12 +121,6 @@ export function SubsidiesPage() {
         <section className="section reveal" id="regelingen">
           <div className="section-head">
             <h2>{t({ nl: "De regelingen op een rij", en: "The schemes at a glance" })}</h2>
-            <p>
-              {t({
-                nl: "Het individuele STAP-budget bestaat niet meer (gestopt in 2024). Financiering van omscholing loopt tegenwoordig vrijwel volledig via de werkgever, en dit is wat er openstaat.",
-                en: "The individual STAP budget no longer exists (ended in 2024). Funding for re-training now runs almost entirely through the employer, and this is what's available.",
-              })}
-            </p>
           </div>
           <div className="reg-grid">
             {regelingen.map((r) => (

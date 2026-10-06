@@ -173,11 +173,11 @@ export const financeSources: FinanceSource[] = [
     ),
   },
   {
-    title: bi("SLIM-scholingssubsidie", "SLIM training subsidy"),
+    title: bi("Subsidies", "Subsidies"),
     tag: bi("We regelen de aanvraag", "We handle the application"),
     body: bi(
-      "Voor cruciale sectoren (techniek, zorg en welzijn, onderwijs, ICT, bouw, energie) dekt SLIM een deel van de opleidingskosten. We kijken of je in aanmerking komt en regelen de aanvraag. Budget en tijdvakken zijn beperkt, dus een garantie is het niet.",
-      "For crucial sectors (trades, care and welfare, education, ICT, construction, energy) SLIM covers part of the training costs. We check whether you qualify and handle the application. Budget and windows are limited, so it isn't a guarantee."
+      "Voor omscholing en leren op de werkvloer bestaan landelijke en sectorale subsidies, zoals SLIM en de subsidieregeling praktijkleren, vooral voor sectoren met tekorten (techniek, zorg en welzijn, onderwijs, ICT, bouw, energie). We kijken welke regelingen voor jou gelden en regelen de aanvraag. Budget en tijdvakken zijn beperkt, dus een garantie is het niet.",
+      "For re-training and learning on the job there are national and sector subsidies, such as SLIM and the practical-learning scheme, especially for shortage sectors (trades, care and welfare, education, ICT, construction, energy). We check which schemes apply to you and handle the application. Budget and windows are limited, so it isn't a guarantee."
     ),
   },
 ];
