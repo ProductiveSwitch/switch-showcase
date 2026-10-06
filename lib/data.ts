@@ -463,6 +463,6 @@ export const company = {
   name: "Productive Switch",
   email: "info@productiveswitch.nl",
   linkedin: "https://www.linkedin.com/company/productive-switch",
-  kvk: "",
+  kvk: "42093461",
   address: "",
 };
