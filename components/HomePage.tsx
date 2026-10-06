@@ -33,10 +33,15 @@ export function HomePage() {
             <RadarChart variant="figure" lang={lang} animate />
             <div className="s-hero-chart-cap">
               <span className="radar-source">
-                {t({
-                  nl: "Naar Anthropic, Labor market impacts of AI (maart 2026, figuur 2) en What work can robots do? (september 2026, figuur 6).",
-                  en: "After Anthropic, Labor market impacts of AI (March 2026, figure 2) and What work can robots do? (September 2026, figure 6).",
-                })}
+                {t({ nl: "Bron: ", en: "Source: " })}
+                <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noreferrer">
+                  Anthropic, Labor market impacts of AI
+                </a>{" "}
+                {t({ nl: "(maart 2026, figuur 2) en ", en: "(March 2026, figure 2) and " })}
+                <a href="https://www.anthropic.com/research/what-work-can-robots-do" target="_blank" rel="noreferrer">
+                  What work can robots do?
+                </a>{" "}
+                {t({ nl: "(september 2026, figuur 6).", en: "(September 2026, figure 6)." })}
               </span>
             </div>
           </div>

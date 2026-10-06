@@ -73,7 +73,7 @@ export function RadarChart({ variant, lang = "nl", animate = false }: { variant:
   return (
     <div className={figure ? `radar-wrap${animate ? " radar-wrap--animate" : ""}` : undefined}>
       <svg
-        viewBox={`0 0 ${size} ${size}`}
+        viewBox={figure ? `0 ${cy - R - 90} ${size} ${2 * (R + 90)}` : `0 0 ${size} ${size}`}
         className={figure ? "radar-figure" : "radar-bg"}
         role={figure ? "img" : "presentation"}
         aria-hidden={variant === "bg" ? true : undefined}
