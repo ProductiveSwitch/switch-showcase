@@ -15,7 +15,14 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("nl");
 
   // Read the stored preference after mount (avoids a hydration mismatch)
+  // ?lang=en|nl in de URL wint van de opgeslagen voorkeur (handig voor deelbare links)
   useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("lang");
+    if (q === "en" || q === "nl") {
+      setLangState(q);
+      window.localStorage.setItem("ps-lang", q);
+      return;
+    }
     const stored = window.localStorage.getItem("ps-lang");
     if (stored === "en") setLangState("en");
   }, []);
