@@ -892,3 +892,6 @@ footer .logo-word { font-size: 17px; }
 }
 
 .post-photo { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); margin: 10px 0 26px; }
+
+.post--full h3 { font-size: 22px; margin: 30px 0 10px; }
+.post--full h3:first-child { margin-top: 0; }
