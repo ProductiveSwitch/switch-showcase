@@ -175,9 +175,9 @@ export function ProductiveSearchPage() {
               })}
             </blockquote>
             <div className="who">
-              <div className="avatar">MK</div>
+              <div className="avatar">EV</div>
               <div style={{ textAlign: "left" }}>
-                <div className="name">Marleen Koster</div>
+                <div className="name">Esther van Dijk</div>
                 <div className="role">
                   {t({ nl: "HR-directeur, opdrachtgever Productive Search", en: "HR Director, Productive Search client" })}
                 </div>

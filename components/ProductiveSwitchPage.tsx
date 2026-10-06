@@ -53,7 +53,7 @@ export function ProductiveSwitchPage() {
                 <ul>
                   <li><a href="#how">{t({ nl: "Hoe het werkt", en: "How it works" })}</a></li>
                   <li><a href="#showcase">{t({ nl: "Drie richtingen", en: "Three directions" })}</a></li>
-                  <li><a href="#financiering">{t({ nl: "Wat het de werkgever kost", en: "What it costs the employer" })}</a></li>
+                  <li><a href="#financiering">{t({ nl: "Subsidies", en: "Subsidies" })}</a></li>
                   <li><a href="#visie">{t({ nl: "Onze visie", en: "Our vision" })}</a></li>
                   <li><Link href="/contact?rol=hr">{t({ nl: "Plan een intake", en: "Plan an intake" })}</Link></li>
                 </ul>

@@ -58,8 +58,8 @@ export function HomePage() {
               </h1>
               <p className="lede">
                 {t({
-                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: de organisatie klaarmaken voor wat komt, en medewerkers van wie de functie verdwijnt goed laten landen. Wij helpen op beide.",
-                  en: "In the coming years HR leaders play a crucial role on two fronts: readying the organisation for what is coming, and landing employees whose roles disappear well. We help with both.",
+                  nl: "HR-leiders spelen de komende jaren een cruciale rol op twee fronten: de organisatie door de transformatie leiden, en medewerkers van wie de functie verdwijnt naar nieuw werk begeleiden. Op beide fronten helpen wij.",
+                  en: "In the coming years HR leaders play a crucial role on two fronts: leading the organisation through the transformation, and guiding employees whose roles disappear into new work. On both fronts, we help.",
                 })}
               </p>
             </div>
