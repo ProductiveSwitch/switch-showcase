@@ -28,28 +28,8 @@ export function HomePage() {
                 en: "Recruitment for senior HR professionals, and re-training through targeted outplacement.",
               })}
             </h1>
-            <p className="lede">
-              {t({
-                nl: "Elke functie wordt door AI en robotica geraakt. Het gat tussen wat kan en wat vandaag gebeurt, sluit. Wij helpen HR-leiders aan beide kanten van die verandering.",
-                en: "Every job is touched by AI and robotics. The gap between what is possible and what happens today is closing. We help HR leaders on both sides of that change.",
-              })}
-            </p>
-            <div className="s-hero-cta">
-              <Link className="btn btn-switch btn-lg" href="/productive-switch">
-                Productive Switch
-              </Link>
-              <Link className="btn btn-hire btn-lg" href="/productive-search">
-                Productive Search
-              </Link>
-            </div>
           </div>
           <div className="wrap s-hero-stage">
-            <h2 className="s-hero-chart-title">
-              {t({
-                nl: "Potentiële en huidige waargenomen toepassing van AI per beroepscategorie",
-                en: "Theoretical capability and observed usage by occupational category",
-              })}
-            </h2>
             <RadarChart variant="figure" lang={lang} animate />
             <div className="s-hero-chart-cap">
               <span className="radar-source">
@@ -66,9 +46,7 @@ export function HomePage() {
         <section className="section reveal" id="fronten">
           <div className="wrap">
             <div className="section-head">
-              <div className="eyebrow">{t({ nl: "Voor HR-leiders", en: "For HR leaders" })}</div>
-              <h2>{t({ nl: "Twee fronten, één partner", en: "Two fronts, one partner" })}</h2>
-              <p>
+              <p className="lede">
                 {t({
                   nl: "HR-leiders spelen de komende jaren een cruciale rol op onder andere deze twee fronten: het begeleiden van hun organisatie naar een toekomstbestendige vorm, en het begeleiden van medewerkers van wie de functie verdwijnt. Wij helpen ze op beide onderdelen.",
                   en: "In the coming years HR leaders play a crucial role on, among others, these two fronts: guiding their organisation into a future-proof shape, and guiding employees whose roles disappear. We help them with both.",
