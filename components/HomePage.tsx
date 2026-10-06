@@ -139,7 +139,7 @@ export function HomePage() {
         )}
 
         {variant === "4" && (
-          <section className="section reveal radar-section" id="waarom-nu">
+          <section className="section radar-section" id="waarom-nu">
             <div className="wrap">
               <div className="section-head centered">
                 <div className="eyebrow">{t({ nl: "Waarom nu", en: "Why now" })}</div>
