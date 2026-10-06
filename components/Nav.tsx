@@ -94,7 +94,7 @@ export function Nav() {
     <>
       <a
         className="nav-social"
-        href="https://www.linkedin.com/company/productiveswitch"
+        href="https://www.linkedin.com/company/productive-switch"
         target="_blank"
         rel="noreferrer"
         aria-label="LinkedIn"

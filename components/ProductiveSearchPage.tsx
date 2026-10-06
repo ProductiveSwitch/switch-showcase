@@ -165,27 +165,6 @@ export function ProductiveSearchPage() {
           )}
         </section>
 
-        {/* Testimonial (placeholder until a real client quote exists) */}
-        <section className="reveal">
-          <div className="quote hire">
-            <blockquote>
-              {t({
-                nl: "“Het contact was persoonlijk en de betrokkenheid groot. Ze dachten echt mee over wat wij nodig hadden, en dankzij hun netwerk in HR kwamen er kandidaten voorbij die we zelf nooit hadden bereikt.”",
-                en: "“The contact was personal and the involvement real. They genuinely thought along with what we needed, and thanks to their network in HR, candidates came by that we'd never have reached ourselves.”",
-              })}
-            </blockquote>
-            <div className="who">
-              <div className="avatar">EV</div>
-              <div style={{ textAlign: "left" }}>
-                <div className="name">Esther van Dijk</div>
-                <div className="role">
-                  {t({ nl: "HR-directeur, opdrachtgever Productive Search", en: "HR Director, Productive Search client" })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Contact */}
         <section className="cta-band cta-band--hire reveal" id="search-contact">
           <div>
