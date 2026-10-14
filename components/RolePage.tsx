@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "./LangContext";
 import type { Vacancy } from "@/lib/data";
+import { ApplyModal } from "./ApplyForm";
 
 export function RolePage({ v }: { v: Vacancy }) {
-  const { t } = useLang();
+  const { lang, t } = useLang();
+  const [applyOpen, setApplyOpen] = useState(false);
   return (
     <main className="hire role-page">
       <section className="h-hero h-hero--short">
@@ -45,13 +48,14 @@ export function RolePage({ v }: { v: Vacancy }) {
               <p>{t({ nl: "Stuur je cv of een korte introductie. De naam van de opdrachtgever delen we in een eerste gesprek.", en: "Send your CV or a short introduction. We share the client's name in a first conversation." })}</p>
             </div>
             <div className="cta-actions">
-              <Link href="/contact?rol=kandidaat" className="btn btn-light btn-lg">{t({ nl: "Reageer op deze rol", en: "Apply for this role" })}</Link>
+              <button className="btn btn-light btn-lg" onClick={() => setApplyOpen(true)}>{t({ nl: "Reageer op deze rol", en: "Apply for this role" })}</button>
               <a href={`mailto:douwe@productiveswitch.nl?subject=${encodeURIComponent(v.subject)}`} className="btn btn-ghost-light">{t({ nl: "Of mail Douwe", en: "Or email Douwe" })}</a>
             </div>
           </div>
           <p className="role-back"><Link href="/jobs" className="lees-meer">← {t({ nl: "Alle rollen", en: "All roles" })}</Link></p>
         </article>
       </div>
+      <ApplyModal open={applyOpen} onClose={() => setApplyOpen(false)} lang={lang} v={v} />
     </main>
   );
 }

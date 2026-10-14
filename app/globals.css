@@ -940,6 +940,23 @@ footer .logo-word { font-size: 17px; }
 .poster-card li::before { content: ""; position: absolute; left: 0; top: 11px; width: 11px; height: 11px; border-radius: 3px; background: var(--hire); }
 .poster-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 40px; }
 .poster-cta { font-family: var(--font-display); font-weight: 600; font-size: 28px; }
-.poster-url { font-size: 22px; font-weight: 700; color: #B9CFF2; margin-top: 6px; }
+.poster-url { font-size: 22px; font-weight: 700; color: #fff; margin-top: 6px; }
 .poster-start { font-size: 18px; color: rgba(255,255,255,.8); text-align: right; max-width: 24ch; }
 body:has(.poster-stage) .nav, body:has(.poster-stage) footer { display: none; }
+
+/* Sollicitatieformulier (/jobs/[slug]) */
+.apply-form { display: flex; flex-direction: column; gap: 14px; }
+.apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.apply-field { display: flex; flex-direction: column; gap: 6px; }
+.apply-field > span { font-weight: 600; font-size: 13.5px; }
+.apply-field .form-input { margin-bottom: 8px; }
+.apply-field select.form-input { appearance: auto; }
+.apply-file { padding: 9px 12px; font-size: 14px; }
+.apply-checks { display: flex; gap: 18px; padding: 10px 0 14px; }
+.apply-check { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.45; cursor: pointer; }
+.apply-check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--hire); flex: none; }
+.apply-check a { color: var(--hire); text-decoration: underline; }
+.apply-error { color: #B23A2E; font-size: 14px; }
+.apply-form .btn[disabled] { opacity: .5; cursor: not-allowed; }
+.role-page .modal { max-width: 640px; }
+@media (max-width: 640px) { .apply-grid { grid-template-columns: 1fr; } }
