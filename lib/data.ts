@@ -256,29 +256,30 @@ export const vacancies: Vacancy[] = [
     slug: "interim-head-of-people-amsterdam",
     category: "interim",
     role: bi("Interim Head of People", "Interim Head of People"),
-    org: bi("Internationale scale-up, actief in NL, UK, DE en FR", "International scale-up, active in NL, UK, DE and FR"),
+    org: bi("Snelgroeiend techbedrijf met teams in vier Europese landen", "Fast-growing tech company with teams in four European countries"),
     location: "Amsterdam",
     duration: bi("8 maanden", "8 months"),
     hours: bi("Fulltime", "Full-time"),
-    start: bi("Overdracht vanaf oktober, volledig vanaf december", "Handover from October, full scope from December"),
-    tags: [bi("Interim of tijdelijk contract", "Interim or fixed-term"), bi("Zwangerschapsvervanging", "Maternity cover"), bi("Lid van het leadershipteam", "Seat on the leadership team")],
+    start: bi("Inwerken in het najaar, daarna de volledige rol tot de zomer", "Onboarding this autumn, then the full role until summer"),
+    tags: [bi("Interim", "Interim"), bi("Tijdelijke vervanging", "Temporary cover"), bi("Rapporteert aan de CEO", "Reports to the CEO")],
     summary: bi(
-      "Je neemt acht maanden de volledige People-functie over van een internationale scale-up, met een team van drie en een directe lijn naar de CEO. Na een overdracht van twee maanden ben je vanaf december eigenaar van de hele agenda.",
-      "For eight months you take over the full People function of an international scale-up, with a team of three and a direct line to the CEO. After a two-month handover you own the entire agenda from December."
+      "Een scale-up met zo'n 150 medewerkers zoekt voor acht maanden iemand die de HR-functie end-to-end draaiende houdt en verder brengt. Je stuurt een klein People-team aan, zit aan tafel bij het managementteam en krijgt na een rustige overdracht de volledige verantwoordelijkheid.",
+      "A scale-up of around 150 people is looking for someone to run and advance the HR function end to end for eight months. You lead a small People team, sit at the management table and take full responsibility after a calm handover."
     ),
     tasks: [
-      bi("De People-agenda over vier landen: arbeidsrecht en compliance, organisatieontwerp, workforce planning, compensation and benefits en employee relations.", "The People agenda across four countries: employment law and compliance, organisational design, workforce planning, compensation and benefits and employee relations."),
-      bi("De 2027-roadmap: AI-transformatie (functies, profielen en upskilling) en het herbouwen van een cultuur van eigenaarschap.", "The 2027 roadmap: AI transformation (roles, profiles and upskilling) and rebuilding a culture of ownership."),
-      bi("Het People-cost-budget voor Q4 en een kantoorverhuizing in april.", "The Q4 People cost budget and an office move in April."),
+      bi("Het dagelijkse HR-werk voor medewerkers in meerdere landen goed laten lopen, van contracten en beloning tot lastige gesprekken.", "Keep day-to-day HR running well for employees across several countries, from contracts and pay to difficult conversations."),
+      bi("Het team meenemen in hoe AI het werk verandert: welke rollen verschuiven, wie welke vaardigheden nodig heeft, en hoe je dat organiseert.", "Guide the organisation through how AI is changing the work: which roles shift, who needs which skills, and how to organise that."),
+      bi("Grip houden op het People-budget en een paar grotere projecten trekken, waaronder een verhuizing naar een nieuw kantoor.", "Stay on top of the People budget and lead a few larger projects, including a move to a new office."),
     ],
     asks: [
-      bi("Head of People- of HR-directorervaring in een multi-country scale-up", "Head of People or HR Director experience in a multi-country scale-up"),
-      bi("Arbeidsrecht in minimaal twee van NL, UK, DE en FR", "Employment law in at least two of NL, UK, DE and FR"),
-      bi("Sterk in People-budgetten en cijfers", "Strong with People budgets and numbers"),
-      bi("Neemt lopend werk zelfstandig over; Nederlands, Frans of Duits is een plus", "Picks up work in progress independently; Dutch, French or German is a plus"),
+      bi("Je hebt eerder een HR-afdeling geleid in een organisatie die in meerdere landen actief is", "You have led an HR department before in an organisation operating in several countries"),
+      bi("Je kent het arbeidsrecht van ten minste twee West-Europese landen uit de praktijk", "You know the employment law of at least two Western European countries from practice"),
+      bi("Je bent comfortabel met budgetten, cijfers en een MT dat op data stuurt", "You are comfortable with budgets, numbers and a management team that steers on data"),
+      bi("Je stapt in een rijdende trein en pakt zelf de regie; Nederlands, Duits of Frans naast Engels helpt", "You step onto a moving train and take charge yourself; Dutch, German or French alongside English helps"),
     ],
     subject: "Interim Head of People, Amsterdam",
   },
+];
 ];
 
 // ----- Netwerkconnector (homepage) -----
