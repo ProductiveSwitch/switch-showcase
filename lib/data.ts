@@ -269,7 +269,7 @@ export const vacancies: Vacancy[] = [
     tasks: [
       bi("De volledige People-functie leiden in meerdere landen: arbeidsrecht en compliance, organisatieontwerp, workforce planning, beloning en employee relations.", "Lead the full People function across several countries: employment law and compliance, organisation design, workforce planning, reward and employee relations."),
       bi("Vormgeven hoe de organisatie zich aanpast aan AI: rollen tegen het licht houden, functieprofielen vernieuwen en upskilling opzetten, naast werk aan betrokkenheid en cultuur.", "Shape how the organisation adapts to AI: reviewing roles, updating job profiles and setting up upskilling, alongside work on engagement and culture."),
-      bi("Eigenaar van de People-kosten door de budgetcyclus heen, plus een handvol grotere projecten, waaronder een geplande kantoorverhuizing.", "Own People costs through the budget cycle and lead a handful of larger projects, including a planned office relocation."),
+      bi("Eigenaar van de People-kosten door de budgetcyclus heen, plus een handvol grotere projecten.", "Own People costs through the budget cycle and lead a handful of larger projects."),
     ],
     asks: [
       bi("Senior HR-leiderschap, bij voorkeur als Head of People of HR Director, in een internationaal groeibedrijf.", "Senior HR leadership, ideally as Head of People or HR Director, in an international growth company."),
