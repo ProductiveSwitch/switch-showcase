@@ -263,8 +263,8 @@ export const vacancies: Vacancy[] = [
     start: bi("Start in november", "Start date: November"),
     tags: [bi("Interim", "Interim"), bi("Tijdelijke vervanging", "Temporary cover"), bi("Rapporteert aan de CEO", "Reports to the CEO")],
     summary: bi(
-      "Een internationale scale-up zoekt voor acht maanden iemand die de People-functie volledig overneemt en verder brengt. Je stuurt een klein People-team aan, zit aan tafel bij het managementteam en krijgt na een rustige overdracht de volledige verantwoordelijkheid.",
-      "An international scale-up is looking for someone to take over and advance the People function in full for eight months. You lead a small People team, sit at the management table and take full responsibility after a calm handover."
+      "Een internationale tech scale-up zoekt een interim Head of People die vanaf november de volledige People-functie overneemt: arbeidsrecht in meerdere landen, organisatieontwerp, beloning, en de vraag hoe de organisatie zich aanpast aan AI. Je zit aan tafel bij het managementteam en stuurt een klein People-team aan.",
+      "An international tech scale-up is looking for an interim Head of People to take over the full People function from November: multi-country employment law, organisation design, reward, and the question of how the organisation adapts to AI. You sit at the management table and lead a small People team."
     ),
     tasks: [
       bi("De volledige People-functie leiden in meerdere landen: arbeidsrecht en compliance, organisatieontwerp, workforce planning, beloning en employee relations.", "Lead the full People function across several countries: employment law and compliance, organisation design, workforce planning, reward and employee relations."),
