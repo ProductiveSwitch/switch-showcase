@@ -25,7 +25,7 @@ export function RolePoster({ v, lang = "nl" }: { v: Vacancy; lang?: "nl" | "en" 
       <div className="poster-foot">
         <div>
           <div className="poster-cta">{t({ nl: "Interesse of iemand in gedachten?", en: "Interested, or know someone?" })}</div>
-          <div className="poster-url">productiveswitch.nl/rollen</div>
+          <div className="poster-url">productiveswitch.nl/jobs</div>
         </div>
         <div className="poster-start">{t(v.start)}</div>
       </div>

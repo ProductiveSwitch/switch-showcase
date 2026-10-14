@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
         destination: "/productive-search",
         permanent: true,
       },
+      { source: "/rollen", destination: "/jobs", permanent: true },
+      { source: "/rollen/:path*", destination: "/jobs/:path*", permanent: true },
     ];
   },
 };

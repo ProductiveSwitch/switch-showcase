@@ -133,7 +133,7 @@ export function ProductiveSearchPage() {
 
           <div className="vac-list">
             {shownVacancies.map((v) => (
-              <Link href={`/rollen/${v.slug}`} className="vac" key={v.slug}>
+              <Link href={`/jobs/${v.slug}`} className="vac" key={v.slug}>
                 <div className="vac-main">
                   <div className="vac-role">{t(v.role)}</div>
                   <div className="vac-org">{t(v.org)} · {v.location}</div>

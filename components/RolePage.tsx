@@ -49,7 +49,7 @@ export function RolePage({ v }: { v: Vacancy }) {
               <a href={`mailto:douwe@productiveswitch.nl?subject=${encodeURIComponent(v.subject)}`} className="btn btn-ghost-light">{t({ nl: "Of mail Douwe", en: "Or email Douwe" })}</a>
             </div>
           </div>
-          <p className="role-back"><Link href="/productive-search#vacatures" className="lees-meer">← {t({ nl: "Alle rollen", en: "All roles" })}</Link></p>
+          <p className="role-back"><Link href="/jobs" className="lees-meer">← {t({ nl: "Alle rollen", en: "All roles" })}</Link></p>
         </article>
       </div>
     </main>
