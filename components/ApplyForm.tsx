@@ -76,6 +76,7 @@ export function ApplyModal({ open, onClose, lang, v }: { open: boolean; onClose:
       const fd = new FormData();
       fd.set("subject", subject);
       fd.set("text", text);
+      fd.set("email", email);
       if (cv) fd.set("cv", cv);
       const res = await fetch("/api/apply", { method: "POST", body: fd });
       if (res.ok) {

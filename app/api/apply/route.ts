@@ -16,6 +16,8 @@ export async function POST(req: Request) {
   }
   const subject = String(form.get("subject") || "Sollicitatie via productiveswitch.nl").slice(0, 200);
   const text = String(form.get("text") || "").slice(0, 10000);
+  const replyTo = String(form.get("email") || "").trim();
+  const replyOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(replyTo);
   if (!text.trim()) return NextResponse.json({ ok: false, error: "empty" }, { status: 400 });
 
   const key = process.env.RESEND_API_KEY;
@@ -33,7 +35,7 @@ export async function POST(req: Request) {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from: FROM, to: [TO], subject, text, attachments }),
+      body: JSON.stringify({ from: FROM, to: [TO], subject, text, attachments, ...(replyOk ? { reply_to: replyTo } : {}) }),
     });
     if (!res.ok) return NextResponse.json({ ok: false, configured: true }, { status: 502 });
     return NextResponse.json({ ok: true });
