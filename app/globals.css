@@ -904,3 +904,42 @@ footer .logo-word { font-size: 17px; }
 
 .post--full h3 { font-size: 22px; margin: 30px 0 10px; }
 .post--full h3:first-child { margin-top: 0; }
+
+/* ===== Rolpagina ===== */
+.role-page .h-hero--short { padding-bottom: 48px; }
+.role-page .h-hero h1 { max-width: 20ch; }
+.role-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.role-meta span { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,.45); color: #fff; }
+.role-body { max-width: 860px; padding: 40px 0 56px; }
+.role-summary { font-size: 18px; line-height: 1.6; color: var(--ink); max-width: 64ch; margin-bottom: 28px; }
+.role-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.role-cols h2 { font-size: 19px; margin-bottom: 10px; }
+.role-cols ul { list-style: none; display: grid; gap: 10px; }
+.role-cols li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.role-cols li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 2px; background: var(--hire); }
+.role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.role-back { margin-top: 28px; }
+.vac { color: inherit; }
+@media (max-width: 640px) { .role-cols { grid-template-columns: 1fr; } }
+
+/* ===== Rolposter (1080 x 1350, LinkedIn) ===== */
+.poster-stage { width: 1080px; height: 1350px; overflow: hidden; background: var(--hire); }
+.poster { width: 1080px; height: 1350px; padding: 72px 80px; background: var(--hire); color: #fff; display: flex; flex-direction: column; font-family: var(--font-body); }
+.poster-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 64px; }
+.poster-brand { display: flex; align-items: center; gap: 14px; font-family: var(--font-display); font-weight: 600; font-size: 30px; letter-spacing: -0.01em; }
+.poster-kind { font-size: 18px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #B9CFF2; }
+.poster-title { font-family: var(--font-display); font-weight: 600; font-size: 76px; line-height: 1.05; letter-spacing: -0.02em; max-width: 14ch; }
+.poster-org { font-size: 26px; line-height: 1.4; color: rgba(255,255,255,.85); margin-top: 18px; max-width: 30ch; }
+.poster-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.poster-meta span { font-size: 20px; font-weight: 600; padding: 10px 18px; border-radius: 10px; border: 2px solid rgba(255,255,255,.5); }
+.poster-card { background: var(--paper-2); color: var(--ink); border-radius: 24px; padding: 40px 44px; margin-top: 44px; flex: 1; }
+.poster-h { font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--hire); margin-bottom: 14px; }
+.poster-card ul { list-style: none; display: grid; gap: 12px; margin-bottom: 30px; }
+.poster-card ul:last-child { margin-bottom: 0; }
+.poster-card li { position: relative; padding-left: 26px; font-size: 21px; line-height: 1.4; color: var(--ink); }
+.poster-card li::before { content: ""; position: absolute; left: 0; top: 11px; width: 11px; height: 11px; border-radius: 3px; background: var(--hire); }
+.poster-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 40px; }
+.poster-cta { font-family: var(--font-display); font-weight: 600; font-size: 28px; }
+.poster-url { font-size: 22px; font-weight: 700; color: #B9CFF2; margin-top: 6px; }
+.poster-start { font-size: 18px; color: rgba(255,255,255,.8); text-align: right; max-width: 24ch; }
+body:has(.poster-stage) .nav, body:has(.poster-stage) footer { display: none; }

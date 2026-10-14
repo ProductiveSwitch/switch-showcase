@@ -132,29 +132,23 @@ export function ProductiveSearchPage() {
           </div>
 
           <div className="vac-list">
-            {shownVacancies.map((v, i) => (
-              <div className="vac" key={i}>
+            {shownVacancies.map((v) => (
+              <Link href={`/rollen/${v.slug}`} className="vac" key={v.slug}>
                 <div className="vac-main">
                   <div className="vac-role">{t(v.role)}</div>
-                  <div className="vac-org">{t(v.org)}</div>
+                  <div className="vac-org">{t(v.org)} · {v.location}</div>
                   <div className="vac-tags">
-                    {v.tags.map((tag, j) => (
-                      <span className={`vac-tag${j === 0 ? "" : " muted"}`} key={j}>
-                        {t(tag)}
-                      </span>
+                    <span className="vac-tag">{t(v.duration)}</span>
+                    <span className="vac-tag muted">{t(v.hours)}</span>
+                    {v.tags.slice(0, 1).map((tag, j) => (
+                      <span className="vac-tag muted" key={j}>{t(tag)}</span>
                     ))}
                   </div>
                 </div>
                 <div className="vac-side">
-                  <div className="vac-salary">{v.salary}</div>
-                  <a
-                    href={`mailto:info@productiveswitch.nl?subject=${encodeURIComponent(v.subject)}`}
-                    className="btn btn-hire btn-sm"
-                  >
-                    {t({ nl: "Reageer", en: "Apply" })}
-                  </a>
+                  <span className="btn btn-hire btn-sm">{t({ nl: "Bekijk de rol", en: "View the role" })}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
