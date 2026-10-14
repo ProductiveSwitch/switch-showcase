@@ -21,7 +21,7 @@ export function RolePage({ v }: { v: Vacancy }) {
               <span>{v.location}</span>
               <span>{t(v.duration)}</span>
               <span>{t(v.hours)}</span>
-              <span>{t(v.start)}</span>
+              {t(v.start) !== t(v.duration) && <span>{t(v.start)}</span>}
             </div>
           </div>
         </div>
