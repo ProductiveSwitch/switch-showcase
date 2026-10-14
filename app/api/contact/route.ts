@@ -36,7 +36,9 @@ export async function POST(req: Request) {
       body: JSON.stringify({ from: FROM, to: [TO], subject, text }),
     });
     if (!res.ok) {
-      return NextResponse.json({ ok: false, configured: true }, { status: 502 });
+      const detail = (await res.text().catch(() => "")).slice(0, 300);
+      console.error("resend error", res.status, detail);
+      return NextResponse.json({ ok: false, configured: true, upstream: res.status, detail }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
   } catch {
