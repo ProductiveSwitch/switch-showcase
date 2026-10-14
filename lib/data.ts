@@ -280,7 +280,6 @@ export const vacancies: Vacancy[] = [
     subject: "Interim Head of People, Amsterdam",
   },
 ];
-];
 
 // ----- Netwerkconnector (homepage) -----
 // Productive Switch in het midden; om ons heen de partijen die we verbinden.
