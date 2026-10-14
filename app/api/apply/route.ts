@@ -37,7 +37,11 @@ export async function POST(req: Request) {
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({ from: FROM, to: [TO], subject, text, attachments, ...(replyOk ? { reply_to: replyTo } : {}) }),
     });
-    if (!res.ok) return NextResponse.json({ ok: false, configured: true }, { status: 502 });
+    if (!res.ok) {
+      const detail = (await res.text().catch(() => "")).slice(0, 300);
+      console.error("resend error", res.status, detail);
+      return NextResponse.json({ ok: false, configured: true, upstream: res.status, detail }, { status: 502 });
+    }
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, configured: true }, { status: 502 });
