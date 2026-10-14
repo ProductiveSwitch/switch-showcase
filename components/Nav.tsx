@@ -38,7 +38,7 @@ export function Nav() {
 
   const contactHref = "/contact";
   // De Search-pagina opent met een volvlak blauwe hero, dus de nav is daar licht tot je scrolt
-  const onDark = (pathname === "/productive-search" || pathname === "/productive-switch" || pathname === "/vision" || pathname === "/deelnemers" || pathname === "/contact" || pathname.startsWith("/blog")) && !scrolled && !menuOpen;
+  const onDark = (pathname === "/productive-search" || pathname === "/productive-switch" || pathname === "/vision" || pathname === "/deelnemers" || pathname === "/contact" || pathname.startsWith("/blog") || pathname.startsWith("/rollen")) && !scrolled && !menuOpen;
 
   const links = [
     { href: "/productive-search", label: { nl: "Productive Search", en: "Productive Search" }, active: pathname === "/productive-search" },
