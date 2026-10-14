@@ -228,11 +228,20 @@ export const intakeTimelines: { key: string; label: Bi }[] = [
 export type VacancyCategory = "vast" | "interim";
 
 export interface Vacancy {
+  slug: string;
   category: VacancyCategory;
   role: Bi;
+  /** omschrijving van de opdrachtgever, nooit de naam */
   org: Bi;
+  location: string;
+  duration: Bi;
+  hours: Bi;
+  start: Bi;
   tags: Bi[];
-  salary: string;
+  summary: Bi;
+  tasks: Bi[];
+  asks: Bi[];
+  salary?: string;
   subject: string;
 }
 
@@ -241,22 +250,34 @@ export const vacancyFilters: { key: VacancyCategory; label: Bi }[] = [
   { key: "interim", label: bi("Interim en adviesopdrachten", "Interim and advisory assignments") },
 ];
 
+// Rollen. De eindklant wordt nooit genoemd; `org` beschrijft het type organisatie.
 export const vacancies: Vacancy[] = [
   {
-    category: "vast",
-    role: bi("HR-directeur", "HR Director"),
-    org: bi("Internationale maakindustrie · Eindhoven", "International manufacturing · Eindhoven"),
-    tags: [bi("Fulltime", "Full-time"), bi("Vast", "Permanent"), bi("Hybride", "Hybrid")],
-    salary: "€ 9.000 – 12.000",
-    subject: "HR-directeur",
-  },
-  {
+    slug: "interim-head-of-people-amsterdam",
     category: "interim",
-    role: bi("Interim adviseur Organisational Design", "Interim Organisational Design adviser"),
-    org: bi("Zorgorganisatie · Rotterdam", "Care organisation · Rotterdam"),
-    tags: [bi("Interim", "Interim"), bi("6 maanden", "6 months"), bi("Hybride", "Hybrid")],
-    salary: "€ 110 – 140 p/u",
-    subject: "Interim adviseur Organisational Design",
+    role: bi("Interim Head of People", "Interim Head of People"),
+    org: bi("Internationale scale-up, actief in NL, UK, DE en FR", "International scale-up, active in NL, UK, DE and FR"),
+    location: "Amsterdam",
+    duration: bi("8 maanden", "8 months"),
+    hours: bi("Fulltime", "Full-time"),
+    start: bi("Overdracht vanaf oktober, volledig vanaf december", "Handover from October, full scope from December"),
+    tags: [bi("Interim of tijdelijk contract", "Interim or fixed-term"), bi("Zwangerschapsvervanging", "Maternity cover"), bi("Lid van het leadershipteam", "Seat on the leadership team")],
+    summary: bi(
+      "Je neemt acht maanden de volledige People-functie over van een internationale scale-up, met een team van drie en een directe lijn naar de CEO. Na een overdracht van twee maanden ben je vanaf december eigenaar van de hele agenda.",
+      "For eight months you take over the full People function of an international scale-up, with a team of three and a direct line to the CEO. After a two-month handover you own the entire agenda from December."
+    ),
+    tasks: [
+      bi("De People-agenda over vier landen: arbeidsrecht en compliance, organisatieontwerp, workforce planning, compensation and benefits en employee relations.", "The People agenda across four countries: employment law and compliance, organisational design, workforce planning, compensation and benefits and employee relations."),
+      bi("De 2027-roadmap: AI-transformatie (functies, profielen en upskilling) en het herbouwen van een cultuur van eigenaarschap.", "The 2027 roadmap: AI transformation (roles, profiles and upskilling) and rebuilding a culture of ownership."),
+      bi("Het People-cost-budget voor Q4 en een kantoorverhuizing in april.", "The Q4 People cost budget and an office move in April."),
+    ],
+    asks: [
+      bi("Head of People- of HR-directorervaring in een multi-country scale-up", "Head of People or HR Director experience in a multi-country scale-up"),
+      bi("Arbeidsrecht in minimaal twee van NL, UK, DE en FR", "Employment law in at least two of NL, UK, DE and FR"),
+      bi("Sterk in People-budgetten en cijfers", "Strong with People budgets and numbers"),
+      bi("Neemt lopend werk zelfstandig over; Nederlands, Frans of Duits is een plus", "Picks up work in progress independently; Dutch, French or German is a plus"),
+    ],
+    subject: "Interim Head of People, Amsterdam",
   },
 ];
 
