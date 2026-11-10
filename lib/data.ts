@@ -305,12 +305,12 @@ export const vacancies: Vacancy[] = [
     ],
     tags: [bi("Vast", "Permanent"), bi("Hybride", "Hybrid"), bi("Compact HR-team", "Small HR team")],
     summary: bi(
-      "Een internationale organisatie die adviseert en realiseert in gebouwen, industrie, energie en infrastructuur groeit in Nederland en zoekt voor de vestiging in Rotterdam een HR Business Partner.",
-      "An international organisation that advises on and delivers projects in buildings, industry, energy and infrastructure is growing in the Netherlands, and is looking for an HR Business Partner for its Rotterdam office."
+      "Een internationale zakelijk dienstverlener groeit in Nederland en zoekt voor de vestiging in Rotterdam een HR Business Partner.",
+      "An international professional services firm is growing in the Netherlands, and is looking for an HR Business Partner for its Rotterdam office."
     ),
     more: bi(
-      "Het HR-team is compact, de functie is breed en veelzijdig, en er is ruimte voor innovatie en perspectief op verdere doorgroei. Er is een plek vrij gekomen die snel weer ingevuld moet worden. Je zit op tactisch niveau, maar hebt ook een operationeel aandeel.",
-      "The HR team is small and the role is broad and varied, with room to try new things and real prospects to grow further. A position has opened up and needs to be filled again soon. You work at a tactical level, and take on part of the operational work too."
+      "Het HR-team is compact, de functie is breed en veelzijdig, en er is ruimte voor innovatie en perspectief op verdere doorgroei. De rol zit tussen HR Officer en HR Business Partner in: je zit op tactisch niveau, maar hebt ook een operationeel aandeel.",
+      "The HR team is small and the role is broad and varied, with room to try new things and real prospects to grow further. The role sits between HR Officer and HR Business Partner: you work at a tactical level, and take on part of the operational work too."
     ),
     tasks: [
       bi("Je bent het vertrouwde eerste aanspreekpunt voor leidinggevenden en medewerkers, van verzuim tot ontwikkelwensen.", "You are the trusted first point of contact for managers and employees, on everything from absence to development wishes."),
@@ -319,11 +319,11 @@ export const vacancies: Vacancy[] = [
       bi("Je helpt functieprofielen, functieniveaus en groeipaden scherper te krijgen.", "You help sharpen job profiles, job levels and growth paths."),
       bi("Je denkt mee over talent, prestaties en duurzame inzetbaarheid.", "You help shape the thinking on talent, performance and keeping people healthy and employable in the long run."),
       bi("Je signaleert wat beter kan en vertaalt dat naar initiatieven die de organisatie gezonder en sterker maken, ook op het gebied van cultuur, arbeidsvoorwaarden en werkgeversmerk.", "You spot what could be better and turn it into initiatives that make the organisation healthier and stronger, including on culture, terms of employment and employer brand."),
-      bi("Je werkt nauw samen met een senior HR-collega en een interne recruiter, zodat werving, onboarding en ontwikkeling op elkaar aansluiten.", "You work closely with a senior HR colleague and an in-house recruiter, so that hiring, onboarding and development fit together."),
+      bi("Je werkt nauw samen met je HR-collega's, zodat werving, onboarding en ontwikkeling op elkaar aansluiten.", "You work closely with your HR colleagues, so that hiring, onboarding and development fit together."),
     ],
     asksTitle: bi("Wat je meebrengt", "What you bring"),
     asks: [
-      bi("Minimaal vijf jaar HR-ervaring, bij voorkeur in een brede HR-rol.", "At least five years of HR experience, ideally in a broad HR role."),
+      bi("Minimaal vier jaar HR-ervaring, bij voorkeur in een brede HR-rol.", "At least four years of HR experience, ideally in a broad HR role."),
       bi("Hbo- of wo-niveau, bij voorkeur in HRM of organisatieontwikkeling.", "A bachelor's or master's degree, ideally in HRM or organisational development."),
       bi("Goede kennis van het Nederlandse arbeidsrecht.", "Sound knowledge of Dutch employment law."),
       bi("Ervaring met het zelfstandig adviseren van leidinggevenden, en met verzuim, talentontwikkeling en prestatievraagstukken.", "Experience advising managers independently, and with absence, talent development and performance issues."),
@@ -337,11 +337,9 @@ export const vacancies: Vacancy[] = [
       bi("Een bruto basissalaris van € 4.000 tot € 5.500 per maand, op basis van fulltime.", "A gross base salary of €4,000 to €5,500 a month, based on full-time."),
       bi("Een eindejaarsbonus op basis van prestaties.", "A year-end bonus based on performance."),
       bi("Werken in 4 of 5 dagen per week, hybride.", "A working week of 4 or 5 days, hybrid."),
-      bi("Opleidingen en bijscholing op maat, via een eigen leerplatform.", "Tailored training and further education, through the organisation's own learning platform."),
-      bi("Een bonus of korting voor sport.", "A bonus or discount for sport."),
-      bi("Een ov-vergoeding of een (elektrische) leaseauto, afhankelijk van de functie.", "A public transport allowance or an (electric) lease car, depending on the role."),
-      bi("Een portaal met extra kortingen, en een bonus als je een collega aandraagt.", "A portal with extra discounts, and a bonus when you refer a colleague."),
-      bi("Duidelijke regelingen voor zwangerschaps-, vaderschaps- en zorgverlof.", "Clear arrangements for maternity, paternity and care leave."),
+      bi("Opleidingen en bijscholing op maat.", "Tailored training and further education."),
+      bi("Perspectief om de komende jaren door te groeien.", "Real prospects to grow in the coming years."),
+      bi("Een mobiliteitsregeling en goede secundaire voorwaarden, waaronder duidelijke verlofregelingen.", "A mobility arrangement and good secondary benefits, including clear leave arrangements."),
     ],
     closing: bi(
       "Productive Search begeleidt deze zoektocht. Mail je cv en een paar regels over wat je zoekt naar applicant@productiveswitch.nl, of upload je cv via de site. Je hoort snel van ons, en je gegevens blijven vertrouwelijk tot je zelf zegt dat het mag.",
