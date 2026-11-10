@@ -334,7 +334,7 @@ export const vacancies: Vacancy[] = [
       bi("Een pre: ervaring in de zakelijke dienstverlening.", "Also welcome: experience in professional services."),
     ],
     offers: [
-      bi("Een bruto basissalaris van € 4.000 tot € 5.500 per maand.", "A gross base salary of €4,000 to €5,500 a month."),
+      bi("Een bruto basissalaris van € 4.000 tot € 5.500 per maand, op basis van fulltime.", "A gross base salary of €4,000 to €5,500 a month, based on full-time."),
       bi("Een eindejaarsbonus op basis van prestaties.", "A year-end bonus based on performance."),
       bi("Werken in 4 of 5 dagen per week, hybride.", "A working week of 4 or 5 days, hybrid."),
       bi("Opleidingen en bijscholing op maat, via een eigen leerplatform.", "Tailored training and further education, through the organisation's own learning platform."),
