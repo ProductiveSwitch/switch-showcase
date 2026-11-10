@@ -247,6 +247,8 @@ export interface Vacancy {
   asksTitle?: Bi;
   /** "Wat je krijgt" */
   offers?: Bi[];
+  /** vervolg op `summary`, kleiner gezet onder de lead */
+  more?: Bi;
   closing?: Bi;
   /** mailadres voor reacties; standaard douwe@ */
   contactEmail?: string;
@@ -303,18 +305,21 @@ export const vacancies: Vacancy[] = [
     ],
     tags: [bi("Vast", "Permanent"), bi("Hybride", "Hybrid"), bi("Compact HR-team", "Small HR team")],
     summary: bi(
-      "Een internationale organisatie die adviseert en realiseert in gebouwen, industrie, energie en infrastructuur groeit in Nederland en zoekt voor de vestiging in Rotterdam een HR Business Partner. Het HR-team is compact, de functie is breed en veelzijdig, en er is ruimte voor innovatie en perspectief op verdere doorgroei. Er is een plek vrij gekomen die snel weer ingevuld moet worden. Je zit op tactisch niveau, met een stevig operationeel aandeel. Je adviseert, en je zorgt er ook voor dat afspraken en verbeteringen echt landen.",
-      "An international organisation that advises on and delivers projects in buildings, industry, energy and infrastructure is growing in the Netherlands, and is looking for an HR Business Partner for its Rotterdam office. The HR team is small and the role is broad and varied, with room to try new things and real prospects to grow further. A position has opened up and needs to be filled again soon. You work at a tactical level, with a solid share of operational work. You advise, and you also make sure agreements and improvements actually stick."
+      "Een internationale organisatie die adviseert en realiseert in gebouwen, industrie, energie en infrastructuur groeit in Nederland en zoekt voor de vestiging in Rotterdam een HR Business Partner.",
+      "An international organisation that advises on and delivers projects in buildings, industry, energy and infrastructure is growing in the Netherlands, and is looking for an HR Business Partner for its Rotterdam office."
+    ),
+    more: bi(
+      "Het HR-team is compact, de functie is breed en veelzijdig, en er is ruimte voor innovatie en perspectief op verdere doorgroei. Er is een plek vrij gekomen die snel weer ingevuld moet worden. Je zit op tactisch niveau, maar hebt ook een operationeel aandeel.",
+      "The HR team is small and the role is broad and varied, with room to try new things and real prospects to grow further. A position has opened up and needs to be filled again soon. You work at a tactical level, and take on part of the operational work too."
     ),
     tasks: [
       bi("Je bent het vertrouwde eerste aanspreekpunt voor leidinggevenden en medewerkers, van verzuim tot ontwikkelwensen.", "You are the trusted first point of contact for managers and employees, on everything from absence to development wishes."),
       bi("Je draait en verbetert de processen rond instroom, uitstroom, verzuim en personeelszaken, en maakt ze slimmer waar dat kan, bijvoorbeeld door te automatiseren.", "You run and improve the processes around joiners, leavers, absence and HR administration, and make them smarter where you can, for example through automation."),
-      bi("Je maakt opleiden en ontwikkelen een vast onderdeel van het werkjaar.", "You make learning and development a fixed part of the working year."),
+      bi("Je pakt lokale HR-projecten zelfstandig op en haakt aan bij internationale initiatieven.", "You take on local HR projects independently and join in on international initiatives."),
       bi("Je helpt functieprofielen, functieniveaus en groeipaden scherper te krijgen.", "You help sharpen job profiles, job levels and growth paths."),
       bi("Je denkt mee over talent, prestaties en duurzame inzetbaarheid.", "You help shape the thinking on talent, performance and keeping people healthy and employable in the long run."),
       bi("Je signaleert wat beter kan en vertaalt dat naar initiatieven die de organisatie gezonder en sterker maken, ook op het gebied van cultuur, arbeidsvoorwaarden en werkgeversmerk.", "You spot what could be better and turn it into initiatives that make the organisation healthier and stronger, including on culture, terms of employment and employer brand."),
       bi("Je werkt nauw samen met een senior HR-collega en een interne recruiter, zodat werving, onboarding en ontwikkeling op elkaar aansluiten.", "You work closely with a senior HR colleague and an in-house recruiter, so that hiring, onboarding and development fit together."),
-      bi("Je pakt lokale HR-projecten zelfstandig op en haakt aan bij internationale initiatieven.", "You take on local HR projects independently and join in on international initiatives."),
     ],
     asksTitle: bi("Wat je meebrengt", "What you bring"),
     asks: [

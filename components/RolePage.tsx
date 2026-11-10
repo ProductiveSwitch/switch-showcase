@@ -10,7 +10,7 @@ import { ApplyModal } from "./ApplyForm";
 function withMail(text: string, email?: string) {
   if (!email || !text.includes(email)) return text;
   const [before, after] = text.split(email);
-  return <>{before}<a href={`mailto:${email}`} style={{ color: "var(--hire)", fontWeight: 600, textDecoration: "underline" }}>{email}</a>{after}</>;
+  return <>{before}<a href={`mailto:${email}`} className="role-mail">{email}</a>{after}</>;
 }
 
 export function RolePage({ v }: { v: Vacancy }) {
@@ -40,7 +40,8 @@ export function RolePage({ v }: { v: Vacancy }) {
       <div className="wrap">
         <article className="role-body">
           <p className="role-summary">{t(v.summary)}</p>
-          <div className="role-cols">
+          {v.more && <p className="role-more">{t(v.more)}</p>}
+          <div className={v.offers ? "role-cols role-cols--cards" : "role-cols"}>
             <section>
               <h2>{t({ nl: "Wat je gaat doen", en: "What you will do" })}</h2>
               <ul>{v.tasks.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
@@ -56,7 +57,7 @@ export function RolePage({ v }: { v: Vacancy }) {
               </section>
             )}
           </div>
-          {v.closing && <p className="role-summary" style={{ marginTop: 28, marginBottom: 0 }}>{withMail(t(v.closing), v.contactEmail)}</p>}
+          {v.closing && <p className="role-closing">{withMail(t(v.closing), v.contactEmail)}</p>}
           <div className="role-tags">
             {v.tags.map((x, i) => <span key={i} className="vac-tag">{t(x)}</span>)}
           </div>
