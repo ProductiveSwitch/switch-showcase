@@ -323,7 +323,7 @@ export const vacancies: Vacancy[] = [
     ],
     asksTitle: bi("Wat je meebrengt", "What you bring"),
     asks: [
-      bi("Minimaal vijf jaar HR-ervaring, bij voorkeur in een brede adviesrol.", "At least five years of HR experience, ideally in a broad advisory role."),
+      bi("Minimaal vijf jaar HR-ervaring, bij voorkeur in een brede HR-rol.", "At least five years of HR experience, ideally in a broad HR role."),
       bi("Hbo- of wo-niveau, bij voorkeur in HRM of organisatieontwikkeling.", "A bachelor's or master's degree, ideally in HRM or organisational development."),
       bi("Goede kennis van het Nederlandse arbeidsrecht.", "Sound knowledge of Dutch employment law."),
       bi("Ervaring met het zelfstandig adviseren van leidinggevenden, en met verzuim, talentontwikkeling en prestatievraagstukken.", "Experience advising managers independently, and with absence, talent development and performance issues."),

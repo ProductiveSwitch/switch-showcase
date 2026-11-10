@@ -921,11 +921,13 @@ footer .logo-word { font-size: 17px; }
 .role-cols--cards { gap: 16px; }
 .role-cols--cards section { background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; }
 .role-cols--cards section:first-child { grid-column: 1 / -1; }
-.role-cols--cards section:first-child ul { grid-template-columns: 1fr 1fr; column-gap: 36px; }
+.role-cols--cards section:first-child ul { display: block; columns: 2; column-gap: 40px; }
+.role-cols--cards section:first-child li { break-inside: avoid; margin-bottom: 12px; }
+.role-cols--cards section:first-child li:last-child { margin-bottom: 0; }
 .role-cols--cards h2 { margin-bottom: 14px; }
 .role-closing { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-width: 64ch; margin-top: 28px; }
 .role-mail { color: var(--hire); font-weight: 600; text-decoration: underline; }
-@media (max-width: 640px) { .role-cols--cards section:first-child ul { grid-template-columns: 1fr; } .role-cols--cards section { padding: 22px 20px; } }
+@media (max-width: 640px) { .role-cols--cards section:first-child ul { columns: 1; } .role-cols--cards section { padding: 22px 20px; } }
 .role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
 .role-back { margin-top: 28px; }
 .vac { color: inherit; }
