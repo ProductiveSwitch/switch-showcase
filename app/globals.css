@@ -917,6 +917,17 @@ footer .logo-word { font-size: 17px; }
 .role-cols ul { list-style: none; display: grid; gap: 10px; }
 .role-cols li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 .role-cols li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 2px; background: var(--hire); }
+.role-more { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-width: 64ch; margin: -14px 0 32px; }
+.role-cols--cards { gap: 16px; }
+.role-cols--cards section { background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; }
+.role-cols--cards section:first-child { grid-column: 1 / -1; }
+.role-cols--cards section:first-child ul { display: block; columns: 2; column-gap: 40px; }
+.role-cols--cards section:first-child li { break-inside: avoid; margin-bottom: 12px; }
+.role-cols--cards section:first-child li:last-child { margin-bottom: 0; }
+.role-cols--cards h2 { margin-bottom: 14px; }
+.role-closing { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-width: 64ch; margin-top: 28px; }
+.role-mail { color: var(--hire); font-weight: 600; text-decoration: underline; }
+@media (max-width: 640px) { .role-cols--cards section:first-child ul { columns: 1; } .role-cols--cards section { padding: 22px 20px; } }
 .role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
 .role-back { margin-top: 28px; }
 .vac { color: inherit; }

@@ -236,11 +236,22 @@ export interface Vacancy {
   location: string;
   duration: Bi;
   hours: Bi;
-  start: Bi;
+  start?: Bi;
+  /** vervangt duur, uren en start in de kenmerkenregel (na de locatie) */
+  details?: Bi[];
   tags: Bi[];
   summary: Bi;
   tasks: Bi[];
   asks: Bi[];
+  /** eigen kop boven `asks`; standaard "Wat we zoeken" */
+  asksTitle?: Bi;
+  /** "Wat je krijgt" */
+  offers?: Bi[];
+  /** vervolg op `summary`, kleiner gezet onder de lead */
+  more?: Bi;
+  closing?: Bi;
+  /** mailadres voor reacties; standaard douwe@ */
+  contactEmail?: string;
   salary?: string;
   subject: string;
 }
@@ -278,6 +289,64 @@ export const vacancies: Vacancy[] = [
       bi("Snelle starter; Nederlands, Frans of Duits naast Engels is een plus.", "Fast starter; Dutch, French or German next to English is a plus."),
     ],
     subject: "Interim Head of People, Amsterdam",
+  },
+  {
+    slug: "hr-business-partner-rotterdam",
+    category: "vast",
+    role: bi("HR Business Partner", "HR Business Partner"),
+    org: bi("Internationale adviesorganisatie", "International advisory organisation"),
+    location: "Rotterdam",
+    duration: bi("Vaste functie", "Permanent role"),
+    hours: bi("4 of 5 dagen per week", "4 or 5 days a week"),
+    details: [
+      bi("4 of 5 dagen per week", "4 or 5 days a week"),
+      bi("Hybride werken", "Hybrid working"),
+      bi("Vaste functie", "Permanent role"),
+    ],
+    tags: [bi("Vast", "Permanent"), bi("Hybride", "Hybrid"), bi("Compact HR-team", "Small HR team")],
+    summary: bi(
+      "Een internationale organisatie die adviseert en realiseert in gebouwen, industrie, energie en infrastructuur groeit in Nederland en zoekt voor de vestiging in Rotterdam een HR Business Partner.",
+      "An international organisation that advises on and delivers projects in buildings, industry, energy and infrastructure is growing in the Netherlands, and is looking for an HR Business Partner for its Rotterdam office."
+    ),
+    more: bi(
+      "Het HR-team is compact, de functie is breed en veelzijdig, en er is ruimte voor innovatie en perspectief op verdere doorgroei. Er is een plek vrij gekomen die snel weer ingevuld moet worden. Je zit op tactisch niveau, maar hebt ook een operationeel aandeel.",
+      "The HR team is small and the role is broad and varied, with room to try new things and real prospects to grow further. A position has opened up and needs to be filled again soon. You work at a tactical level, and take on part of the operational work too."
+    ),
+    tasks: [
+      bi("Je bent het vertrouwde eerste aanspreekpunt voor leidinggevenden en medewerkers, van verzuim tot ontwikkelwensen.", "You are the trusted first point of contact for managers and employees, on everything from absence to development wishes."),
+      bi("Je draait en verbetert de processen rond instroom, uitstroom, verzuim en personeelszaken, en maakt ze slimmer waar dat kan, bijvoorbeeld door te automatiseren.", "You run and improve the processes around joiners, leavers, absence and HR administration, and make them smarter where you can, for example through automation."),
+      bi("Je pakt lokale HR-projecten zelfstandig op en haakt aan bij internationale initiatieven.", "You take on local HR projects independently and join in on international initiatives."),
+      bi("Je helpt functieprofielen, functieniveaus en groeipaden scherper te krijgen.", "You help sharpen job profiles, job levels and growth paths."),
+      bi("Je denkt mee over talent, prestaties en duurzame inzetbaarheid.", "You help shape the thinking on talent, performance and keeping people healthy and employable in the long run."),
+      bi("Je signaleert wat beter kan en vertaalt dat naar initiatieven die de organisatie gezonder en sterker maken, ook op het gebied van cultuur, arbeidsvoorwaarden en werkgeversmerk.", "You spot what could be better and turn it into initiatives that make the organisation healthier and stronger, including on culture, terms of employment and employer brand."),
+      bi("Je werkt nauw samen met een senior HR-collega en een interne recruiter, zodat werving, onboarding en ontwikkeling op elkaar aansluiten.", "You work closely with a senior HR colleague and an in-house recruiter, so that hiring, onboarding and development fit together."),
+    ],
+    asksTitle: bi("Wat je meebrengt", "What you bring"),
+    asks: [
+      bi("Minimaal vijf jaar HR-ervaring, bij voorkeur in een brede HR-rol.", "At least five years of HR experience, ideally in a broad HR role."),
+      bi("Hbo- of wo-niveau, bij voorkeur in HRM of organisatieontwikkeling.", "A bachelor's or master's degree, ideally in HRM or organisational development."),
+      bi("Goede kennis van het Nederlandse arbeidsrecht.", "Sound knowledge of Dutch employment law."),
+      bi("Ervaring met het zelfstandig adviseren van leidinggevenden, en met verzuim, talentontwikkeling en prestatievraagstukken.", "Experience advising managers independently, and with absence, talent development and performance issues."),
+      bi("Het vermogen om te structureren, prioriteiten te stellen en meerdere onderwerpen tegelijk te overzien.", "The ability to bring structure, set priorities and keep several topics in view at once."),
+      bi("Een proactieve houding en gemak in het contact met mensen op alle niveaus.", "A proactive attitude, and ease in dealing with people at every level."),
+      bi("Goed Nederlands en Engels, in woord en geschrift.", "Good Dutch and English, spoken and written."),
+      bi("Een pluspunt: ervaring met het digitaliseren of automatiseren van HR-processen.", "A plus: experience digitising or automating HR processes."),
+      bi("Een pre: ervaring in de zakelijke dienstverlening.", "Also welcome: experience in professional services."),
+    ],
+    offers: [
+      bi("Werken in 4 of 5 dagen per week, hybride.", "A working week of 4 or 5 days, hybrid."),
+      bi("Opleidingen en bijscholing op maat, via een eigen leerplatform.", "Tailored training and further education, through the organisation's own learning platform."),
+      bi("Een bonus of korting voor sport.", "A bonus or discount for sport."),
+      bi("Een ov-vergoeding of een (elektrische) leaseauto, afhankelijk van de functie.", "A public transport allowance or an (electric) lease car, depending on the role."),
+      bi("Een portaal met extra kortingen, en een bonus als je een collega aandraagt.", "A portal with extra discounts, and a bonus when you refer a colleague."),
+      bi("Duidelijke regelingen voor zwangerschaps-, vaderschaps- en zorgverlof.", "Clear arrangements for maternity, paternity and care leave."),
+    ],
+    closing: bi(
+      "Productive Search begeleidt deze zoektocht. Mail je cv en een paar regels over wat je zoekt naar applicant@productiveswitch.nl, of upload je cv via de site. Je hoort snel van ons, en je gegevens blijven vertrouwelijk tot je zelf zegt dat het mag.",
+      "Productive Search is running this search. Email your CV and a few lines about what you are looking for to applicant@productiveswitch.nl, or upload your CV through the site. You will hear from us quickly, and your details stay confidential until you tell us otherwise."
+    ),
+    contactEmail: "applicant@productiveswitch.nl",
+    subject: "HR Business Partner, Rotterdam",
   },
 ];
 

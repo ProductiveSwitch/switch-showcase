@@ -14,18 +14,18 @@ export function RolePoster({ v, lang = "nl" }: { v: Vacancy; lang?: "nl" | "en" 
       <div className="poster-title">{t(v.role)}</div>
       <div className="poster-org">{t(v.org)}</div>
       <div className="poster-meta">
-        <span>{v.location}</span><span>{t(v.duration)}</span><span>{t(v.hours)}</span>
+        <span>{v.location}</span>{v.details ? v.details.map((x, i) => <span key={i}>{t(x)}</span>) : <><span>{t(v.duration)}</span><span>{t(v.hours)}</span></>}
       </div>
       <div className="poster-card">
         <div className="poster-h">{t({ nl: "Wat je gaat doen", en: "What you will do" })}</div>
         <ul>{v.tasks.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
-        <div className="poster-h">{t({ nl: "Wat we zoeken", en: "What we look for" })}</div>
+        <div className="poster-h">{t(v.asksTitle ?? { nl: "Wat we zoeken", en: "What we look for" })}</div>
         <ul>{v.asks.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
       </div>
       <div className="poster-foot">
         <div>
           <div className="poster-url">www.productiveswitch.nl/jobs</div>
-          <div className="poster-url">douwe@productiveswitch.nl</div>
+          <div className="poster-url">{v.contactEmail ?? "douwe@productiveswitch.nl"}</div>
         </div>
       </div>
     </div>

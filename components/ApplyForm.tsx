@@ -93,7 +93,7 @@ export function ApplyModal({ open, onClose, lang, v }: { open: boolean; onClose:
       // fall through
     }
     const note = t({ nl: "\n\n(Voeg je cv als bijlage toe voor je verstuurt.)", en: "\n\n(Attach your CV before sending.)" });
-    window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text + note)}`;
+    window.location.href = `mailto:${v.contactEmail ?? TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text + note)}`;
     setDone("mailto");
     setBusy(false);
   };

@@ -6,6 +6,13 @@ import { useLang } from "./LangContext";
 import type { Vacancy } from "@/lib/data";
 import { ApplyModal } from "./ApplyForm";
 
+// Maakt het mailadres in een lopende zin klikbaar.
+function withMail(text: string, email?: string) {
+  if (!email || !text.includes(email)) return text;
+  const [before, after] = text.split(email);
+  return <>{before}<a href={`mailto:${email}`} className="role-mail">{email}</a>{after}</>;
+}
+
 export function RolePage({ v }: { v: Vacancy }) {
   const { lang, t } = useLang();
   const [applyOpen, setApplyOpen] = useState(false);
@@ -19,9 +26,13 @@ export function RolePage({ v }: { v: Vacancy }) {
             <p className="lede">{t(v.org)}</p>
             <div className="role-meta">
               <span>{v.location}</span>
-              <span>{t(v.duration)}</span>
-              <span>{t(v.hours)}</span>
-              {t(v.start) !== t(v.duration) && <span>{t(v.start)}</span>}
+              {v.details ? v.details.map((x, i) => <span key={i}>{t(x)}</span>) : (
+                <>
+                  <span>{t(v.duration)}</span>
+                  <span>{t(v.hours)}</span>
+                  {v.start && t(v.start) !== t(v.duration) && <span>{t(v.start)}</span>}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -29,16 +40,24 @@ export function RolePage({ v }: { v: Vacancy }) {
       <div className="wrap">
         <article className="role-body">
           <p className="role-summary">{t(v.summary)}</p>
-          <div className="role-cols">
+          {v.more && <p className="role-more">{t(v.more)}</p>}
+          <div className={v.offers ? "role-cols role-cols--cards" : "role-cols"}>
             <section>
               <h2>{t({ nl: "Wat je gaat doen", en: "What you will do" })}</h2>
               <ul>{v.tasks.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
             </section>
             <section>
-              <h2>{t({ nl: "Wat we zoeken", en: "What we look for" })}</h2>
+              <h2>{t(v.asksTitle ?? { nl: "Wat we zoeken", en: "What we look for" })}</h2>
               <ul>{v.asks.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
             </section>
+            {v.offers && (
+              <section>
+                <h2>{t({ nl: "Wat je krijgt", en: "What you get" })}</h2>
+                <ul>{v.offers.map((x, i) => <li key={i}>{t(x)}</li>)}</ul>
+              </section>
+            )}
           </div>
+          {v.closing && <p className="role-closing">{withMail(t(v.closing), v.contactEmail)}</p>}
           <div className="role-tags">
             {v.tags.map((x, i) => <span key={i} className="vac-tag">{t(x)}</span>)}
           </div>
@@ -49,7 +68,7 @@ export function RolePage({ v }: { v: Vacancy }) {
             </div>
             <div className="cta-actions">
               <button className="btn btn-light btn-lg" onClick={() => setApplyOpen(true)}>{t({ nl: "Reageer op deze rol", en: "Apply for this role" })}</button>
-              <a href={`mailto:douwe@productiveswitch.nl?subject=${encodeURIComponent(v.subject)}`} className="btn btn-ghost-light">{t({ nl: "Of mail Douwe", en: "Or email Douwe" })}</a>
+              <a href={`mailto:${v.contactEmail ?? "douwe@productiveswitch.nl"}?subject=${encodeURIComponent(v.subject)}`} className="btn btn-ghost-light">{v.contactEmail ? t({ nl: "Of mail ons", en: "Or email us" }) : t({ nl: "Of mail Douwe", en: "Or email Douwe" })}</a>
             </div>
           </div>
           <p className="role-back"><Link href="/jobs" className="lees-meer">← {t({ nl: "Alle rollen", en: "All roles" })}</Link></p>
