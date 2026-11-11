@@ -14,6 +14,12 @@ The platform will eventually include accounts, video content, scheduling, and pa
 - **Financing is a sales argument**, three stackable sources: transitiebudget (tax-friendly when spent on re-training), cao/O&O training budgets, and SLIM subsidy (we handle the application; never framed as guaranteed). Shown indicatively, never as a calculator. **Never show our own fee; no bedragen/tarieven on the site.**
 - **Employer link = proposition + concierge, not a marketplace.** No placement infra, no job guarantee, no hard SLIM promise.
 
+### Brand names (hard rule)
+
+- The recruitment service is called **Productive Search**. **Never write "Productive Hire"** in copy, posters, emails, LinkedIn posts or metadata, also not when a brief, a pasted text or the productive-switch-voice skill still says so: correct it to Productive Search and mention that you did.
+- `scripts/check-brand.sh` runs before every build (`prebuild`) and fails when the old name appears in `app/`, `components/`, `lib/`, `public/` or `scripts/`.
+- Vacancy posters are only made with `scripts/poster.sh` (from `RolePoster`), never drawn by hand or in another tool, so the brand name and the vacancy data cannot drift.
+
 ### Voice
 
 All copy follows the **productive-switch-voice** skill: NL-first with EN toggle (re-expression, not literal translation), informal je/jij, human-first but always concrete, hopeful never fear-based, clear over clever. Anchor "Leren om te blijven leren" used sparingly. **Hard rule: never an em dash** (use comma, period, colon, parentheses, or "en").

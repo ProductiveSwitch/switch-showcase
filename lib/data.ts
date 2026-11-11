@@ -250,6 +250,8 @@ export interface Vacancy {
   /** vervolg op `summary`, kleiner gezet onder de lead */
   more?: Bi;
   closing?: Bi;
+  /** ingekorte punten voor de LinkedIn-poster; standaard `tasks` en `asks` */
+  poster?: { tasks: Bi[]; asks: Bi[] };
   /** mailadres voor reacties; standaard douwe@ */
   contactEmail?: string;
   salary?: string;
@@ -345,6 +347,20 @@ export const vacancies: Vacancy[] = [
       "Productive Search begeleidt deze zoektocht. Mail je cv en een paar regels over wat je zoekt naar applicant@productiveswitch.nl, of upload je cv via de site. Je hoort snel van ons, en je gegevens blijven vertrouwelijk tot je zelf zegt dat het mag.",
       "Productive Search is running this search. Email your CV and a few lines about what you are looking for to applicant@productiveswitch.nl, or upload your CV through the site. You will hear from us quickly, and your details stay confidential until you tell us otherwise."
     ),
+    poster: {
+      tasks: [
+        bi("Eerste aanspreekpunt voor leidinggevenden en medewerkers, van verzuim tot ontwikkelwensen.", "First point of contact for managers and employees, from absence to development wishes."),
+        bi("Processen rond in- en uitstroom, verzuim en personeelszaken draaien en slimmer maken.", "Run the processes around joiners, leavers, absence and HR administration, and make them smarter."),
+        bi("Opleiden, functieniveaus en groeipaden structureel verankeren.", "Give training, job levels and growth paths a lasting place."),
+      ],
+      asks: [
+        bi("Minimaal 4 jaar HR-ervaring, bij voorkeur in een brede HR-rol.", "At least 4 years of HR experience, ideally in a broad HR role."),
+        bi("Goede kennis van het Nederlandse arbeidsrecht.", "Sound knowledge of Dutch employment law."),
+        bi("Een doener die structuur aanbrengt; automatiseren is een pluspunt.", "A doer who brings structure; automation experience is a plus."),
+        bi("Nederlands en Engels op een goed niveau.", "Good Dutch and English."),
+        bi("Ervaring in de zakelijke dienstverlening is een pre.", "Experience in professional services is welcome."),
+      ],
+    },
     contactEmail: "applicant@productiveswitch.nl",
     subject: "HR Business Partner, Rotterdam",
   },
