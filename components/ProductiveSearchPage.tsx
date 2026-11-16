@@ -50,61 +50,15 @@ export function ProductiveSearchPage() {
             <div className="h-side-card">
               <div className="h-side-k">{t({ nl: "Op deze pagina", en: "On this page" })}</div>
               <ul>
+                <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
                 <li><a href="#verwachting">{t({ nl: "Wat er op HR-leiders afkomt", en: "What is heading for HR leaders" })}</a></li>
                 <li><a href="#rollen">{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</a></li>
-                <li><a href="#vacatures">{t({ nl: "Openstaande rollen", en: "Open roles" })}</a></li>
                 <li><Link href="/contact?rol=vacature">{t({ nl: "Bespreek je vacature", en: "Discuss your vacancy" })}</Link></li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="wrap">
-        {/* What is coming for HR */}
-        <section className="section reveal" id="verwachting">
-          <div className="section-head">
-            <div className="eyebrow">{t({ nl: "De komende jaren", en: "The coming years" })}</div>
-            <h2>{t({ nl: "Wat er de komende jaren op HR-leiders afkomt", en: "What is heading for HR leaders in the coming years" })}</h2>
-            <p>
-              {t({
-                nl: "De strategische rol van HR-afdelingen krijgt niet altijd de waardering die ze verdient. Juist de komende jaren is die rol weggelegd voor HR: drie verschuivingen komen tegelijk binnen, en elk ervan wordt op de HR-tafel beslist.",
-                en: "The strategic role of HR departments does not always get the recognition it deserves. In the coming years that role falls squarely to HR: three shifts arrive at once, and each is decided at the HR table.",
-              })}
-            </p>
-          </div>
-          <div className="shift-grid stagger">
-            {hrShifts.map((s, i) => (
-              <div className="shift" key={i}>
-                <div className="shift-num">0{i + 1}</div>
-                <h3>{t(s.title)}</h3>
-                <p>{t(s.body)}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Role types */}
-        <section className="section reveal" id="rollen">
-          <div className="section-head">
-            <div className="eyebrow">Search</div>
-            <h2>{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</h2>
-            <p>
-              {t({
-                nl: "Productief mensenwerk opnieuw uitvinden in een tijd van AI en robotica vraagt om HR-leiders die een organisatie door verandering kunnen leiden. Wij bemiddelen in de rollen en vakgebieden waar die verandering wordt vormgegeven, vast en interim.",
-                en: "Reinventing productive human work in an age of AI and robotics calls for HR leaders who can guide an organisation through change. We place people in the roles and disciplines where that change takes shape, permanent and interim.",
-              })}
-            </p>
-          </div>
-          <div className="role-grid stagger">
-            {roleTypes.map((r, i) => (
-              <div className="role role--block" key={i} style={{ background: r.color }}>
-                <h3>{t(r.title)}</h3>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
 
       <div className="wrap">
         {/* Vacancies */}
@@ -157,6 +111,50 @@ export function ProductiveSearchPage() {
               {t({ nl: "Geen rollen in deze categorie op dit moment.", en: "No roles in this category right now." })}
             </div>
           )}
+        </section>
+
+        {/* What is coming for HR */}
+        <section className="section reveal" id="verwachting">
+          <div className="section-head">
+            <div className="eyebrow">{t({ nl: "De komende jaren", en: "The coming years" })}</div>
+            <h2>{t({ nl: "Wat er de komende jaren op HR-leiders afkomt", en: "What is heading for HR leaders in the coming years" })}</h2>
+            <p>
+              {t({
+                nl: "De strategische rol van HR-afdelingen krijgt niet altijd de waardering die ze verdient. Juist de komende jaren is die rol weggelegd voor HR: drie verschuivingen komen tegelijk binnen, en elk ervan wordt op de HR-tafel beslist.",
+                en: "The strategic role of HR departments does not always get the recognition it deserves. In the coming years that role falls squarely to HR: three shifts arrive at once, and each is decided at the HR table.",
+              })}
+            </p>
+          </div>
+          <div className="shift-grid stagger">
+            {hrShifts.map((s, i) => (
+              <div className="shift" key={i}>
+                <div className="shift-num">0{i + 1}</div>
+                <h3>{t(s.title)}</h3>
+                <p>{t(s.body)}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Role types */}
+        <section className="section reveal" id="rollen">
+          <div className="section-head">
+            <div className="eyebrow">Search</div>
+            <h2>{t({ nl: "Rollen waarin we bemiddelen", en: "Roles we place" })}</h2>
+            <p>
+              {t({
+                nl: "Productief mensenwerk opnieuw uitvinden in een tijd van AI en robotica vraagt om HR-leiders die een organisatie door verandering kunnen leiden. Wij bemiddelen in de rollen en vakgebieden waar die verandering wordt vormgegeven, vast en interim.",
+                en: "Reinventing productive human work in an age of AI and robotics calls for HR leaders who can guide an organisation through change. We place people in the roles and disciplines where that change takes shape, permanent and interim.",
+              })}
+            </p>
+          </div>
+          <div className="role-grid stagger">
+            {roleTypes.map((r, i) => (
+              <div className="role role--block" key={i} style={{ background: r.color }}>
+                <h3>{t(r.title)}</h3>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Contact */}
